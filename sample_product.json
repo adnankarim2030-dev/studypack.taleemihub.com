@@ -1,0 +1,183 @@
+{
+  "id": "42d98715-5d90-11ef-a773-063cfbb20a3d",
+  "__createdAt": "2024-08-18T18:32:45.000Z",
+  "productName": "Pack of 3 English Readers Class Pre-Nursery (Sid Did It, Sip It Pat, Tip, Tip)",
+  "productImage": [
+    {
+      "Image": "Class-Pre-Nursery-Reader--Pack-of-3--08bc619-my-bag-pack.jpg",
+      "altTag": "",
+      "Featured": true
+    }
+  ],
+  "productDescription": "<p>Sid Did It</p>\n<p>Sip It, Pat</p>\n<p>Tip, Tip</p>",
+  "productTypeName": "Text Book",
+  "productVendorName": "MBP Warehouse",
+  "productSKU": "9001-Pack",
+  "productBarcode": "9001-Pack",
+  "productTags": "",
+  "productSeoTitle": "Pack of 3 English Readers (Sid Did It, Sip It Pat, Tip, Tip)",
+  "productSeoMeta": "Sid Did It\nSip It, Pat\nTip, Tip",
+  "productUrl": "pack-of-3-english-readers-sid-did-it-sip-it-pat-tip-tip",
+  "productMultiOptions": 0,
+  "productMultiOptionsList": [],
+  "productCollections": {
+    "05E736FA-CFEA-44CE-9BF8-2E44CEF478A4": {
+      "id": "05E736FA-CFEA-44CE-9BF8-2E44CEF478A4",
+      "url": "pre-nursery-dck",
+      "name": "Pre-Nursery-(DCK)",
+      "description": "",
+      "isVisible": true
+    },
+    "19DBC935-819C-475A-9591-129D668E2B57": {
+      "id": "19DBC935-819C-475A-9591-129D668E2B57",
+      "url": "beaconhouse-school-systems-bss",
+      "name": "Beaconhouse School Systems (BSS)",
+      "description": ""
+    },
+    "53A61DC8-9B0D-44E1-9E7F-3B9A6CEA1E1B": {
+      "id": "53A61DC8-9B0D-44E1-9E7F-3B9A6CEA1E1B",
+      "url": "pre-nursery-bsr",
+      "name": "Pre-Nursery-(BSR)",
+      "description": "",
+      "isVisible": true
+    },
+    "5f0dfdfa-2118-11f1-b7c9-107c614e7bf5": {
+      "id": "5f0dfdfa-2118-11f1-b7c9-107c614e7bf5",
+      "url": "live-sku",
+      "name": "Live SKU",
+      "description": "",
+      "isVisible": true
+    },
+    "6717B924-B60B-4DD2-8786-7FA189385686": {
+      "id": "6717B924-B60B-4DD2-8786-7FA189385686",
+      "url": "pre-nursery-bss",
+      "name": "Pre-Nursery-(BSS)",
+      "description": "",
+      "isVisible": true
+    },
+    "6b0bb6e9-580f-11f0-a600-9c6b0055e3d2": {
+      "id": "6b0bb6e9-580f-11f0-a600-9c6b0055e3d2",
+      "url": "beaconhouse-school-systems-ict",
+      "name": "Beaconhouse School Systems (ICT)",
+      "description": "",
+      "isVisible": true
+    },
+    "8f5220cb-c51b-11f0-b7c9-107c614e7bf5": {
+      "id": "8f5220cb-c51b-11f0-b7c9-107c614e7bf5",
+      "url": "pre-nursery-dci",
+      "name": "Pre-Nursery-(DCI)",
+      "description": "Pre-Nursery-(DCI)",
+      "isVisible": true
+    },
+    "9C6CF80C-0560-4BFF-8F9F-F8A8A3F658D3": {
+      "id": "9C6CF80C-0560-4BFF-8F9F-F8A8A3F658D3",
+      "url": "beaconhouse-school-systems-kpk",
+      "name": "Beaconhouse School Systems (KPK)",
+      "description": ""
+    },
+    "B8FE14FE-0908-492D-ACB3-32C435C40286": {
+      "id": "B8FE14FE-0908-492D-ACB3-32C435C40286",
+      "url": "prenurserykpk",
+      "name": "Pre-Nursery-(KPK)",
+      "description": "Pre-Nursery-(KPK)",
+      "isVisible": true
+    },
+    "E0643D02-FBF9-4225-BBEA-F87AA98B5AA7": {
+      "id": "E0643D02-FBF9-4225-BBEA-F87AA98B5AA7",
+      "url": "pre-nursery-ict",
+      "name": "Pre-Nursery-(ICT)",
+      "description": "",
+      "isVisible": true
+    },
+    "F41028A8-57D6-44C4-A3C9-280A4F685EA5": {
+      "id": "F41028A8-57D6-44C4-A3C9-280A4F685EA5",
+      "url": "beaconhouse-school-systems-bsr",
+      "name": "Beaconhouse School Systems (BSR)",
+      "description": ""
+    },
+    "c0012e0d-5849-11f0-a600-9c6b0055e3d2": {
+      "id": "c0012e0d-5849-11f0-a600-9c6b0055e3d2",
+      "url": "all-regions-bss-25-26",
+      "name": "all-regions-bss-25-26",
+      "description": "",
+      "isVisible": true
+    },
+    "cbf8bfef-580d-11f0-a600-9c6b0055e3d2": {
+      "id": "cbf8bfef-580d-11f0-a600-9c6b0055e3d2",
+      "url": "bsstextbooks",
+      "name": "bsstextbooks",
+      "description": "",
+      "isVisible": true
+    },
+    "f2598f37-692a-11f0-b09b-107c614e7bf5": {
+      "id": "f2598f37-692a-11f0-b09b-107c614e7bf5",
+      "url": "dck-25-26",
+      "name": "DCK-25-26",
+      "description": "",
+      "isVisible": true
+    }
+  },
+  "productPrice": 1515,
+  "productPriceCompare": null,
+  "productWeight": 0.12,
+  "productVarients": [],
+  "location_prices": null,
+  "inventoryManagement": "fishry",
+  "inventoryQuantity": 5,
+  "inventoryPolicy": "0",
+  "addons": {},
+  "productSpecifications": {},
+  "productSeoKeyword": null,
+  "productHasWeight": 1,
+  "ogImage": null,
+  "productCollectionsList": "05E736FA-CFEA-44CE-9BF8-2E44CEF478A4,19DBC935-819C-475A-9591-129D668E2B57,53A61DC8-9B0D-44E1-9E7F-3B9A6CEA1E1B,6717B924-B60B-4DD2-8786-7FA189385686,6b0bb6e9-580f-11f0-a600-9c6b0055e3d2,8f5220cb-c51b-11f0-b7c9-107c614e7bf5,9C6CF80C-0560-4BFF-8F9F-F8A8A3F658D3,B8FE14FE-0908-492D-ACB3-32C435C40286,E0643D02-FBF9-4225-BBEA-F87AA98B5AA7,F41028A8-57D6-44C4-A3C9-280A4F685EA5,c0012e0d-5849-11f0-a600-9c6b0055e3d2,cbf8bfef-580d-11f0-a600-9c6b0055e3d2,f2598f37-692a-11f0-b09b-107c614e7bf5,5f0dfdfa-2118-11f1-b7c9-107c614e7bf5",
+  "has_custom_values": 0,
+  "custom_values": "[]",
+  "call_for_price": 0,
+  "hide_unavailable_variant": 0,
+  "rating": null,
+  "total_reviews": null,
+  "upsell_product_ids": [],
+  "productTimings": {
+    "Monday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Tuesday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Wednesday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Thursday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Friday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Saturday": {
+      "timingsEnabled": false,
+      "timings": []
+    },
+    "Sunday": {
+      "timingsEnabled": false,
+      "timings": []
+    }
+  },
+  "is_app_specific": 0,
+  "is_buy_from_enabled": 0,
+  "buy_from_links": [],
+  "productVideo": null,
+  "is_attachment_required": 0,
+  "attachment_label": null,
+  "tax_rate": null,
+  "order_type": "both",
+  "external_candela_id": null,
+  "product_schema": null,
+  "collection_schema": "",
+  "product_count": 3
+}
