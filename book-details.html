@@ -92,8 +92,51 @@
 </head>
 <body>
 
-<div style="padding-top:100px;"></div>
+<!-- Premium Glass Menu -->
+<div id="glassMenu" class="glass-menu-overlay">
+  <button id="glassCloseBtn" class="glass-close-btn" aria-label="Close Menu" style="position: absolute; top: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: #ffffff; display: flex; align-items: center; justify-content: center; color: #111827; z-index: 100; box-shadow: 0 4px 14px rgba(0,0,0,0.15); border: none; cursor: pointer; transition: 0.3s;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <div class="gm-links">
+    <a href="index.html" class="gm-link"><span class="gm-text">Home</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="books.html" class="gm-link"><span class="gm-text">Books</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="stationery.html" class="gm-link"><span class="gm-text">Stationery</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="toys.html" class="gm-link"><span class="gm-text">Toys &amp; Gifts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="express.html" class="gm-link"><span class="gm-text">Express Delivery</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="contact.html" class="gm-link"><span class="gm-text">Contact</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+<div id="preloader"><div class="pl-book"><span></span><span></span><span></span></div><div class="pl-label">Study Pack</div></div>
+<!-- ================= NAVBAR ================= -->
+<header class="nav" id="siteNav">
+  <div class="container">
+    <div class="navbar">
+      <a href="index.html" class="logo" style="gap:0;">
+        <img src="assets/images/logo.png" alt="Taleemi Hub Logo" style="height: 48px; width: auto; object-fit: contain;">
+      </a>
+      <form class="nav-search-bar" onsubmit="event.preventDefault(); const q = this.querySelector('input').value.trim(); if(q) window.location.href='books.html?q='+encodeURIComponent(q); else window.location.href='books.html';">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search books, stationery, toys...">
+        <button type="submit">Search</button>
+      </form>
+      <nav class="nav-links">
+  <a href="index.html#categories">Categories</a><a href="books.html">Books</a><a href="stationery.html">Stationery</a><a href="toys.html">Toys</a><a href="express.html">Express</a><a href="why.html">Why Us</a><a href="contact.html">Contact</a>
+</nav>
+      <div class="nav-actions">
+        
+        <button class="icon-btn" id="cartBtn" aria-label="Cart" onclick="document.getElementById('cartDrawer').classList.add('show'); document.getElementById('cartOverlay').classList.add('show');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span class="badge-count" id="cartCount">0</span>
+        </button>
+        <button class="icon-btn top-burger-btn" id="topBurger" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 
+<div style="padding-top:100px;"></div>
 
 
 <div class="bd-container">
