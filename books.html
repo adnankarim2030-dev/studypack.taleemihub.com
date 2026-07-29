@@ -24,6 +24,41 @@
   }
 }
 </style>
+
+<style>
+.sub-accordion-item {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.sub-accordion-item:last-child {
+  border-bottom: none;
+}
+.sub-acc-head {
+  padding: 10px 16px 10px 24px; cursor: pointer; font-weight: 600; color: var(--navy);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; transition: background 0.3s;
+}
+.sub-acc-head:hover { background: rgba(0,0,0,0.02); }
+.sub-acc-body {
+  padding: 0 16px 0 32px; max-height: 0; opacity: 0; visibility: hidden;
+  transition: all 0.3s ease; overflow: hidden;
+}
+.sub-accordion-item.active .sub-acc-body {
+  padding: 10px 16px 16px 32px; max-height: 1000px; opacity: 1; visibility: visible;
+}
+.sub-accordion-item .acc-arrow { width: 16px; height: 16px; transition: 0.3s; color: #666; }
+.sub-accordion-item.active .acc-arrow { transform: rotate(180deg); color: var(--blue); }
+.pak-select {
+  width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px;
+  background-color: #f8fafc; color: #334155; font-family: inherit; font-size: 14px;
+  outline: none; transition: all 0.3s ease; appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%2364748b" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>');
+  background-repeat: no-repeat; background-position: right 12px center;
+}
+.pak-select:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); background-color: #fff; }
+.pak-select:disabled { background-color: #e2e8f0; cursor: not-allowed; opacity: 0.6; }
+#pakFilterSearch:hover { background: #1d4ed8; }
+#pakFilterReset:hover { background: #e2e8f0; }
+</style>
 </head>
 <body>
 
@@ -125,36 +160,133 @@
              <input type="text" id="filterSearch" placeholder="Search subjects...">
           </div>
 
-          <div class="accordion-item active">
+                    <div class="accordion-item active">
             <div class="acc-head">The Educators <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <div style="font-size:12px; font-weight:600; color:var(--text-light); margin: 0 0 5px 24px;">Regions</div>
-              <label class="glass-check"><input type="checkbox" class="f-region" value="Punjab Region"> <span class="chk-box"></span> Punjab Region</label>
-              <label class="glass-check"><input type="checkbox" class="f-region" value="Sindh Region"> <span class="chk-box"></span> Sindh Region</label>
-              <label class="glass-check"><input type="checkbox" class="f-region" value="ICT Region"> <span class="chk-box"></span> ICT Region</label>
-              <label class="glass-check"><input type="checkbox" class="f-region" value="KPK Region"> <span class="chk-box"></span> KPK Region</label>
-              <label class="glass-check"><input type="checkbox" class="f-region" value="South Punjab Region"> <span class="chk-box"></span> South Punjab Region</label>
-
-              <div style="font-size:12px; font-weight:600; color:var(--text-light); margin: 10px 0 5px 24px;">Class / Level</div>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Playgroup"> <span class="chk-box"></span> Playgroup</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Nursery"> <span class="chk-box"></span> Nursery</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="KG"> <span class="chk-box"></span> KG</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 1"> <span class="chk-box"></span> Class 1</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 2"> <span class="chk-box"></span> Class 2</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 3"> <span class="chk-box"></span> Class 3</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 4"> <span class="chk-box"></span> Class 4</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 5"> <span class="chk-box"></span> Class 5</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 6"> <span class="chk-box"></span> Class 6</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 7"> <span class="chk-box"></span> Class 7</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class 8"> <span class="chk-box"></span> Class 8</label>
+            <div class="acc-body" style="padding: 0;">
               
-              <div style="font-size:12px; font-weight:600; color:var(--text-light); margin: 10px 0 5px 24px;">Subjects</div>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators Math"> <span class="chk-box"></span> Math</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators English"> <span class="chk-box"></span> English</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiyat</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+              <div class="sub-accordion-item">
+                <div class="sub-acc-head">Punjab Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="sub-acc-body">
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators English"> <span class="chk-box"></span> English</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Art"> <span class="chk-box"></span> Art & Craft</label>
+                </div>
+              </div>
+
+              <div class="sub-accordion-item">
+                <div class="sub-acc-head">Sindh Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="sub-acc-body">
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators English"> <span class="chk-box"></span> English</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Sindhi"> <span class="chk-box"></span> Sindhi</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Art"> <span class="chk-box"></span> Art & Craft</label>
+                </div>
+              </div>
+
+              <div class="sub-accordion-item">
+                <div class="sub-acc-head">ICT Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="sub-acc-body">
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators English"> <span class="chk-box"></span> English</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
+                </div>
+              </div>
+
+              <div class="sub-accordion-item">
+                <div class="sub-acc-head">KPK Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="sub-acc-body">
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators English"> <span class="chk-box"></span> English</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Pashto"> <span class="chk-box"></span> Pashto</label>
+                </div>
+              </div>
+
+              <div class="sub-accordion-item">
+                <div class="sub-acc-head">South Punjab Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+                <div class="sub-acc-body">
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators English"> <span class="chk-box"></span> English</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
+                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Pakistan Dynamic Filter Panel -->
+          <div style="background: #fff; padding: 16px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: var(--navy);">Find Your Books</h4>
+            
+            <div style="margin-bottom: 12px;">
+              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Province</label>
+              <select id="filterProvince" class="pak-select">
+                <option value="">All Provinces</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Sindh">Sindh</option>
+                <option value="KPK">Khyber Pakhtunkhwa (KPK)</option>
+                <option value="Balochistan">Balochistan</option>
+                <option value="GB">Gilgit-Baltistan (GB)</option>
+                <option value="AJK">Azad Jammu & Kashmir (AJK)</option>
+                <option value="ICT">Islamabad Capital Territory (ICT)</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom: 12px;">
+              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Class</label>
+              <select id="filterClass" class="pak-select">
+                <option value="">All Classes</option>
+                <option value="Montessori">Montessori</option>
+                <option value="Play Group">Play Group</option>
+                <option value="Nursery">Nursery</option>
+                <option value="Prep / KG">Prep / KG</option>
+                <option value="Class 1">Class 1</option>
+                <option value="Class 2">Class 2</option>
+                <option value="Class 3">Class 3</option>
+                <option value="Class 4">Class 4</option>
+                <option value="Class 5">Class 5</option>
+                <option value="Class 6">Class 6</option>
+                <option value="Class 7">Class 7</option>
+                <option value="Class 8">Class 8</option>
+                <option value="Class 9">Class 9</option>
+                <option value="Class 10">Class 10 (Matric)</option>
+              </select>
+            </div>
+            
+            <div style="margin-bottom: 16px;">
+              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Subject</label>
+              <select id="filterSubject" class="pak-select" disabled>
+                <option value="">Select Subject</option>
+              </select>
+            </div>
+            
+            <div style="display: flex; gap: 8px;">
+              <button id="pakFilterSearch" style="flex: 1; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(37,99,235,0.2);">Search</button>
+              <button id="pakFilterReset" style="background: #f1f5f9; color: #475569; border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; transition: 0.3s;">Reset</button>
             </div>
           </div>
           
@@ -316,7 +448,7 @@
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
 <script src="assets/js/main.js??v=4"></script>
 <script src="assets/js/store.js??v=4"></script>
-<script src="assets/js/search.js??v=4"></script>
+
 <script>
 
 /* ============ BOOKS.HTML — render, filter, sort, paginate ============ */
@@ -395,12 +527,28 @@ function goPage(p){
 
 function applyFilters(){
   const clsChecked = [...document.querySelectorAll('.f-cls:checked')].map(c=>c.value).filter(v=>v!=='all');
-  const subjChecked = [...document.querySelectorAll('.f-subj:checked')].map(c=>c.value).filter(v=>v!=='all');
-  const regionChecked = [...document.querySelectorAll('.f-region:checked')].map(c=>c.value);
+  const subjCheckedNodes = [...document.querySelectorAll('.f-subj:checked')];
+  const subjChecked = subjCheckedNodes.map(c=>c.value).filter(v=>v!=='all');
   
+  // Collect regions required by checked subjects
+  const requiredRegions = {};
+  subjCheckedNodes.forEach(c => {
+      const region = c.getAttribute('data-region');
+      if (region) {
+          if (!requiredRegions[c.value]) {
+              requiredRegions[c.value] = [];
+          }
+          requiredRegions[c.value].push(region);
+      }
+  });
+
   const maxPrice = parseInt(document.getElementById('priceRange').value);
   const inStockOnly = document.getElementById('inStockOnly').checked;
   document.getElementById('priceVal').textContent = money(maxPrice);
+
+  const pakProvince = document.getElementById('filterProvince') ? document.getElementById('filterProvince').value : '';
+  const pakClass = document.getElementById('filterClass') ? document.getElementById('filterClass').value : '';
+  const pakSubject = document.getElementById('filterSubject') ? document.getElementById('filterSubject').value : '';
 
   const urlParams = new URLSearchParams(window.location.search);
   const initialQuery = urlParams.get('q') || '';
@@ -443,13 +591,18 @@ function applyFilters(){
              'science': ['science', 'biology', 'chemistry', 'physics', 'world around', 'environment', 'waqfiyat'],
              'urdu': ['urdu', 'likhai', 'qaida', 'mutalia'],
              'islamiyat': ['islam', 'islamiyat', 'islamic', 'quran', 'deen'],
-             'computer': ['computer', ' it ', 'keyboard', 'digital', '\\\\bit\\\\b']
+             'computer': ['computer', ' it ', 'keyboard', 'digital', '\bit\b'],
+             'general knowledge': ['general knowledge', 'waqfiyat-e-aama'],
+             'social studies': ['social studies', 'history', 'geography', 'muashrati'],
+             'sindhi': ['sindhi'],
+             'pashto': ['pashto'],
+             'art': ['art', 'craft', 'drawing']
           };
           
           let matchesSubj = false;
           if (subjectKeywords[subjPart]) {
              matchesSubj = subjectKeywords[subjPart].some(kw => {
-                if(kw === '\\\\bit\\\\b') return new RegExp('\\\\bit\\\\b', 'i').test(safeTitle) || new RegExp('\\\\bit\\\\b', 'i').test(safeSubj);
+                if(kw === '\bit\b') return new RegExp('\bit\b', 'i').test(safeTitle) || new RegExp('\bit\b', 'i').test(safeSubj);
                 return safeTitle.includes(kw) || safeSubj.includes(kw);
              });
           } else {
@@ -462,7 +615,18 @@ function applyFilters(){
         }
       }
       
-      return safeSubj.includes(cLower) || safeCls.includes(cLower) || pubMatch;
+      let finalSubjMatch = safeSubj.includes(cLower) || safeCls.includes(cLower) || pubMatch;
+      
+      // If this subject requires a specific region (from hierarchical checkboxes)
+      if (finalSubjMatch && requiredRegions[c]) {
+          const safeRegions = b.regions || [];
+          const matchesAnyReqRegion = requiredRegions[c].some(r => safeRegions.includes(r));
+          if (!matchesAnyReqRegion) {
+              finalSubjMatch = false;
+          }
+      }
+      
+      return finalSubjMatch;
     });
     
     const priceMatch = b.price <= maxPrice;
@@ -471,11 +635,26 @@ function applyFilters(){
     const qTerms = initialQuery.toLowerCase().split(' ').filter(x=>x);
     const qMatch = qTerms.length === 0 || qTerms.every(t => safeTitle.includes(t) || safeCls.includes(t) || safeSubj.includes(t) || safePub.includes(t) || safeAuthor.includes(t));
     
-    const safeRegions = b.regions || [];
-    const regionMatch = regionChecked.length === 0 || regionChecked.some(r => safeRegions.includes(r));
+    // We already handled region constraints in subjMatch. We don't have separate region checkboxes anymore.
     
-    return clsMatch && subjMatch && priceMatch && stockMatch && qMatch && regionMatch;
+    const pakProvinceMatch = !pakProvince || (b.regions && b.regions.some(r => r.toLowerCase().includes(pakProvince.toLowerCase())));
+    let pakClassMatch = !pakClass || safeCls.includes(pakClass.toLowerCase());
+    if(!pakClassMatch && b.classes) {
+      pakClassMatch = b.classes.some(bc => bc.toLowerCase() === pakClass.toLowerCase());
+    }
+    const pakSubjMatch = !pakSubject || safeSubj.includes(pakSubject.toLowerCase()) || safeTitle.includes(pakSubject.toLowerCase());
+    
+    return clsMatch && subjMatch && priceMatch && stockMatch && qMatch && pakProvinceMatch && pakClassMatch && pakSubjMatch;
   });
+
+  const grid = document.getElementById('productGrid');
+  if (list.length === 0) {
+    grid.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;"><svg viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" style="width:64px; height:64px; margin-bottom:16px;"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg><h3 style="color:#334155; margin-bottom:8px; font-weight:600;">No books found</h3><p style="color:#64748b; font-size:14px;">Try adjusting your filters or search criteria.</p></div>';
+    document.getElementById('resultCount').textContent = '0';
+    document.getElementById('pagination').innerHTML = '';
+    currentBooks = [];
+    return;
+  }
 
   const sort = document.getElementById('sortSelect').value;
   if(sort==='low') list.sort((a,b)=>a.price-b.price);
@@ -532,6 +711,51 @@ if (catParam) {
 }
 
 init3DCarousel(BOOKS);
+
+/* Pakistan Filter Logic */
+const pakSubjects = {
+  "Montessori": ["English", "Urdu", "Mathematics", "General Knowledge", "Drawing"],
+  "Play Group": ["English", "Urdu", "Mathematics", "General Knowledge", "Drawing"],
+  "Nursery": ["English", "Urdu", "Mathematics", "General Knowledge", "Drawing", "Nazra Quran"],
+  "Prep / KG": ["English", "Urdu", "Mathematics", "General Knowledge", "Drawing", "Nazra Quran"],
+  "Class 1": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "Computer Science"],
+  "Class 2": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "Computer Science"],
+  "Class 3": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "Social Studies", "Computer Science"],
+  "Class 4": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "Social Studies", "Computer Science"],
+  "Class 5": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "Social Studies", "Computer Science"],
+  "Class 6": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "History", "Geography", "Computer Science"],
+  "Class 7": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "History", "Geography", "Computer Science"],
+  "Class 8": ["English", "Urdu", "Mathematics", "General Science", "Islamiat", "History", "Geography", "Computer Science"],
+  "Class 9": ["English", "Urdu", "Mathematics", "Physics", "Chemistry", "Biology", "Computer Science", "Islamiat", "Pakistan Studies"],
+  "Class 10": ["English", "Urdu", "Mathematics", "Physics", "Chemistry", "Biology", "Computer Science", "Islamiat", "Pakistan Studies"]
+};
+
+document.getElementById('filterClass').addEventListener('change', function() {
+  const cls = this.value;
+  const subjSelect = document.getElementById('filterSubject');
+  subjSelect.innerHTML = '<option value="">Select Subject</option>';
+  
+  if (cls && pakSubjects[cls]) {
+    subjSelect.disabled = false;
+    pakSubjects[cls].forEach(s => {
+      subjSelect.innerHTML += `<option value="${s}">${s}</option>`;
+    });
+  } else {
+    subjSelect.disabled = true;
+  }
+});
+
+document.getElementById('pakFilterReset').addEventListener('click', function() {
+  document.getElementById('filterProvince').value = '';
+  document.getElementById('filterClass').value = '';
+  document.getElementById('filterSubject').innerHTML = '<option value="">Select Subject</option>';
+  document.getElementById('filterSubject').disabled = true;
+  document.getElementById('clearFilters').click(); // triggers applyFilters
+});
+
+document.getElementById('pakFilterSearch').addEventListener('click', function() {
+  applyFilters();
+});
 
 </script>
 
@@ -652,5 +876,18 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-\n<script src="assets/js/search_data.js"></script>\n<script src="assets/js/search_logic.js"></script>\n</body>
+\n<script src="assets/js/search_data.js"></script>\n<script src="assets/js/search_logic.js"></script>\n
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const subAccHeads = document.querySelectorAll(".sub-acc-head");
+  subAccHeads.forEach(head => {
+    head.addEventListener("click", function(e) {
+      e.stopPropagation();
+      const parent = this.parentElement;
+      parent.classList.toggle("active");
+    });
+  });
+});
+</script>
+</body>
 </html>
