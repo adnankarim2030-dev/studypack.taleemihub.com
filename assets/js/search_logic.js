@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Search logic
   searchInput.addEventListener("input", function(e) {
     clearTimeout(searchTimeout);
-    const query = e.target.value.toLowerCase().trim();
+    const rawQuery = e.target.value.toLowerCase().trim(); const ignoreWords = ['ki', 'ka', 'ke', 'ko', 'mai', 'in', 'of', 'for', 'book', 'books', 'the', 'a', 'an', 'kitab', 'kitabein']; let query = rawQuery.split(' ').filter(x => x && !ignoreWords.includes(x)).join(' '); if (!query) query = rawQuery; // fallback to original if all are stop words
     
     if(query.length < 2) {
       dropdown.classList.remove("show");

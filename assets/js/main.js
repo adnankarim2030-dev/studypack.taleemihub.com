@@ -1,5 +1,5 @@
 /* ============ SHARED CATALOG DATA (SCRAPED) ============ */
-const BOOKS = [
+let BOOKS = [
   {
     id: 50000,
     title: "Pack of 3 English Readers Class Pre-Nursery (Sid Did It, Sip It Pat, Tip, Tip)",
@@ -27051,3 +27051,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+/* ============ OVERRIDE WITH ADMIN LOCALSTORAGE ============ */
+try {
+    const adminProducts = JSON.parse(localStorage.getItem('edubooks_products'));
+    if (adminProducts && adminProducts.books && adminProducts.books.length > 0) {
+        BOOKS = adminProducts.books;
+    }
+} catch(e){}
