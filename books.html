@@ -632,7 +632,7 @@ function applyFilters(){
     const priceMatch = b.price <= maxPrice;
     const stockMatch = !inStockOnly || b.stock !== false;
     
-    const qTerms = initialQuery.toLowerCase().split(' ').filter(x=>x);
+    const ignoreWords = ['ki', 'ka', 'ke', 'ko', 'mai', 'in', 'of', 'for', 'book', 'books', 'the', 'a', 'an', 'ki', 'kitab', 'kitabein']; let qTerms = initialQuery.toLowerCase().split(' ').filter(x => x && !ignoreWords.includes(x)); if(initialQuery.trim() && qTerms.length === 0) qTerms = initialQuery.toLowerCase().split(' ').filter(x => x);
     const qMatch = qTerms.length === 0 || qTerms.every(t => safeTitle.includes(t) || safeCls.includes(t) || safeSubj.includes(t) || safePub.includes(t) || safeAuthor.includes(t));
     
     // We already handled region constraints in subjMatch. We don't have separate region checkboxes anymore.
