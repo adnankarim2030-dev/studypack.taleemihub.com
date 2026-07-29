@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduBooks Admin — Store Manager</title>
+<title>Study Pack Admin — Store Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -160,8 +160,8 @@ tr:hover td{background:rgba(21,101,192,.03);}
 <!-- ================= LOGIN ================= -->
 <div id="loginScreen">
   <div class="login-card">
-    <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-    <h2>EduBooks Admin</h2>
+    <div class="mark" style="background:transparent; border-radius:0;"><img src="assets/images/logo.png" style="width:36px; height:auto; object-fit:contain;"></div>
+    <h2>Study Pack Admin</h2>
     <p>Sign in to manage your store</p>
     <form id="loginForm">
       <label>Username</label>
@@ -178,8 +178,8 @@ tr:hover td{background:rgba(21,101,192,.03);}
 <div id="app">
   <aside class="sidebar">
     <div class="brand">
-      <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-      <span>Edu<em>Books</em> Admin</span>
+      <div class="mark" style="background:transparent; border-radius:0;"><img src="assets/images/logo.png" style="width:36px; height:auto; object-fit:contain;"></div>
+      <span>Study Pack Admin</span>
     </div>
     <div class="nav-item active" data-view="dashboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Dashboard</div>
     <div class="sec-label">Catalog</div>
@@ -409,19 +409,19 @@ const FALLBACK_EBOOKS = (typeof EBOOKS !== "undefined" ? EBOOKS : []);
 
 function loadProducts(){
   try{
-    const s = JSON.parse(safeGet('edubooks_products'));
+    const s = JSON.parse(safeGet('Study Pack_products'));
     if(s && s.books && s.ebooks) return s;
   }catch(e){}
   const fresh = {books:[...FALLBACK_BOOKS], ebooks:[...FALLBACK_EBOOKS]};
-  safeSet('edubooks_products', JSON.stringify(fresh));
+  safeSet('Study Pack_products', JSON.stringify(fresh));
   return fresh;
 }
-function saveProducts(data){ safeSet('edubooks_products', JSON.stringify(data)); }
-function loadOrders(){ try{ return JSON.parse(safeGet('edubooks_orders')||'[]'); }catch(e){ return []; } }
-function saveOrders(o){ safeSet('edubooks_orders', JSON.stringify(o)); }
+function saveProducts(data){ safeSet('Study Pack_products', JSON.stringify(data)); }
+function loadOrders(){ try{ return JSON.parse(safeGet('Study Pack_orders')||'[]'); }catch(e){ return []; } }
+function saveOrders(o){ safeSet('Study Pack_orders', JSON.stringify(o)); }
 function loadCoupons(){
   try{
-    const c = JSON.parse(safeGet('edubooks_coupons'));
+    const c = JSON.parse(safeGet('Study Pack_coupons'));
     if(c) return c;
   }catch(e){}
   const def = [
@@ -432,15 +432,15 @@ function loadCoupons(){
   saveCoupons(def);
   return def;
 }
-function saveCoupons(c){ safeSet('edubooks_coupons', JSON.stringify(c)); }
+function saveCoupons(c){ safeSet('Study Pack_coupons', JSON.stringify(c)); }
 function loadSettings(){
   try{
-    const s = JSON.parse(safeGet('edubooks_settings'));
+    const s = JSON.parse(safeGet('Study Pack_settings'));
     if(s) return s;
   }catch(e){}
-  return {storeName:'EduBooks Store', currency:'Rs', email:'support@edubooks.pk', phone:'+92 300 1234567', freeShip:2000, color:'#1565C0'};
+  return {storeName:'Study Pack Store', currency:'Rs', email:'support@Study Pack.pk', phone:'+92 300 1234567', freeShip:2000, color:'#1565C0'};
 }
-function saveSettings(s){ safeSet('edubooks_settings', JSON.stringify(s)); }
+function saveSettings(s){ safeSet('Study Pack_settings', JSON.stringify(s)); }
 function money(n, sym){ sym = sym || 'Rs'; return sym + ' ' + Number(n||0).toLocaleString(); }
 function showAdminToast(msg){
   const t = document.getElementById('adminToast');
@@ -459,7 +459,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
   const p = document.getElementById('loginPass').value.trim();
   if(u==='admin' && p==='admin123'){
     _adminLoggedIn = true;
-    try{ sessionStorage.setItem('edubooks_admin_auth','1'); }catch(e){}
+    try{ sessionStorage.setItem('Study Pack_admin_auth','1'); }catch(e){}
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').classList.add('show');
     initApp();
@@ -469,14 +469,14 @@ document.getElementById('loginForm').addEventListener('submit', function(e){
 });
 document.getElementById('logoutBtn').addEventListener('click', function(){
   _adminLoggedIn = false;
-  try{ sessionStorage.removeItem('edubooks_admin_auth'); }catch(e){}
+  try{ sessionStorage.removeItem('Study Pack_admin_auth'); }catch(e){}
   document.getElementById('app').classList.remove('show');
   document.getElementById('loginScreen').style.display='flex';
   document.getElementById('loginForm').reset();
 });
 (function(){
   let alreadyIn = false;
-  try{ alreadyIn = sessionStorage.getItem('edubooks_admin_auth')==='1'; }catch(e){}
+  try{ alreadyIn = sessionStorage.getItem('Study Pack_admin_auth')==='1'; }catch(e){}
   if(alreadyIn){
     document.getElementById('loginScreen').style.display='none';
     document.getElementById('app').classList.add('show');
@@ -514,7 +514,7 @@ function initApp(){
 }
 (function(){
   let alreadyIn = false;
-  try{ alreadyIn = sessionStorage.getItem('edubooks_admin_auth')==='1'; }catch(e){}
+  try{ alreadyIn = sessionStorage.getItem('Study Pack_admin_auth')==='1'; }catch(e){}
   if(alreadyIn) initApp();
 })();
 
@@ -824,7 +824,7 @@ document.getElementById('saveSettingsBtn').addEventListener('click', function(){
 });
 document.getElementById('resetCatalogBtn').addEventListener('click', function(){
   if(!confirm('Reset the entire product catalog to defaults? This cannot be undone.')) return;
-  localStorage.removeItem('edubooks_products');
+  localStorage.removeItem('Study Pack_products');
   location.reload();
 });
 </script>
