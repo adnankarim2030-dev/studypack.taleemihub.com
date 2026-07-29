@@ -751,9 +751,36 @@ document.getElementById('pakFilterReset').addEventListener('click', function() {
   document.getElementById('filterSubject').innerHTML = '<option value="">Select Subject</option>';
   document.getElementById('filterSubject').disabled = true;
   document.getElementById('clearFilters').click(); // triggers applyFilters
-});
+  });
+  
+  const pakProvince = document.getElementById('filterProvince');
+  const pakClass = document.getElementById('filterClass');
+  const pakSubject = document.getElementById('filterSubject');
+  
+  if (pakProvince && pakClass && pakSubject) {
+    const updatePakSubjects = () => {
+      const cls = pakClass.value;
+      if (!cls) {
+        pakSubject.innerHTML = '<option value="">Select Subject</option>';
+        pakSubject.disabled = true;
+        return;
+      }
+      pakSubject.disabled = false;
+      let subjects = [];
+      if (cls.includes('Class') || cls === 'Prep / KG' || cls === 'Nursery' || cls === 'Play Group' || cls === 'Montessori') {
+        subjects = ['English', 'Urdu', 'Math', 'Science', 'Islamiat', 'Computer', 'Social Studies', 'General Knowledge', 'Art & Craft'];
+      } else {
+        subjects = ['Physics', 'Chemistry', 'Biology', 'Math', 'English', 'Urdu', 'Computer Science'];
+      }
+      
+      pakSubject.innerHTML = '<option value="">All Subjects</option>' + subjects.map(s => `<option value="${s}">${s}</option>`).join('');
+    };
+    
+    pakProvince.addEventListener('change', updatePakSubjects);
+    pakClass.addEventListener('change', updatePakSubjects);
+  }
 
-document.getElementById('pakFilterSearch').addEventListener('click', function() {
+  document.getElementById('pakFilterSearch').addEventListener('click', function() {
   applyFilters();
 });
 
@@ -876,7 +903,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-\n<script src="assets/js/search_data.js"></script>\n<script src="assets/js/search_logic.js"></script>\n
+\n\n<script src="assets/js/search_logic.js"></script>\n
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const subAccHeads = document.querySelectorAll(".sub-acc-head");
