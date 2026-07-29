@@ -259,7 +259,7 @@ tr:hover td{background:rgba(21,101,192,.03);}
       <div class="panel">
         <div class="toolbar">
           <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="text" id="orderSearch" placeholder="Search by order # or customer…"></div>
-          <select class="select-sm" id="orderStatusFilter"><option value="all">All Statuses</option><option value="Processing">Processing</option><option value="Completed">Completed</option><option value="Cancelled">Cancelled</option></select>
+          <select class="select-sm" id="orderStatusFilter"><option value="all">All Statuses</option><option value="Pending">Pending</option><option value="Processing">Processing</option><option value="Shipped">Shipped</option><option value="Completed">Delivered</option><option value="Cancelled">Cancelled</option></select>
         </div>
         <table>
           <thead><tr><th>Order</th><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
@@ -698,7 +698,7 @@ function renderOrdersTable(){
   body.innerHTML = filtered.map((o,idx)=>`
     <tr>
       <td><b>${o.id}</b></td>
-      <td>${new Date(o.date).toLocaleDateString()}</td>
+      <td><div>${new Date(o.date).toLocaleDateString()}</div><div style="font-size:11px; color:var(--muted);">${new Date(o.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div></td>
       <td>${o.customer}</td>
       <td>${o.items.reduce((s,i)=>s+i.qty,0)} items</td>
       <td>${money(o.total, settings.currency)}</td>
