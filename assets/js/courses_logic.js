@@ -110,23 +110,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         products.forEach(p => {
             const card = document.createElement("div");
-            card.className = "product-card fade-in";
+            card.className = "p-card fade-in";
+            card.style.minWidth = "0";
+            card.style.overflow = "hidden";
+            card.setAttribute("data-id", p.id);
             
-            let imgHtml = p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` 
-                                : `<div class="placeholder-img" style="height:200px; background:#f1f5f9; display:flex; align-items:center; justify-content:center; color:#94a3b8;"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+            let imgHtml = p.img 
+                ? `<img src="${p.img}" alt="${p.title}" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` 
+                : `<div class="p-title" style="text-align:center;">${p.title}</div>`;
+                
+            let priceFormatted = typeof money === 'function' ? money(p.price) : 'Rs ' + p.price.toLocaleString();
                                 
             card.innerHTML = `
-                <div class="pc-img">
-                    ${imgHtml}
-                    <span class="pc-badge">${p.type || 'Course'}</span>
-                </div>
-                <div class="pc-info">
-                    <div class="pc-cat">${p.school}</div>
-                    <div class="pc-title">${p.title}</div>
-                    <div class="pc-bot">
-                        <div class="pc-price">Rs ${p.price.toLocaleString()}</div>
-                        <button class="add-to-cart" onclick="window.addToCart('${p.id}', '${p.title.replace(/'/g, "\\'")}', ${p.price}, '${p.img}')">Add</button>
+                <div class="p-cover-wrap">
+                  <div class="p-cover" style="background:${p.img ? '#fff' : 'var(--grey)'}; padding: ${p.img ? '0' : '10px'};">
+                    <div class="quick-actions">
+                      <button class="qa-btn" title="Wishlist" onclick="showToast('Added to wishlist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+                      <button class="qa-btn" title="Quick View" onclick="openQuickView('${p.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
                     </div>
+                    ${imgHtml}
+                  </div>
+                </div>
+                <div class="p-meta" style="min-width:0;"><span>${p.class_name || 'Course'}</span><span>${p.school}</span></div>
+                <div class="p-name">${p.title}</div>
+                <div class="p-price-row">
+                  <div class="p-price"><span class="now">${priceFormatted}</span></div>
+                </div>
+                <div class="p-actions" style="display:flex; flex-direction:column; gap:8px;">
+                  <button class="btn-cart" onclick="addToCart('${p.id}')" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
                 </div>
             `;
             courseProductGrid.appendChild(card);
