@@ -19,7 +19,14 @@
   }
 }
 </style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="assets/js/scraped-stationery.js"></script>
+<script src="assets/js/main.js"></script>
 </head>
+
 <body>
 
 <!-- Premium Glass Menu -->
@@ -29,6 +36,7 @@
   </button>
   <div class="gm-links">
     <a href="index.html" class="gm-link"><span class="gm-text">Home</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="courses.html" class="gm-link"><span class="gm-text">Courses</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <a href="books.html" class="gm-link"><span class="gm-text">Books</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <a href="stationery.html" class="gm-link"><span class="gm-text">Stationery</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     <a href="toys.html" class="gm-link"><span class="gm-text">Toys &amp; Gifts</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -51,7 +59,7 @@
         <button type="submit">Search</button>
       </form>
       <nav class="nav-links">
-  <a href="index.html#categories">Categories</a><a href="books.html">Books</a><a href="stationery.html" style="background:rgba(0,0,0,0.15);color:var(--gold);box-shadow:inset 0 3px 6px rgba(0,0,0,0.3);">Stationery</a><a href="toys.html">Toys</a><a href="express.html">Express</a><a href="why.html">Why Us</a><a href="contact.html">Contact</a>
+  <a href="index.html#categories">Categories</a><a href="courses.html">Courses</a><a href="books.html">Books</a><a href="stationery.html" style="background:rgba(0,0,0,0.15);color:var(--gold);box-shadow:inset 0 3px 6px rgba(0,0,0,0.3);">Stationery</a><a href="toys.html">Toys</a><a href="express.html">Express</a><a href="why.html">Why Us</a><a href="contact.html">Contact</a>
 </nav>
       <div class="nav-actions">
         
@@ -186,7 +194,7 @@
           <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
         </div>
       </div>
-      <div><h5>Shop</h5><ul><li><a href="books.html">School Books</a></li><li><a href="books.html">College Books</a></li><li><a href="books.html">University Books</a></li><li></li><li><a href="stationery.html">Stationery</a></li><li><a href="toys.html">Toys &amp; Gifts</a></li></ul></div>
+      <div><h5>Shop</h5><ul><li><a href="courses.html">Courses</a></li><li><a href="books.html">School Books</a></li><li><a href="books.html">College Books</a></li><li><a href="books.html">University Books</a></li><li></li><li><a href="stationery.html">Stationery</a></li><li><a href="toys.html">Toys &amp; Gifts</a></li></ul></div>
       <div><h5>Categories</h5><ul><li><a href="books.html">Cambridge</a></li><li><a href="books.html">Matric / FSC</a></li><li><a href="books.html">O &amp; A Level</a></li><li><a href="books.html">Competitive Exams</a></li><li><a href="books.html">Islamic Studies</a></li></ul></div>
       <div><h5>Support</h5><ul><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html#faq">FAQs</a></li><li><a href="contact.html">Shipping Policy</a></li><li><a href="contact.html">Return Policy</a></li><li><a href="contact.html">Track Order</a></li></ul></div>
       <div><h5>Company</h5><ul><li><a href="why.html">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="why.html#team">Careers</a></li></ul></div>
@@ -295,11 +303,14 @@ function applyFilters(){
   }
   
   let list = STATIONERY.filter(b=>{
-    const clsMatch = clsChecked.length===0 || clsChecked.some(c=>b.cls.includes(c));
-    const subjMatch = subjChecked.length===0 || subjChecked.includes(b.subj);
+    let pCls = (Array.isArray(b.cls) ? b.cls.join(' ') : (b.cls || b.cats || b.category || '')).toLowerCase();
+    let pSubj = (Array.isArray(b.subj) ? b.subj.join(' ') : (b.subj || b.cats || b.category || '')).toLowerCase();
+    
+    const clsMatch = clsChecked.length===0 || clsChecked.some(c=>pCls.includes(c.toLowerCase()));
+    const subjMatch = subjChecked.length===0 || subjChecked.some(c=>pSubj.includes(c.toLowerCase()));
     const priceMatch = b.price <= maxPrice;
     const stockMatch = !inStockOnly || b.stock;
-    const qMatch = !initialQuery || b.title.toLowerCase().includes(initialQuery.toLowerCase()) || b.cls.toLowerCase().includes(initialQuery.toLowerCase()) || b.subj.toLowerCase().includes(initialQuery.toLowerCase());
+    const qMatch = !initialQuery || (b.title || '').toLowerCase().includes(initialQuery.toLowerCase()) || pCls.includes(initialQuery.toLowerCase()) || pSubj.includes(initialQuery.toLowerCase());
     return clsMatch && subjMatch && priceMatch && stockMatch && qMatch;
   });
 
@@ -353,7 +364,14 @@ if(document.getElementById('mobileFilterBtn')) document.getElementById('mobileFi
 });
 
 applyFilters();
-init3DCarousel(STATIONERY);
+  window.addEventListener('firebaseProductsLoaded', () => {
+    if (typeof init3DCarousel === 'function' && STATIONERY && STATIONERY.length > 0) {
+      init3DCarousel(STATIONERY);
+    }
+  });
+  if (STATIONERY && STATIONERY.length > 0 && typeof init3DCarousel === 'function') {
+    init3DCarousel(STATIONERY);
+  }
 
 </script>
 

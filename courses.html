@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop All Books — Study Pack Store</title>
+<title>Courses ?" Study Pack Store</title>
 <meta name="description" content="Browse the full Study Pack catalog: school, college and university textbooks filtered by class, subject and price.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,6 +67,7 @@
 <script src="assets/js/scraped-toys.js"></script>
 <script src="assets/js/scraped-stationery.js"></script>
 <script src="assets/js/main.js"></script>
+  <script src="assets/js/scraped-courses.js"></script>
 </head>
 
 <body>
@@ -154,237 +155,188 @@
 </section>
 
 <!-- ================= SHOP ================= -->
-<section class="section grey">
+
+<!-- ================= COURSES SECTION ================= -->
+<style>
+  /* Courses Layout Styles */
+  .courses-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
+    border-radius: 20px;
+    margin-bottom: 2rem;
+  }
+  .courses-header h1 { font-size: 2.5rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.5rem; }
+  .courses-header p { font-size: 1.1rem; color: #475569; max-width: 600px; margin: 0 auto; }
+  
+  .school-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .school-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .school-card:hover, .school-card.active {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.15);
+    border-color: #3b82f6;
+  }
+  
+  .school-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+  }
+  
+  .school-card.active .school-avatar {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 10px rgba(16,185,129,0.3);
+  }
+  
+  .school-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.3;
+  }
+  
+  /* Class Selector Submenu */
+  .class-selector-wrapper {
+    display: none; /* hidden by default */
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.4s ease;
+  }
+  
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .class-selector-wrapper.visible { display: block; }
+  
+  .class-selector-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .class-selector-header h2 { font-size: 1.5rem; color: #0f172a; margin: 0; }
+  .class-selector-header .close-btn { 
+    background: #f1f5f9; border: none; width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; color: #64748b;
+    transition: 0.2s;
+  }
+  .class-selector-header .close-btn:hover { background: #e2e8f0; color: #0f172a; }
+  
+  .class-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .class-pill {
+    padding: 0.5rem 1.25rem;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 99px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .class-pill:hover, .class-pill.active {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 10px rgba(59,130,246,0.25);
+  }
+
+  /* Product Grid Overrides for Courses */
+  .courses-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: #64748b;
+  }
+  .empty-state svg { width: 64px; height: 64px; margin-bottom: 1rem; opacity: 0.5; }
+  .empty-state h3 { font-size: 1.5rem; color: #334155; margin-bottom: 0.5rem; }
+</style>
+
+<section class="section" style="padding-top: 100px;">
   <div class="container">
-    <button class="mobile-filter-btn reveal" id="mobileFilterBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
-    <div class="shop-layout">
-      <aside class="filter-card reveal" id="filterCard" style="background: rgba(255,255,255,0.4); border: none; padding: 0;">
-        <div class="fc-head" style="padding: 24px 24px 10px 24px;">
-          <h4 style="margin: 0; font-size: 22px; font-weight: 700; color: var(--navy);">Filters</h4>
-          <button class="icon-btn" id="closeFilterMobile" style="display: none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-        </div>
-        
-        <div style="padding: 0 24px;">
-          <div class="fc-search">
-             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-             <input type="text" id="filterSearch" placeholder="Search subjects...">
-          </div>
+    
+    <div class="courses-header reveal">
+      <h1>School Courses & Book Sets</h1>
+      <p>Select your school below to view the prescribed syllabus books and stationery sets organized by class.</p>
+    </div>
 
-                    <div class="accordion-item active">
-            <div class="acc-head">The Educators <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body" style="padding: 0;">
-              
-              <div class="sub-accordion-item">
-                <div class="sub-acc-head">Punjab Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-                <div class="sub-acc-body">
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators English"> <span class="chk-box"></span> English</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Punjab Region" value="The Educators Art"> <span class="chk-box"></span> Art & Craft</label>
-                </div>
-              </div>
+    <!-- Step 1: School Grid -->
+    <div class="school-grid reveal" id="schoolGrid">
+      <!-- Generated by JS -->
+    </div>
 
-              <div class="sub-accordion-item">
-                <div class="sub-acc-head">Sindh Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-                <div class="sub-acc-body">
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators English"> <span class="chk-box"></span> English</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Sindhi"> <span class="chk-box"></span> Sindhi</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="Sindh Region" value="The Educators Art"> <span class="chk-box"></span> Art & Craft</label>
-                </div>
-              </div>
-
-              <div class="sub-accordion-item">
-                <div class="sub-acc-head">ICT Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-                <div class="sub-acc-body">
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators English"> <span class="chk-box"></span> English</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="ICT Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
-                </div>
-              </div>
-
-              <div class="sub-accordion-item">
-                <div class="sub-acc-head">KPK Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-                <div class="sub-acc-body">
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators English"> <span class="chk-box"></span> English</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="KPK Region" value="The Educators Pashto"> <span class="chk-box"></span> Pashto</label>
-                </div>
-              </div>
-
-              <div class="sub-accordion-item">
-                <div class="sub-acc-head">South Punjab Region <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-                <div class="sub-acc-body">
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators English"> <span class="chk-box"></span> English</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Urdu"> <span class="chk-box"></span> Urdu</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Math"> <span class="chk-box"></span> Mathematics</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Science"> <span class="chk-box"></span> Science</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Islamiyat"> <span class="chk-box"></span> Islamiat</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Computer"> <span class="chk-box"></span> Computer</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators Social Studies"> <span class="chk-box"></span> Social Studies</label>
-                  <label class="glass-check"><input type="checkbox" class="f-subj" data-region="South Punjab Region" value="The Educators General Knowledge"> <span class="chk-box"></span> General Knowledge</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Pakistan Dynamic Filter Panel -->
-          <div style="background: #fff; padding: 16px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
-            <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: var(--navy);">Find Your Books</h4>
-            
-            <div style="margin-bottom: 12px;">
-              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Province</label>
-              <select id="filterProvince" class="pak-select">
-                <option value="">All Provinces</option>
-                <option value="Punjab">Punjab</option>
-                <option value="Sindh">Sindh</option>
-                <option value="KPK">Khyber Pakhtunkhwa (KPK)</option>
-                <option value="Balochistan">Balochistan</option>
-                <option value="GB">Gilgit-Baltistan (GB)</option>
-                <option value="AJK">Azad Jammu & Kashmir (AJK)</option>
-                <option value="ICT">Islamabad Capital Territory (ICT)</option>
-              </select>
-            </div>
-            
-            <div style="margin-bottom: 12px;">
-              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Class</label>
-              <select id="filterClass" class="pak-select">
-                <option value="">All Classes</option>
-                <option value="Montessori">Montessori</option>
-                <option value="Play Group">Play Group</option>
-                <option value="Nursery">Nursery</option>
-                <option value="Prep / KG">Prep / KG</option>
-                <option value="Class 1">Class 1</option>
-                <option value="Class 2">Class 2</option>
-                <option value="Class 3">Class 3</option>
-                <option value="Class 4">Class 4</option>
-                <option value="Class 5">Class 5</option>
-                <option value="Class 6">Class 6</option>
-                <option value="Class 7">Class 7</option>
-                <option value="Class 8">Class 8</option>
-                <option value="Class 9">Class 9</option>
-                <option value="Class 10">Class 10 (Matric)</option>
-              </select>
-            </div>
-            
-            <div style="margin-bottom: 16px;">
-              <label style="display: block; font-size: 13px; font-weight: 600; color: #475569; margin-bottom: 6px;">Subject</label>
-              <select id="filterSubject" class="pak-select" disabled>
-                <option value="">Select Subject</option>
-              </select>
-            </div>
-            
-            <div style="display: flex; gap: 8px;">
-              <button id="pakFilterSearch" style="flex: 1; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 6px rgba(37,99,235,0.2);">Search</button>
-              <button id="pakFilterReset" style="background: #f1f5f9; color: #475569; border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; transition: 0.3s;">Reset</button>
-            </div>
-          </div>
-          
-          <div class="accordion-item">
-            <div class="acc-head">General Class / Level <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="all" checked> <span class="chk-box"></span> All Levels</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Class"> <span class="chk-box"></span> School (Class 1-10)</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="FSC"> <span class="chk-box"></span> FSC / Intermediate</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Level"> <span class="chk-box"></span> O &amp; A Level</label>
-              <label class="glass-check"><input type="checkbox" class="f-cls" value="Entry"> <span class="chk-box"></span> Entry Test</label>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="acc-head">Oxford Books <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Oxford Math"> <span class="chk-box"></span> Math</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Oxford English"> <span class="chk-box"></span> English</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Oxford Science"> <span class="chk-box"></span> Science</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Oxford Urdu"> <span class="chk-box"></span> Urdu</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Oxford Islamiyat"> <span class="chk-box"></span> Islamiyat</label>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="acc-head">Cambridge Books <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Cambridge Math"> <span class="chk-box"></span> Math</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Cambridge English"> <span class="chk-box"></span> English</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Cambridge Science"> <span class="chk-box"></span> Science</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Cambridge Urdu"> <span class="chk-box"></span> Urdu</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Cambridge Islamiyat"> <span class="chk-box"></span> Islamiyat</label>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="acc-head">Paramount Books <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount Math"> <span class="chk-box"></span> Math</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount English"> <span class="chk-box"></span> English</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount Science"> <span class="chk-box"></span> Science</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount Urdu"> <span class="chk-box"></span> Urdu</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount Islamiyat"> <span class="chk-box"></span> Islamiyat</label>
-              <label class="glass-check"><input type="checkbox" class="f-subj" value="Paramount Computer"> <span class="chk-box"></span> Computer</label>
-            </div>
-          </div>
-
-          <!-- Empty to delete the old Educators accordion as it was merged above -->
-
-          <div class="accordion-item">
-            <div class="acc-head">Price Range <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <div class="price-range"><input type="range" id="priceRange" min="500" max="3000" step="50" value="3000"></div>
-              <div class="price-range-vals"><span>Rs 500</span><span id="priceVal">Rs 3,000</span></div>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="acc-head">Availability <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
-            <div class="acc-body">
-              <label class="glass-check"><input type="checkbox" id="inStockOnly"> <span class="chk-box"></span> In Stock Only</label>
-            </div>
-          </div>
-        </div>
-
-        <div style="padding: 10px 24px 24px 24px;">
-          <button class="btn-clear-filter" id="clearFilters" style="width: 100%; margin-top: 10px;">Clear All Filters</button>
-        </div>
-      </aside>
-
-      <div style="min-width: 0;">
-        <div class="shop-toolbar">
-          <span class="results-count"><b id="resultCount">18</b> books found</span>
-          <select class="sort-select" id="sortSelect">
-            <option value="pop">Sort: Popularity</option>
-            <option value="low">Price: Low to High</option>
-            <option value="high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-          </select>
-        </div>
-        <div class="shop-product-grid" id="productGrid"><!-- injected by JS --></div>
-        <div class="pagination" id="pagination"></div>
+    <!-- Step 2: Class Selector -->
+    <div class="class-selector-wrapper" id="classSelectorWrapper">
+      <div class="class-selector-header">
+        <h2 id="selectedSchoolName">Select a Class</h2>
+        <button class="close-btn" onclick="closeSchool()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="class-pills" id="classPills">
+        <!-- Generated by JS -->
       </div>
     </div>
+    
+    <!-- Step 3: Product Grid -->
+    <div id="courseProductsContainer" style="display: none;">
+      <h3 id="productSectionTitle" style="font-size: 1.25rem; font-weight: 600; color: #1e293b; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; padding-left: 12px;"></h3>
+      <div class="courses-product-grid" id="courseProductGrid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+
   </div>
 </section>
-<!-- ================= NEWSLETTER ================= -->
+
+<script src="assets/js/courses_logic.js"></script>
 <section class="section">
   <div class="container">
     <div class="newsletter reveal">
