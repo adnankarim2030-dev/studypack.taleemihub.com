@@ -1,7 +1,11 @@
 /* ============ FIREBASE INTEGRATION ============ */
-let BOOKS = [];
-let TOYS = [];
-let STATIONERY = [];
+let BOOKS = typeof SCRAPED_BOOKS !== 'undefined' ? [...SCRAPED_BOOKS] : [];
+if (typeof SCRAPED_TOYS !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_TOYS];
+if (typeof SCRAPED_STATIONERY !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_STATIONERY];
+if (typeof SCRAPED_COURSES !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_COURSES];
+
+let TOYS = typeof SCRAPED_TOYS !== 'undefined' ? [...SCRAPED_TOYS] : [];
+let STATIONERY = typeof SCRAPED_STATIONERY !== 'undefined' ? [...SCRAPED_STATIONERY] : [];
 let EBOOKS = [];
 let COUPONS = [];
 let CATEGORIES = [];

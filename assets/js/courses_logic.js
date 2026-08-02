@@ -60,7 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Find classes for this school
         const schoolCourses = SCRAPED_COURSES.filter(c => c.school === school);
-        const classes = [...new Set(schoolCourses.map(c => c.class_name))].sort();
+        const classes = [...new Set(schoolCourses.map(c => c.class_name))];
+        const classOrder = {
+            'Pre-Nursery': 1, 'Nursery': 2, 'Class KG': 3,
+            'Class 1': 4, 'Class 2': 5, 'Class 3': 6, 'Class 4': 7, 'Class 5': 8,
+            'Class 6': 9, 'Class 7': 10, 'Class 8': 11, 'Class 9': 12, 'Class 10': 13,
+            'Class 11': 14, 'Class 12': 15, 'O-Level': 16, 'A-Level': 17, 'General': 18
+        };
+        classes.sort((a, b) => {
+            const valA = classOrder[a] || 99;
+            const valB = classOrder[b] || 99;
+            return valA - valB;
+        });
 
         classPills.innerHTML = "";
         
