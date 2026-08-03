@@ -27,9 +27,41 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.className = "school-card reveal active-scale";
         
+        const schoolDomains = {
+            'Alpha High School': 'alpha.edu.pk',
+            'Dawood Public School': 'dps.edu.pk',
+            'Beacon House School': 'beaconhouse.net',
+            'The City School': 'thecityschool.edu.pk',
+            'Aga Khan School': 'agakhanschools.org',
+            'Fatimiyah School': 'fatimiyah.edu.pk',
+            'Foundation Public School': 'fps.edu.pk',
+            'Habib Girls School': 'habibschools.edu.pk',
+            'Mama Parsi School': 'mamaparsi.edu.pk',
+            'Karachi Public School': 'kps.edu.pk',
+            'BVS': 'bvsparsi.edu.pk',
+            'AMI School': 'amischool.edu.pk',
+            'Head Start School': 'headstart.edu.pk',
+            'Jaffar Public School': 'jps.edu.pk',
+            'Meritorious School': 'meritorious.edu.pk'
+        };
+
         const avatar = document.createElement("div");
         avatar.className = "school-avatar";
-        avatar.textContent = getInitials(school);
+        
+        let domain = schoolDomains[school];
+        if (!domain && school.includes('Alpha')) domain = 'alpha.edu.pk';
+        if (!domain && school.includes('Happy Home')) domain = 'hhs.edu.pk';
+        if (!domain && school.includes('Next School')) domain = 'nextschool.edu.pk';
+        
+        if (domain) {
+            avatar.style.background = 'transparent';
+            avatar.style.boxShadow = 'none';
+            avatar.innerHTML = `<img src="https://logo.clearbit.com/${domain}?size=128" alt="${school}" style="width:100%; height:100%; object-fit:contain; border-radius:50%;" onerror="this.onerror=null; this.parentElement.style.background=''; this.parentElement.style.boxShadow=''; this.outerHTML='<img src=\\'https://ui-avatars.com/api/?name=${encodeURIComponent(school)}&background=random&color=fff&size=128&bold=true\\' style=\\'width:100%; height:100%; object-fit:cover; border-radius:50%;\\'>';">`;
+        } else {
+            avatar.style.background = 'transparent';
+            avatar.style.boxShadow = 'none';
+            avatar.innerHTML = `<img src="https://ui-avatars.com/api/?name=${encodeURIComponent(school)}&background=random&color=fff&size=128&bold=true" alt="${school}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+        }
 
         const nameEl = document.createElement("div");
         nameEl.className = "school-name";
