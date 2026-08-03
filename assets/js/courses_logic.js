@@ -65,8 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             'VLC - Humanities School': 'vlc.edu.pk'
         };
 
-        const div = document.createElement("div");
-        div.className = "school-card";
+        // div already created above
         div.style.cursor = "pointer";
 
         const avatar = document.createElement("div");
