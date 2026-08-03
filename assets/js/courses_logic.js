@@ -65,28 +65,65 @@ document.addEventListener("DOMContentLoaded", () => {
             'VLC - Humanities School': 'vlc.edu.pk'
         };
 
+        const schoolBookmarkLogos = {
+            "Delsol": "73",
+            "Next School Cambridge": "74",
+            "Next School Matric": "75",
+            "Patriot": "76",
+            "Farv Cambridge": "77",
+            "Beacon House School": "78",
+            "The City School": "79",
+            "Alpha Core School": "80",
+            "Alpha Girls School": "81",
+            "Alpha High School": "82",
+            "Alpha Prime School": "83",
+            "AMI School": "84",
+            "Kiva School": "85",
+            "Meritorious School": "86",
+            "Jaffar Public School": "87",
+            "BVS": "88",
+            "Foundation Public School": "89",
+            "Habib Girls School": "90",
+            "Head Start School": "91",
+            "Horizon School": "92",
+            "Leader Harbor": "93",
+            "Mama Parsi School": "94",
+            "VLC - Humanities School": "95",
+            "Horizon Hifz": "96",
+            "Aga Khan School": "97",
+            "Al Khalil Academy School": "98",
+            "Aster School": "99",
+            "DEBS School": "105",
+            "Karachi Public School": "101",
+            "Angel World": "102",
+            "DSS International": "103",
+            "Happy Home School Matric": "104",
+            "Happy Home School O'Level": "105-1",
+            "River Oaks": "106",
+            "Dawood Public School": "108",
+            "Fatimiyah School": "109"
+        };
+
         const avatar = document.createElement("div");
         avatar.className = "school-avatar";
         
         let domain = schoolDomains[school];
+        let bookmarkNum = schoolBookmarkLogos[school];
         
-        if (domain) {
-            avatar.style.background = 'transparent';
-            avatar.style.boxShadow = 'none';
-            const safeSchoolName = encodeURIComponent(school).replace(/'/g, "%27");
+        const safeSchoolName = encodeURIComponent(school).replace(/'/g, "%27");
+        const avatarFallback = `https://ui-avatars.com/api/?name=${safeSchoolName}&background=random&color=fff&size=128&bold=true`;
+        
+        avatar.style.background = 'transparent';
+        avatar.style.boxShadow = 'none';
+
+        if (bookmarkNum) {
+            const bookmarkUrl = `https://bookmark.com.pk/wp-content/uploads/2026/04/${bookmarkNum}-1024x1024.png`;
+            avatar.innerHTML = `<img src="${bookmarkUrl}" alt="${school}" style="width:100%; height:100%; object-fit:contain; border-radius:50%; background:#fff;" onerror="this.onerror=null; this.src='${avatarFallback}';">`;
+        } else if (domain) {
             const localImg = `assets/images/schools/${encodeURIComponent(school)}.jpg`.replace(/'/g, "%27");
-            const clearbitImg = `https://logo.clearbit.com/${domain}?size=128`;
-            const avatarFallback = `https://ui-avatars.com/api/?name=${safeSchoolName}&background=random&color=fff&size=128&bold=true`;
-            
-            avatar.innerHTML = `<img src="${localImg}" alt="${school}" style="width:100%; height:100%; object-fit:contain; border-radius:50%; background:#fff;" onerror="this.onerror=null; this.src='${clearbitImg}'; this.onerror=function(){ this.onerror=null; this.src='${avatarFallback}'; };">`;
-        } else {
-            avatar.style.background = 'transparent';
-            avatar.style.boxShadow = 'none';
-            const safeSchoolName = encodeURIComponent(school).replace(/'/g, "%27");
-            const localImg = `assets/images/schools/${encodeURIComponent(school)}.jpg`.replace(/'/g, "%27");
-            const avatarFallback = `https://ui-avatars.com/api/?name=${safeSchoolName}&background=random&color=fff&size=128&bold=true`;
-            
             avatar.innerHTML = `<img src="${localImg}" alt="${school}" style="width:100%; height:100%; object-fit:contain; border-radius:50%; background:#fff;" onerror="this.onerror=null; this.src='${avatarFallback}';">`;
+        } else {
+            avatar.innerHTML = `<img src="${avatarFallback}" alt="${school}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
         }
 
         const nameEl = document.createElement("div");
