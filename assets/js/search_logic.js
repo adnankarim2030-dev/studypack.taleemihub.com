@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function() {
       const results = (typeof BOOKS !== 'undefined' ? BOOKS : []).filter(book => {
         const title = (book.title || '').toLowerCase();
         const author = (book.author || '').toLowerCase();
-        const subj = (book.subj || '').toLowerCase();
+        const subj = (Array.isArray(book.subj) ? book.subj.join(' ') : (book.subj || '')).toLowerCase();
         const pub = (book.pub || '').toLowerCase();
-        const cls = (book.cls || '').toLowerCase();
+        const cls = (Array.isArray(book.cls) ? book.cls.join(' ') : (book.cls || '')).toLowerCase();
         
         return title.includes(query) || author.includes(query) || subj.includes(query) || pub.includes(query) || cls.includes(query);
       });
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
               <span>${book.pub || 'Study Pack'}</span> • <span>${book.cls || 'Misc'}</span> • <span>${book.subj || 'General'}</span>
             </div>
             <div class="sr-bot">
-              <span class="sr-price">Rs ${book.price}</span>
+              <span class="sr-price">PKR ${book.price}</span>
               ${inStock ? '<span class="sr-stock in-stock">In Stock</span>' : '<span class="sr-stock out-stock">Out of Stock</span>'}
             </div>
           </div>

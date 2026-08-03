@@ -1,5 +1,5 @@
 /* ============ HELPERS ============ */
-function money(n){ return 'Rs ' + n.toLocaleString(); }
+function money(n){ return 'PKR ' + n.toLocaleString(); }
 function starString(r){ const full = Math.round(r); return '★'.repeat(full) + '☆'.repeat(5-full); }
 
 /* ============ CART (persisted via localStorage, shared across pages) ============ */
@@ -160,8 +160,9 @@ window.init3DCarousel = function(dataArray) {
   const radius = 170;
   
   items.forEach((item, i) => {
+    let linkUrl = item.id ? `product.html?id=${item.id}` : (item.title.toLowerCase().includes('toy') ? 'toys.html' : 'stationery.html');
     spinnerHTML += `
-      <div class="carousel-item-3d" style="transform: rotateY(${i * angle}deg) translateZ(${radius}px)">
+      <div class="carousel-item-3d" style="transform: rotateY(${i * angle}deg) translateZ(${radius}px); cursor: pointer;" onclick="window.location.href='${linkUrl}'">
         <div class="p-cover" style="background:${item.grad || 'var(--navy)'}">${item.img ? `<img src="${item.img}">` : item.title}</div>
         <h4>${item.title}</h4>
       </div>
