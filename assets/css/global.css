@@ -410,6 +410,8 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:1080px){
+  .nav-links{display:none;}
+  .burger{display:flex;}
   .hero-grid{grid-template-columns:1fr;}
   .hero-scene{height:400px; order:-1;}
   .product-grid{grid-template-columns:repeat(2, minmax(0, 1fr));}
@@ -420,8 +422,6 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
   .foot-grid{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);}
 }
 @media (max-width:760px){
-  .nav-links{display:none;}
-  .burger{display:flex;}
   .product-grid{grid-template-columns:minmax(0, 1fr) minmax(0, 1fr); gap:14px;}
   .bento{grid-template-columns:repeat(2, minmax(0, 1fr)); grid-auto-rows:120px;}
   .qv-modal{grid-template-columns:1fr;}
@@ -1106,7 +1106,7 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
 .glass-close-btn svg { width: 24px; height: 24px; }
 \n\n
 /* Hide burger button on desktop */
-@media (min-width: 761px) {
+@media (min-width: 1081px) {
   .top-burger-btn, #topBurger {
     display: none !important;
   }
