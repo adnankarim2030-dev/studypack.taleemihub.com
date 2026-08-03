@@ -68,18 +68,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.className = "school-card";
         div.style.cursor = "pointer";
-        div.style.display = "flex";
-        div.style.alignItems = "center";
-        div.style.justifyContent = "center";
-        div.style.minHeight = "120px";
+
+        const avatar = document.createElement("div");
+        avatar.className = "school-avatar";
+        
+        const safeSchoolName = encodeURIComponent(school).replace(/'/g, "%27");
+        const avatarFallback = `https://ui-avatars.com/api/?name=${safeSchoolName}&background=random&color=fff&size=128&bold=true`;
+        
+        avatar.style.background = 'transparent';
+        avatar.style.boxShadow = 'none';
+        avatar.innerHTML = `<img src="${avatarFallback}" alt="${school}" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
 
         const nameEl = document.createElement("div");
         nameEl.className = "school-name";
-        nameEl.innerText = school;
-        nameEl.style.textAlign = "center";
-        nameEl.style.fontSize = "16px";
-        nameEl.style.fontWeight = "700";
+        nameEl.textContent = school;
 
+        div.appendChild(avatar);
         div.appendChild(nameEl);
 
         div.addEventListener("click", () => {
