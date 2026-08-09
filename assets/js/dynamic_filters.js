@@ -557,37 +557,3 @@ window.renderProducts = function(list) {
         window.renderPagination(list.length);
     }
 };
-
-window.renderPagination = function(total) {
-    const pag = document.querySelector('.pagination');
-    if (!pag) return;
-    
-    const totalPages = Math.ceil(total / window.ITEMS_PER_PAGE);
-    let html = '';
-    
-    if (window.currentPage > 1) {
-        html += `<a href="#" onclick="window.goPage(${window.currentPage - 1}); return false;">&laquo; Prev</a>`;
-    }
-    
-    for (let i = 1; i <= totalPages; i++) {
-        if (i === window.currentPage) {
-            html += `<span class="current">${i}</span>`;
-        } else {
-            html += `<a href="#" onclick="window.goPage(${i}); return false;">${i}</a>`;
-        }
-    }
-    
-    if (window.currentPage < totalPages) {
-        html += `<a href="#" onclick="window.goPage(${window.currentPage + 1}); return false;">Next &raquo;</a>`;
-    }
-    
-    pag.innerHTML = html;
-};
-
-window.goPage = function(p) {
-    window.currentPage = p;
-    if (window.currentBooks) {
-        window.renderProducts(window.currentBooks);
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
