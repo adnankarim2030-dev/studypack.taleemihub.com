@@ -221,16 +221,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // The user asked to show this popup.
     const promoData = [
         {
+            type: "stationery",
             theme: "theme-stationery",
-            icon: "<i class='fas fa-pencil-ruler'></i>",
+            defaultIcon: "<i class='fas fa-pencil-ruler'></i>",
             title: "Premium Stationery!",
             text: "Upgrade your study desk with our exclusive collection.",
             btnText: "Shop Stationery",
             link: "stationery.html"
         },
         {
+            type: "toys",
             theme: "theme-toys",
-            icon: "<i class='fas fa-puzzle-piece'></i>",
+            defaultIcon: "<i class='fas fa-puzzle-piece'></i>",
             title: "New Toys Arrival!",
             text: "Discover fun and educational toys for all ages.",
             btnText: "Shop Toys",
@@ -267,8 +269,18 @@ document.addEventListener("DOMContentLoaded", () => {
         promoContainer.className = "promo-banner-popup";
         promoContainer.classList.add(data.theme);
         
+        // Find a random product image based on type
+        let imgHtml = data.defaultIcon;
+        if (data.type === "stationery" && typeof STATIONERY !== 'undefined' && STATIONERY.length > 0) {
+            const randomItem = STATIONERY[Math.floor(Math.random() * STATIONERY.length)];
+            if (randomItem.img) imgHtml = `<img src="${randomItem.img}" alt="Stationery" class="promo-img">`;
+        } else if (data.type === "toys" && typeof TOYS !== 'undefined' && TOYS.length > 0) {
+            const randomItem = TOYS[Math.floor(Math.random() * TOYS.length)];
+            if (randomItem.img) imgHtml = `<img src="${randomItem.img}" alt="Toy" class="promo-img">`;
+        }
+        
         // Update content
-        promoContainer.querySelector(".promo-icon").innerHTML = data.icon;
+        promoContainer.querySelector(".promo-icon").innerHTML = imgHtml;
         promoContainer.querySelector(".promo-title").innerHTML = data.title;
         promoContainer.querySelector(".promo-desc").innerHTML = data.text;
         
