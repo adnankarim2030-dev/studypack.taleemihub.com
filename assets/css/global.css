@@ -1603,3 +1603,107 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
     }
 }
 
+/* ================= PROMO BANNER POPUP ================= */
+.promo-banner-popup {
+    position: fixed;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    z-index: 9998;
+    transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    width: max-content;
+    max-width: 90vw;
+}
+.promo-banner-popup.show {
+    bottom: 30px;
+    opacity: 1;
+}
+.promo-banner-popup.theme-stationery {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    color: #333;
+}
+.promo-banner-popup.theme-toys {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    color: #333;
+}
+.promo-banner-popup .promo-icon {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.4);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.promo-banner-popup .promo-text {
+    font-size: 1rem;
+    line-height: 1.3;
+}
+.promo-banner-popup .promo-text strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 3px;
+    font-weight: 800;
+}
+.promo-banner-popup .promo-btn {
+    background: #fff;
+    color: #333;
+    padding: 8px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.promo-banner-popup .promo-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.promo-banner-popup .promo-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+    margin-left: 5px;
+}
+.promo-banner-popup .promo-close:hover {
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .promo-banner-popup {
+        border-radius: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 20px 15px;
+    }
+    .promo-banner-popup .promo-text strong {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .promo-banner-popup .promo-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+    .promo-banner-popup .promo-icon {
+        display: none;
+    }
+    .promo-banner-popup.show {
+        bottom: 110px; /* Adjust to stay above social proof */
+    }
+}
+

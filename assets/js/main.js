@@ -215,3 +215,83 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 5000);
 });
 
+/* ================= CENTER BOTTOM PROMO BANNER ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    // Check if we are on index to prevent annoying overlaps, or just show everywhere
+    // The user asked to show this popup.
+    const promoData = [
+        {
+            theme: "theme-stationery",
+            icon: "<i class='fas fa-pencil-ruler'></i>",
+            title: "Premium Stationery!",
+            text: "Upgrade your study desk with our exclusive collection.",
+            btnText: "Shop Stationery",
+            link: "stationery.html"
+        },
+        {
+            theme: "theme-toys",
+            icon: "<i class='fas fa-puzzle-piece'></i>",
+            title: "New Toys Arrival!",
+            text: "Discover fun and educational toys for all ages.",
+            btnText: "Shop Toys",
+            link: "toys.html"
+        }
+    ];
+
+    let currentPromoIndex = 0;
+
+    // Create the HTML structure
+    const promoContainer = document.createElement("div");
+    promoContainer.className = "promo-banner-popup";
+    promoContainer.innerHTML = `
+        <div class="promo-icon"></div>
+        <div class="promo-text">
+            <strong class="promo-title"></strong> <span class="promo-desc"></span>
+        </div>
+        <a href="#" class="promo-btn"></a>
+        <span class="promo-close">&times;</span>
+    `;
+    document.body.appendChild(promoContainer);
+
+    const pClose = promoContainer.querySelector(".promo-close");
+    let promoInterval;
+
+    pClose.addEventListener("click", () => {
+        promoContainer.classList.remove("show");
+    });
+
+    function showPromoBanner() {
+        const data = promoData[currentPromoIndex];
+        
+        // Remove old theme classes
+        promoContainer.className = "promo-banner-popup";
+        promoContainer.classList.add(data.theme);
+        
+        // Update content
+        promoContainer.querySelector(".promo-icon").innerHTML = data.icon;
+        promoContainer.querySelector(".promo-title").innerHTML = data.title;
+        promoContainer.querySelector(".promo-desc").innerHTML = data.text;
+        
+        const btn = promoContainer.querySelector(".promo-btn");
+        btn.innerHTML = data.btnText;
+        btn.href = data.link;
+
+        // Show banner
+        promoContainer.classList.add("show");
+
+        // Toggle index for next time
+        currentPromoIndex = (currentPromoIndex + 1) % promoData.length;
+
+        // Hide after 8 seconds
+        setTimeout(() => {
+            promoContainer.classList.remove("show");
+        }, 8000);
+    }
+
+    // Start promo banner after 12 seconds, then every 35 seconds
+    setTimeout(() => {
+        showPromoBanner();
+        promoInterval = setInterval(showPromoBanner, 35000);
+    }, 12000);
+});
+
