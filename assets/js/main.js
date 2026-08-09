@@ -247,11 +247,13 @@ document.addEventListener("DOMContentLoaded", () => {
     promoContainer.className = "promo-banner-popup";
     promoContainer.innerHTML = `
         <div class="promo-icon"></div>
-        <div class="promo-text">
-            <strong class="promo-title"></strong> <span class="promo-desc"></span>
+        <div class="promo-content-wrapper">
+            <div class="promo-text">
+                <strong class="promo-title"></strong> <span class="promo-desc"></span>
+            </div>
+            <a href="#" class="promo-btn"></a>
+            <span class="promo-close">&times;</span>
         </div>
-        <a href="#" class="promo-btn"></a>
-        <span class="promo-close">&times;</span>
     `;
     document.body.appendChild(promoContainer);
 
