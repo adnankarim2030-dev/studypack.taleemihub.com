@@ -394,7 +394,8 @@ function generateBooksFilters() {
             if (inStockOnly && (b.stock === false || b.stock === 'false')) return false;
             
             if (initialQuery !== '') {
-                const searchStr = ((b.title||'') + ' ' + (b.cls||'') + ' ' + (b.pub||'') + ' ' + (b.genre||'')).toLowerCase();
+                const subjStr = Array.isArray(b.subj) ? b.subj.join(' ') : (b.subj||'');
+                const searchStr = ((b.title||'') + ' ' + (b.cls||'') + ' ' + (b.pub||'') + ' ' + (b.genre||'') + ' ' + (b.author||'') + ' ' + subjStr).toLowerCase();
                 if (!searchStr.includes(initialQuery)) return false;
             }
             
