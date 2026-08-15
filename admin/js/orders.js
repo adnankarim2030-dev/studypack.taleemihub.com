@@ -160,56 +160,84 @@ function printInvoice(id) {
             <head>
                 <title>Invoice #${o.id}</title>
                 <style>
-                    body { font-family: Arial, sans-serif; padding: 40px; color: #333; }
-                    .header { display: flex; justify-content: space-between; margin-bottom: 40px; }
-                    .invoice-title { font-size: 24px; font-weight: bold; }
-                    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-                    th { text-align: left; padding: 8px; border-bottom: 2px solid #333; }
-                    .totals { margin-top: 20px; text-align: right; }
+                    body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; color: #333; line-height: 1.5; }
+                    .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); font-size: 16px; }
+                    .header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; border-bottom: 2px solid #FCA311; padding-bottom: 20px; }
+                    .header img { max-width: 100px; margin-bottom: 10px; }
+                    .header-left h2 { margin: 0; font-size: 28px; color: #0B132B; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+                    .invoice-title { font-size: 32px; font-weight: bold; color: #0B132B; margin-bottom: 5px; }
+                    table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+                    th { text-align: left; padding: 12px; background: #0B132B; color: white; }
+                    td { padding: 12px; border-bottom: 1px solid #eee; }
+                    .totals-container { display: flex; justify-content: flex-end; margin-top: 30px; }
+                    .totals-table { width: 300px; }
+                    .totals-table td { border: none; padding: 5px 12px; }
+                    .grand-total { font-size: 20px; font-weight: bold; border-top: 2px solid #0B132B !important; color: #0B132B; }
+                    .footer { margin-top: 50px; text-align: center; color: #777; font-size: 14px; border-top: 1px solid #eee; padding-top: 20px; }
                 </style>
             </head>
             <body>
-                <div class="header">
-                    <div>
-                        <h2>Study Pack</h2>
-                        <p>taleemihub.com</p>
+                <div class="invoice-box">
+                    <div class="header">
+                        <div class="header-left">
+                            <h2>Study Pack</h2>
+                            <p style="margin: 5px 0; color: #777;">Taleemihub.com</p>
+                        </div>
+                        <div style="text-align:right;">
+                            <div class="invoice-title">INVOICE</div>
+                            <p style="margin: 0; color: #555;"><strong>Order #:</strong> ${o.id}</p>
+                            <p style="margin: 0; color: #555;"><strong>Date:</strong> ${o.date ? new Date(o.date).toLocaleDateString('en-GB') : ''}</p>
+                        </div>
                     </div>
-                    <div style="text-align:right;">
-                        <div class="invoice-title">INVOICE</div>
-                        <p>Order #${o.id}</p>
-                        <p>Date: ${o.date ? new Date(o.date).toLocaleDateString('en-GB') : ''}</p>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 30px;">
+                        <div>
+                            <strong style="color: #0B132B; font-size: 18px;">Bill To:</strong><br>
+                            <span style="font-size: 16px;">${o.customer || 'Customer Name'}</span><br>
+                            ${o.address || 'Address not provided'}<br>
+                            ${o.city || ''}<br>
+                            ${o.phone || ''}
+                        </div>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item Description</th>
+                                <th>Price</th>
+                                <th style="text-align: center;">Qty</th>
+                                <th style="text-align: right;">Line Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${itemsHtml}
+                        </tbody>
+                    </table>
+                    
+                    <div class="totals-container">
+                        <table class="totals-table">
+                            <tr>
+                                <td>Subtotal:</td>
+                                <td style="text-align: right;">Rs. ${o.total - (o.shipping||0)}</td>
+                            </tr>
+                            <tr>
+                                <td>Shipping:</td>
+                                <td style="text-align: right;">Rs. ${o.shipping || 0}</td>
+                            </tr>
+                            <tr>
+                                <td class="grand-total">Total:</td>
+                                <td class="grand-total" style="text-align: right;">Rs. ${o.total}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="footer">
+                        Thank you for your business!<br>
+                        If you have any questions about this invoice, please contact support@taleemihub.com
                     </div>
                 </div>
-                
-                <div style="margin-bottom: 30px;">
-                    <strong>Bill To:</strong><br>
-                    ${o.customer || ''}<br>
-                    ${o.address || ''}, ${o.city || ''}<br>
-                    ${o.phone || ''}
-                </div>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Price</th>
-                            <th>Qty</th>
-                            <th style="text-align:right;">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${itemsHtml}
-                    </tbody>
-                </table>
-                
-                <div class="totals">
-                    <p>Subtotal: ${o.total - (o.shipping||0)}</p>
-                    <p>Shipping: ${o.shipping || 0}</p>
-                    <h3>Grand Total: ${o.total}</h3>
-                </div>
-                
                 <script>
-                    window.onload = function() { window.print(); window.close(); }
+                    window.onload = function() { window.print(); }
                 </script>
             </body>
         </html>
