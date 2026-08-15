@@ -123,6 +123,17 @@ document.getElementById('prodImgFile')?.addEventListener('change', function(e) {
     }
 });
 
+// Helper for timeout
+const uploadWithTimeout = (uploadTask, timeoutMs) => {
+    return new Promise((resolve, reject) => {
+        const timer = setTimeout(() => reject(new Error('Firebase Storage upload timed out. Please check if Storage is enabled in Firebase Console and rules allow writes.')), timeoutMs);
+        uploadTask.then(
+            res => { clearTimeout(timer); resolve(res); },
+            err => { clearTimeout(timer); reject(err); }
+        );
+    });
+};
+
 document.getElementById('productForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
@@ -141,7 +152,9 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
             btn.textContent = 'Uploading Image...';
             const storageRef = storage.ref();
             const imageRef = storageRef.child(`products/${id}_${file.name}`);
-            const snapshot = await imageRef.put(file);
+            
+            // 15 second timeout for upload
+            const snapshot = await uploadWithTimeout(imageRef.put(file), 15000);
             imageUrl = await snapshot.ref.getDownloadURL();
         }
 
@@ -165,7 +178,7 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
         closeProductModal();
     } catch (err) {
         console.error(err);
-        alert('Error saving product: ' + err.message);
+        alert('Error saving product:\n' + err.message);
     } finally {
         btn.textContent = originalText;
         btn.disabled = false;
