@@ -150,12 +150,22 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
         if(fileInput.files.length > 0) {
             const file = fileInput.files[0];
             btn.textContent = 'Uploading Image...';
-            const storageRef = storage.ref();
-            const imageRef = storageRef.child(`products/${id}_${file.name}`);
             
-            // 15 second timeout for upload
-            const snapshot = await uploadWithTimeout(imageRef.put(file), 15000);
-            imageUrl = await snapshot.ref.getDownloadURL();
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const imgBB_API_KEY = "f14a4449997d84ded74a12b023bc2a02";
+            const response = await fetch(`https://api.imgbb.com/1/upload?key=${imgBB_API_KEY}`, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            if (result.success) {
+                imageUrl = result.data.url;
+            } else {
+                throw new Error("ImgBB Upload Failed: " + (result.error ? result.error.message : 'Unknown error'));
+            }
         }
 
         btn.textContent = 'Saving Data...';
