@@ -1,16 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Check Auth
-    if(sessionStorage.getItem('saas_auth') !== '1') {
-        // Show login modal logic here (simplified for phase 1)
-        const pass = prompt('Admin Password:');
-        if (pass === 'admin123') {
-            sessionStorage.setItem('saas_auth', '1');
-        } else {
-            document.body.innerHTML = '<h1 style="text-align:center; margin-top:20vh;">Unauthorized</h1>';
-            return;
-        }
-    }
-
+    // Auth is handled by index.html loginScreen now
+    
     // Initialize Data
     initFirebaseListeners();
 
