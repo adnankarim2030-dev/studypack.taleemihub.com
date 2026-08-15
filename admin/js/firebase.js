@@ -28,6 +28,10 @@ window.AppData = {
 
 // Listeners
 function initFirebaseListeners() {
+    db.collection("coupons").onSnapshot(snapshot => {
+        window.AppData.coupons = snapshot.docs.map(doc => doc.data());
+    });
+
     db.collection("products").onSnapshot(snapshot => {
         window.AppData.products = snapshot.docs.map(doc => doc.data());
         window.AppData.loaded.products = true;
@@ -57,3 +61,6 @@ function initFirebaseListeners() {
         document.dispatchEvent(new CustomEvent('appDataLoaded', { detail: 'orders' }));
     });
 }
+
+// Start listening immediately
+initFirebaseListeners();
