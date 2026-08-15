@@ -78,6 +78,10 @@ function openProductModal(prodId = null) {
     const modal = document.getElementById('productModal');
     const form = document.getElementById('productForm');
     
+    // Reset file input and preview
+    document.getElementById('prodImgFile').value = '';
+    document.getElementById('prodImgPreview').src = 'https://placehold.co/80x80';
+
     if (prodId) {
         document.getElementById('modalTitle').textContent = 'Edit Product';
         const p = window.AppData.products.find(x => x.id == prodId);
@@ -90,12 +94,14 @@ function openProductModal(prodId = null) {
             document.getElementById('prodClass').value = p.cls || '';
             document.getElementById('prodSubject').value = p.subj || '';
             document.getElementById('prodImg').value = p.img || '';
+            if(p.img) document.getElementById('prodImgPreview').src = p.img;
             document.getElementById('prodStock').checked = p.stock !== false;
         }
     } else {
         document.getElementById('modalTitle').textContent = 'Add New Product';
         form.reset();
         document.getElementById('prodId').value = '';
+        document.getElementById('prodImg').value = '';
     }
     
     modal.style.display = 'flex';
@@ -104,6 +110,18 @@ function openProductModal(prodId = null) {
 function closeProductModal() {
     document.getElementById('productModal').style.display = 'none';
 }
+
+// Image Preview
+document.getElementById('prodImgFile')?.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if(file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+            document.getElementById('prodImgPreview').src = evt.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
 
 document.getElementById('productForm')?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -114,6 +132,21 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
 
     try {
         const id = document.getElementById('prodId').value || Date.now().toString();
+        let imageUrl = document.getElementById('prodImg').value;
+
+        // Check if file is selected for upload
+        const fileInput = document.getElementById('prodImgFile');
+        if(fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            btn.textContent = 'Uploading Image...';
+            const storageRef = storage.ref();
+            const imageRef = storageRef.child(`products/${id}_${file.name}`);
+            const snapshot = await imageRef.put(file);
+            imageUrl = await snapshot.ref.getDownloadURL();
+        }
+
+        btn.textContent = 'Saving Data...';
+
         const data = {
             id: id.toString(),
             title: document.getElementById('prodTitle').value,
@@ -122,9 +155,9 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
             province: document.getElementById('prodProvince').value,
             cls: document.getElementById('prodClass').value,
             subj: document.getElementById('prodSubject').value,
-            img: document.getElementById('prodImg').value,
+            img: imageUrl,
             stock: document.getElementById('prodStock').checked,
-            category: document.getElementById('filterCategory').value || 'Books' // simplified category assign
+            category: document.getElementById('filterCategory').value || 'Books'
         };
 
         await db.collection("products").doc(id).set(data, {merge: true});
