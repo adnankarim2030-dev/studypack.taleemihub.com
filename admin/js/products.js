@@ -57,7 +57,7 @@ function renderProducts() {
                 ${p.stock !== false ? `<span class="badge badge-success">In Stock</span>` : `<span class="badge badge-danger">Out of Stock</span>`}
             </td>
             <td style="text-align:right;">
-                <button class="icon-btn" onclick="editProduct('${p.id}')" title="Edit"><i data-lucide="edit-2"></i></button>
+                <button class="icon-btn" onclick="openProductModal('${p.id}')" title="Edit"><i data-lucide="edit-2"></i></button>
                 <button class="icon-btn" onclick="deleteProduct('${p.id}')" title="Delete" style="color:var(--danger);"><i data-lucide="trash-2"></i></button>
             </td>
         `;
@@ -198,7 +198,7 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
 async function deleteProduct(id) {
     if(confirm('Are you sure you want to delete this product?')) {
         try {
-            await db.collection("products").doc(id).delete();
+            await db.collection("products").doc(String(id)).delete();
             alert('Product deleted!');
         } catch(e) {
             alert('Error: ' + e.message);

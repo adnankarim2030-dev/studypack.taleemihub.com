@@ -82,7 +82,7 @@ async function updateOrderStatus(id, newStatus) {
 }
 
 function viewOrder(id) {
-    const o = window.AppData.orders.find(x => x.id === id);
+    const o = window.AppData.orders.find(x => String(x.id) === String(id));
     if(!o) return;
     
     document.getElementById('modalOrderId').textContent = `#${o.id}`;
@@ -137,7 +137,7 @@ function closeOrderModal() {
 }
 
 function printInvoice(id) {
-    const o = window.AppData.orders.find(x => x.id === id);
+    const o = window.AppData.orders.find(x => String(x.id) === String(id));
     if(!o) return;
     
     let itemsHtml = '';
