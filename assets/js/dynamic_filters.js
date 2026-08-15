@@ -250,7 +250,7 @@ window.renderProducts = function(list) {
             <button class="qa-btn" title="Quick View" onclick="openQuickView(${id})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
             <button class="qa-btn" title="Compare" onclick="showToast('Added to compare')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v18M16 3v18M3 8h5M16 8h5M3 16h5M16 16h5"/></svg></button>
           </div>
-          ${img ? `<img src="${img}" alt="${title}" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` : `<div class="p-title" style="text-align:center;">${title}</div>`}
+          ${img ? `<img src="${img}" alt="${title}" onerror="this.style.display='none'" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` : `<div class="p-title" style="text-align:center;">${title}</div>`}
         </div>
       </div>
       <div class="p-meta" style="min-width:0;"><span>${cls}</span><span>${subj}</span></div>
@@ -533,7 +533,7 @@ window.renderProducts = function(list) {
             <button class="qa-btn" title="Quick View" onclick="openQuickView(${id})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
             <button class="qa-btn" title="Compare" onclick="showToast('Added to compare')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v18M16 3v18M3 8h5M16 8h5M3 16h5M16 16h5"/></svg></button>
           </div>
-          ${img ? `<img src="${img}" alt="${title}" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` : `<div class="p-title" style="text-align:center;">${title}</div>`}
+          ${img ? `<img src="${img}" alt="${title}" onerror="this.style.display='none'" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` : `<div class="p-title" style="text-align:center;">${title}</div>`}
         </div>
       </div>
       <div class="p-meta" style="min-width:0;"><span>${cls}</span><span>${subj}</span></div>

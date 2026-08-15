@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.setAttribute("data-id", p.id);
             
             let imgHtml = p.img 
-                ? `<img src="${p.img}" alt="${p.title}" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` 
+                ? `<img src="${p.img}" alt="${p.title}" onerror="this.style.display='none'" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` 
                 : `<div class="p-title" style="text-align:center;">${p.title}</div>`;
                 
             let priceFormatted = typeof money === 'function' ? money(p.price) : 'Rs ' + p.price.toLocaleString();
