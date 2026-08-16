@@ -264,8 +264,8 @@ window.renderProducts = function(list) {
         <div class="p-price"><span class="now">${moneyStr}</span>${oldStr ? '<span class="old">' + oldStr + '</span>' : ''}</div>
       </div>
       <div class="p-actions" style="display:flex; flex-direction:column; gap:8px;">
-        <button class="btn-cart" onclick="addToCart(${id})" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
-        <button class="btn-buy" onclick="addToCart(${id}); openCart();" style="width:100%; justify-content:center;">Buy Now</button>
+        <button class="btn-cart" onclick="addToCart('${id}')" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
+        <button class="btn-buy" onclick="addToCart('${id}'); openCart();" style="width:100%; justify-content:center;">Buy Now</button>
       </div>
     </div>
         `;
@@ -547,8 +547,8 @@ window.renderProducts = function(list) {
         <div class="p-price"><span class="now">${moneyStr}</span>${oldStr ? '<span class="old">' + oldStr + '</span>' : ''}</div>
       </div>
       <div class="p-actions" style="display:flex; flex-direction:column; gap:8px;">
-        <button class="btn-cart" onclick="addToCart(${id})" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
-        <button class="btn-buy" onclick="addToCart(${id}); openCart();" style="width:100%; justify-content:center;">Buy Now</button>
+        <button class="btn-cart" onclick="addToCart('${id}')" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
+        <button class="btn-buy" onclick="addToCart('${id}'); openCart();" style="width:100%; justify-content:center;">Buy Now</button>
       </div>
     </div>
         `;
