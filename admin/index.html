@@ -849,7 +849,8 @@ th.checkcol,td.checkcol{width:34px;}
       <div class="left">
         <button class="btn btn-danger-outline btn-sm" onclick="deleteOrder()">Delete Order</button>
       </div>
-      <div class="right">
+      <div class="right" style="display:flex; gap:10px;">
+        <button class="btn btn-ghost" onclick="printOrder(currentEditingOrder.id)">Print Invoice</button>
         <button class="btn btn-ghost" onclick="closeOrderModal()">Cancel</button>
         <button class="btn btn-primary" onclick="saveOrderEdits()">Save Changes</button>
       </div>
@@ -1937,6 +1938,132 @@ function deleteCoupon(code){ coupons=coupons.filter(c=>c.code!==code); renderCou
 /* ===================== ORDERS ===================== */
 
 /* ===================== ORDER EDITING ===================== */
+
+function printOrder(id) {
+    const o = orders.find(x => String(x.id) === String(id));
+    if(!o || !o._original) return alert("Order not found");
+    const ord = o._original;
+    
+    let itemsHtml = '';
+    let subtotal = 0;
+    if(ord.items && ord.items.length) {
+        ord.items.forEach(item => {
+            const linetotal = Number(item.price) * Number(item.qty);
+            subtotal += linetotal;
+            itemsHtml += `
+            <tr>
+                <td style="padding:10px; border-bottom:1px solid #ddd;">${item.title}<br><small style="color:#666;">SKU: ${item.sku||item.id||'N/A'}</small></td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:center;">${item.qty}</td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:right;">Rs ${Number(item.price).toLocaleString()}</td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:right;">Rs ${linetotal.toLocaleString()}</td>
+            </tr>`;
+        });
+    } else {
+        itemsHtml = `<tr><td colspan="4" style="padding:10px; text-align:center;">No items found</td></tr>`;
+    }
+    
+    const delivery = Number(ord.delivery) || 0;
+    const taxVal = Number(ord.taxVal) || 0;
+    const total = Number(ord.total) || 0;
+    
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+    <html>
+    <head>
+        <title>Invoice - Order #${ord.id}</title>
+        <style>
+            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #333; margin: 0; padding: 40px; }
+            .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); font-size: 16px; line-height: 24px; }
+            table { width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; }
+            .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
+            .header img { max-width: 150px; }
+            .header-info { text-align: right; }
+            .details { display: flex; justify-content: space-between; margin-bottom: 30px; }
+            .details .info-box { width: 45%; }
+            th { background: #f8f8f8; padding: 10px; border-bottom: 2px solid #ddd; }
+            .totals-row { display: flex; justify-content: space-between; margin-top: 10px; padding: 5px 10px; }
+            .totals-row.bold { font-weight: bold; font-size: 1.2em; border-top: 2px solid #333; padding-top: 10px; margin-top: 10px; }
+            @media print { .invoice-box { box-shadow: none; border: none; padding: 0; } }
+        </style>
+    </head>
+    <body>
+        <div class="invoice-box">
+            <div class="header">
+                <div>
+                    <h1 style="margin:0; color:#FFC000;">Study Pack</h1>
+                    <p style="margin:5px 0 0 0; color:#777; font-size:14px;">by TaleemiHub</p>
+                </div>
+                <div class="header-info">
+                    <h2 style="margin:0; color:#333;">INVOICE</h2>
+                    <p style="margin:5px 0 0 0; color:#555;">Order ID: <strong>#${ord.id}</strong></p>
+                    <p style="margin:5px 0 0 0; color:#555;">Date: ${ord.date ? new Date(ord.date).toLocaleDateString('en-GB') : 'N/A'}</p>
+                    <p style="margin:5px 0 0 0; color:#555;">Payment Method: <strong>${ord.paymentMethod || 'COD'}</strong></p>
+                </div>
+            </div>
+            
+            <div class="details">
+                <div class="info-box">
+                    <h4 style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;">Bill To:</h4>
+                    <p style="margin:0; font-weight:bold;">${ord.customer || 'Customer Name'}</p>
+                    <p style="margin:5px 0 0 0;">${ord.address || 'No Address Provided'}</p>
+                    <p style="margin:5px 0 0 0;">${ord.city || ''}</p>
+                    <p style="margin:5px 0 0 0;">Phone: ${ord.phone || 'N/A'}</p>
+                </div>
+                <div class="info-box" style="text-align:right;">
+                    <h4 style="margin-bottom:10px; border-bottom:1px solid #ddd; padding-bottom:5px;">Store Details:</h4>
+                    <p style="margin:0; font-weight:bold;">Study Pack Store</p>
+                    <p style="margin:5px 0 0 0;">Karachi, Pakistan</p>
+                    <p style="margin:5px 0 0 0;">support@taleemihub.com</p>
+                </div>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Description</th>
+                        <th style="text-align:center;">Qty</th>
+                        <th style="text-align:right;">Price</th>
+                        <th style="text-align:right;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${itemsHtml}
+                </tbody>
+            </table>
+            
+            <div style="width: 50%; float: right; margin-top: 20px;">
+                <div class="totals-row">
+                    <span>Subtotal:</span>
+                    <span>Rs ${subtotal.toLocaleString()}</span>
+                </div>
+                <div class="totals-row">
+                    <span>Delivery Charges:</span>
+                    <span>Rs ${delivery.toLocaleString()}</span>
+                </div>
+                <div class="totals-row">
+                    <span>Tax:</span>
+                    <span>Rs ${taxVal.toLocaleString()}</span>
+                </div>
+                <div class="totals-row bold">
+                    <span>Total Amount:</span>
+                    <span>Rs ${total.toLocaleString()}</span>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            
+            <div style="margin-top: 50px; text-align: center; color: #777; font-size: 14px; border-top: 1px solid #eee; padding-top: 20px;">
+                <p>Thank you for shopping with Study Pack! If you have any questions concerning this invoice, please contact support.</p>
+            </div>
+        </div>
+        <script>
+            window.onload = function() { window.print(); }
+        </script>
+    </body>
+    </html>
+    `);
+    printWindow.document.close();
+}
+
 let currentEditingOrder = null;
 
 function viewOrder(id) {
@@ -2086,7 +2213,12 @@ function renderOrders(){
       <td>${o.payment}</td>
       <td class="price">${money(o.total)}</td>
       <td>${statusPill(o.status)}</td>
-      <td><button class="btn btn-ghost btn-sm" onclick="viewOrder('${o.id}')">Edit</button></td>
+      <td style="display:flex; gap:5px;">
+          <button class="btn btn-ghost btn-sm" onclick="viewOrder('${o.id}')">Edit</button>
+          <button class="btn btn-ghost btn-sm" onclick="printOrder('${o.id}')" title="Print Invoice">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          </button>
+        </td>
     </tr>`).join('');
 }
 
