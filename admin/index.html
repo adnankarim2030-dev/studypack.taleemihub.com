@@ -1161,11 +1161,11 @@ function getFilteredBooks(){
     }
     return true;
   });
-  if(sort==='price-asc') list.sort((a,b)=>(a.salePrice||a.price)-(b.salePrice||b.price));
-  if(sort==='price-desc') list.sort((a,b)=>(b.salePrice||b.price)-(a.salePrice||a.price));
-  if(sort==='stock-asc') list.sort((a,b)=>a.stock-b.stock);
-  if(sort==='title') list.sort((a,b)=>a.title.localeCompare(b.title));
-  if(sort==='newest') list.sort((a,b)=>b.id-a.id);
+  if(sort==='price-asc') list.sort((a,b)=>(Number(a.salePrice||a.price)||0)-(Number(b.salePrice||b.price)||0));
+  if(sort==='price-desc') list.sort((a,b)=>(Number(b.salePrice||b.price)||0)-(Number(a.salePrice||a.price)||0));
+  if(sort==='stock-asc') list.sort((a,b)=>(Number(a.stock)||0)-(Number(b.stock)||0));
+  if(sort==='title') list.sort((a,b)=>(a.title||'').localeCompare(b.title||''));
+  if(sort==='newest') list.sort((a,b)=>{let na=parseInt(String(a.id).replace(/\D/g,''))||0;let nb=parseInt(String(b.id).replace(/\D/g,''))||0;return nb-na;});
   return list;
 }
 function renderBooks(){
