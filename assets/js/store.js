@@ -9,20 +9,20 @@ try{ cart = JSON.parse(localStorage.getItem('edubooks_cart') || '[]'); }catch(e)
 function saveCart(){ try{ localStorage.setItem('edubooks_cart', JSON.stringify(cart)); }catch(e){} }
 
 function addToCart(id){
-  const item = cart.find(c=>c.id===id);
+  const item = cart.find(c=>String(c.id)===String(id));
   if(item){ item.qty++; } else { const b = findItem(id); if(!b) return; cart.push({...b, qty:1}); }
   saveCart(); renderCart(); showToast('Added to cart');
   const btn = document.getElementById('cartBtn');
   if(btn) btn.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}], {duration:350});
 }
 function changeQty(id, delta){
-  const item = cart.find(c=>c.id===id);
+  const item = cart.find(c=>String(c.id)===String(id));
   if(!item) return;
   item.qty += delta;
-  if(item.qty<=0){ cart = cart.filter(c=>c.id!==id); }
+  if(item.qty<=0){ cart = cart.filter(c=>String(c.id)!==String(id)); }
   saveCart(); renderCart();
 }
-function removeItem(id){ cart = cart.filter(c=>c.id!==id); saveCart(); renderCart(); }
+function removeItem(id){ cart = cart.filter(c=>String(c.id)!==String(id)); saveCart(); renderCart(); }
 
 function renderCart(){
   const wrap = document.getElementById('cartItems');
@@ -43,14 +43,14 @@ function renderCart(){
           <div class="n">${c.title}</div>
           <div class="m">${c.cls} · ${c.subj}</div>
           <div class="ci-qty">
-            <button onclick="changeQty(${c.id},-1)">–</button>
+            <button onclick="changeQty('${c.id}',-1)">–</button>
             <span>${c.qty}</span>
-            <button onclick="changeQty(${c.id},1)">+</button>
+            <button onclick="changeQty('${c.id}',1)">+</button>
           </div>
         </div>
         <div class="ci-price">
           <span class="p">${money(c.price*c.qty)}</span>
-          <button onclick="removeItem(${c.id})">Remove</button>
+          <button onclick="removeItem('${c.id}')">Remove</button>
         </div>
       </div>
     `).join('');

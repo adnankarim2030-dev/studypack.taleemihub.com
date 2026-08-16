@@ -91,7 +91,7 @@ try {
     console.error('Firebase error:', e);
 }
 
-function findItem(id){ return BOOKS.find(x=>x.id===id) || EBOOKS.find(x=>x.id===id) || STATIONERY.find(x=>x.id===id) || TOYS.find(x=>x.id===id); }
+function findItem(id){ return BOOKS.find(x=>String(x.id)===String(id)) || EBOOKS.find(x=>String(x.id)===String(id)) || STATIONERY.find(x=>String(x.id)===String(id)) || TOYS.find(x=>String(x.id)===String(id)); }
 
 /* ================= ADVANCED 3D MAGNETIC HOVER ================= */
 document.addEventListener("DOMContentLoaded", () => {

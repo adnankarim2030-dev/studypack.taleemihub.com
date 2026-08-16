@@ -1285,7 +1285,7 @@ document.addEventListener('appDataLoaded', () => {
        salePrice: 0,
        stock: p.stock === false ? 0 : (typeof p.stock === 'number' ? p.stock : 10),
        status: p.stock !== false ? 'published' : 'draft',
-       coverImg: p.image || null,
+       coverImg: p.image || p.img || null,
        author: p.author || p.category || 'Study Pack',
        format: 'Paperback'
     }));
@@ -1459,7 +1459,7 @@ function toast(msg){
   window._toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
 }
 function coverStyle(b){
-  if(b.coverImg) return `background-image:url(${b.coverImg})`;
+  if(b.coverImg) return `background-image:url('${b.coverImg}')`;
   return `background:linear-gradient(160deg, ${b.coverColor}, #1C2333)`;
 }
 
