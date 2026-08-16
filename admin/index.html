@@ -1940,7 +1940,7 @@ function deleteCoupon(code){ coupons=coupons.filter(c=>c.code!==code); renderCou
 let currentEditingOrder = null;
 
 function viewOrder(id) {
-    const o = orders.find(x => x.id === id);
+    const o = orders.find(x => String(x.id) === String(id));
     if(!o || !o._original) return;
     currentEditingOrder = JSON.parse(JSON.stringify(o._original)); // Deep copy
     if(!currentEditingOrder.items) currentEditingOrder.items = [];
