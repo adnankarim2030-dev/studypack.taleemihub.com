@@ -763,6 +763,91 @@ th.checkcol,td.checkcol{width:34px;}
   </div>
 </div>
 
+
+<!-- ============ ORDER EDIT MODAL ============ -->
+<div class="modal-overlay" id="orderModalOverlay">
+  <div class="modal" style="max-width: 800px;">
+    <div class="modal-head">
+      <h2 id="orderModalTitle">Order Details</h2>
+      <button class="modal-close" onclick="closeOrderModal()">?</button>
+    </div>
+    
+    <div style="padding: 20px 22px; max-height: 70vh; overflow-y: auto;">
+      <div class="two-col" style="margin-bottom: 20px;">
+        <div class="panel">
+          <div class="panel-head"><h3>Customer Details</h3></div>
+          <div class="panel-body form-grid" id="orderCustomerForm">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Order Info</h3></div>
+          <div class="panel-body form-grid">
+            <div class="field full">
+              <label>Status</label>
+              <select id="o_status">
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label>Payment Method</label>
+              <input type="text" id="o_payment" value="COD">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-head" style="display:flex; justify-content:space-between; align-items:center;">
+          <h3>Order Items</h3>
+          <button class="btn btn-ghost btn-sm" onclick="addOrderItem()">+ Add Item</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item / SKU</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="orderItemsBody">
+              <!-- Items populated here -->
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-body" style="background:var(--paper); display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+            <span>Subtotal:</span> <span id="o_subtotal">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; color:var(--success); font-weight:600;">
+            <span>Commission (10%):</span> <span id="o_commission">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
+            <span>Total:</span> <span id="o_total">Rs 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-foot">
+      <div class="left">
+        <button class="btn btn-danger-outline btn-sm" onclick="deleteOrder()">Delete Order</button>
+      </div>
+      <div class="right">
+        <button class="btn btn-ghost" onclick="closeOrderModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveOrderEdits()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ============ BOOK EDITOR MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
@@ -1841,6 +1926,130 @@ function addCouponPrompt(){
 function deleteCoupon(code){ coupons=coupons.filter(c=>c.code!==code); renderCoupons(); }
 
 /* ===================== ORDERS ===================== */
+
+/* ===================== ORDER EDITING ===================== */
+let currentEditingOrder = null;
+
+function viewOrder(id) {
+    const o = orders.find(x => x.id === id);
+    if(!o || !o._original) return;
+    currentEditingOrder = JSON.parse(JSON.stringify(o._original)); // Deep copy
+    if(!currentEditingOrder.items) currentEditingOrder.items = [];
+    
+    document.getElementById('orderModalTitle').textContent = `Order #${o.id} - ${o.date}`;
+    document.getElementById('o_status').value = currentEditingOrder.status === 0 ? 'pending' : (currentEditingOrder.status === 1 ? 'completed' : 'cancelled');
+    document.getElementById('o_payment').value = currentEditingOrder.paymentMethod || 'COD';
+    
+    const custForm = document.getElementById('orderCustomerForm');
+    custForm.innerHTML = `
+        <div class="field full"><label>Name</label><input type="text" id="oc_name" value="${currentEditingOrder.customer || ''}"></div>
+        <div class="field"><label>Phone</label><input type="text" id="oc_phone" value="${currentEditingOrder.phone || ''}"></div>
+        <div class="field"><label>City</label><input type="text" id="oc_city" value="${currentEditingOrder.city || ''}"></div>
+        <div class="field full"><label>Address</label><textarea id="oc_address" style="min-height:50px">${currentEditingOrder.address || ''}</textarea></div>
+    `;
+    
+    renderOrderItems();
+    document.getElementById('orderModalOverlay').classList.add('active');
+}
+
+function closeOrderModal() {
+    document.getElementById('orderModalOverlay').classList.remove('active');
+}
+
+function renderOrderItems() {
+    const body = document.getElementById('orderItemsBody');
+    let subtotal = 0;
+    
+    if(currentEditingOrder.items.length === 0) {
+        body.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:15px;">No items</td></tr>`;
+    } else {
+        body.innerHTML = currentEditingOrder.items.map((item, idx) => {
+            const price = Number(item.price || 0);
+            const qty = Number(item.qty || 1);
+            const lineTotal = price * qty;
+            subtotal += lineTotal;
+            
+            return `
+            <tr>
+              <td>
+                <input type="text" value="${item.title || ''}" onchange="currentEditingOrder.items[${idx}].title=this.value" style="width:100%; border:1px solid var(--border); padding:4px 8px; border-radius:4px; background:var(--card); color:var(--text); margin-bottom:4px;">
+                <input type="text" value="${item.sku || item.id || ''}" placeholder="SKU/ID" onchange="currentEditingOrder.items[${idx}].id=this.value" style="width:100%; border:1px solid var(--border); padding:4px 8px; border-radius:4px; background:var(--card); color:var(--text); font-size:11px;">
+              </td>
+              <td><input type="number" value="${price}" onchange="updateOrderItem(${idx}, 'price', this.value)" style="width:70px; border:1px solid var(--border); padding:4px; background:var(--card); color:var(--text);"></td>
+              <td><input type="number" value="${qty}" onchange="updateOrderItem(${idx}, 'qty', this.value)" style="width:50px; border:1px solid var(--border); padding:4px; background:var(--card); color:var(--text);"></td>
+              <td class="price">${money(lineTotal)}</td>
+              <td><button class="icon-btn-sm danger" onclick="removeOrderItem(${idx})">?</button></td>
+            </tr>`;
+        }).join('');
+    }
+    
+    // Commission 10%
+    const comm = subtotal * 0.10;
+    currentEditingOrder.commission = comm; // store it
+    currentEditingOrder.total = subtotal; // For now total is subtotal, user can modify if they want commission added to total or just recorded
+    
+    document.getElementById('o_subtotal').textContent = money(subtotal);
+    document.getElementById('o_commission').textContent = money(comm);
+    document.getElementById('o_total').textContent = money(subtotal + comm); // Added commission to total based on "her order per 10% commision add hoga"
+}
+
+function updateOrderItem(idx, field, val) {
+    currentEditingOrder.items[idx][field] = Number(val);
+    renderOrderItems();
+}
+
+function removeOrderItem(idx) {
+    currentEditingOrder.items.splice(idx, 1);
+    renderOrderItems();
+}
+
+function addOrderItem() {
+    currentEditingOrder.items.push({ id: '', title: 'New Item', price: 0, qty: 1 });
+    renderOrderItems();
+}
+
+async function saveOrderEdits() {
+    if(!currentEditingOrder) return;
+    
+    // Grab customer fields
+    currentEditingOrder.customer = document.getElementById('oc_name').value;
+    currentEditingOrder.phone = document.getElementById('oc_phone').value;
+    currentEditingOrder.city = document.getElementById('oc_city').value;
+    currentEditingOrder.address = document.getElementById('oc_address').value;
+    
+    const st = document.getElementById('o_status').value;
+    currentEditingOrder.status = st === 'pending' ? 0 : (st === 'completed' ? 1 : 2);
+    currentEditingOrder.paymentMethod = document.getElementById('o_payment').value;
+    
+    // Recalculate total with commission
+    let subtotal = 0;
+    currentEditingOrder.items.forEach(i => { subtotal += (Number(i.price)*Number(i.qty)); });
+    const comm = subtotal * 0.10;
+    currentEditingOrder.total = subtotal + comm;
+    currentEditingOrder.commission = comm;
+    
+    try {
+        await db.collection("orders").doc(String(currentEditingOrder.id)).set(currentEditingOrder, {merge: true});
+        toast("Order updated successfully!");
+        closeOrderModal();
+    } catch(e) {
+        alert("Error saving order: " + e.message);
+    }
+}
+
+async function deleteOrder() {
+    if(!currentEditingOrder) return;
+    if(!confirm('Delete this order completely?')) return;
+    
+    try {
+        await db.collection("orders").doc(String(currentEditingOrder.id)).delete();
+        toast("Order deleted!");
+        closeOrderModal();
+    } catch(e) {
+        alert("Error deleting order: " + e.message);
+    }
+}
+
 function renderOrders(){
   const status=document.getElementById('orderStatusFilter').value;
   const list = status ? orders.filter(o=>o.status===status) : orders;
@@ -1854,7 +2063,7 @@ function renderOrders(){
       <td>${o.payment}</td>
       <td class="price">${money(o.total)}</td>
       <td>${statusPill(o.status)}</td>
-      <td><button class="btn btn-ghost btn-sm" onclick="alert('Order ${o.id} ki tafseel')">View</button></td>
+      <td><button class="btn btn-ghost btn-sm" onclick="viewOrder('${o.id}')">Edit</button></td>
     </tr>`).join('');
 }
 
