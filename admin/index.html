@@ -86,35 +86,65 @@
             <img src="../assets/images/logo.png" alt="TaleemiHub Logo" style="max-width:100%; height:auto; max-height:80px; object-fit:contain; filter:drop-shadow(0 4px 6px rgba(0,0,0,0.3));">
             <h2 style="font-family:'Montserrat', sans-serif; font-weight:800; font-size:1.4rem; color:var(--primary); letter-spacing:1px; text-transform:uppercase; margin-top:0.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Study Pack</h2>
         </div>
-        <div class="sidebar-menu">
+        
+        <div class="sidebar-menu" style="overflow-y:auto; max-height:calc(100vh - 150px); padding-bottom:2rem;">
             <a href="#" class="nav-item active" data-view="dashboard">
                 <i data-lucide="layout-dashboard"></i> Dashboard
             </a>
+            
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">Sales</div>
             <a href="#" class="nav-item" data-view="orders">
                 <i data-lucide="shopping-cart"></i> Orders
             </a>
-            <a href="#" class="nav-item" data-view="products">
-                <i data-lucide="package"></i> Products
+            <a href="#" class="nav-item" data-view="returns">
+                <i data-lucide="rotate-ccw"></i> Returns & Refunds
             </a>
+
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">Catalog</div>
+            <a href="#" class="nav-item" data-view="products">
+                <i data-lucide="book-open"></i> Books (Products)
+            </a>
+            <a href="#" class="nav-item" data-view="categories">
+                <i data-lucide="layers"></i> Categories
+            </a>
+
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">Inventory</div>
+            <a href="#" class="nav-item" data-view="inventory">
+                <i data-lucide="archive"></i> Stock Management
+            </a>
+
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">Users</div>
             <a href="#" class="nav-item" data-view="customers">
                 <i data-lucide="users"></i> Customers
             </a>
-            <a href="#" class="nav-item" data-view="inventory">
-                <i data-lucide="archive"></i> Inventory
+
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">Operations</div>
+            <a href="#" class="nav-item" data-view="marketing">
+                <i data-lucide="tag"></i> Marketing & Coupons
+            </a>
+            <a href="#" class="nav-item" data-view="shipping">
+                <i data-lucide="truck"></i> Shipping
             </a>
             <a href="#" class="nav-item" data-view="financials">
-                <i data-lucide="dollar-sign"></i> Financials
+                <i data-lucide="dollar-sign"></i> Payments
             </a>
+
+            <div style="padding: 1rem 1.5rem 0.5rem; font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; letter-spacing: 1px;">System</div>
             <a href="#" class="nav-item" data-view="reports">
                 <i data-lucide="bar-chart-2"></i> Reports
+            </a>
+            <a href="#" class="nav-item" data-view="content">
+                <i data-lucide="layout"></i> CMS / Content
             </a>
             <a href="#" class="nav-item" data-view="settings">
                 <i data-lucide="settings"></i> Settings
             </a>
-            <div style="margin-top:auto; padding-top:2rem; padding-bottom:1rem; border-top:1px solid var(--border-color); width:100%; text-align:center;">
+
+            <div style="margin-top:2rem; padding-top:1rem; border-top:1px solid var(--border-color); width:100%; text-align:center;">
                 <button onclick="logoutAdmin()" class="btn btn-outline" style="width:90%; color:var(--danger); border-color:var(--danger);"><i data-lucide="log-out"></i> Logout</button>
             </div>
         </div>
+
     </aside>
 
     <!-- Main Content -->
@@ -146,87 +176,47 @@
             
             <!-- Dashboard View -->
             <section id="dashboard" class="view-section active">
-                <div style="display:flex; justify-content:space-between; margin-bottom: 2rem;">
-                    <div>
-                        <h1 style="font-size:1.5rem; font-weight:700;">Dashboard Overview</h1>
-                        <p style="color:var(--text-muted); font-size:0.875rem;">Welcome back, here's what's happening today.</p>
+                <div style="margin-bottom:2rem;">
+                    <h2 style="font-size:1.8rem; font-weight:800; color:var(--text-main);">Enterprise Overview</h2>
+                    <p style="color:var(--text-secondary);">Welcome to Study Pack Administration. Here is your real-time store performance.</p>
+                </div>
+                
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1.5rem; margin-bottom:2rem;">
+                    <div class="stat-card glass">
+                        <div class="stat-title">Total Revenue</div>
+                        <div class="stat-value" id="dashTotalSales">PKR 0</div>
+                        <div style="font-size:0.8rem; color:var(--success); margin-top:0.5rem;">&#8593; Life Time</div>
                     </div>
-                    <div>
-                        <button class="btn btn-outline"><i data-lucide="calendar"></i> Last 30 Days</button>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Total Orders</div>
+                        <div class="stat-value" id="dashTotalOrders">0</div>
+                        <div style="font-size:0.8rem; color:var(--success); margin-top:0.5rem;">&#8593; Life Time</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Pending Orders</div>
+                        <div class="stat-value" id="dashPendingOrders">0</div>
+                        <div style="font-size:0.8rem; color:var(--warning); margin-top:0.5rem;">Action Required</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Total Customers</div>
+                        <div class="stat-value" id="dashTotalCustomers">0</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Registered Users</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Total Books Catalog</div>
+                        <div class="stat-value" id="dashTotalProducts">0</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:0.5rem;">Active Products</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Out of Stock Books</div>
+                        <div class="stat-value" id="dashOutOfStock">0</div>
+                        <div style="font-size:0.8rem; color:var(--danger); margin-top:0.5rem;">Needs Restock</div>
                     </div>
                 </div>
-
-                <!-- 14 Stats (Abbreviated to key ones for Phase 1 demo) -->
-                <div class="stat-grid">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Total Sales</span>
-                            <div class="stat-icon primary"><i data-lucide="dollar-sign"></i></div>
-                        </div>
-                        <div class="stat-value" id="statTotalSales">PKR 0</div>
-                        <div class="stat-footer trend-up"><i data-lucide="trending-up" style="width:16px;"></i> +12.5% from last month</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Today's Sales</span>
-                            <div class="stat-icon info"><i data-lucide="activity"></i></div>
-                        </div>
-                        <div class="stat-value" id="statTodaySales">PKR 0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Total Orders</span>
-                            <div class="stat-icon success"><i data-lucide="shopping-bag"></i></div>
-                        </div>
-                        <div class="stat-value" id="statTotalOrders">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Pending Orders</span>
-                            <div class="stat-icon warning"><i data-lucide="clock"></i></div>
-                        </div>
-                        <div class="stat-value" id="statPendingOrders">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Total Customers</span>
-                            <div class="stat-icon primary"><i data-lucide="users"></i></div>
-                        </div>
-                        <div class="stat-value" id="statTotalCustomers">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Total Products</span>
-                            <div class="stat-icon info"><i data-lucide="book"></i></div>
-                        </div>
-                        <div class="stat-value" id="statTotalProducts">0</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <span class="stat-title">Out of Stock</span>
-                            <div class="stat-icon danger"><i data-lucide="alert-circle"></i></div>
-                        </div>
-                        <div class="stat-value" id="statOutOfStock">0</div>
-                    </div>
-                </div>
-
-                <!-- Charts -->
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">Revenue Analytics</span>
-                            <div class="chart-actions">
-                                <select><option>This Year</option><option>Last Year</option></select>
-                            </div>
-                        </div>
-                        <canvas id="revenueChart" height="100"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <div class="chart-header">
-                            <span class="chart-title">Orders by Status</span>
-                        </div>
-                        <canvas id="ordersChart" height="200"></canvas>
-                    </div>
+                
+                <div class="card glass" style="padding:2rem;">
+                    <h3 style="margin-bottom:1.5rem; font-size:1.2rem;">Recent Platform Activity</h3>
+                    <p style="color:var(--text-muted);">Real-time activity tracking is operational. (Further analytics charts loading in Phase 5)</p>
                 </div>
             </section>
 
@@ -448,7 +438,57 @@
             </section>
 
         </div>
-    </main>
+    
+            <section id="returns" class="view-section">
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-transform:capitalize;">returns Management</h2>
+                <div class="card glass" style="padding:3rem; text-align:center; color:var(--text-muted);">
+                    <i data-lucide="tool" style="width:48px; height:48px; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3>Enterprise Module Under Construction</h3>
+                    <p>This module is part of the Phase 5 enterprise rollout.</p>
+                </div>
+            </section>
+        
+        
+            <section id="categories" class="view-section">
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-transform:capitalize;">categories Management</h2>
+                <div class="card glass" style="padding:3rem; text-align:center; color:var(--text-muted);">
+                    <i data-lucide="tool" style="width:48px; height:48px; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3>Enterprise Module Under Construction</h3>
+                    <p>This module is part of the Phase 5 enterprise rollout.</p>
+                </div>
+            </section>
+        
+        
+            <section id="marketing" class="view-section">
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-transform:capitalize;">marketing Management</h2>
+                <div class="card glass" style="padding:3rem; text-align:center; color:var(--text-muted);">
+                    <i data-lucide="tool" style="width:48px; height:48px; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3>Enterprise Module Under Construction</h3>
+                    <p>This module is part of the Phase 5 enterprise rollout.</p>
+                </div>
+            </section>
+        
+        
+            <section id="shipping" class="view-section">
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-transform:capitalize;">shipping Management</h2>
+                <div class="card glass" style="padding:3rem; text-align:center; color:var(--text-muted);">
+                    <i data-lucide="tool" style="width:48px; height:48px; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3>Enterprise Module Under Construction</h3>
+                    <p>This module is part of the Phase 5 enterprise rollout.</p>
+                </div>
+            </section>
+        
+        
+            <section id="content" class="view-section">
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem; text-transform:capitalize;">content Management</h2>
+                <div class="card glass" style="padding:3rem; text-align:center; color:var(--text-muted);">
+                    <i data-lucide="tool" style="width:48px; height:48px; margin-bottom:1rem; opacity:0.5;"></i>
+                    <h3>Enterprise Module Under Construction</h3>
+                    <p>This module is part of the Phase 5 enterprise rollout.</p>
+                </div>
+            </section>
+        
+        </main>
 </div>
 
 <!-- Product Modal -->
