@@ -259,23 +259,88 @@ document.addEventListener('appDataLoaded', (e) => {
 });
 
 
+window.editingOrderState = null;
+
 window.toggleOrderEdit = function() {
     const info = document.getElementById('modalCustomerInfo');
     const edit = document.getElementById('modalCustomerEdit');
+    
     if(info.style.display === 'none') {
+        // Switch back to view mode
         info.style.display = 'block';
         edit.style.display = 'none';
+        const id = document.getElementById('modalOrderId').textContent.replace('#', '');
+        viewOrder(id); // Reload original
     } else {
+        // Switch to edit mode
         info.style.display = 'none';
         edit.style.display = 'flex';
+        
         const id = document.getElementById('modalOrderId').textContent.replace('#', '');
         const o = window.AppData.orders.find(x => String(x.id) === String(id));
-        if(o) {
-            document.getElementById('editOrderCustName').value = o.customer || '';
-            document.getElementById('editOrderCustPhone').value = o.phone || '';
-            document.getElementById('editOrderCustAddress').value = o.address || '';
-        }
+        if(!o) return;
+        
+        window.editingOrderState = JSON.parse(JSON.stringify(o)); // Deep clone
+        
+        document.getElementById('editOrderCustName').value = o.customer || '';
+        document.getElementById('editOrderCustPhone').value = o.phone || '';
+        document.getElementById('editOrderCustAddress').value = o.address || '';
+        
+        renderEditableItems();
     }
+}
+
+window.renderEditableItems = function() {
+    const itemsList = document.getElementById('modalOrderItems');
+    itemsList.innerHTML = '';
+    
+    if(!window.editingOrderState.items) window.editingOrderState.items = [];
+    
+    window.editingOrderState.items.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        const pId = typeof item.id === 'object' ? item.id.id : item.id;
+        
+        const inputStyle = "background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:4px;";
+        
+        tr.innerHTML = `
+            <td>
+                <input type="text" style="width:100%; padding:0.4rem; font-size:0.85rem; ${inputStyle}" value="${item.title || ''}" onchange="window.editingOrderState.items[${index}].title = this.value">
+                <input type="text" style="width:100%; padding:0.4rem; font-size:0.75rem; margin-top:0.4rem; ${inputStyle}" value="${pId || ''}" placeholder="SKU" onchange="window.editingOrderState.items[${index}].id = this.value">
+            </td>
+            <td>
+                <input type="number" style="width:70px; padding:0.4rem; font-size:0.85rem; ${inputStyle}" value="${item.price || 0}" onchange="window.editingOrderState.items[${index}].price = Number(this.value); renderEditableItems()">
+            </td>
+            <td>
+                <input type="number" style="width:50px; padding:0.4rem; font-size:0.85rem; ${inputStyle}" value="${item.qty || 1}" onchange="window.editingOrderState.items[${index}].qty = Number(this.value); renderEditableItems()">
+            </td>
+            <td style="text-align:right;">
+                ${(item.price || 0) * (item.qty || 1)}
+                <button type="button" onclick="removeOrderItem(${index})" style="background:none; border:none; color:var(--danger); cursor:pointer; margin-left:0.5rem;" title="Remove Item"><i data-lucide="trash-2" style="width:14px; height:14px;"></i></button>
+            </td>
+        `;
+        itemsList.appendChild(tr);
+    });
+    
+    // Add Item button row
+    const trAdd = document.createElement('tr');
+    trAdd.innerHTML = `
+        <td colspan="4" style="text-align:center; padding-top:1rem;">
+            <button type="button" class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="addOrderItem()">+ Add New Book/Product</button>
+        </td>
+    `;
+    itemsList.appendChild(trAdd);
+    
+    if(window.lucide) lucide.createIcons();
+}
+
+window.addOrderItem = function() {
+    window.editingOrderState.items.push({ id: '', title: 'New Item', price: 0, qty: 1 });
+    renderEditableItems();
+}
+
+window.removeOrderItem = function(index) {
+    window.editingOrderState.items.splice(index, 1);
+    renderEditableItems();
 }
 
 window.saveOrderEdits = async function() {
@@ -284,21 +349,31 @@ window.saveOrderEdits = async function() {
     const phone = document.getElementById('editOrderCustPhone').value;
     const address = document.getElementById('editOrderCustAddress').value;
     
+    let subtotal = 0;
+    window.editingOrderState.items.forEach(item => {
+        subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1);
+    });
+    
+    // Keep shipping hardcoded or extracted from state
+    const shipping = Number(window.editingOrderState.shipping || 150);
+    const total = subtotal + shipping;
+    
     try {
         await db.collection("orders").doc(id).update({
             customer: name,
             phone: phone,
-            address: address
+            address: address,
+            items: window.editingOrderState.items,
+            total: total
         });
-        alert('Order details updated!');
-        toggleOrderEdit();
-        // The modal text will be refreshed next time it's opened, 
-        // or we can refresh it right away.
-        document.getElementById('modalCustomerInfo').innerHTML = `
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Address:</strong> ${address}</p>
-        `;
+        alert('Order completely updated including items!');
+        
+        // Hide edit mode
+        const info = document.getElementById('modalCustomerInfo');
+        const edit = document.getElementById('modalCustomerEdit');
+        info.style.display = 'block';
+        edit.style.display = 'none';
+        
     } catch(e) {
         alert("Error saving edits: " + e.message);
     }
