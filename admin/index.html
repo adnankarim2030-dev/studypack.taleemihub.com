@@ -823,13 +823,22 @@ th.checkcol,td.checkcol{width:34px;}
           </table>
         </div>
         <div class="panel-body" style="background:var(--paper); display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
             <span>Subtotal:</span> <span id="o_subtotal">Rs 0</span>
           </div>
-          <div style="display:flex; justify-content:space-between; width:300px; color:var(--success); font-weight:600;">
+          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
+            <span>Delivery Charges:</span> 
+            <span>Rs <input type="number" id="o_delivery" value="0" oninput="recalcOrderTotal()" style="width:70px; text-align:right; padding:2px 5px; border:1px solid var(--border); background:var(--card); color:var(--text);"></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
+            <span>Tax (%):</span> 
+            <span><input type="number" id="o_tax_pct" value="0" oninput="recalcOrderTotal()" style="width:60px; text-align:right; padding:2px 5px; border:1px solid var(--border); background:var(--card); color:var(--text);"> % 
+            <span id="o_tax_val" style="margin-left:5px; font-size:0.85em; color:var(--text-muted);">(Rs 0)</span></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; color:var(--success); font-weight:600; margin-bottom:5px;">
             <span>Commission (10%):</span> <span id="o_commission">Rs 0</span>
           </div>
-          <div style="display:flex; justify-content:space-between; width:300px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
             <span>Total:</span> <span id="o_total">Rs 0</span>
           </div>
         </div>
@@ -1939,6 +1948,8 @@ function viewOrder(id) {
     document.getElementById('orderModalTitle').textContent = `Order #${o.id} - ${o.date}`;
     document.getElementById('o_status').value = currentEditingOrder.status === 0 ? 'pending' : (currentEditingOrder.status === 1 ? 'completed' : 'cancelled');
     document.getElementById('o_payment').value = currentEditingOrder.paymentMethod || 'COD';
+    document.getElementById('o_delivery').value = currentEditingOrder.delivery || 0;
+    document.getElementById('o_tax_pct').value = currentEditingOrder.taxPct || 0;
     
     const custForm = document.getElementById('orderCustomerForm');
     custForm.innerHTML = `
@@ -1954,6 +1965,30 @@ function viewOrder(id) {
 
 function closeOrderModal() {
     document.getElementById('orderModalOverlay').classList.remove('active');
+}
+
+
+function recalcOrderTotal() {
+    let subtotal = 0;
+    currentEditingOrder.items.forEach(i => { subtotal += (Number(i.price)*Number(i.qty)); });
+    
+    const delivery = Number(document.getElementById('o_delivery').value) || 0;
+    const taxPct = Number(document.getElementById('o_tax_pct').value) || 0;
+    const taxVal = subtotal * (taxPct / 100);
+    const comm = subtotal * 0.10;
+    
+    document.getElementById('o_subtotal').textContent = money(subtotal);
+    document.getElementById('o_tax_val').textContent = `(Rs ${taxVal.toFixed(0)})`;
+    document.getElementById('o_commission').textContent = money(comm);
+    
+    const total = subtotal + delivery + taxVal + comm;
+    document.getElementById('o_total').textContent = money(total);
+    
+    currentEditingOrder.delivery = delivery;
+    currentEditingOrder.taxPct = taxPct;
+    currentEditingOrder.taxVal = taxVal;
+    currentEditingOrder.commission = comm;
+    currentEditingOrder.total = total;
 }
 
 function renderOrderItems() {
@@ -1983,14 +2018,7 @@ function renderOrderItems() {
         }).join('');
     }
     
-    // Commission 10%
-    const comm = subtotal * 0.10;
-    currentEditingOrder.commission = comm; // store it
-    currentEditingOrder.total = subtotal; // For now total is subtotal, user can modify if they want commission added to total or just recorded
-    
-    document.getElementById('o_subtotal').textContent = money(subtotal);
-    document.getElementById('o_commission').textContent = money(comm);
-    document.getElementById('o_total').textContent = money(subtotal + comm); // Added commission to total based on "her order per 10% commision add hoga"
+    recalcOrderTotal(); // Added commission to total based on "her order per 10% commision add hoga"
 }
 
 function updateOrderItem(idx, field, val) {
@@ -2021,12 +2049,7 @@ async function saveOrderEdits() {
     currentEditingOrder.status = st === 'pending' ? 0 : (st === 'completed' ? 1 : 2);
     currentEditingOrder.paymentMethod = document.getElementById('o_payment').value;
     
-    // Recalculate total with commission
-    let subtotal = 0;
-    currentEditingOrder.items.forEach(i => { subtotal += (Number(i.price)*Number(i.qty)); });
-    const comm = subtotal * 0.10;
-    currentEditingOrder.total = subtotal + comm;
-    currentEditingOrder.commission = comm;
+    recalcOrderTotal();
     
     try {
         await db.collection("orders").doc(String(currentEditingOrder.id)).set(currentEditingOrder, {merge: true});
