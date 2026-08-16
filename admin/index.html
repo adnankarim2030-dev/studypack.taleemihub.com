@@ -8,39 +8,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 
-:root{
-  --bg-main: #0B1021;
-  --bg-surface: #131A2F;
-  --primary: #FFD700;
-  --primary-hover: #CC9900;
-  
-  --ink: #131A2F;
-  --ink-light: #1E293B;
-  --ink-lighter: #334155;
-  --paper: #0B1021;
-  --card: #131A2F;
-  --oxblood: #FFD700;
-  --oxblood-light: #CC9900;
-  --gold: #FFD700;
-  --text: #FFFFFF;
-  --text-muted: #94A3B8;
-  --text-faint: #64748B;
-  --border: #1E293B;
-  --border-soft: #1E293B;
-  --success: #10B981;
-  --success-bg: rgba(16,185,129,0.1);
-  --warn: #F59E0B;
-  --warn-bg: rgba(245,158,11,0.1);
-  --danger: #EF4444;
-  --danger-bg: rgba(239,68,68,0.1);
-  --radius: 10px;
-  --radius-sm: 6px;
-  --font-display: 'Lora',serif;
-  --font-body: 'Inter',sans-serif;
-  --font-mono: 'IBM Plex Mono',monospace;
-  --shadow: 0 4px 6px rgba(0,0,0,0.3);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.4);
-}
+  :root {
+    --bg-main: #0B1021;
+    --card: #131A2F;
+    --paper: #1A233A;
+    --ink: #FFFFFF;
+    --text: #C7CADA;
+    --text-muted: #8890A3;
+    --border: rgba(255,255,255,0.08);
+    --primary: #FFD700;
+    --primary-hover: #E6C200;
+    --danger: #EF4444;
+    --success: #10B981;
+    --warn: #F59E0B;
+    --gold: #FFD700;
+    --font: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.3);
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
 
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
@@ -53,7 +43,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
-input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);background:var(--card);border:1px solid var(--border);}
+input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);}
 ::selection{background:var(--gold);color:#fff;}
 
 /* ---------- Layout ---------- */
@@ -88,10 +78,10 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
 }
 .nav-item svg{width:17px;height:17px;flex-shrink:0;opacity:.85;}
 .nav-item:hover{background:rgba(255,255,255,.06);color:#fff;}
-.nav-item.active{background:var(--primary);color:#000;font-weight:700;}
+.nav-item.active{background:var(--oxblood);color:#fff;}
 .nav-item.active svg{opacity:1;}
 .nav-item .badge{
-  margin-left:auto;background:var(--gold);color:var(--text);font-size:10.5px;font-weight:700;
+  margin-left:auto;background:var(--gold);color:var(--ink);font-size:10.5px;font-weight:700;
   padding:1px 6px;border-radius:20px;
 }
 .sidebar-foot{
@@ -104,12 +94,12 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
   height:64px;background:var(--card);border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:16px;padding:0 24px;position:sticky;top:0;z-index:20;
 }
-.page-title{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--text);white-space:nowrap;}
+.page-title{font-family:var(--font-display);font-size:20px;font-weight:600;color:var(--ink);white-space:nowrap;}
 .search-box{
   flex:1;max-width:380px;display:flex;align-items:center;gap:8px;
   background:var(--paper);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text-muted);
 }
-.search-box input{background:none;border:none;outline:none;width:100%;font-size:13.5px;color:var(--text);}
+.search-box input{background:none;border:none;outline:none;width:100%;font-size:13.5px;}
 .search-box svg{width:15px;height:15px;flex-shrink:0;}
 .topbar-actions{display:flex;align-items:center;gap:10px;margin-left:auto;}
 .icon-btn{
@@ -119,7 +109,7 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
 .icon-btn svg{width:17px;height:17px;}
 .icon-btn .dot{position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:var(--oxblood);border:1.5px solid var(--card);}
 .avatar{
-  width:36px;height:36px;border-radius:8px;background:var(--gold);color:var(--text);
+  width:36px;height:36px;border-radius:8px;background:var(--gold);color:var(--ink);
   display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:var(--font-display);
 }
 
@@ -128,40 +118,27 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
 .page.active{display:block;animation:fadeIn .18s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 
-
 /* Buttons */
 .btn{
   display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:8px;
-  font-size:13.5px;font-weight:700;border:1px solid transparent;transition:all .12s;
-  white-space:nowrap; cursor:pointer;
+  font-size:13.5px;font-weight:600;border:1px solid transparent;transition:filter .12s, background .12s;
+  white-space:nowrap;
 }
 .btn svg{width:15px;height:15px;}
-.btn-primary{
-  background:var(--primary); color:#000; 
-  box-shadow: 0 4px 0 var(--primary-hover), 0 5px 10px rgba(0,0,0,0.3); 
-  transform: translateY(0);
-}
+.btn-primary{background:var(--oxblood);color:#fff;}
 .btn-primary:hover{filter:brightness(1.08);}
-.btn-primary:active{
-  box-shadow: 0 0 0 var(--primary-hover), 0 2px 4px rgba(0,0,0,0.2); 
-  transform: translateY(4px);
-}
 .btn-ghost{background:var(--card);border-color:var(--border);color:var(--text);}
-.btn-ghost:hover{background:var(--ink-light);}
-.btn-dark{
-  background:var(--ink-light); color:#fff;
-  box-shadow: 0 4px 0 #000, 0 5px 10px rgba(0,0,0,0.3); 
-  transform: translateY(0);
-}
-.btn-dark:active{
-  box-shadow: 0 0 0 #000, 0 2px 4px rgba(0,0,0,0.2); 
-  transform: translateY(4px);
-}
-
+.btn-ghost:hover{background:var(--paper);}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{filter:brightness(1.15);}
+.btn-danger-outline{background:var(--card);color:var(--danger);border-color:#EAD3D3;}
+.btn-danger-outline:hover{background:var(--danger-bg);}
+.btn-sm{padding:6px 11px;font-size:12.5px;}
+.btn:disabled{opacity:.5;cursor:not-allowed;}
 
 /* Page header row */
 .page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap;}
-.page-head h1{font-family:var(--font-display);font-size:25px;font-weight:700;color:var(--text);}
+.page-head h1{font-family:var(--font-display);font-size:25px;font-weight:700;color:var(--ink);}
 .page-head p{color:var(--text-muted);font-size:13.5px;margin-top:3px;}
 .page-head-actions{display:flex;gap:10px;}
 
@@ -173,7 +150,7 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
 }
 .stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--spine,var(--gold));}
 .stat-label{font-size:12px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
-.stat-value{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--text);margin-top:6px;}
+.stat-value{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--ink);margin-top:6px;}
 .stat-delta{font-size:12px;margin-top:6px;font-weight:600;}
 .stat-delta.up{color:var(--success);}
 .stat-delta.down{color:var(--danger);}
@@ -181,7 +158,7 @@ input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);backg
 /* Cards / panels */
 .panel{background:var(--card);border:1px solid var(--border-soft);border-radius:var(--radius);box-shadow:var(--shadow);}
 .panel-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border-soft);}
-.panel-head h3{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);}
+.panel-head h3{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);}
 .panel-body{padding:18px 20px;}
 .two-col{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;align-items:start;}
 
@@ -193,7 +170,7 @@ thead th{
   font-weight:700;padding:11px 14px;border-bottom:1px solid var(--border);white-space:nowrap;
 }
 tbody td{padding:12px 14px;border-bottom:1px solid var(--border-soft);vertical-align:middle;}
-tbody tr:hover{background:var(--ink-light);}
+tbody tr:hover{background:#FBF9F4;}
 tbody tr:last-child td{border-bottom:none;}
 .cell-book{display:flex;align-items:center;gap:11px;}
 .cover-thumb{
@@ -201,7 +178,7 @@ tbody tr:last-child td{border-bottom:none;}
   color:#fff;font-family:var(--font-display);font-size:15px;font-weight:700;box-shadow:0 2px 5px rgba(0,0,0,.18);
   background-size:cover;background-position:center;
 }
-.cell-book-info .t{font-weight:600;color:var(--text);}
+.cell-book-info .t{font-weight:600;color:var(--ink);}
 .cell-book-info .a{font-size:12px;color:var(--text-muted);}
 .mono{font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);}
 .price{font-family:var(--font-mono);font-weight:600;}
@@ -233,7 +210,7 @@ th.checkcol,td.checkcol{width:34px;}
 
 /* Toolbar */
 .toolbar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border-soft);flex-wrap:wrap;}
-.toolbar select, .toolbar .tb-search{color:var(--text);
+.toolbar select, .toolbar .tb-search{
   border:1px solid var(--border);border-radius:7px;padding:7px 10px;background:var(--card);font-size:13px;color:var(--text);
 }
 .toolbar .tb-search{display:flex;align-items:center;gap:6px;flex:1;min-width:180px;}
@@ -247,7 +224,7 @@ th.checkcol,td.checkcol{width:34px;}
 .pagination{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-size:12.5px;color:var(--text-muted);}
 .pagination .pg-btns{display:flex;gap:6px;}
 .pagination button{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--card);font-size:12.5px;}
-.pagination button.active{background:var(--ink);color:#fff;border-color:var(--text);}
+.pagination button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
 
 /* Book shelf grid view */
 .shelf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;padding:20px;}
@@ -258,7 +235,7 @@ th.checkcol,td.checkcol{width:34px;}
 }
 .shelf-cover .fmt-tag{position:absolute;top:7px;left:7px;background:rgba(0,0,0,.45);color:#fff;font-size:9.5px;padding:2px 6px;border-radius:10px;text-transform:uppercase;letter-spacing:.4px;}
 .shelf-body{padding:11px 12px 13px;}
-.shelf-body .t{font-weight:600;font-size:13px;color:var(--text);line-height:1.3;margin-bottom:2px;}
+.shelf-body .t{font-weight:600;font-size:13px;color:var(--ink);line-height:1.3;margin-bottom:2px;}
 .shelf-body .a{font-size:11.5px;color:var(--text-muted);margin-bottom:8px;}
 .shelf-body .p{display:flex;align-items:center;justify-content:space-between;}
 .shelf-body .price{font-size:13.5px;}
@@ -267,14 +244,14 @@ th.checkcol,td.checkcol{width:34px;}
 /* Empty state */
 .empty-state{padding:60px 20px;text-align:center;color:var(--text-muted);}
 .empty-state svg{width:46px;height:46px;color:var(--text-faint);margin-bottom:10px;}
-.empty-state h4{font-family:var(--font-display);font-size:16px;color:var(--text);margin-bottom:4px;}
+.empty-state h4{font-family:var(--font-display);font-size:16px;color:var(--ink);margin-bottom:4px;}
 
 /* Forms */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .form-grid.cols-3{grid-template-columns:1fr 1fr 1fr;}
 .field{display:flex;flex-direction:column;gap:6px;}
 .field.full{grid-column:1/-1;}
-.field label{font-size:12.5px;font-weight:600;color:var(--text);}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink);}
 .field .hint{font-size:11.5px;color:var(--text-muted);font-weight:400;}
 .field input[type=text],.field input[type=number],.field input[type=date],.field input[type=url],
 .field select,.field textarea{
@@ -288,7 +265,7 @@ th.checkcol,td.checkcol{width:34px;}
 .input-prefix input{border:none;outline:none;padding:9px 10px;flex:1;background:none;}
 .switch-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--border-soft);}
 .switch-row:last-child{border-bottom:none;}
-.switch-row .lbl{font-size:13px;font-weight:600;color:var(--text);}
+.switch-row .lbl{font-size:13px;font-weight:600;color:var(--ink);}
 .switch-row .sub{font-size:11.5px;color:var(--text-muted);font-weight:400;margin-top:1px;}
 .switch{position:relative;width:38px;height:22px;flex-shrink:0;}
 .switch input{opacity:0;width:0;height:0;}
@@ -334,7 +311,7 @@ th.checkcol,td.checkcol{width:34px;}
 }
 @keyframes modalIn{from{opacity:0;transform:translateY(10px) scale(.99);}to{opacity:1;transform:translateY(0) scale(1);}}
 .modal-head{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--border);}
-.modal-head h2{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--text);}
+.modal-head h2{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--ink);}
 .modal-close{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;color:var(--text-muted);}
 .modal-foot{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-top:1px solid var(--border);background:var(--paper);border-radius:0 0 14px 14px;}
 .modal-foot .left{display:flex;gap:10px;}
@@ -364,38 +341,34 @@ th.checkcol,td.checkcol{width:34px;}
   .form-grid,.form-grid.cols-3{grid-template-columns:1fr;}
 }
 </style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="js/firebase.js"></script>
+
 </head>
 <body>
+
 <!-- Login Screen Overlay -->
 <div id="loginScreen" style="position:fixed; top:0; left:0; width:100vw; height:100vh; background:var(--bg-main); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-    <div style="background:var(--bg-surface); padding:3rem; border-radius:var(--radius-xl); box-shadow:var(--shadow-3d); width:90%; max-width:400px; text-align:center;">
-        <img src="../assets/images/logo.png" alt="Logo" style="max-width:140px; margin-bottom:1rem;">
-        <h2 style="font-family:'Montserrat', sans-serif; font-size:1.8rem; color:var(--primary); margin-bottom:0.5rem; font-weight:800;">Admin Login</h2>
-        <p style="color:var(--text-secondary); margin-bottom:2rem; font-size:0.9rem;">Please sign in to access the dashboard</p>
-        
-        <form id="adminLoginForm" onsubmit="handleLogin(event)" style="display:flex; flex-direction:column; gap:1rem;">
-            <div style="text-align:left;">
-                <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Email Address</label>
-                <input type="email" id="loginEmail" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-color); border-radius:var(--radius-md); background:var(--bg-main); color:var(--text-main); outline:none;">
-            </div>
-            <div style="text-align:left;">
-                <label style="font-size:0.85rem; font-weight:600; color:var(--text-secondary); margin-bottom:0.25rem; display:block;">Password</label>
-                <input type="password" id="loginPassword" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border-color); border-radius:var(--radius-md); background:var(--bg-main); color:var(--text-main); outline:none;">
-            </div>
-            <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem; font-size:1rem; margin-top:1rem;">Secure Login</button>
-            <p id="loginError" style="color:var(--danger); font-size:0.85rem; display:none; margin-top:0.5rem;">Invalid credentials!</p>
-        </form>
-    </div>
+    <h2 style="font-family:'Montserrat', sans-serif; font-size:1.8rem; color:var(--primary); margin-bottom:0.5rem; font-weight:800;">Admin Login</h2>
+    <form id="adminLoginForm" onsubmit="handleLogin(event)" style="display:flex; flex-direction:column; gap:1rem; width: 300px;">
+        <input type="email" id="loginEmail" placeholder="Email" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--paper); color:var(--ink); outline:none;">
+        <input type="password" id="loginPassword" placeholder="Password" required style="width:100%; padding:0.75rem 1rem; border:1px solid var(--border); border-radius:var(--radius-md); background:var(--paper); color:var(--ink); outline:none;">
+        <button type="submit" class="btn btn-primary" style="width:100%; padding:1rem; font-size:1rem; margin-top:1rem;">Secure Login</button>
+        <p id="loginError" style="color:var(--danger); font-size:0.85rem; display:none; margin-top:0.5rem; text-align:center;">Invalid credentials!</p>
+    </form>
 </div>
+
 
 <div class="app">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="brand" style="display:flex; flex-direction:column; align-items:center; padding: 20px 10px; text-align:center;">
-      <img src="../assets/images/logo.png" alt="TaleemiHub Logo" style="max-width: 140px; margin-bottom: 10px;">
+    <div class="brand">
+      <div class="brand-mark">K</div>
       <div>
-        <div class="brand-name" style="font-size: 1.2rem; color: #FFD700; font-family: 'Montserrat', sans-serif;">Study Pack</div>
-        <div class="brand-sub" style="color: #94A3B8;">Admin Dashboard</div>
+        <div class="brand-name">Kitab Bazaar</div>
+        <div class="brand-sub">Store Admin</div>
       </div>
     </div>
     <nav class="nav" id="navList">
@@ -465,7 +438,7 @@ th.checkcol,td.checkcol{width:34px;}
         Activity Log
       </div>
     </nav>
-    <div class="sidebar-foot">Study Pack Admin v2.0<br>Signed in as Store Manager</div>
+    <div class="sidebar-foot">Kitab Bazaar Admin v1.0<br>Signed in as Store Manager</div>
   </aside>
 
   <!-- MAIN -->
@@ -481,8 +454,7 @@ th.checkcol,td.checkcol{width:34px;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           <span class="dot"></span>
         </button>
-        <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()" style="margin-left: 10px;">Logout</button>
-        <div class="avatar" style="color: #000;">SP</div>
+        <div class="avatar">SM</div>
       </div>
     </div>
 
@@ -763,101 +735,6 @@ th.checkcol,td.checkcol{width:34px;}
   </div>
 </div>
 
-
-<!-- ============ ORDER EDIT MODAL ============ -->
-<div class="modal-overlay" id="orderModalOverlay">
-  <div class="modal" style="max-width: 800px;">
-    <div class="modal-head">
-      <h2 id="orderModalTitle">Order Details</h2>
-      <button class="modal-close" onclick="closeOrderModal()">?</button>
-    </div>
-    
-    <div style="padding: 20px 22px; max-height: 70vh; overflow-y: auto;">
-      <div class="two-col" style="margin-bottom: 20px;">
-        <div class="panel">
-          <div class="panel-head"><h3>Customer Details</h3></div>
-          <div class="panel-body form-grid" id="orderCustomerForm">
-            <!-- Populated dynamically -->
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panel-head"><h3>Order Info</h3></div>
-          <div class="panel-body form-grid">
-            <div class="field full">
-              <label>Status</label>
-              <select id="o_status">
-                <option value="pending">Pending</option>
-                <option value="processing">Processing</option>
-                <option value="shipped">Shipped</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label>Payment Method</label>
-              <input type="text" id="o_payment" value="COD">
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="panel">
-        <div class="panel-head" style="display:flex; justify-content:space-between; align-items:center;">
-          <h3>Order Items</h3>
-          <button class="btn btn-ghost btn-sm" onclick="addOrderItem()">+ Add Item</button>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Item / SKU</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Total</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody id="orderItemsBody">
-              <!-- Items populated here -->
-            </tbody>
-          </table>
-        </div>
-        <div class="panel-body" style="background:var(--paper); display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
-            <span>Subtotal:</span> <span id="o_subtotal">Rs 0</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
-            <span>Delivery Charges:</span> 
-            <span>Rs <input type="number" id="o_delivery" value="0" oninput="recalcOrderTotal()" style="width:70px; text-align:right; padding:2px 5px; border:1px solid var(--border); background:var(--card); color:var(--text);"></span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:600; margin-bottom:5px;">
-            <span>Tax (%):</span> 
-            <span><input type="number" id="o_tax_pct" value="0" oninput="recalcOrderTotal()" style="width:60px; text-align:right; padding:2px 5px; border:1px solid var(--border); background:var(--card); color:var(--text);"> % 
-            <span id="o_tax_val" style="margin-left:5px; font-size:0.85em; color:var(--text-muted);">(Rs 0)</span></span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; color:var(--success); font-weight:600; margin-bottom:5px;">
-            <span>Commission (10%):</span> <span id="o_commission">Rs 0</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; width:350px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
-            <span>Total:</span> <span id="o_total">Rs 0</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="modal-foot">
-      <div class="left">
-        <button class="btn btn-danger-outline btn-sm" onclick="deleteOrder()">Delete Order</button>
-      </div>
-      <div class="right" style="display:flex; gap:10px;">
-        <button class="btn btn-ghost" onclick="printOrder(currentEditingOrder.id)">Print Invoice</button>
-        <button class="btn btn-ghost" onclick="closeOrderModal()">Cancel</button>
-        <button class="btn btn-primary" onclick="saveOrderEdits()">Save Changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- ============ BOOK EDITOR MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
@@ -1048,40 +925,702 @@ th.checkcol,td.checkcol{width:34px;}
 
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Saved</span></div>
 
-
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
-<script src="js/firebase.js"></script>
 <script>
-// Simple Login Logic
-function checkLogin() {
-    if(localStorage.getItem('study_admin_auth') === 'true') {
-        document.getElementById('loginScreen').style.display = 'none';
-    } else {
-        document.getElementById('loginScreen').style.display = 'flex';
-    }
-}
-checkLogin();
+/* ===================== DATA ===================== */
+const CATEGORY_COLORS = {
+  "Fiction":"#7C2D2D","Non-Fiction":"#3F6B4E","Children":"#B8935F","Academic":"#2A3346",
+  "Poetry":"#6B4C9A","Comics & Graphic":"#1F6F78","Religion & Spirituality":"#8A5A2B","Self-Help":"#4C6B8A"
+};
+let categories = [
+  {id:1,name:"Fiction",desc:"Novels, afsanay aur adabi kitabein"},
+  {id:2,name:"Non-Fiction",desc:"Biography, tareekh, current affairs"},
+  {id:3,name:"Children",desc:"Bachon ki kahaniyan aur activity books"},
+  {id:4,name:"Academic",desc:"Text books aur exam guides"},
+  {id:5,name:"Poetry",desc:"Urdu aur classical shairi"},
+  {id:6,name:"Religion & Spirituality",desc:"Islamiyat aur deeni kutub"},
+];
+let books = [
+  {id:1,title:"Peer-e-Kamil",author:"Umera Ahmed",publisher:"Ilqa Publications",isbn:"978-969-471-101-1",sku:"BK-1001",
+   category:"Fiction",tags:["Bestseller","Urdu Novel"],price:850,salePrice:699,saleFrom:"",saleTo:"",costPrice:400,
+   stock:42,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.35,length:20,width:14,height:2.2,shippingClass:"Standard Parcel",
+   format:"Paperback",language:"Urdu",edition:"5th Edition",pages:520,pubDate:"2023-04-11",ageGroup:"Adult",
+   coverColor:"#7C2D2D",coverImg:null,gallery:[],
+   shortDesc:"Ek roohani aur imaan afroz novel.",desc:"Peer-e-Kamil Umera Ahmed ka mash'hoor tareen novel hai jo imaan, mohabbat aur khud shanasi ka safar bayan karta hai.",
+   slug:"peer-e-kamil-umera-ahmed",metaTitle:"Peer-e-Kamil by Umera Ahmed | Kitab Bazaar",metaDesc:"Peer-e-Kamil online order karein — Pakistan mein tezreen delivery.",keyword:"Peer-e-Kamil novel",
+   purchaseNote:"3-5 working din mein deliver hogi.",menuOrder:1,status:"published",featured:true,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+  {id:2,title:"Nemat Khana",author:"Umera Ahmed",publisher:"Ilqa Publications",isbn:"978-969-471-102-8",sku:"BK-1002",
+   category:"Fiction",tags:["Urdu Novel"],price:750,salePrice:0,saleFrom:"",saleTo:"",costPrice:350,
+   stock:3,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.3,length:20,width:14,height:2,shippingClass:"Standard Parcel",
+   format:"Paperback",language:"Urdu",edition:"3rd Edition",pages:410,pubDate:"2022-09-02",ageGroup:"Adult",
+   coverColor:"#9A3D3D",coverImg:null,gallery:[],
+   shortDesc:"Ek dilchasp samaji novel.",desc:"Nemat Khana samaji rishton aur zindagi ke pechida masail par likha gaya novel hai.",
+   slug:"nemat-khana-umera-ahmed",metaTitle:"Nemat Khana by Umera Ahmed",metaDesc:"Nemat Khana online kharidein Kitab Bazaar se.",keyword:"Nemat Khana",
+   purchaseNote:"",menuOrder:2,status:"published",featured:false,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+  {id:3,title:"Sapiens: A Brief History of Humankind",author:"Yuval Noah Harari",publisher:"Vintage Books",isbn:"978-0-099-59008-8",sku:"BK-1003",
+   category:"Non-Fiction",tags:["Bestseller","Translated"],price:1400,salePrice:1190,saleFrom:"2026-07-20",saleTo:"2026-08-25",costPrice:700,
+   stock:18,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.5,length:23,width:15,height:3,shippingClass:"Standard Parcel",
+   format:"Paperback",language:"English",edition:"International Edition",pages:498,pubDate:"2015-02-10",ageGroup:"Adult",
+   coverColor:"#3F6B4E",coverImg:null,gallery:[],
+   shortDesc:"Insaani tareekh ka jaiza.",desc:"Sapiens Homo sapiens ki tareekh, biology aur samaj par ek jamai jaiza pesh karti hai.",
+   slug:"sapiens-yuval-noah-harari",metaTitle:"Sapiens by Yuval Noah Harari",metaDesc:"Sapiens ki original copy Kitab Bazaar se order karein.",keyword:"Sapiens book",
+   purchaseNote:"",menuOrder:3,status:"published",featured:true,reviews:true,preview:true,taxClass:"Standard"},
+  {id:4,title:"Alif Laila (Bachon Ke Liye)",author:"Various",publisher:"Ferozsons",isbn:"978-969-0-01234-5",sku:"BK-1004",
+   category:"Children",tags:["Illustrated","Bedtime"],price:450,salePrice:0,saleFrom:"",saleTo:"",costPrice:180,
+   stock:0,lowStockThreshold:5,stockStatus:"outofstock",manageStock:true,backorders:"notify",soldIndividually:false,
+   weight:0.4,length:24,width:18,height:1.5,shippingClass:"Standard Parcel",
+   format:"Hardcover",language:"Urdu",edition:"Illustrated Edition",pages:120,pubDate:"2021-06-15",ageGroup:"Children (0-8)",
+   coverColor:"#B8935F",coverImg:null,gallery:[],
+   shortDesc:"Bachon ke liye rang biranga Alif Laila.",desc:"Musawwar Alif Laila ki kahaniyan, khaas taur par bachon ke liye asaan zaban mein.",
+   slug:"alif-laila-bachon-ke-liye",metaTitle:"Alif Laila for Kids",metaDesc:"Bachon ke liye Alif Laila kitab online.",keyword:"kids urdu story book",
+   purchaseNote:"",menuOrder:4,status:"published",featured:false,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+  {id:5,title:"Bang-e-Dra",author:"Allama Iqbal",publisher:"Sheikh Ghulam Ali & Sons",isbn:"978-969-35-1234-0",sku:"BK-1005",
+   category:"Poetry",tags:["Classic","Shairi"],price:600,salePrice:0,saleFrom:"",saleTo:"",costPrice:250,
+   stock:4,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.28,length:19,width:13,height:1.8,shippingClass:"Standard Parcel",
+   format:"Hardcover",language:"Urdu",edition:"Classic Edition",pages:280,pubDate:"1924-01-01",ageGroup:"Adult",
+   coverColor:"#6B4C9A",coverImg:null,gallery:[],
+   shortDesc:"Allama Iqbal ka mash'hoor kalam.",desc:"Bang-e-Dra Allama Iqbal ki shairi ka pehla majmua hai.",
+   slug:"bang-e-dra-allama-iqbal",metaTitle:"Bang-e-Dra by Allama Iqbal",metaDesc:"Bang-e-Dra online order karein.",keyword:"Iqbal poetry book",
+   purchaseNote:"",menuOrder:5,status:"published",featured:false,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+  {id:6,title:"Atomic Habits",author:"James Clear",publisher:"Penguin",isbn:"978-0-735-21129-2",sku:"BK-1006",
+   category:"Non-Fiction",tags:["Self-Help","Bestseller"],price:1200,salePrice:999,saleFrom:"",saleTo:"",costPrice:600,
+   stock:27,lowStockThreshold:8,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.45,length:23,width:15,height:2.5,shippingClass:"Standard Parcel",
+   format:"Paperback",language:"English",edition:"1st Edition",pages:320,pubDate:"2018-10-16",ageGroup:"Adult",
+   coverColor:"#2A3346",coverImg:null,gallery:[],
+   shortDesc:"Chhoti aadaton ki taqat.",desc:"Atomic Habits behtar aadaten banane aur buri aadaten chhorne ka asaan tareeqa sikhati hai.",
+   slug:"atomic-habits-james-clear",metaTitle:"Atomic Habits by James Clear",metaDesc:"Atomic Habits Pakistan mein order karein.",keyword:"Atomic Habits Pakistan",
+   purchaseNote:"",menuOrder:6,status:"draft",featured:false,reviews:true,preview:true,taxClass:"Standard"},
+  {id:7,title:"Qurban Gali No. 3",author:"Umera Ahmed",publisher:"Ilqa Publications",isbn:"978-969-471-107-3",sku:"BK-1007",
+   category:"Fiction",tags:["Short Stories"],price:550,salePrice:0,saleFrom:"",saleTo:"",costPrice:250,
+   stock:9,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.25,length:19,width:13,height:1.5,shippingClass:"Standard Parcel",
+   format:"Paperback",language:"Urdu",edition:"2nd Edition",pages:180,pubDate:"2020-03-01",ageGroup:"Adult",
+   coverColor:"#7C2D2D",coverImg:null,gallery:[],
+   shortDesc:"Chhoti kahaniyon ka majmua.",desc:"Qurban Gali No. 3 mukhtalif samaji mozuaat par mabni afsanon ka majmua hai.",
+   slug:"qurban-gali-no-3",metaTitle:"Qurban Gali No. 3",metaDesc:"Qurban Gali No. 3 online kharidein.",keyword:"Qurban Gali",
+   purchaseNote:"",menuOrder:7,status:"published",featured:false,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+  {id:8,title:"Riyad-us-Saliheen",author:"Imam Nawawi",publisher:"Darussalam",isbn:"978-969-500-101-4",sku:"BK-1008",
+   category:"Religion & Spirituality",tags:["Hadith","Reference"],price:1100,salePrice:0,saleFrom:"",saleTo:"",costPrice:500,
+   stock:14,lowStockThreshold:5,stockStatus:"instock",manageStock:true,backorders:"no",soldIndividually:false,
+   weight:0.9,length:24,width:17,height:4,shippingClass:"Fragile / Hardcover",
+   format:"Hardcover",language:"Urdu",edition:"Translated Edition",pages:960,pubDate:"2019-01-01",ageGroup:"Adult",
+   coverColor:"#8A5A2B",coverImg:null,gallery:[],
+   shortDesc:"Ahadees ka mustanad majmua.",desc:"Riyad-us-Saliheen Imam Nawawi ki tasneef kardah Ahadees ka jamai majmua hai, tarjuma ke sath.",
+   slug:"riyad-us-saliheen",metaTitle:"Riyad-us-Saliheen with Urdu Translation",metaDesc:"Riyad-us-Saliheen online order karein.",keyword:"Riyad us Saliheen Urdu",
+   purchaseNote:"Deeni kutub 5-7 din mein deliver hoti hain.",menuOrder:8,status:"published",featured:true,reviews:true,preview:false,taxClass:"Zero Rate (Books exempt)"},
+];
+let nextBookId = 9;
+let nextCatId = 7;
 
-function handleLogin(e) {
+let orders = [
+  {id:"KB-3021",customer:"Ayesha Khan",date:"2026-08-15",items:2,total:1699,payment:"COD",status:"processing"},
+  {id:"KB-3020",customer:"Bilal Hassan",date:"2026-08-15",items:1,total:850,payment:"Card",status:"pending"},
+  {id:"KB-3019",customer:"Fatima Noor",date:"2026-08-14",items:3,total:2340,payment:"COD",status:"shipped"},
+  {id:"KB-3018",customer:"Hamza Sheikh",date:"2026-08-14",items:1,total:999,payment:"Card",status:"completed"},
+  {id:"KB-3017",customer:"Sana Malik",date:"2026-08-13",items:4,total:3150,payment:"COD",status:"completed"},
+  {id:"KB-3016",customer:"Usman Tariq",date:"2026-08-12",items:1,total:600,payment:"COD",status:"cancelled"},
+];
+let customers = [
+  {name:"Ayesha Khan",email:"ayesha.khan@example.com",orders:6,spent:8450,joined:"2025-02-14"},
+  {name:"Bilal Hassan",email:"bilal.h@example.com",orders:2,spent:1650,joined:"2026-01-09"},
+  {name:"Fatima Noor",email:"fatima.noor@example.com",orders:11,spent:15230,joined:"2024-11-03"},
+  {name:"Hamza Sheikh",email:"hamza.sheikh@example.com",orders:1,spent:999,joined:"2026-06-20"},
+  {name:"Sana Malik",email:"sana.malik@example.com",orders:8,spent:12100,joined:"2025-05-30"},
+];
+let coupons = [
+  {code:"EID2026",type:"Percentage",value:"20%",used:134,expiry:"2026-08-15",status:"active"},
+  {code:"WELCOME100",type:"Fixed",value:"Rs 100",used:812,expiry:"—",status:"active"},
+  {code:"BULK10",type:"Percentage",value:"10%",used:45,expiry:"2026-06-01",status:"expired"},
+];
+
+let currentBookView = 'table';
+let currentCoverData = null;
+let currentGallery = [];
+let currentTags = [];
+
+/* ===================== NAV ===================== */
+document.querySelectorAll('.nav-item[data-page]').forEach(el=>{
+  el.addEventListener('click',()=>switchPage(el.dataset.page));
+});
+function switchPage(page){
+  document.querySelectorAll('.nav-item[data-page]').forEach(el=>el.classList.toggle('active',el.dataset.page===page));
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const titles={dashboard:'Dashboard',books:'Books',categories:'Categories',coupons:'Coupons',orders:'Orders',customers:'Customers',reports:'Reports',settings:'Settings'};
+  document.getElementById('topbarTitle').textContent = titles[page];
+  if(page==='books') renderBooks();
+  if(page==='orders') renderOrders();
+  if(page==='categories') renderCategories();
+  if(page==='coupons') renderCoupons();
+  if(page==='customers') renderCustomers();
+  if(page==='reports') renderReports();
+  if(page==='dashboard') renderDashboard();
+}
+
+/* ===================== HELPERS ===================== */
+function money(n){ return 'Rs ' + Number(n||0).toLocaleString('en-PK'); }
+function catColor(cat){ return CATEGORY_COLORS[cat] || '#7C2D2D'; }
+function initials(str){ return (str||'').split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase(); }
+function stockState(b){
+  if(b.stockStatus==='outofstock' || (b.manageStock && b.stock<=0)) return 'outofstock';
+  if(b.manageStock && b.stock<=b.lowStockThreshold) return 'lowstock';
+  return 'instock';
+}
+function toast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer=setTimeout(()=>t.classList.remove('show'),2400);
+}
+function coverStyle(b){
+  if(b.coverImg) return `background-image:url(${b.coverImg})`;
+  return `background:linear-gradient(160deg, ${b.coverColor}, #1C2333)`;
+}
+
+/* ===================== DASHBOARD ===================== */
+function renderDashboard(){
+  const revenue = orders.filter(o=>o.status!=='cancelled').reduce((s,o)=>s+o.total,0);
+  document.getElementById('statRevenue').textContent = money(revenue);
+  document.getElementById('statOrders').textContent = orders.length;
+  const live = books.filter(b=>b.status==='published').length;
+  const draft = books.filter(b=>b.status==='draft').length;
+  document.getElementById('statBooks').textContent = live;
+  document.getElementById('statBooksDraft').textContent = draft+' drafts';
+  const low = books.filter(b=>stockState(b)!=='instock').length;
+  document.getElementById('statLowStock').textContent = low;
+
+  const rb = document.getElementById('recentOrdersBody');
+  rb.innerHTML = orders.slice(0,5).map(o=>`
+    <tr>
+      <td class="mono">${o.id}</td>
+      <td>${o.customer}</td>
+      <td>${o.items} item(s)</td>
+      <td class="price">${money(o.total)}</td>
+      <td>${statusPill(o.status)}</td>
+    </tr>`).join('');
+
+  const top = [...books].sort((a,b)=>(b.price-b.stock)-(a.price-a.stock)).slice(0,5);
+  document.getElementById('topSelling').innerHTML = top.map(b=>`
+    <div style="display:flex;align-items:center;gap:11px;">
+      <div class="cover-thumb" style="${coverStyle(b)}">${b.coverImg?'':initials(b.title)}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-weight:600;font-size:13px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${b.title}</div>
+        <div style="font-size:11.5px;color:var(--text-muted);">${b.author}</div>
+      </div>
+      <div class="price" style="font-size:13px;">${money(b.salePrice||b.price)}</div>
+    </div>`).join('');
+
+  document.getElementById('navBooksCount').textContent = books.length;
+  document.getElementById('navOrdersCount').textContent = orders.length;
+}
+function statusPill(status){
+  const map={pending:['status-lowstock','Pending'],processing:['status-draft','Processing'],shipped:['status-draft','Shipped'],
+    completed:['status-published','Completed'],cancelled:['status-outofstock','Cancelled']};
+  const [cls,label]=map[status]||['status-draft',status];
+  return `<span class="status-pill ${cls}"><span class="dot"></span>${label}</span>`;
+}
+
+/* ===================== CATEGORY SELECT / FILTERS ===================== */
+function refreshCategorySelects(){
+  const optHtml = categories.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+  document.getElementById('f_category').innerHTML = optHtml;
+  document.getElementById('filterCategory').innerHTML = '<option value="">Sabhi Categories</option>' + optHtml;
+}
+
+/* ===================== BOOKS PAGE ===================== */
+function setBookView(v){
+  currentBookView=v;
+  document.getElementById('viewTableBtn').classList.toggle('active',v==='table');
+  document.getElementById('viewShelfBtn').classList.toggle('active',v==='shelf');
+  document.getElementById('bookTableView').style.display = v==='table'?'block':'none';
+  document.getElementById('bookShelfView').style.display = v==='shelf'?'grid':'none';
+  renderBooks();
+}
+function getFilteredBooks(){
+  const q=(document.getElementById('bookSearch').value||'').toLowerCase();
+  const cat=document.getElementById('filterCategory').value;
+  const status=document.getElementById('filterStatus').value;
+  const sort=document.getElementById('sortBooks').value;
+  let list = books.filter(b=>{
+    if(q && !(b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q)||b.sku.toLowerCase().includes(q)||b.isbn.toLowerCase().includes(q))) return false;
+    if(cat && b.category!==cat) return false;
+    if(status){
+      if(status==='published' && b.status!=='published') return false;
+      if(status==='draft' && b.status!=='draft') return false;
+      if(status==='lowstock' && stockState(b)!=='lowstock') return false;
+      if(status==='outofstock' && stockState(b)!=='outofstock') return false;
+    }
+    return true;
+  });
+  if(sort==='price-asc') list.sort((a,b)=>(a.salePrice||a.price)-(b.salePrice||b.price));
+  if(sort==='price-desc') list.sort((a,b)=>(b.salePrice||b.price)-(a.salePrice||a.price));
+  if(sort==='stock-asc') list.sort((a,b)=>a.stock-b.stock);
+  if(sort==='title') list.sort((a,b)=>a.title.localeCompare(b.title));
+  if(sort==='newest') list.sort((a,b)=>b.id-a.id);
+  return list;
+}
+function renderBooks(){
+  refreshCategorySelects();
+  const list = getFilteredBooks();
+  document.getElementById('booksSummary').textContent = `${list.length} kitabein — ${books.length} total`;
+  document.getElementById('paginationInfo').textContent = `1–${list.length} of ${list.length} showing`;
+
+  if(currentBookView==='table'){
+    const body=document.getElementById('booksTableBody');
+    if(list.length===0){
+      body.innerHTML = `<tr><td colspan="8"><div class="empty-state"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><h4>Koi kitab nahi mili</h4><p>Filter change karein ya nayi kitab add karein</p></div></td></tr>`;
+      return;
+    }
+    body.innerHTML = list.map(b=>{
+      const st=stockState(b);
+      const stMap={instock:['status-published','In Stock'],lowstock:['status-lowstock','Low Stock'],outofstock:['status-outofstock','Out of Stock']};
+      return `
+      <tr>
+        <td class="checkcol"><input type="checkbox" class="rowcheck" data-id="${b.id}"></td>
+        <td>
+          <div class="cell-book">
+            <div class="cover-thumb" style="${coverStyle(b)}">${b.coverImg?'':initials(b.title)}</div>
+            <div class="cell-book-info">
+              <div class="t">${b.title}</div>
+              <div class="a">${b.author} · ${b.format}</div>
+            </div>
+          </div>
+        </td>
+        <td class="mono">${b.sku}</td>
+        <td>${spineTag(b.category)}</td>
+        <td class="price">${b.salePrice?`<span class="old">${money(b.price)}</span>${money(b.salePrice)}`:money(b.price)}</td>
+        <td>${b.stock} <span class="text-muted" style="font-size:11px;">units</span></td>
+        <td>${b.status==='draft'?'<span class="status-pill status-draft"><span class="dot"></span>Draft</span>':`<span class="status-pill ${stMap[st][0]}"><span class="dot"></span>${stMap[st][1]}</span>`}</td>
+        <td>
+          <div class="row-actions">
+            <button class="icon-btn-sm" title="Edit" onclick="openBookForm('${b.id}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </button>
+            <button class="icon-btn-sm" title="Duplicate" onclick="duplicateBook('${b.id}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+            <button class="icon-btn-sm danger" title="Delete" onclick="quickDelete('${b.id}')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+            </button>
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+  } else {
+    const grid=document.getElementById('bookShelfView');
+    grid.innerHTML = list.map(b=>`
+      <div class="shelf-card">
+        <div class="shelf-cover" style="${coverStyle(b)}" onclick="openBookForm('${b.id}')">
+          <span class="fmt-tag">${b.format}</span>
+          ${b.coverImg?'':b.title}
+        </div>
+        <div class="shelf-body">
+          <div class="t">${b.title}</div>
+          <div class="a">${b.author}</div>
+          <div class="p">
+            <span class="price">${b.salePrice?money(b.salePrice):money(b.price)}</span>
+            <span class="stockmini">${b.stock} units</span>
+          </div>
+        </div>
+      </div>`).join('');
+  }
+}
+function spineTag(cat){
+  const c=catColor(cat);
+  return `<span class="spine-tag" style="background:${c}18;color:${c}"><span class="bar" style="background:${c}"></span>${cat}</span>`;
+}
+function toggleAllBooks(cb){ document.querySelectorAll('.rowcheck').forEach(c=>c.checked=cb.checked); }
+function duplicateBook(id){
+  const b=books.find(x=>String(x.id)===String(id)); if(!b) return;
+  const copy={...b, id:nextBookId++, title:b.title+' (Copy)', sku:b.sku+'-COPY', status:'draft'};
+  books.unshift(copy); renderBooks(); toast('Book duplicate ho gayi');
+}
+function quickDelete(id){
+  if(!confirm('Kya aap is kitab ko delete karna chahte hain?')) return;
+  books = books.filter(b=>b.id!==id);
+  renderBooks(); renderDashboard(); toast('Book delete ho gayi');
+}
+function exportBooks(){ toast('CSV export shuru ho gaya — '+books.length+' books'); }
+
+/* ===================== BOOK EDITOR MODAL ===================== */
+document.getElementById('editorTabs').addEventListener('click',e=>{
+  const btn=e.target.closest('.tab-btn'); if(!btn) return;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b===btn));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.toggle('active',p.dataset.tab===btn.dataset.tab));
+});
+
+function openBookForm(id){
+  refreshCategorySelects();
+  currentCoverData=null; currentGallery=[]; currentTags=[];
+  document.getElementById('deleteBookBtn').style.display = id ? 'inline-flex' : 'none';
+  document.getElementById('modalTitle').textContent = id ? 'Edit Book' : 'Add New Book';
+  document.querySelectorAll('.tab-btn')[0].click();
+
+  if(id){
+    const b=books.find(x=>String(x.id)===String(id));
+    document.getElementById('f_id').value=b.id;
+    document.getElementById('f_title').value=b.title;
+    document.getElementById('f_author').value=b.author;
+    document.getElementById('f_publisher').value=b.publisher||'';
+    document.getElementById('f_short_desc').value=b.shortDesc||'';
+    document.getElementById('f_desc').value=b.desc||'';
+    document.getElementById('f_category').value=b.category;
+    currentTags=[...(b.tags||[])];
+    document.getElementById('f_price').value=b.price;
+    document.getElementById('f_sale_price').value=b.salePrice||'';
+    document.getElementById('f_sale_from').value=b.saleFrom||'';
+    document.getElementById('f_sale_to').value=b.saleTo||'';
+    document.getElementById('f_cost_price').value=b.costPrice||'';
+    document.getElementById('f_tax_class').value=b.taxClass||'Standard';
+    document.getElementById('f_sku').value=b.sku;
+    document.getElementById('f_isbn').value=b.isbn;
+    document.getElementById('f_stock').value=b.stock;
+    document.getElementById('f_low_stock').value=b.lowStockThreshold;
+    document.getElementById('f_stock_status').value=b.stockStatus;
+    document.getElementById('f_backorders').value=b.backorders;
+    document.getElementById('f_manage_stock').checked=b.manageStock;
+    document.getElementById('f_sold_individually').checked=b.soldIndividually;
+    document.getElementById('f_weight').value=b.weight;
+    document.getElementById('f_length').value=b.length;
+    document.getElementById('f_width').value=b.width;
+    document.getElementById('f_height').value=b.height;
+    document.getElementById('f_shipping_class').value=b.shippingClass;
+    document.getElementById('f_format').value=b.format;
+    document.getElementById('f_language').value=b.language;
+    document.getElementById('f_edition').value=b.edition||'';
+    document.getElementById('f_pages').value=b.pages||'';
+    document.getElementById('f_pubdate').value=b.pubDate||'';
+    document.getElementById('f_age_group').value=b.ageGroup||'All Ages';
+    document.getElementById('f_slug').value=b.slug||'';
+    document.getElementById('f_meta_title').value=b.metaTitle||'';
+    document.getElementById('f_meta_desc').value=b.metaDesc||'';
+    document.getElementById('f_keyword').value=b.keyword||'';
+    document.getElementById('f_purchase_note').value=b.purchaseNote||'';
+    document.getElementById('f_menu_order').value=b.menuOrder||0;
+    document.getElementById('f_status').value=b.status;
+    document.getElementById('f_featured').checked=b.featured;
+    document.getElementById('f_reviews').checked=b.reviews;
+    document.getElementById('f_preview').checked=b.preview;
+    currentCoverData = b.coverImg;
+    currentGallery = [...(b.gallery||[])];
+  } else {
+    document.getElementById('bookForm').reset();
+    document.getElementById('f_id').value='';
+    document.getElementById('f_manage_stock').checked=true;
+    document.getElementById('f_reviews').checked=true;
+    document.getElementById('f_stock_status').value='instock';
+    document.getElementById('f_low_stock').value=5;
+    document.getElementById('f_tax_class').value='Zero Rate (Books exempt)';
+  }
+  renderCoverPreview();
+  renderGalleryStrip();
+  renderTagChips();
+  updateMarginPreview();
+  document.getElementById('modalOverlay').classList.add('active');
+}
+function closeBookForm(){ document.getElementById('modalOverlay').classList.remove('active'); }
+document.getElementById('modalOverlay').addEventListener('click',e=>{ if(e.target.id==='modalOverlay') closeBookForm(); });
+
+document.addEventListener('input',e=>{
+  if(['f_price','f_sale_price','f_cost_price'].includes(e.target.id)) updateMarginPreview();
+});
+function updateMarginPreview(){
+  const price=parseFloat(document.getElementById('f_price').value)||0;
+  const sale=parseFloat(document.getElementById('f_sale_price').value)||0;
+  const cost=parseFloat(document.getElementById('f_cost_price').value)||0;
+  const effective = sale>0?sale:price;
+  const el=document.getElementById('marginPreview');
+  if(!effective || !cost){ el.textContent='Profit margin: — (price aur cost price dono bharein)'; return; }
+  const profit=effective-cost;
+  const pct=((profit/effective)*100).toFixed(1);
+  el.textContent = `Sale price ${money(effective)} par profit: ${money(profit)} (${pct}% margin)`;
+}
+
+/* tags */
+const tagInputBox=document.getElementById('tagInputBox');
+tagInputBox.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){
     e.preventDefault();
-    const em = document.getElementById('loginEmail').value;
-    const pw = document.getElementById('loginPassword').value;
-    
-    if(em === 'admin@taleemihub.com' && pw === 'admin123') {
-        localStorage.setItem('study_admin_auth', 'true');
-        document.getElementById('loginScreen').style.display = 'none';
-    } else {
-        document.getElementById('loginError').style.display = 'block';
-    }
+    const v=tagInputBox.value.trim();
+    if(v && !currentTags.includes(v)){ currentTags.push(v); renderTagChips(); }
+    tagInputBox.value='';
+  }
+});
+function renderTagChips(){
+  const wrap=document.getElementById('tagChipInput');
+  wrap.querySelectorAll('.chip').forEach(c=>c.remove());
+  currentTags.forEach((t,i)=>{
+    const chip=document.createElement('span'); chip.className='chip';
+    chip.innerHTML=`${t}<button type="button" onclick="removeTag(${i})">✕</button>`;
+    wrap.insertBefore(chip, tagInputBox);
+  });
+}
+function removeTag(i){ currentTags.splice(i,1); renderTagChips(); }
+
+/* cover / gallery upload */
+function handleCoverUpload(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{ currentCoverData=ev.target.result; renderCoverPreview(); };
+  reader.readAsDataURL(file);
+}
+function renderCoverPreview(){
+  const wrap=document.getElementById('coverPreviewWrap');
+  if(currentCoverData){
+    wrap.innerHTML = `<div class="cover-preview" style="background-image:url(${currentCoverData})">
+      <button type="button" class="remove-cover" onclick="removeCover()">✕</button>
+    </div>`;
+  } else {
+    wrap.innerHTML = `<div class="upload-zone" id="coverUploadZone" onclick="document.getElementById('coverFileInput').click()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
+      <p>Cover upload karne ke liye click karein</p>
+    </div>`;
+  }
+}
+function removeCover(){ currentCoverData=null; document.getElementById('coverFileInput').value=''; renderCoverPreview(); }
+function handleGalleryUpload(e){
+  const files=Array.from(e.target.files);
+  files.forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{ currentGallery.push(ev.target.result); renderGalleryStrip(); };
+    reader.readAsDataURL(file);
+  });
+}
+function renderGalleryStrip(){
+  document.getElementById('galleryStrip').innerHTML = currentGallery.map((g,i)=>
+    `<div class="gallery-thumb" style="background-image:url(${g})" onclick="removeGalleryImg(${i})" title="Remove"></div>`).join('');
+}
+function removeGalleryImg(i){ currentGallery.splice(i,1); renderGalleryStrip(); }
+
+/* save / delete */
+function slugify(s){ return (s||'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+function saveBook(statusOverride){
+  const title=document.getElementById('f_title').value.trim();
+  const author=document.getElementById('f_author').value.trim();
+  if(!title || !author){ toast('Title aur Author zaroori hain'); document.querySelectorAll('.tab-btn')[0].click(); return; }
+
+  const id=document.getElementById('f_id').value;
+  const data={
+    title, author,
+    publisher:document.getElementById('f_publisher').value,
+    shortDesc:document.getElementById('f_short_desc').value,
+    desc:document.getElementById('f_desc').value,
+    category:document.getElementById('f_category').value,
+    tags:[...currentTags],
+    price:parseFloat(document.getElementById('f_price').value)||0,
+    salePrice:parseFloat(document.getElementById('f_sale_price').value)||0,
+    saleFrom:document.getElementById('f_sale_from').value,
+    saleTo:document.getElementById('f_sale_to').value,
+    costPrice:parseFloat(document.getElementById('f_cost_price').value)||0,
+    taxClass:document.getElementById('f_tax_class').value,
+    sku:document.getElementById('f_sku').value || ('BK-'+(1000+(id||nextBookId))),
+    isbn:document.getElementById('f_isbn').value,
+    stock:parseInt(document.getElementById('f_stock').value)||0,
+    lowStockThreshold:parseInt(document.getElementById('f_low_stock').value)||5,
+    stockStatus:document.getElementById('f_stock_status').value,
+    backorders:document.getElementById('f_backorders').value,
+    manageStock:document.getElementById('f_manage_stock').checked,
+    soldIndividually:document.getElementById('f_sold_individually').checked,
+    weight:parseFloat(document.getElementById('f_weight').value)||0,
+    length:parseFloat(document.getElementById('f_length').value)||0,
+    width:parseFloat(document.getElementById('f_width').value)||0,
+    height:parseFloat(document.getElementById('f_height').value)||0,
+    shippingClass:document.getElementById('f_shipping_class').value,
+    format:document.getElementById('f_format').value,
+    language:document.getElementById('f_language').value,
+    edition:document.getElementById('f_edition').value,
+    pages:parseInt(document.getElementById('f_pages').value)||0,
+    pubDate:document.getElementById('f_pubdate').value,
+    ageGroup:document.getElementById('f_age_group').value,
+    slug:document.getElementById('f_slug').value || slugify(title+'-'+author),
+    metaTitle:document.getElementById('f_meta_title').value || title,
+    metaDesc:document.getElementById('f_meta_desc').value,
+    keyword:document.getElementById('f_keyword').value,
+    purchaseNote:document.getElementById('f_purchase_note').value,
+    menuOrder:parseInt(document.getElementById('f_menu_order').value)||0,
+    status: statusOverride || document.getElementById('f_status').value,
+    featured:document.getElementById('f_featured').checked,
+    reviews:document.getElementById('f_reviews').checked,
+    preview:document.getElementById('f_preview').checked,
+    coverImg:currentCoverData,
+    gallery:[...currentGallery],
+  };
+
+  if(id){
+    const b=books.find(x=>x.id==id);
+    Object.assign(b,data);
+    toast('Book update ho gayi');
+  } else {
+    books.unshift({id:nextBookId++, coverColor: Object.values(CATEGORY_COLORS)[books.length%8], ...data});
+    toast(statusOverride==='draft' ? 'Draft save ho gayi' : 'Nayi book publish ho gayi');
+  }
+  closeBookForm();
+  renderBooks();
+  renderDashboard();
+  renderCategories();
+}
+function deleteCurrentBook(){
+  const id=document.getElementById('f_id').value;
+  if(!id) return;
+  if(!confirm('Kya aap is kitab ko delete karna chahte hain?')) return;
+  books=books.filter(b=>b.id!=id);
+  closeBookForm(); renderBooks(); renderDashboard();
+  toast('Book delete ho gayi');
 }
 
-function logoutAdmin() {
-    localStorage.removeItem('study_admin_auth');
-    window.location.reload();
+/* ===================== CATEGORIES ===================== */
+function renderCategories(){
+  const body=document.getElementById('categoriesBody');
+  body.innerHTML = categories.map(c=>{
+    const count=books.filter(b=>b.category===c.name).length;
+    const color=catColor(c.name);
+    return `<tr>
+      <td><div style="width:8px;height:34px;border-radius:3px;background:${color}"></div></td>
+      <td style="font-weight:600;color:var(--ink)">${c.name}</td>
+      <td class="text-muted">${c.desc||'—'}</td>
+      <td><span class="badge-count">${count} books</span></td>
+      <td>
+        <div class="row-actions" style="opacity:1;">
+          <button class="icon-btn-sm" onclick="renameCategory(${c.id})" title="Edit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </button>
+          <button class="icon-btn-sm danger" onclick="deleteCategory(${c.id})" title="Delete">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+function addCategoryPrompt(){
+  const name=prompt('Nayi category ka naam:'); if(!name) return;
+  const desc=prompt('Chhota description (optional):')||'';
+  categories.push({id:nextCatId++,name,desc});
+  if(!CATEGORY_COLORS[name]){ const palette=["#7C2D2D","#3F6B4E","#B8935F","#2A3346","#6B4C9A","#1F6F78","#8A5A2B","#4C6B8A"]; CATEGORY_COLORS[name]=palette[categories.length%palette.length]; }
+  renderCategories(); refreshCategorySelects(); toast('Category add ho gayi');
+}
+function renameCategory(id){
+  const c=categories.find(x=>String(x.id)===String(id)); if(!c) return;
+  const name=prompt('Category ka naya naam:',c.name); if(!name) return;
+  const oldName=c.name; c.name=name;
+  books.forEach(b=>{ if(b.category===oldName) b.category=name; });
+  if(CATEGORY_COLORS[oldName]){ CATEGORY_COLORS[name]=CATEGORY_COLORS[oldName]; }
+  renderCategories(); renderBooks(); refreshCategorySelects();
+}
+function deleteCategory(id){
+  const c=categories.find(x=>String(x.id)===String(id)); if(!c) return;
+  if(!confirm(`"${c.name}" delete karein? Is category ki books "Fiction" mein move ho jayengi.`)) return;
+  books.forEach(b=>{ if(b.category===c.name) b.category='Fiction'; });
+  categories=categories.filter(x=>x.id!==id);
+  renderCategories(); renderBooks(); refreshCategorySelects();
 }
 
+/* ===================== COUPONS ===================== */
+function renderCoupons(){
+  document.getElementById('couponsBody').innerHTML = coupons.map(c=>`
+    <tr>
+      <td class="mono" style="font-weight:600;">${c.code}</td>
+      <td>${c.type}</td>
+      <td>${c.value}</td>
+      <td>${c.used}x</td>
+      <td>${c.expiry}</td>
+      <td>${c.status==='active'?'<span class="status-pill status-published"><span class="dot"></span>Active</span>':'<span class="status-pill status-outofstock"><span class="dot"></span>Expired</span>'}</td>
+      <td><div class="row-actions" style="opacity:1;"><button class="icon-btn-sm danger" onclick="deleteCoupon('${c.code}')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      </button></div></td>
+    </tr>`).join('');
+}
+function addCouponPrompt(){
+  const code=prompt('Coupon code:'); if(!code) return;
+  const value=prompt('Discount value (e.g. 15% ya Rs 200):')||'10%';
+  coupons.unshift({code:code.toUpperCase(),type:value.includes('%')?'Percentage':'Fixed',value,used:0,expiry:'—',status:'active'});
+  renderCoupons(); toast('Coupon add ho gaya');
+}
+function deleteCoupon(code){ coupons=coupons.filter(c=>c.code!==code); renderCoupons(); }
+
+/* ===================== ORDERS ===================== */
+function renderOrders(){
+  const status=document.getElementById('orderStatusFilter').value;
+  const list = status ? orders.filter(o=>o.status===status) : orders;
+  document.getElementById('ordersSummary').textContent = `${list.length} orders`;
+  document.getElementById('ordersBody').innerHTML = list.map(o=>`
+    <tr>
+      <td class="mono" style="font-weight:600;">${o.id}</td>
+      <td>${o.customer}</td>
+      <td>${o.date}</td>
+      <td>${o.items} item(s)</td>
+      <td>${o.payment}</td>
+      <td class="price">${money(o.total)}</td>
+      <td>${statusPill(o.status)}</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="viewOrder('${o.id}')">Edit</button>
+<button class="btn btn-ghost btn-sm" onclick="printOrder('${o.id}')" title="Print Invoice">
+<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+</button></td>
+    </tr>`).join('');
+}
+
+/* ===================== CUSTOMERS ===================== */
+function renderCustomers(){
+  document.getElementById('customersBody').innerHTML = customers.map(c=>`
+    <tr>
+      <td style="display:flex;align-items:center;gap:10px;">
+        <div class="avatar" style="width:30px;height:30px;font-size:11px;">${initials(c.name)}</div>${c.name}
+      </td>
+      <td class="text-muted">${c.email}</td>
+      <td>${c.orders}</td>
+      <td class="price">${money(c.spent)}</td>
+      <td class="text-muted">${c.joined}</td>
+    </tr>`).join('');
+}
+
+/* ===================== REPORTS ===================== */
+function renderReports(){
+  const byCat={};
+  books.forEach(b=>{ byCat[b.category]=(byCat[b.category]||0)+ (b.price*(20-b.stock%20)); });
+  const max=Math.max(...Object.values(byCat),1);
+  document.getElementById('reportByCategory').innerHTML = Object.entries(byCat).map(([cat,val])=>{
+    const pct=Math.max(6,(val/max)*100); const color=catColor(cat);
+    return `<div style="margin-bottom:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:5px;"><span style="font-weight:600;color:var(--ink)">${cat}</span><span class="text-muted">${money(val)}</span></div>
+      <div style="height:8px;background:var(--paper);border-radius:6px;overflow:hidden;"><div style="height:100%;width:${pct}%;background:${color};border-radius:6px;"></div></div>
+    </div>`;
+  }).join('');
+
+  const totalUnits=books.reduce((s,b)=>s+b.stock,0);
+  const outCount=books.filter(b=>stockState(b)==='outofstock').length;
+  const lowCount=books.filter(b=>stockState(b)==='lowstock').length;
+  const inventoryValue=books.reduce((s,b)=>s+b.stock*(b.costPrice||0),0);
+  document.getElementById('reportInventory').innerHTML = `
+    <div class="switch-row"><div class="lbl">Total Units in Stock</div><div style="font-weight:700;font-family:var(--font-mono)">${totalUnits}</div></div>
+    <div class="switch-row"><div class="lbl">Out of Stock Titles</div><div style="font-weight:700;color:var(--danger)">${outCount}</div></div>
+    <div class="switch-row"><div class="lbl">Low Stock Titles</div><div style="font-weight:700;color:var(--warn)">${lowCount}</div></div>
+    <div class="switch-row"><div class="lbl">Inventory Value (Cost)</div><div style="font-weight:700;font-family:var(--font-mono)">${money(inventoryValue)}</div></div>
+  `;
+}
+
+/* ===================== GLOBAL SEARCH ===================== */
+document.getElementById('globalSearch').addEventListener('input',e=>{
+  const v=e.target.value;
+  if(v.length>1){ switchPage('books'); document.getElementById('bookSearch').value=v; renderBooks(); }
+});
+
+/* ===================== INIT ===================== */
+refreshCategorySelects();
+renderDashboard();
+renderBooks();
+renderCategories();
+renderCoupons();
+renderOrders();
+renderCustomers();
+renderReports();
+
+// --- CUSTOM FIREBASE LOGIC ---
 document.addEventListener('appDataLoaded', () => {
     books = window.AppData.products.map(p => ({
         id: p.id,
@@ -1106,12 +1645,28 @@ document.addEventListener('appDataLoaded', () => {
        total: o.total || 0,
        payment: o.paymentMethod || 'COD',
        status: o.status === 0 ? 'pending' : (o.status === 1 ? 'completed' : 'cancelled'),
+       delivery: o.delivery || 0,
+       taxPct: o.taxPct || 0,
+       taxVal: o.taxVal || 0,
+       commission: o.commission || 0,
        _original: o
     }));
+
+    customers = [];
+    let custMap = {};
+    window.AppData.orders.forEach(o => {
+        if(o.customer) {
+            if(!custMap[o.customer]) custMap[o.customer] = {name: o.customer, email: o.email || 'N/A', orders: 0, spent: 0, joined: 'N/A'};
+            custMap[o.customer].orders++;
+            custMap[o.customer].spent += (Number(o.total) || 0);
+        }
+    });
+    customers = Object.values(custMap);
 
     renderDashboard();
     renderBooks();
     renderOrders();
+    renderCustomers();
 });
 
 async function saveBook(statusOverride) {
@@ -1120,7 +1675,7 @@ async function saveBook(statusOverride) {
     
     const id = document.getElementById('f_id').value || 'BK-' + Date.now();
     const data = {
-        id: id,
+        id: String(id),
         title: title,
         category: document.getElementById('f_category').value,
         price: parseFloat(document.getElementById('f_price').value) || 0,
@@ -1137,6 +1692,210 @@ async function saveBook(statusOverride) {
         alert("Error saving: " + e.message);
     }
 }
+
+// 5. Order Modal Logic (View, Delete, Edit, Shipping, Tax, Print)
+let currentEditingOrder = null;
+
+function viewOrder(id) {
+    const o = orders.find(x => String(x.id) === String(id));
+    if(!o || !o._original) return alert("Order data missing");
+    currentEditingOrder = JSON.parse(JSON.stringify(o._original)); 
+    if(!currentEditingOrder.items) currentEditingOrder.items = [];
+    
+    document.getElementById('orderModalTitle').textContent = `Order #${o.id} - ${o.date}`;
+    document.getElementById('o_status').value = currentEditingOrder.status === 0 ? 'pending' : (currentEditingOrder.status === 1 ? 'completed' : 'cancelled');
+    document.getElementById('o_payment').value = currentEditingOrder.paymentMethod || 'COD';
+    document.getElementById('o_delivery').value = currentEditingOrder.delivery || 0;
+    document.getElementById('o_tax_pct').value = currentEditingOrder.taxPct || 0;
+    
+    const custForm = document.getElementById('orderCustomerForm');
+    custForm.innerHTML = `
+        <div class="field full"><label>Name</label><input type="text" id="oc_name" value="${currentEditingOrder.customer || ''}"></div>
+        <div class="field"><label>Phone</label><input type="text" id="oc_phone" value="${currentEditingOrder.phone || ''}"></div>
+        <div class="field"><label>City</label><input type="text" id="oc_city" value="${currentEditingOrder.city || ''}"></div>
+        <div class="field full"><label>Address</label><textarea id="oc_address" style="min-height:50px">${currentEditingOrder.address || ''}</textarea></div>
+    `;
+    
+    renderOrderItems();
+    document.getElementById('orderModalOverlay').classList.add('active');
+}
+
+function closeOrderModal() {
+    document.getElementById('orderModalOverlay').classList.remove('active');
+}
+
+function renderOrderItems() {
+    const tbody = document.getElementById('o_items');
+    tbody.innerHTML = currentEditingOrder.items.map((i, idx) => `
+        <tr>
+            <td><input type="text" value="${i.title}" onchange="updateOrderItem(${idx}, 'title', this.value)" style="width:100%; padding:4px;"></td>
+            <td class="price"><input type="number" value="${i.price}" onchange="updateOrderItem(${idx}, 'price', this.value)" style="width:60px; padding:4px;"></td>
+            <td><input type="number" value="${i.qty}" onchange="updateOrderItem(${idx}, 'qty', this.value)" style="width:50px; padding:4px;"></td>
+            <td class="price">${money(Number(i.price)*Number(i.qty))}</td>
+            <td><button class="icon-btn-sm danger" onclick="removeOrderItem(${idx})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button></td>
+        </tr>
+    `).join('');
+    recalcOrderTotal();
+}
+
+function updateOrderItem(idx, field, val) {
+    if(field==='price' || field==='qty') val = Number(val);
+    currentEditingOrder.items[idx][field] = val;
+    renderOrderItems();
+}
+function removeOrderItem(idx) {
+    currentEditingOrder.items.splice(idx, 1);
+    renderOrderItems();
+}
+function addOrderItem() {
+    currentEditingOrder.items.push({ id: '', title: 'New Item', price: 0, qty: 1 });
+    renderOrderItems();
+}
+
+function recalcOrderTotal() {
+    let subtotal = 0;
+    currentEditingOrder.items.forEach(i => { subtotal += (Number(i.price)*Number(i.qty)); });
+    
+    const delivery = Number(document.getElementById('o_delivery').value) || 0;
+    const taxPct = Number(document.getElementById('o_tax_pct').value) || 0;
+    const taxVal = subtotal * (taxPct / 100);
+    const comm = subtotal * 0.10;
+    
+    document.getElementById('o_subtotal').textContent = money(subtotal);
+    document.getElementById('o_tax_val').textContent = `(Rs ${taxVal.toFixed(0)})`;
+    document.getElementById('o_commission').textContent = money(comm);
+    
+    const total = subtotal + delivery + taxVal + comm;
+    document.getElementById('o_total').textContent = money(total);
+    
+    currentEditingOrder.delivery = delivery;
+    currentEditingOrder.taxPct = taxPct;
+    currentEditingOrder.taxVal = taxVal;
+    currentEditingOrder.commission = comm;
+    currentEditingOrder.total = total;
+}
+
+async function saveOrderEdits() {
+    if(!currentEditingOrder) return;
+    currentEditingOrder.customer = document.getElementById('oc_name').value;
+    currentEditingOrder.phone = document.getElementById('oc_phone').value;
+    currentEditingOrder.city = document.getElementById('oc_city').value;
+    currentEditingOrder.address = document.getElementById('oc_address').value;
+    
+    const st = document.getElementById('o_status').value;
+    currentEditingOrder.status = st === 'pending' ? 0 : (st === 'completed' ? 1 : 2);
+    currentEditingOrder.paymentMethod = document.getElementById('o_payment').value;
+    
+    recalcOrderTotal();
+    
+    try {
+        await db.collection("orders").doc(String(currentEditingOrder.id)).set(currentEditingOrder, {merge: true});
+        toast("Order updated successfully!");
+        closeOrderModal();
+    } catch(e) {
+        alert("Error saving order: " + e.message);
+    }
+}
+
+async function deleteOrder() {
+    if(!currentEditingOrder) return;
+    if(!confirm('Delete this order completely?')) return;
+    try {
+        await db.collection("orders").doc(String(currentEditingOrder.id)).delete();
+        toast("Order deleted!");
+        closeOrderModal();
+    } catch(e) {
+        alert("Error deleting order: " + e.message);
+    }
+}
+
+function printOrder(id) {
+    const o = orders.find(x => String(x.id) === String(id));
+    if(!o || !o._original) return alert("Order not found");
+    const ord = o._original;
+    
+    let itemsHtml = '';
+    let subtotal = 0;
+    if(ord.items && ord.items.length) {
+        ord.items.forEach(item => {
+            const linetotal = Number(item.price) * Number(item.qty);
+            subtotal += linetotal;
+            itemsHtml += `
+            <tr>
+                <td style="padding:10px; border-bottom:1px solid #ddd;">${item.title}</td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:center;">${item.qty}</td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:right;">Rs ${Number(item.price).toLocaleString()}</td>
+                <td style="padding:10px; border-bottom:1px solid #ddd; text-align:right;">Rs ${linetotal.toLocaleString()}</td>
+            </tr>`;
+        });
+    }
+    
+    const delivery = Number(ord.delivery) || 0;
+    const taxVal = Number(ord.taxVal) || 0;
+    const total = Number(ord.total) || 0;
+    
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+    <html>
+    <head>
+        <title>Invoice - #${ord.id}</title>
+        <style>
+            body { font-family: sans-serif; color: #333; padding: 40px; }
+            .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+            table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 20px;}
+            th { background: #f8f8f8; padding: 10px; border-bottom: 2px solid #ddd; }
+        </style>
+    </head>
+    <body>
+        <div class="invoice-box">
+            <h2>Study Pack Invoice</h2>
+            <p>Order ID: #${ord.id}<br>Date: ${ord.date ? new Date(ord.date).toLocaleDateString() : 'N/A'}</p>
+            <p><strong>Bill To:</strong><br>${ord.customer || ''}<br>${ord.phone || ''}<br>${ord.address || ''}</p>
+            <table>
+                <thead><tr><th>Item</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Price</th><th style="text-align:right;">Total</th></tr></thead>
+                <tbody>${itemsHtml}</tbody>
+            </table>
+            <div style="float: right; margin-top: 20px; text-align:right;">
+                <p>Subtotal: Rs ${subtotal.toLocaleString()}</p>
+                <p>Delivery: Rs ${delivery.toLocaleString()}</p>
+                <p>Tax: Rs ${taxVal.toLocaleString()}</p>
+                <h3>Total: Rs ${total.toLocaleString()}</h3>
+            </div>
+        </div>
+        <script>window.onload = function() { window.print(); }</script>
+    </body>
+    </html>
+    `);
+    printWindow.document.close();
+}
+
+// 6. Login logic
+function checkLogin() {
+    if(localStorage.getItem('study_admin_auth') === 'true') {
+        document.getElementById('loginScreen').style.display = 'none';
+    } else {
+        document.getElementById('loginScreen').style.display = 'flex';
+    }
+}
+checkLogin();
+
+function handleLogin(e) {
+    e.preventDefault();
+    const em = document.getElementById('loginEmail').value;
+    const pw = document.getElementById('loginPassword').value;
+    if(em === 'admin@taleemihub.com' && pw === 'admin123') {
+        localStorage.setItem('study_admin_auth', 'true');
+        document.getElementById('loginScreen').style.display = 'none';
+    } else {
+        document.getElementById('loginError').style.display = 'block';
+    }
+}
+
+function logoutAdmin() {
+    localStorage.removeItem('study_admin_auth');
+    window.location.reload();
+}
+
 </script>
 </body>
 </html>
