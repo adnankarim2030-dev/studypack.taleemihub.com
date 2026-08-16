@@ -348,7 +348,14 @@ th.checkcol,td.checkcol{width:34px;}
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<script src="../assets/js/scraped-books.js"></script>
+<script src="../assets/js/scraped-stationery.js"></script>
+<script src="../assets/js/scraped-toys.js"></script>
+<script src="../assets/js/scraped-courses.js"></script>
+<script src="../assets/js/scraped-afaq.js"></script>
 <script src="js/firebase.js"></script>
+
 
 </head>
 <body>
@@ -1625,8 +1632,8 @@ renderCustomers();
 renderReports();
 
 // --- CUSTOM FIREBASE LOGIC ---
-document.addEventListener('appDataLoaded', () => {
-    books = window.AppData.products.map(p => ({
+  document.addEventListener('appDataLoaded', () => {
+    let fbBooks = window.AppData.products.map(p => ({
         id: p.id,
         sku: p.id,
         title: p.title || 'Untitled',
@@ -1640,6 +1647,33 @@ document.addEventListener('appDataLoaded', () => {
         author: p.author || p.category || 'Study Pack',
         format: 'Paperback'
     }));
+    
+    let scraped = [];
+    if (typeof SCRAPED_BOOKS !== 'undefined') scraped.push(...SCRAPED_BOOKS);
+    if (typeof SCRAPED_STATIONERY !== 'undefined') scraped.push(...SCRAPED_STATIONERY);
+    if (typeof SCRAPED_TOYS !== 'undefined') scraped.push(...SCRAPED_TOYS);
+    if (typeof SCRAPED_COURSES !== 'undefined') scraped.push(...SCRAPED_COURSES);
+    if (typeof SCRAPED_AFAQ !== 'undefined') scraped.push(...SCRAPED_AFAQ);
+
+    let mappedScraped = scraped.map(p => ({
+      id: p.id,
+      sku: p.id,
+      title: p.title || 'Untitled',
+      category: p.category || (String(p.id).includes('stat_')?'Stationery':(String(p.id).includes('toy')?'Toys':'Books')),
+      price: Number(p.price) || 0,
+      costPrice: 0,
+      salePrice: 0,
+      stock: p.stock === false ? 0 : 10,
+      status: 'published',
+      coverImg: p.image || p.img || null,
+      author: p.author || 'Study Pack',
+      format: 'Paperback'
+    }));
+
+    let fbIds = fbBooks.map(b => String(b.id));
+    let uniqueScraped = mappedScraped.filter(s => !fbIds.includes(String(s.id)));
+
+    books = [...fbBooks, ...uniqueScraped];
     
     orders = window.AppData.orders.map(o => ({
        id: o.id,
