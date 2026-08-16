@@ -311,18 +311,55 @@
             </section>
             
             <section id="customers" class="view-section">
-                <h1>Customer CRM</h1>
-                <p>Customer profiles and lifetime value metrics (Phase 3).</p>
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem;">Customers Directory</h2>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Total Orders</th>
+                                <th>Total Spent</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTableBody"></tbody>
+                    </table>
+                </div>
             </section>
             
             <section id="inventory" class="view-section">
-                <h1>Inventory Dashboard</h1>
-                <p>Stock alerts and inventory value tracking (Phase 2).</p>
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem;">Inventory Status</h2>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Stock Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody"></tbody>
+                    </table>
+                </div>
             </section>
 
             <section id="financials" class="view-section">
-                <h1>Financial Dashboard</h1>
-                <p>Revenue, expenses, and net profit tracking (Phase 3).</p>
+                <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:1.5rem;">Financial Overview</h2>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:2rem;">
+                    <div class="stat-card glass">
+                        <div class="stat-title">Total Revenue</div>
+                        <div class="stat-value" id="finTotalRevenue">PKR 0</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Estimated Profit</div>
+                        <div class="stat-value" style="color:var(--success);" id="finTotalProfit">PKR 0</div>
+                    </div>
+                    <div class="stat-card glass">
+                        <div class="stat-title">Avg Order Value</div>
+                        <div class="stat-value" id="finAov">PKR 0</div>
+                    </div>
+                </div>
             </section>
 
             <section id="reports" class="view-section">
