@@ -1882,8 +1882,8 @@ checkLogin();
 
 function handleLogin(e) {
     e.preventDefault();
-    const em = document.getElementById('loginEmail').value;
-    const pw = document.getElementById('loginPassword').value;
+    const em = document.getElementById('loginEmail').value.trim();
+    const pw = document.getElementById('loginPassword').value.trim();
     if(em === 'admin@taleemihub.com' && pw === 'admin123') {
         localStorage.setItem('study_admin_auth', 'true');
         document.getElementById('loginScreen').style.display = 'none';
