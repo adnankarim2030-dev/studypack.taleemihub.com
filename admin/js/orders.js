@@ -257,3 +257,49 @@ document.addEventListener('appDataLoaded', (e) => {
         renderOrders();
     }
 });
+
+
+window.toggleOrderEdit = function() {
+    const info = document.getElementById('modalCustomerInfo');
+    const edit = document.getElementById('modalCustomerEdit');
+    if(info.style.display === 'none') {
+        info.style.display = 'block';
+        edit.style.display = 'none';
+    } else {
+        info.style.display = 'none';
+        edit.style.display = 'flex';
+        const id = document.getElementById('modalOrderId').textContent.replace('#', '');
+        const o = window.AppData.orders.find(x => String(x.id) === String(id));
+        if(o) {
+            document.getElementById('editOrderCustName').value = o.customer || '';
+            document.getElementById('editOrderCustPhone').value = o.phone || '';
+            document.getElementById('editOrderCustAddress').value = o.address || '';
+        }
+    }
+}
+
+window.saveOrderEdits = async function() {
+    const id = document.getElementById('modalOrderId').textContent.replace('#', '');
+    const name = document.getElementById('editOrderCustName').value;
+    const phone = document.getElementById('editOrderCustPhone').value;
+    const address = document.getElementById('editOrderCustAddress').value;
+    
+    try {
+        await db.collection("orders").doc(id).update({
+            customer: name,
+            phone: phone,
+            address: address
+        });
+        alert('Order details updated!');
+        toggleOrderEdit();
+        // The modal text will be refreshed next time it's opened, 
+        // or we can refresh it right away.
+        document.getElementById('modalCustomerInfo').innerHTML = `
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Phone:</strong> ${phone}</p>
+            <p><strong>Address:</strong> ${address}</p>
+        `;
+    } catch(e) {
+        alert("Error saving edits: " + e.message);
+    }
+}

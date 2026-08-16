@@ -268,7 +268,7 @@
                 </div>
 
                 <!-- Order Details Modal -->
-                <div id="orderModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999; align-items:center; justify-content:center;">
+                <div id="orderModal" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:999; align-items:center; justify-content:center; padding:1rem; box-sizing:border-box;">
                     <div class="modal-content" style="padding:2rem; width:90%; max-width:800px; max-height:90vh; overflow-y:auto; position:relative;">
                         <button onclick="closeOrderModal()" style="position:absolute; right:1.5rem; top:1.5rem; background:none; border:none; color:var(--text-secondary); cursor:pointer;"><i data-lucide="x"></i></button>
                         <h2 style="margin-bottom:0.5rem; font-weight:700;">Order Details</h2>
@@ -277,7 +277,14 @@
                         <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
                             <div>
                                 <h3 style="font-size:1rem; margin-bottom:1rem; border-bottom:1px solid var(--border-color); padding-bottom:0.5rem;">Customer Info</h3>
-                                <div id="modalCustomerInfo" style="font-size:0.875rem; line-height:1.6;"></div>
+                                <div id="modalCustomerInfo" style="font-size:0.875rem; line-height:1.6; display:block;"></div>
+<div id="modalCustomerEdit" style="display:none; font-size:0.875rem; flex-direction:column; gap:0.5rem;">
+    <input type="text" id="editOrderCustName" placeholder="Name" style="width:100%; padding:0.5rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:4px;">
+    <input type="text" id="editOrderCustPhone" placeholder="Phone" style="width:100%; padding:0.5rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:4px;">
+    <input type="text" id="editOrderCustAddress" placeholder="Address" style="width:100%; padding:0.5rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:4px;">
+    <button class="btn btn-primary" onclick="saveOrderEdits()" style="padding:0.5rem; margin-top:0.5rem;">Save Changes</button>
+</div>
+<button id="btnEditOrderCust" class="icon-btn" onclick="toggleOrderEdit()" style="margin-top:0.5rem; font-size:0.8rem; color:var(--primary);"><i data-lucide="edit-3" style="width:14px; height:14px;"></i> Edit Details</button>
                             </div>
                         </div>
                         
@@ -398,23 +405,30 @@
         
         <form id="productForm" style="display:flex; flex-direction:column; gap:1.25rem;">
             <input type="hidden" id="prodId">
+            
             <div class="form-group">
                 <label style="display:block; margin-bottom:0.5rem;">Title *</label>
-                <input type="text" id="prodTitle" required style="width:100%;">
+                <input type="text" id="prodTitle" required>
             </div>
-            <div style="display:flex; gap:1.5rem;">
+            <div style="display:flex; gap:1rem; margin-bottom:1rem;">
                 <div class="form-group" style="flex:1;">
-                    <label style="display:block; margin-bottom:0.5rem;">Price *</label>
-                    <input type="number" id="prodPrice" required style="width:100%;">
+                    <label style="display:block; margin-bottom:0.5rem;">Purchase Price</label>
+                    <input type="number" id="prodPurchasePrice" style="width:100%;" oninput="calculateMargin()">
+                </div>
+                <div class="form-group" style="flex:1;">
+                    <label style="display:block; margin-bottom:0.5rem;">Sale Price *</label>
+                    <input type="number" id="prodPrice" required style="width:100%;" oninput="calculateMargin()">
                 </div>
                 <div class="form-group" style="flex:1;">
                     <label style="display:block; margin-bottom:0.5rem;">Discount Price</label>
                     <input type="number" id="prodDiscPrice" style="width:100%;">
                 </div>
             </div>
-            
-            <!-- Book Specifics -->
-            <div style="display:flex; gap:1.5rem;">
+            <div style="margin-bottom:1rem; color:var(--success); font-weight:bold; font-size:0.9rem;" id="marginDisplay">
+                Profit Margin: 0% (Rs. 0)
+            </div>
+
+            <div style="display:flex; gap:1rem; margin-bottom:1rem;">
                 <div class="form-group" style="flex:1;">
                     <label style="display:block; margin-bottom:0.5rem;">Province</label>
                     <select id="prodProvince" style="width:100%;">
@@ -465,6 +479,9 @@
 <script src="js/dashboard.js"></script>
 <script src="js/products.js"></script>
 <script src="js/orders.js"></script>
+<script src="js/customers.js"></script>
+<script src="js/inventory.js"></script>
+<script src="js/financials.js"></script>
 <script src="js/app.js"></script>
 
 </body>

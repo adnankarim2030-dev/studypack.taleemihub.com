@@ -89,6 +89,8 @@ function openProductModal(prodId = null) {
             document.getElementById('prodId').value = p.id;
             document.getElementById('prodTitle').value = p.title || '';
             document.getElementById('prodPrice').value = p.price || '';
+            document.getElementById('prodPurchasePrice').value = p.purchase_price || '';
+            calculateMargin();
             document.getElementById('prodDiscPrice').value = p.d_price || '';
             document.getElementById('prodProvince').value = p.province || '';
             document.getElementById('prodClass').value = p.cls || '';
@@ -174,6 +176,7 @@ document.getElementById('productForm')?.addEventListener('submit', async (e) => 
             id: id.toString(),
             title: document.getElementById('prodTitle').value,
             price: Number(document.getElementById('prodPrice').value),
+            purchase_price: Number(document.getElementById('prodPurchasePrice').value) || 0,
             d_price: document.getElementById('prodDiscPrice').value ? Number(document.getElementById('prodDiscPrice').value) : null,
             province: document.getElementById('prodProvince').value,
             cls: document.getElementById('prodClass').value,
@@ -210,3 +213,20 @@ async function deleteProduct(id) {
 document.querySelector('.nav-item[data-view="products"]')?.addEventListener('click', () => {
     setTimeout(renderProducts, 100);
 });
+
+
+function calculateMargin() {
+    const p = parseFloat(document.getElementById('prodPurchasePrice').value) || 0;
+    const s = parseFloat(document.getElementById('prodPrice').value) || 0;
+    const display = document.getElementById('marginDisplay');
+    if(s > 0 && p > 0) {
+        const profit = s - p;
+        const margin = ((profit / s) * 100).toFixed(1);
+        display.textContent = `Profit Margin: ${margin}% (Rs. ${profit})`;
+        display.style.color = profit >= 0 ? 'var(--success)' : 'var(--danger)';
+    } else {
+        display.textContent = 'Profit Margin: 0% (Rs. 0)';
+        display.style.color = 'var(--text-muted)';
+    }
+}
+window.calculateMargin = calculateMargin;
