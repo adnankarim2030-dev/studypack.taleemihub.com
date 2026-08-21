@@ -13,6 +13,8 @@ if (!firebase.apps.length) {
 }
 const db = firebase.firestore();
 const storage = firebase.storage();
+window.db = db;
+window.storage = storage;
 
 // Global App State
 window.AppData = {
@@ -29,17 +31,21 @@ window.AppData = {
 // Listeners
 function initFirebaseListeners() {
     db.collection("coupons").onSnapshot(snapshot => {
-        window.AppData.coupons = snapshot.docs.map(doc => doc.data());
+        window.AppData.coupons = snapshot.docs.map(doc => { let d = doc.data(); d.id = doc.id; return d; });
     });
 
     db.collection("products").onSnapshot(snapshot => {
-        window.AppData.products = snapshot.docs.map(doc => doc.data());
+        window.AppData.products = snapshot.docs.map(doc => { let d = doc.data(); d.id = doc.id; return d; });
         window.AppData.loaded.products = true;
         document.dispatchEvent(new CustomEvent('appDataLoaded', { detail: 'products' }));
     });
 
     db.collection("orders").onSnapshot(snapshot => {
-        const orders = snapshot.docs.map(doc => doc.data());
+        const orders = snapshot.docs.map(doc => {
+            let d = doc.data();
+            d.id = doc.id;
+            return d;
+        });
         orders.sort((a,b) => b.date - a.date);
         window.AppData.orders = orders;
         

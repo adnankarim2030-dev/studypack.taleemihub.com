@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/global.css?v=6">
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <meta property="og:title" content="Checkout — Study Pack Store">
 <meta property="og:description" content="Study Pack Store is Pakistan's premium online bookstore for genuine school, college and university textbooks, eBooks and exam-prep guides with nationwide delivery.">
@@ -179,7 +181,7 @@
         <div class="sum-row"><span>Subtotal</span><span id="coSub">Rs 0</span></div>
         <div class="sum-row"><span>Delivery</span><span id="coShip">Rs 0</span></div>
         <div class="sum-row total"><span>Total</span><span id="coTotal">Rs 0</span></div>
-        <button type="submit" form="checkoutForm" class="btn-checkout">Place Order</button>
+        <button type="submit" form="checkoutForm" class="btn-checkout" id="placeOrderBtn">Place Order</button>
         <div class="hero-badges" style="margin-top:18px; justify-content:center;">
           <div class="mini-badge" style="color:var(--muted);"><span class="ic" style="background:rgba(21,101,192,.08);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" width="15" height="15"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z"/></svg></span> Secure &amp; Encrypted</div>
         </div>
@@ -326,15 +328,82 @@ document.querySelectorAll('.pay-opt').forEach(opt=>{
   });
 });
 
-function placeOrder(e){
+async function placeOrder(e){
   e.preventDefault();
   if(cart.length===0){ showToast('Your cart is empty'); return false; }
-  const orderId = 'EB-' + Math.floor(100000 + Math.random()*899999);
-  document.getElementById('orderIdDisplay').textContent = 'Order #' + orderId;
-  document.getElementById('successOverlay').classList.add('show');
-  cart = [];
-  saveCart();
-  renderCart();
+
+  const btn = document.getElementById('placeOrderBtn');
+  const originalBtnText = btn ? btn.textContent : 'Place Order';
+  if(btn){ btn.disabled = true; btn.textContent = 'Placing Order...'; }
+
+  try {
+    if (typeof firebase === 'undefined' || !firebase.apps || !firebase.apps.length) {
+      throw new Error('Could not connect to the server. Please check your internet connection and try again.');
+    }
+    const db = firebase.firestore();
+
+    const name = document.getElementById('coName').value.trim();
+    const phone = document.getElementById('coPhone').value.trim();
+    const email = document.getElementById('coEmail').value.trim();
+    const address = document.getElementById('coAddress').value.trim();
+    const city = document.getElementById('coCity').value.trim();
+    const province = document.getElementById('coProvince').value;
+    const notes = document.getElementById('coNotes').value.trim();
+    const payMethod = (document.querySelector('input[name="payMethod"]:checked') || {}).value || 'cod';
+
+    if(!name || !phone || !email || !address || !city || !province){
+      showToast('Please fill all required fields');
+      return false;
+    }
+
+    const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
+    const shipping = sub>0 ? (sub>2000?0:150) : 0;
+    const total = sub + shipping;
+
+    const orderId = 'EB-' + Math.floor(100000 + Math.random()*899999);
+
+    const orderItems = cart.map(c => ({
+      id: String(c.id),
+      title: c.title || 'Product',
+      price: Number(c.price) || 0,
+      qty: Number(c.qty) || 1,
+      img: c.img || ''
+    }));
+
+    const orderData = {
+      id: orderId,
+      customer: name,
+      phone: phone,
+      email: email,
+      address: address,
+      city: city,
+      province: province,
+      notes: notes,
+      paymentMethod: payMethod,
+      items: orderItems,
+      subtotal: sub,
+      shipping: shipping,
+      total: total,
+      status: 'Pending',
+      date: Date.now(),
+      source: 'website'
+    };
+
+    // Write the order to Firestore so it shows up in the admin dashboard.
+    // doc(orderId) keeps the human-readable order number as the document ID.
+    await db.collection('orders').doc(orderId).set(orderData);
+
+    document.getElementById('orderIdDisplay').textContent = 'Order #' + orderId;
+    document.getElementById('successOverlay').classList.add('show');
+    cart = [];
+    saveCart();
+    renderCart();
+  } catch(err) {
+    console.error('Order placement failed:', err);
+    showToast('Order place nahi ho saka, dobara koshish karein.');
+  } finally {
+    if(btn){ btn.disabled = false; btn.textContent = originalBtnText; }
+  }
   return false;
 }
 

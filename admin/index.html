@@ -47,7 +47,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 button{font-family:inherit;cursor:pointer;}
-input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);}
+input,select,textarea{font-family:inherit;font-size:14px;color:var(--text);background:var(--paper);border:1px solid var(--border);border-radius:4px;padding:4px 8px;}
 ::selection{background:var(--gold);color:#fff;}
 
 /* ---------- Layout ---------- */
@@ -174,7 +174,7 @@ thead th{
   font-weight:700;padding:11px 14px;border-bottom:1px solid var(--border);white-space:nowrap;
 }
 tbody td{padding:12px 14px;border-bottom:1px solid var(--border-soft);vertical-align:middle;}
-tbody tr:hover{background:#FBF9F4;}
+tbody tr:hover{background:rgba(255,255,255,0.05);}
 tbody tr:last-child td{border-bottom:none;}
 .cell-book{display:flex;align-items:center;gap:11px;}
 .cover-thumb{
@@ -184,51 +184,66 @@ tbody tr:last-child td{border-bottom:none;}
 }
 .cell-book-info .t{font-weight:600;color:var(--ink);}
 .cell-book-info .a{font-size:12px;color:var(--text-muted);}
-.mono{font-family:var(--font-mono);font-size:12.5px;color:var(--text-muted);}
-.price{font-family:var(--font-mono);font-weight:600;}
-.price .old{text-decoration:line-through;color:var(--text-faint);font-weight:400;margin-right:6px;font-size:12px;}
-.spine-tag{
-  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 9px 3px 7px;border-radius:20px;
-}
-.spine-tag .bar{width:5px;height:12px;border-radius:2px;flex-shrink:0;}
-.status-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:20px;}
+.cover-thumb{width:32px;height:42px;border-radius:4px;background:#E5E7EB;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold;color:#9CA3AF;overflow:hidden;flex-shrink:0;}
+.cover-thumb img{width:100%;height:100%;object-fit:cover;}
+.mono{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--text-muted);letter-spacing:0.5px;}
+.price{font-weight:600;font-size:13.5px;color:var(--ink);}
+.price .old{text-decoration:line-through;color:var(--text-faint);font-size:11.5px;margin-right:6px;font-weight:400;}
+
+/* Spine Tags */
+.spine-tag{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:500;}
+.spine-tag .dot{width:4px;height:12px;border-radius:2px;}
+.spine-color-1{background:#D97706;}
+.spine-color-2{background:#DC2626;}
+.spine-color-3{background:#7C3AED;}
+.spine-color-4{background:#059669;}
+.spine-color-0{background:#6B7280;}
+
+/* Status Pills */
+.status-pill{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:600;letter-spacing:0.3px;}
 .status-pill .dot{width:6px;height:6px;border-radius:50%;}
 .status-published{background:var(--success-bg);color:var(--success);}
 .status-published .dot{background:var(--success);}
-.status-draft{background:#EEE;color:#666;}
-.status-draft .dot{background:#999;}
+.status-draft{background:var(--ink-light);color:var(--ink-lighter);}
+.status-draft .dot{background:var(--ink-lighter);}
 .status-lowstock{background:var(--warn-bg);color:var(--warn);}
 .status-lowstock .dot{background:var(--warn);}
 .status-outofstock{background:var(--danger-bg);color:var(--danger);}
 .status-outofstock .dot{background:var(--danger);}
-.row-actions{display:flex;gap:6px;opacity:0;transition:opacity .12s;}
+
+/* Row Actions */
+.row-actions{display:flex;gap:4px;opacity:0;transition:opacity 0.2s;}
 tbody tr:hover .row-actions{opacity:1;}
 .icon-btn-sm{
   width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--card);
-  display:flex;align-items:center;justify-content:center;color:var(--text-muted);
+  color:var(--text-muted);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;
 }
-.icon-btn-sm:hover{background:var(--paper);}
+.icon-btn-sm:hover{background:var(--ink-light);color:var(--ink);border-color:var(--ink-light);}
+.icon-btn-sm.danger:hover{background:var(--danger-bg);color:var(--danger);border-color:var(--danger-bg);}
 .icon-btn-sm svg{width:14px;height:14px;}
-.icon-btn-sm.danger:hover{background:var(--danger-bg);color:var(--danger);}
-th.checkcol,td.checkcol{width:34px;}
 
-/* Toolbar */
-.toolbar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid var(--border-soft);flex-wrap:wrap;}
-.toolbar select, .toolbar .tb-search{
-  border:1px solid var(--border);border-radius:7px;padding:7px 10px;background:var(--card);font-size:13px;color:var(--text);
-}
-.toolbar .tb-search{display:flex;align-items:center;gap:6px;flex:1;min-width:180px;}
-.toolbar .tb-search input{border:none;outline:none;flex:1;background:none;}
-.view-toggle{display:flex;border:1px solid var(--border);border-radius:7px;overflow:hidden;margin-left:auto;}
-.view-toggle button{padding:7px 10px;background:var(--card);border:none;color:var(--text-muted);display:flex;}
-.view-toggle button.active{background:var(--ink);color:#fff;}
+/* Dashboard Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:12px;box-shadow:0 1px 3px rgba(0,0,0,0.02);}
+.stat-card .sl{font-size:11.5px;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--text-muted);}
+.stat-card .sv{font-size:32px;font-weight:700;color:var(--ink);font-family:'Lora',serif;line-height:1;}
+.stat-card .sd{font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:4px;}
+.sd.up{color:var(--success);}
+.sd.down{color:var(--danger);}
+.sd.neutral{color:var(--warn);}
+
+/* Toggle */
+.view-toggle{display:inline-flex;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:3px;}
+.view-toggle button{width:32px;height:28px;border-radius:5px;border:none;background:transparent;color:var(--text-muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;}
+.view-toggle button.active{background:var(--ink);color:var(--paper);}
 .view-toggle svg{width:15px;height:15px;}
 
 /* Pagination */
 .pagination{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;font-size:12.5px;color:var(--text-muted);}
 .pagination .pg-btns{display:flex;gap:6px;}
-.pagination button{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--card);font-size:12.5px;}
-.pagination button.active{background:var(--ink);color:#fff;border-color:var(--ink);}
+.pagination button{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--card);font-size:12.5px;cursor:pointer;color:var(--text-muted);transition:all 0.2s;}
+.pagination button:hover{background:var(--border);color:var(--text);}
+.pagination button.active{background:var(--oxblood);color:var(--paper);border-color:var(--oxblood);font-weight:bold;}
 
 /* Book shelf grid view */
 .shelf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;padding:20px;}
@@ -295,7 +310,7 @@ th.checkcol,td.checkcol{width:34px;}
   border:1.5px dashed var(--border);border-radius:9px;padding:22px;text-align:center;background:var(--paper);cursor:pointer;
   transition:border-color .12s,background .12s;
 }
-.upload-zone:hover{border-color:var(--gold);background:#FBF6EC;}
+.upload-zone:hover{border-color:var(--gold);background:rgba(255, 215, 0, 0.05);}
 .upload-zone svg{width:26px;height:26px;color:var(--text-muted);margin-bottom:6px;}
 .upload-zone p{font-size:12.5px;color:var(--text-muted);}
 .cover-preview{width:100%;aspect-ratio:2/3;border-radius:8px;overflow:hidden;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-display);font-weight:700;box-shadow:var(--shadow);position:relative;}
@@ -348,6 +363,7 @@ th.checkcol,td.checkcol{width:34px;}
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
 
 <script src="../assets/js/scraped-books.js"></script>
 <script src="../assets/js/scraped-stationery.js"></script>
@@ -556,19 +572,19 @@ th.checkcol,td.checkcol{width:34px;}
           <div class="toolbar">
             <div class="tb-search">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-              <input type="text" id="bookSearch" placeholder="Title, author ya ISBN search karein..." oninput="renderBooks()">
+              <input type="text" id="bookSearch" placeholder="Title, author ya ISBN search karein..." oninput="renderBooks(1)">
             </div>
-            <select id="filterCategory" onchange="renderBooks()">
+            <select id="filterCategory" onchange="renderBooks(1)">
               <option value="">Sabhi Categories</option>
             </select>
-            <select id="filterStatus" onchange="renderBooks()">
+            <select id="filterStatus" onchange="renderBooks(1)">
               <option value="">Sabhi Status</option>
               <option value="published">Published</option>
               <option value="draft">Draft</option>
               <option value="lowstock">Low Stock</option>
               <option value="outofstock">Out of Stock</option>
             </select>
-            <select id="sortBooks" onchange="renderBooks()">
+            <select id="sortBooks" onchange="renderBooks(1)">
               <option value="newest">Newest pehle</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
@@ -739,9 +755,191 @@ th.checkcol,td.checkcol{width:34px;}
               <div class="switch-row"><div><div class="lbl">Low Stock Alerts</div><div class="sub">Jab stock 5 se kam ho notify karein</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
             </div>
           </div>
+          </div>
         </div>
+        <div class="two-col" style="margin-top:20px;">
+          <div class="panel">
+            <div class="panel-head"><h3>Website Branding & Customisation</h3></div>
+            <div class="panel-body">
+              <div class="form-grid">
+                <div class="field full"><label>Logo URL</label><input type="text" placeholder="https://example.com/logo.png"></div>
+                <div class="field full"><label>Favicon URL</label><input type="text" placeholder="https://example.com/favicon.png"></div>
+                <div class="field"><label>Primary Theme Color</label><input type="color" value="#0B1021" style="height:40px; padding:2px;"></div>
+                <div class="field"><label>Secondary Color</label><input type="color" value="#FFD700" style="height:40px; padding:2px;"></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h3>Shipping Settings</h3></div>
+            <div class="panel-body">
+              <div class="switch-row"><div><div class="lbl">Enable Flat Rate Shipping</div><div class="sub">Charge a fixed delivery fee</div></div><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div>
+              <div class="field full" style="margin-top:10px;"><label>Flat Rate Amount</label><input type="number" value="150"></div>
+              <div class="switch-row"><div><div class="lbl">Enable Free Shipping</div><div class="sub">Free shipping above a certain amount</div></div><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+              <div class="field full" style="margin-top:10px;"><label>Free Shipping Threshold</label><input type="number" value="3000"></div>
+            </div>
+          </div>
+        </div>
+        <div class="two-col" style="margin-top:20px;">
+          <div class="panel">
+            <div class="panel-head"><h3>Social Media & Links</h3></div>
+            <div class="panel-body">
+              <div class="form-grid">
+                <div class="field full"><label>Facebook Page URL</label><input type="url" placeholder="https://facebook.com/yourpage"></div>
+                <div class="field full"><label>Instagram Profile URL</label><input type="url" placeholder="https://instagram.com/yourprofile"></div>
+                <div class="field full"><label>Twitter/X URL</label><input type="url" placeholder="https://twitter.com/yourprofile"></div>
+                <div class="field full"><label>WhatsApp Number</label><input type="text" placeholder="+923001234567"></div>
+              </div>
+            </div>
+          </div>
       </div>
 
+    </div>
+  </div>
+</div>
+
+
+<!-- ============ ORDER EDIT MODAL ============ -->
+<div class="modal-overlay" id="orderModalOverlay">
+  <div class="modal" style="max-width: 800px;">
+    <div class="modal-head">
+      <h2 id="orderModalTitle">Order Details</h2>
+      <button class="modal-close" onclick="closeOrderModal()">×</button>
+    </div>
+    
+    <div style="padding: 20px 22px; max-height: 70vh; overflow-y: auto;">
+      <div class="two-col" style="margin-bottom: 20px;">
+        <div class="panel">
+          <div class="panel-head"><h3>Customer Details</h3></div>
+          <div class="panel-body form-grid" id="orderCustomerForm">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h3>Order Info</h3></div>
+          <div class="panel-body form-grid">
+            <div class="field full">
+              <label>Status</label>
+              <select id="o_status">
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="shipped">Shipped</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Payment Method</label>
+              <input type="text" id="o_payment" value="COD">
+            </div>
+            <div class="field">
+              <label>Delivery Charges</label>
+              <input type="number" id="o_delivery" value="0" onchange="recalcOrderTotal()">
+            </div>
+            <div class="field full">
+              <label>Tax (%)</label>
+              <input type="number" id="o_tax_pct" value="0" onchange="recalcOrderTotal()">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-head" style="display:flex; justify-content:space-between; align-items:center;">
+          <h3>Order Items</h3>
+          <button class="btn btn-ghost btn-sm" onclick="addOrderItem()">+ Add Item</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item / SKU</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="o_items">
+              <!-- Items populated here -->
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-body" style="background:var(--paper); display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+            <span>Subtotal:</span> <span id="o_subtotal">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+            <span>Delivery:</span> <span>(from above)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+            <span>Tax:</span> <span id="o_tax_val">(Rs 0)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; color:var(--success); font-weight:600;">
+            <span>Commission (10%):</span> <span id="o_commission">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
+            <span>Total:</span> <span id="o_total">Rs 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-foot">
+      <div class="left">
+        <button class="btn btn-danger-outline btn-sm" onclick="deleteOrder()">Delete Order</button>
+      </div>
+      <div class="right">
+        <button class="btn btn-ghost" onclick="closeOrderModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveOrderEdits()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      
+      <div class="panel">
+        <div class="panel-head" style="display:flex; justify-content:space-between; align-items:center;">
+          <h3>Order Items</h3>
+          <button class="btn btn-ghost btn-sm" onclick="addOrderItem()">+ Add Item</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item / SKU</th>
+                <th>Price</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="o_items">
+              <!-- Items populated here -->
+            </tbody>
+          </table>
+        </div>
+        <div class="panel-body" style="background:var(--paper); display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:600;">
+            <span>Subtotal:</span> <span id="o_subtotal">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; color:var(--success); font-weight:600;">
+            <span>Commission (10%):</span> <span id="o_commission">Rs 0</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; width:300px; font-weight:700; font-size:16px; margin-top:8px; border-top:1px solid var(--border); padding-top:8px;">
+            <span>Total:</span> <span id="o_total">Rs 0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-foot">
+      <div class="left">
+        <button class="btn btn-danger-outline btn-sm" onclick="deleteOrder()">Delete Order</button>
+      </div>
+      <div class="right">
+        <button class="btn btn-ghost" onclick="closeOrderModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveOrderEdits()">Save Changes</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1158,7 +1356,7 @@ function getFilteredBooks(){
   const status=document.getElementById('filterStatus').value;
   const sort=document.getElementById('sortBooks').value;
   let list = books.filter(b=>{
-    if(q && !(b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q)||b.sku.toLowerCase().includes(q)||b.isbn.toLowerCase().includes(q))) return false;
+    if(q && !((b.title||'').toLowerCase().includes(q)||(b.author||'').toLowerCase().includes(q)||(b.sku||'').toLowerCase().includes(q)||(b.isbn||'').toLowerCase().includes(q))) return false;
     if(cat && b.category!==cat) return false;
     if(status){
       if(status==='published' && b.status!=='published') return false;
@@ -1175,11 +1373,47 @@ function getFilteredBooks(){
   if(sort==='newest') list.sort((a,b)=>{let na=parseInt(String(a.id).replace(/\D/g,''))||0;let nb=parseInt(String(b.id).replace(/\D/g,''))||0;return nb-na;});
   return list;
 }
-function renderBooks(){
+let currentBookPage = 1;
+const booksPerPage = 50;
+
+function renderBooks(page = currentBookPage){
+  currentBookPage = page;
   refreshCategorySelects();
-  const list = getFilteredBooks();
-  document.getElementById('booksSummary').textContent = `${list.length} kitabein — ${books.length} total`;
-  document.getElementById('paginationInfo').textContent = `1–${list.length} of ${list.length} showing`;
+  const allList = getFilteredBooks();
+  
+  const totalPages = Math.ceil(allList.length / booksPerPage) || 1;
+  if(currentBookPage > totalPages) currentBookPage = totalPages;
+  if(currentBookPage < 1) currentBookPage = 1;
+  
+  const startIndex = (currentBookPage - 1) * booksPerPage;
+  const list = allList.slice(startIndex, startIndex + booksPerPage);
+  
+  document.getElementById('booksSummary').textContent = `${allList.length} kitabein - ${books.length} total`;
+  
+  const showingEnd = Math.min(startIndex + booksPerPage, allList.length);
+  document.getElementById('paginationInfo').textContent = `${allList.length > 0 ? startIndex + 1 : 0}-${showingEnd} of ${allList.length} showing`;
+  
+  // Render pagination buttons
+  const pgContainer = document.querySelector('.pagination .pg-btns');
+  if(pgContainer) {
+      let pgHtml = '';
+      if(currentBookPage > 1) {
+          pgHtml += `<button onclick="renderBooks(${currentBookPage - 1})">&lt;</button>`;
+      }
+      
+      let startP = Math.max(1, currentBookPage - 2);
+      let endP = Math.min(totalPages, startP + 4);
+      if(endP - startP < 4) startP = Math.max(1, endP - 4);
+      
+      for(let i=startP; i<=endP; i++){
+          pgHtml += `<button class="${i === currentBookPage ? 'active' : ''}" onclick="renderBooks(${i})">${i}</button>`;
+      }
+      
+      if(currentBookPage < totalPages) {
+          pgHtml += `<button onclick="renderBooks(${currentBookPage + 1})">&gt;</button>`;
+      }
+      pgContainer.innerHTML = pgHtml;
+  }
 
   if(currentBookView==='table'){
     const body=document.getElementById('booksTableBody');
@@ -1195,7 +1429,9 @@ function renderBooks(){
         <td class="checkcol"><input type="checkbox" class="rowcheck" data-id="${b.id}"></td>
         <td>
           <div class="cell-book">
-            <div class="cover-thumb" style="${coverStyle(b)}">${b.coverImg?'':initials(b.title)}</div>
+            <div class="cover-thumb" style="${b.coverImg ? '' : coverStyle(b)}">
+              ${b.coverImg ? `<img src="${b.coverImg}" alt="cover">` : initials(b.title)}
+            </div>
             <div class="cell-book-info">
               <div class="t">${b.title}</div>
               <div class="a">${b.author} · ${b.format}</div>
@@ -1226,9 +1462,9 @@ function renderBooks(){
     const grid=document.getElementById('bookShelfView');
     grid.innerHTML = list.map(b=>`
       <div class="shelf-card">
-        <div class="shelf-cover" style="${coverStyle(b)}" onclick="openBookForm('${b.id}')">
+        <div class="shelf-cover" style="${b.coverImg ? 'padding:0;' : coverStyle(b)}" onclick="openBookForm('${b.id}')">
+          ${b.coverImg ? `<img src="${b.coverImg}" alt="cover" style="width:100%;height:100%;object-fit:cover;border-radius:6px 6px 0 0;">` : b.title}
           <span class="fmt-tag">${b.format}</span>
-          ${b.coverImg?'':b.title}
         </div>
         <div class="shelf-body">
           <div class="t">${b.title}</div>
@@ -1618,7 +1854,14 @@ function renderReports(){
 /* ===================== GLOBAL SEARCH ===================== */
 document.getElementById('globalSearch').addEventListener('input',e=>{
   const v=e.target.value;
-  if(v.length>1){ switchPage('books'); document.getElementById('bookSearch').value=v; renderBooks(); }
+  if(v.length>0){ 
+      switchPage('books'); 
+      document.getElementById('bookSearch').value=v; 
+      renderBooks(1); 
+  } else {
+      document.getElementById('bookSearch').value=''; 
+      renderBooks(1);
+  }
 });
 
 /* ===================== INIT ===================== */
@@ -1678,7 +1921,13 @@ renderReports();
     orders = window.AppData.orders.map(o => ({
        id: o.id,
        customer: o.customer || 'Unknown',
-       date: o.date ? new Date(o.date).toISOString().split('T')[0] : 'N/A',
+       date: (function(d){ 
+           if(!d) return 'N/A';
+           try {
+               if(d.toDate) return d.toDate().toISOString().split('T')[0];
+               return new Date(d).toISOString().split('T')[0];
+           } catch(e) { return 'N/A'; }
+       })(o.date),
        items: (o.items || []).length,
        total: o.total || 0,
        payment: o.paymentMethod || 'COD',
@@ -1804,6 +2053,7 @@ function recalcOrderTotal() {
     const total = subtotal + delivery + taxVal + comm;
     document.getElementById('o_total').textContent = money(total);
     
+    // SAVE back to object so it goes to firebase
     currentEditingOrder.delivery = delivery;
     currentEditingOrder.taxPct = taxPct;
     currentEditingOrder.taxVal = taxVal;
@@ -1868,37 +2118,85 @@ function printOrder(id) {
     
     const delivery = Number(ord.delivery) || 0;
     const taxVal = Number(ord.taxVal) || 0;
-    const total = Number(ord.total) || 0;
-    
-    const printWindow = window.open('', '_blank');
+       const printWindow = window.open('', '_blank');
     printWindow.document.write(`
     <html>
     <head>
         <title>Invoice - #${ord.id}</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script>
         <style>
-            body { font-family: sans-serif; color: #333; padding: 40px; }
-            .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
+            body { font-family: sans-serif; color: #333; padding: 20px; background: #f4f4f5; margin:0; }
+            .toolbar { display: flex; justify-content: flex-end; gap: 10px; padding: 10px 20px; background: #fff; border-bottom: 1px solid #ddd; margin-bottom: 20px; position: sticky; top: 0; z-index: 100;}
+            .toolbar button { background: #FFD700; color: #0B1021; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+            .toolbar button:hover { opacity: 0.8; }
+            .invoice-wrapper { display: flex; justify-content: center; }
+            .invoice-box { background: #fff; width: 100%; max-width: 800px; padding: 40px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+            .invoice-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; border-bottom: 2px solid #FFD700; padding-bottom: 20px; }
+            .invoice-header img { max-height: 60px; }
+            .invoice-details { text-align: right; }
             table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 20px;}
             th { background: #f8f8f8; padding: 10px; border-bottom: 2px solid #ddd; }
+            td { padding: 10px; border-bottom: 1px solid #eee; }
+            .totals { float: right; margin-top: 20px; text-align: right; min-width: 250px; }
+            .totals p { margin: 5px 0; }
+            .totals h3 { color: #0B1021; border-top: 2px solid #FFD700; padding-top: 10px; margin-top: 10px; }
+            @media print {
+                body { padding: 0; background: #fff; }
+                .toolbar { display: none; }
+                .invoice-box { box-shadow: none; padding: 0; }
+            }
         </style>
     </head>
     <body>
-        <div class="invoice-box">
-            <h2>Study Pack Invoice</h2>
-            <p>Order ID: #${ord.id}<br>Date: ${ord.date ? new Date(ord.date).toLocaleDateString() : 'N/A'}</p>
-            <p><strong>Bill To:</strong><br>${ord.customer || ''}<br>${ord.phone || ''}<br>${ord.address || ''}</p>
-            <table>
-                <thead><tr><th>Item</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Price</th><th style="text-align:right;">Total</th></tr></thead>
-                <tbody>${itemsHtml}</tbody>
-            </table>
-            <div style="float: right; margin-top: 20px; text-align:right;">
-                <p>Subtotal: Rs ${subtotal.toLocaleString()}</p>
-                <p>Delivery: Rs ${delivery.toLocaleString()}</p>
-                <p>Tax: Rs ${taxVal.toLocaleString()}</p>
-                <h3>Total: Rs ${total.toLocaleString()}</h3>
+        <div class="toolbar">
+            <button onclick="window.print()">Print / Save PDF</button>
+            <button onclick="downloadJPEG()">Download JPEG</button>
+        </div>
+        <div class="invoice-wrapper">
+            <div class="invoice-box" id="invoiceArea">
+                <div class="invoice-header">
+                    <div>
+                        <img src="../assets/img/logo.png" alt="Taleemi Hub Logo" onerror="this.src='https://taleemihub.com/wp-content/uploads/2023/11/logo.png';">
+                        <p style="color:#777; margin-top:5px; font-size:14px;">Study Pack Store</p>
+                    </div>
+                    <div class="invoice-details">
+                        <h2 style="margin:0 0 5px 0; color:#0B1021;">INVOICE</h2>
+                        <p style="margin:0;"><strong>Order:</strong> #${ord.id}</p>
+                        <p style="margin:0;"><strong>Date:</strong> ${ (function(d){ 
+                            if(!d) return 'N/A';
+                            try { return d.toDate ? d.toDate().toLocaleDateString() : new Date(d).toLocaleDateString(); } catch(e){ return 'N/A'; }
+                        })(ord.date) }</p>
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <h4 style="margin:0 0 10px 0; color:#0B1021;">Bill To:</h4>
+                    <p style="margin:0;">${ord.customer || 'Unknown Customer'}</p>
+                    <p style="margin:0;">${ord.phone || ''}</p>
+                    <p style="margin:0;">${ord.address || ''}</p>
+                </div>
+                <table>
+                    <thead><tr><th>Item</th><th style="text-align:center;">Qty</th><th style="text-align:right;">Price</th><th style="text-align:right;">Total</th></tr></thead>
+                    <tbody>${itemsHtml}</tbody>
+                </table>
+                <div class="totals">
+                    <p>Subtotal: Rs ${subtotal.toLocaleString()}</p>
+                    <p>Delivery: Rs ${delivery.toLocaleString()}</p>
+                    <p>Tax: Rs ${taxVal.toLocaleString()}</p>
+                    <h3>Total: Rs ${total.toLocaleString()}</h3>
+                </div>
+                <div style="clear:both;"></div>
             </div>
         </div>
-        <script>window.onload = function() { window.print(); }<\/script>
+        <script>
+            function downloadJPEG() {
+                html2canvas(document.getElementById('invoiceArea'), {scale: 2}).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'Invoice_${ord.id}.jpeg';
+                    link.href = canvas.toDataURL('image/jpeg', 0.9);
+                    link.click();
+                });
+            }
+        <\/script>
     </body>
     </html>
     `);
