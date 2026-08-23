@@ -10,12 +10,18 @@ window.renderReports = function() {
     products.forEach(p => { if (p.id) purchasePrices[p.id] = Number(p.purchase_price || 0); });
 
     let totalRevenue = 0, totalProfit = 0, validOrdersCount = 0;
+    let totalTax = 0, totalShipping = 0;
     const qtyById = {}, revenueById = {};
 
     orders.forEach(o => {
         if (o.status === 'Cancelled') return;
         const rev = Number(o.total || 0);
+        const tax = Number(o.taxAmount || 0);
+        const ship = Number(o.shipping || 0);
+        
         totalRevenue += rev;
+        totalTax += tax;
+        totalShipping += ship;
         validOrdersCount++;
 
         let orderCost = 0;
@@ -31,14 +37,16 @@ window.renderReports = function() {
                 qtyById[pid].revenue += Number(item.price || 0) * qty;
             }
         });
-        totalProfit += (rev - orderCost);
+        // Profit is revenue minus cost, tax, and shipping (assuming shipping is a pass-through cost)
+        totalProfit += (rev - orderCost - tax - ship);
     });
 
     const aov = validOrdersCount > 0 ? (totalRevenue / validOrdersCount) : 0;
 
     setText('finTotalRevenue', money(totalRevenue));
     setText('finTotalProfit', money(totalProfit));
-    setText('finAov', money(aov.toFixed(0)));
+    setText('finTotalTax', money(totalTax));
+    setText('finTotalShipping', money(totalShipping));
 
     const best = Object.values(qtyById).sort((a, b) => b.qty - a.qty).slice(0, 10);
     const tbody = document.getElementById('bestSellersBody');

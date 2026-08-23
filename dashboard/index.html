@@ -274,7 +274,7 @@
           </div>
         </div>
 
-        <div class="stat-grid">
+        <div class="stat-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
           <div class="stat-card">
             <div class="stat-header"><span class="stat-title">Total Revenue</span><span class="stat-icon success"><i data-lucide="banknote"></i></span></div>
             <div class="stat-value" id="finTotalRevenue">PKR 0</div>
@@ -284,8 +284,12 @@
             <div class="stat-value" id="finTotalProfit">PKR 0</div>
           </div>
           <div class="stat-card">
-            <div class="stat-header"><span class="stat-title">Avg. Order Value</span><span class="stat-icon info"><i data-lucide="receipt"></i></span></div>
-            <div class="stat-value" id="finAov">PKR 0</div>
+            <div class="stat-header"><span class="stat-title">Total Tax</span><span class="stat-icon warning"><i data-lucide="percent"></i></span></div>
+            <div class="stat-value" id="finTotalTax">PKR 0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-header"><span class="stat-title">Delivery Charges</span><span class="stat-icon info"><i data-lucide="truck"></i></span></div>
+            <div class="stat-value" id="finTotalShipping">PKR 0</div>
           </div>
         </div>
 
@@ -411,10 +415,19 @@
         <tbody id="modalOrderItems"></tbody>
       </table>
 
-      <div style="margin-top:1rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
+      <!-- Financials display -->
+      <div id="modalFinancialsDisplay" style="margin-top:1rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
         <div>Subtotal: <span id="modalSubtotal"></span></div>
         <div>Shipping: <span id="modalShipping"></span></div>
+        <div id="modalTaxDiv" style="display:none;">Tax (<span id="modalTaxNote"></span>): <span id="modalTaxAmount"></span></div>
         <div style="font-weight:800; font-size:1.1rem;">Total: <span id="modalTotal"></span></div>
+      </div>
+      
+      <!-- Financials edit -->
+      <div id="modalFinancialsEdit" style="display:none; flex-direction:column; align-items:flex-end; gap:0.6rem; margin-top:1rem;">
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Shipping</label><input type="number" id="editOrderShipping" style="width:100px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:100px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Amount</label><input type="number" id="editOrderTaxAmount" style="width:100px;"></div>
       </div>
     </div>
     <div class="modal-foot">

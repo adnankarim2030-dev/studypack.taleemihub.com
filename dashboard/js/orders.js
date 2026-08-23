@@ -110,9 +110,22 @@ window.viewOrder = function(id) {
     }
 
     document.getElementById('modalSubtotal').textContent = money(subtotal);
-    const shipping = o.shipping || 0;
+    const shipping = Number(o.shipping) || 0;
+    const taxAmount = Number(o.taxAmount) || 0;
     document.getElementById('modalShipping').textContent = money(shipping);
-    document.getElementById('modalTotal').textContent = money(o.total || (subtotal + shipping));
+    
+    if (taxAmount > 0) {
+        document.getElementById('modalTaxDiv').style.display = 'block';
+        document.getElementById('modalTaxNote').textContent = escapeHtml(o.taxNote || 'Tax');
+        document.getElementById('modalTaxAmount').textContent = money(taxAmount);
+    } else {
+        document.getElementById('modalTaxDiv').style.display = 'none';
+    }
+    
+    document.getElementById('modalTotal').textContent = money(o.total || (subtotal + shipping + taxAmount));
+    
+    document.getElementById('modalFinancialsDisplay').style.display = 'flex';
+    document.getElementById('modalFinancialsEdit').style.display = 'none';
 
     document.getElementById('orderModal').classList.add('show');
     lucide.createIcons();
@@ -138,15 +151,25 @@ window.toggleOrderEdit = function() {
         info.style.display = 'none';
         edit.style.display = 'flex';
         saveBtn.style.display = 'inline-flex';
+        
+        document.getElementById('modalFinancialsDisplay').style.display = 'none';
+        document.getElementById('modalFinancialsEdit').style.display = 'flex';
 
         document.getElementById('editOrderCustName').value = o.customer || '';
         document.getElementById('editOrderCustPhone').value = o.phone || '';
         document.getElementById('editOrderCustAddress').value = o.address || '';
+        
+        document.getElementById('editOrderShipping').value = Number(o.shipping) || 0;
+        document.getElementById('editOrderTaxNote').value = o.taxNote || '';
+        document.getElementById('editOrderTaxAmount').value = Number(o.taxAmount) || 0;
+        
         renderEditableItems();
     } else {
         info.style.display = 'block';
         edit.style.display = 'none';
         saveBtn.style.display = 'none';
+        document.getElementById('modalFinancialsDisplay').style.display = 'flex';
+        document.getElementById('modalFinancialsEdit').style.display = 'none';
         const id = document.getElementById('modalOrderId').textContent.replace('#', '');
         viewOrder(id);
     }
@@ -194,17 +217,32 @@ window.saveOrderEdits = async function() {
     const phone = document.getElementById('editOrderCustPhone').value;
     const address = document.getElementById('editOrderCustAddress').value;
 
+    const shipping = Number(document.getElementById('editOrderShipping').value) || 0;
+    const taxNote = document.getElementById('editOrderTaxNote').value.trim();
+    const taxAmount = Number(document.getElementById('editOrderTaxAmount').value) || 0;
+
     let subtotal = 0;
     window.editingOrderState.items.forEach(item => { subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1); });
-    const shipping = Number(window.editingOrderState.shipping || 150);
-    const total = subtotal + shipping;
+    const total = subtotal + shipping + taxAmount;
 
     try {
         await db.collection('orders').doc(id).update({
             customer: name, phone: phone, address: address,
-            items: window.editingOrderState.items, total: total
+            items: window.editingOrderState.items, 
+            shipping: shipping, taxNote: taxNote, taxAmount: taxAmount,
+            total: total
         });
         showToast('Order updated');
+        
+        // update local state so UI updates immediately
+        const o = window.AppData.orders.find(x => String(x.id) === String(id));
+        if (o) {
+            o.customer = name; o.phone = phone; o.address = address;
+            o.items = window.editingOrderState.items;
+            o.shipping = shipping; o.taxNote = taxNote; o.taxAmount = taxAmount;
+            o.total = total;
+        }
+        
         toggleOrderEdit();
     } catch (e) {
         showToast('Error saving edits: ' + e.message, 'error');
@@ -245,7 +283,13 @@ window.printInvoice = function(id) {
         <body>
             <div class="invoice-box">
                 <div class="header">
-                    <div class="header-left"><h2>Study Pack</h2><p style="margin:5px 0; color:#777;">Taleemihub.com</p></div>
+                    <div class="header-left" style="display:flex; align-items:center;">
+                        <img src="https://studypack-taleemihub.vercel.app/assets/images/logo.png" style="height:60px; margin-right:15px;" alt="Logo">
+                        <div>
+                            <h2>Study Pack</h2>
+                            <p style="margin:5px 0; color:#777;">Taleemihub.com</p>
+                        </div>
+                    </div>
                     <div style="text-align:right;">
                         <div class="invoice-title">INVOICE</div>
                         <p><strong>Order #:</strong> ${o.id}</p>
@@ -257,7 +301,8 @@ window.printInvoice = function(id) {
                 </div>
                 <table><thead><tr><th>Item</th><th>Price</th><th>Qty</th><th style="text-align:right;">Total</th></tr></thead><tbody>${itemsHtml}</tbody></table>
                 <table class="totals-table">
-                    <tr><td>Subtotal:</td><td style="text-align:right;">Rs. ${(o.total || 0) - (o.shipping || 0)}</td></tr>
+                    <tr><td>Subtotal:</td><td style="text-align:right;">Rs. ${(o.total || 0) - (Number(o.shipping) || 0) - (Number(o.taxAmount) || 0)}</td></tr>
+                    ${(Number(o.taxAmount) || 0) > 0 ? `<tr><td>Tax (${escapeHtml(o.taxNote || '')}):</td><td style="text-align:right;">Rs. ${o.taxAmount}</td></tr>` : ''}
                     <tr><td>Shipping:</td><td style="text-align:right;">Rs. ${o.shipping || 0}</td></tr>
                     <tr><td class="grand-total">Total:</td><td class="grand-total" style="text-align:right;">Rs. ${o.total}</td></tr>
                 </table>
