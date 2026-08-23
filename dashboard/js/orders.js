@@ -122,6 +122,13 @@ window.viewOrder = function(id) {
         document.getElementById('modalTaxDiv').style.display = 'none';
     }
     
+    if (o.specialNote) {
+        document.getElementById('modalSpecialNoteDiv').style.display = 'block';
+        document.getElementById('modalSpecialNote').textContent = escapeHtml(o.specialNote);
+    } else {
+        document.getElementById('modalSpecialNoteDiv').style.display = 'none';
+    }
+    
     document.getElementById('modalTotal').textContent = money(o.total || (subtotal + shipping + taxAmount));
     
     document.getElementById('modalFinancialsDisplay').style.display = 'flex';
@@ -162,6 +169,7 @@ window.toggleOrderEdit = function() {
         document.getElementById('editOrderShipping').value = Number(o.shipping) || 0;
         document.getElementById('editOrderTaxNote').value = o.taxNote || '';
         document.getElementById('editOrderTaxAmount').value = Number(o.taxAmount) || 0;
+        document.getElementById('editOrderSpecialNote').value = o.specialNote || '';
         
         renderEditableItems();
     } else {
@@ -220,6 +228,7 @@ window.saveOrderEdits = async function() {
     const shipping = Number(document.getElementById('editOrderShipping').value) || 0;
     const taxNote = document.getElementById('editOrderTaxNote').value.trim();
     const taxAmount = Number(document.getElementById('editOrderTaxAmount').value) || 0;
+    const specialNote = document.getElementById('editOrderSpecialNote').value.trim();
 
     let subtotal = 0;
     window.editingOrderState.items.forEach(item => { subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1); });
@@ -230,6 +239,7 @@ window.saveOrderEdits = async function() {
             customer: name, phone: phone, address: address,
             items: window.editingOrderState.items, 
             shipping: shipping, taxNote: taxNote, taxAmount: taxAmount,
+            specialNote: specialNote,
             total: total
         });
         showToast('Order updated');
@@ -240,6 +250,7 @@ window.saveOrderEdits = async function() {
             o.customer = name; o.phone = phone; o.address = address;
             o.items = window.editingOrderState.items;
             o.shipping = shipping; o.taxNote = taxNote; o.taxAmount = taxAmount;
+            o.specialNote = specialNote;
             o.total = total;
         }
         
@@ -307,20 +318,24 @@ window.printInvoice = function(id) {
                 <button class="btn-print" onclick="window.print()" style="margin:0; background: #28a745;">🖨️ Print to Printer</button>
             </div>
             <div class="invoice-box" id="invoiceContent">
-                <div class="header">
-                    <div class="header-left" style="display:flex; flex-direction:column; align-items:flex-start;">
+                <div class="header" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div style="flex:1; display:flex; flex-direction:column; align-items:flex-start;">
                         <img src="https://studypack-taleemihub.vercel.app/assets/images/studypack_logo.png" style="height:60px; margin-bottom:10px;" alt="Study Pack Logo">
                         <div>
                             <h2 style="margin:0; font-size:24px; color:#0B132B; text-transform:uppercase;">Study Pack</h2>
                             <p style="margin:2px 0 0 0; color:#777; font-size:14px;">Taleemihub.com</p>
                         </div>
                     </div>
-                    <div style="text-align:right;">
-                        <div class="invoice-title">INVOICE</div>
-                        <p><strong>Order #:</strong> ${o.id}</p>
-                        <p><strong>Date:</strong> ${o.date ? new Date(o.date).toLocaleDateString('en-GB') : ''}</p>
+                    <div style="flex:1; text-align:center;">
+                        <div class="invoice-title" style="margin-bottom:10px;">INVOICE</div>
+                        <p style="margin:4px 0; font-size:16px;"><strong>Order #:</strong> ${o.id}</p>
+                        <p style="margin:4px 0; font-size:16px;"><strong>Date:</strong> ${o.date ? new Date(o.date).toLocaleDateString('en-GB') : ''}</p>
                     </div>
+                    <div style="flex:1;"></div>
                 </div>
+                
+                ${o.specialNote ? `<div style="margin-bottom: 20px; padding: 12px 15px; background: #fdfae5; border: 1px solid #fce8a1; border-radius: 6px; color: #8a6d3b; font-size: 15px;"><strong>Note:</strong> ${escapeHtml(o.specialNote)}</div>` : ''}
+
                 <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
                     <div>
                         <strong style="color:#0B132B; font-size:18px;">Bill To:</strong><br>

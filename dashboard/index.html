@@ -425,6 +425,7 @@
 
       <!-- Financials display -->
       <div id="modalFinancialsDisplay" style="margin-top:1rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
+        <div id="modalSpecialNoteDiv" style="display:none; color: var(--primary); font-style: italic; margin-bottom: 0.5rem;">Note: <span id="modalSpecialNote"></span></div>
         <div>Subtotal: <span id="modalSubtotal"></span></div>
         <div>Shipping: <span id="modalShipping"></span></div>
         <div id="modalTaxDiv" style="display:none;">Tax (<span id="modalTaxNote"></span>): <span id="modalTaxAmount"></span></div>
@@ -433,9 +434,10 @@
       
       <!-- Financials edit -->
       <div id="modalFinancialsEdit" style="display:none; flex-direction:column; align-items:flex-end; gap:0.6rem; margin-top:1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Shipping</label><input type="number" id="editOrderShipping" style="width:100px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:100px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Amount</label><input type="number" id="editOrderTaxAmount" style="width:100px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Shipping</label><input type="number" id="editOrderShipping" style="width:150px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:150px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Amount</label><input type="number" id="editOrderTaxAmount" style="width:150px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Special Note</label><input type="text" id="editOrderSpecialNote" placeholder="Invoice Note..." style="width:150px;"></div>
       </div>
     </div>
     <div class="modal-foot">
