@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  function setupUpsellCarousel() {
     let extraItems = [];
     if (typeof TOYS !== 'undefined') extraItems = extraItems.concat(TOYS);
     if (typeof STATIONERY !== 'undefined') extraItems = extraItems.concat(STATIONERY);
@@ -421,12 +421,19 @@ document.addEventListener('DOMContentLoaded', function(){
     if (extraItems.length > 0 && typeof init3DCarousel === 'function') {
       init3DCarousel(extraItems);
     }
-    
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       const upsell = document.getElementById('upsellOverlay');
       if(upsell) upsell.classList.add('show');
     }, 1000);
   });
+
+  window.addEventListener('firebaseProductsLoaded', setupUpsellCarousel);
+  if ((typeof TOYS !== 'undefined' && TOYS.length > 0) || (typeof STATIONERY !== 'undefined' && STATIONERY.length > 0)) {
+    setupUpsellCarousel();
+  }
 </script>
 
 <!-- Mobile Nav JS -->
