@@ -12,7 +12,9 @@ function populateCategoryFilters() {
     if (!catSel || !clsSel) return;
 
     const products = window.AppData.products || [];
-    const cats = [...new Set(products.map(p => p.category).filter(Boolean))].sort();
+    const baseCats = ['Books', 'Academic', 'Stationery', 'Toys', 'Courses'];
+    const dynamicCats = products.map(p => p.category).filter(Boolean);
+    const cats = [...new Set([...baseCats, ...dynamicCats])].sort();
     const classes = [...new Set(products.map(p => p.cls).filter(Boolean))].sort();
 
     const keepFirst = (sel) => sel.options[0] ? sel.options[0].outerHTML : '';
