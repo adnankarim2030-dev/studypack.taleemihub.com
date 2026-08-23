@@ -11,6 +11,9 @@ function populateCategoryFilters() {
     const clsSel = document.getElementById('filterClass');
     if (!catSel || !clsSel) return;
 
+    const currentCat = catSel.value;
+    const currentCls = clsSel.value;
+
     const products = window.AppData.products || [];
     const baseCats = ['Books', 'Academic', 'Stationery', 'Toys', 'Courses'];
     const dynamicCats = products.map(p => p.category).filter(Boolean);
@@ -20,6 +23,9 @@ function populateCategoryFilters() {
     const keepFirst = (sel) => sel.options[0] ? sel.options[0].outerHTML : '';
     catSel.innerHTML = keepFirst(catSel) + cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
     clsSel.innerHTML = keepFirst(clsSel) + classes.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+
+    if (currentCat) catSel.value = currentCat;
+    if (currentCls) clsSel.value = currentCls;
 }
 
 window.renderProducts = function() {
