@@ -37,8 +37,14 @@
 <div class="app-container">
 
   <aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <span>📚</span> Study Pack
+    <div class="sidebar-header" style="flex-direction:column; align-items:flex-start; justify-content:center; gap:0.25rem; height:auto; padding: 1.5rem;">
+      <div style="display:flex; align-items:center; gap:0.75rem; width:100%;">
+        <img src="../assets/images/studypack_logo.png" style="height:32px; width:auto; object-fit:contain;" alt="Logo">
+        <span style="font-size:1.3rem;">Study Pack</span>
+      </div>
+      <a href="/" target="_blank" style="font-size:0.8rem; color:var(--text-muted); display:flex; align-items:center; gap:0.4rem; text-decoration:none; margin-left:2.5rem; margin-top:0.2rem;" title="Open Main Website">
+        <i data-lucide="external-link" style="width:14px; height:14px;"></i> Open Website
+      </a>
     </div>
     <nav class="sidebar-menu">
       <a href="#" class="nav-item active" data-view="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</a>
