@@ -283,10 +283,11 @@ window.printInvoice = function(id) {
         <body>
             <div class="invoice-box">
                 <div class="header">
-                    <div class="header-left" style="display:flex; align-items:center;">
-                        <img src="https://studypack-taleemihub.vercel.app/studypack%20logo.png" style="height:80px; margin-right:15px;" alt="Study Pack Logo">
+                    <div class="header-left" style="display:flex; flex-direction:column; align-items:flex-start;">
+                        <img src="https://studypack-taleemihub.vercel.app/assets/images/logo.png" style="height:60px; margin-bottom:10px;" alt="Study Pack Logo">
                         <div>
-                            <p style="margin:0; color:#777; font-size:14px;">Taleemihub.com</p>
+                            <h2 style="margin:0; font-size:24px; color:#0B132B; text-transform:uppercase;">Study Pack</h2>
+                            <p style="margin:2px 0 0 0; color:#777; font-size:14px;">Taleemihub.com</p>
                         </div>
                     </div>
                     <div style="text-align:right;">
