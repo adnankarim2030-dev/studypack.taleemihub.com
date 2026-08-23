@@ -339,7 +339,7 @@ window.printInvoice = function(id) {
                     <tr><td>Shipping:</td><td style="text-align:right;">Rs. ${o.shipping || 0}</td></tr>
                     <tr><td class="grand-total">Total:</td><td class="grand-total" style="text-align:right;">Rs. ${o.total}</td></tr>
                 </table>
-                <div class="footer">Thank you for your business!<br>support@taleemihub.com</div>
+                <div class="footer">Thank you for your business!<br>info@taleemihub.com</div>
             </div>
         </body></html>
     `);
