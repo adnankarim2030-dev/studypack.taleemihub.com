@@ -161,8 +161,11 @@
                 <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></span>
               </label>
             </div>
+            <div class="form-row" id="walletFields" class="co-indented" style="margin-top:18px; display:none;">
+              <div class="form-field full"><label>Account Number / Mobile No.</label><input type="text" id="payWalletNo" placeholder="03XX-XXXXXXX" inputmode="numeric"></div>
+            </div>
             <div class="form-row" id="cardFields" class="co-indented" style="margin-top:18px; display:none;">
-              <div class="form-field full"><label>Card Number</label><input type="text" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19"></div>
+              <div class="form-field full"><label>Card Number</label><input type="text" id="payCardNo" placeholder="1234 5678 9012 3456" inputmode="numeric" maxlength="19"></div>
               <div class="form-field"><label>Expiry</label><input type="text" placeholder="MM/YY" maxlength="5"></div>
               <div class="form-field"><label>CVV</label><input type="text" placeholder="123" maxlength="3" inputmode="numeric"></div>
             </div>
@@ -323,8 +326,9 @@ document.querySelectorAll('.pay-opt').forEach(opt=>{
     document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('checked'));
     this.classList.add('checked');
     this.querySelector('input').checked = true;
-    const cardFields = document.getElementById('cardFields');
-    cardFields.style.display = this.dataset.val === 'card' ? 'grid' : 'none';
+    const val = this.dataset.val;
+    document.getElementById('cardFields').style.display = val === 'card' ? 'grid' : 'none';
+    document.getElementById('walletFields').style.display = (val === 'jazzcash' || val === 'easypaisa') ? 'grid' : 'none';
   });
 });
 
@@ -350,6 +354,13 @@ async function placeOrder(e){
     const province = document.getElementById('coProvince').value;
     const notes = document.getElementById('coNotes').value.trim();
     const payMethod = (document.querySelector('input[name="payMethod"]:checked') || {}).value || 'cod';
+    
+    let paymentDetails = '';
+    if (payMethod === 'jazzcash' || payMethod === 'easypaisa') {
+      paymentDetails = document.getElementById('payWalletNo').value.trim();
+    } else if (payMethod === 'card') {
+      paymentDetails = document.getElementById('payCardNo').value.trim();
+    }
 
     if(!name || !phone || !email || !address || !city || !province){
       showToast('Please fill all required fields');
@@ -380,6 +391,7 @@ async function placeOrder(e){
       province: province,
       notes: notes,
       paymentMethod: payMethod,
+      paymentDetails: paymentDetails,
       items: orderItems,
       subtotal: sub,
       shipping: shipping,

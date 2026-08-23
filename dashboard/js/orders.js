@@ -268,8 +268,8 @@ window.printInvoice = function(id) {
     printWin.document.write(`
         <html><head><title>Invoice #${o.id}</title>
         <style>
-            body { font-family: Arial, sans-serif; padding: 40px; color: #333; line-height: 1.5; }
-            .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 10px rgba(0,0,0,0.15); }
+            body { font-family: Arial, sans-serif; padding: 40px; color: #333; line-height: 1.5; background: #f9f9f9; }
+            .invoice-box { max-width: 800px; margin: auto; padding: 30px; border: 1px solid #eee; box-shadow: 0 0 15px rgba(0,0,0,0.1); background: #fff; }
             .header { display: flex; justify-content: space-between; margin-bottom: 40px; border-bottom: 2px solid #FCA311; padding-bottom: 20px; }
             .header-left h2 { margin: 0; font-size: 28px; color: #0B132B; text-transform: uppercase; }
             .invoice-title { font-size: 32px; font-weight: bold; color: #0B132B; }
@@ -279,8 +279,15 @@ window.printInvoice = function(id) {
             .totals-table td { border: none; padding: 5px 12px; }
             .grand-total { font-size: 20px; font-weight: bold; border-top: 2px solid #0B132B !important; color: #0B132B; }
             .footer { margin-top: 50px; text-align: center; color: #777; font-size: 14px; border-top: 1px solid #eee; padding-top: 20px; }
+            @media print {
+                body { padding: 0; background: #fff; }
+                .invoice-box { box-shadow: none; border: none; max-width: 100%; padding: 0; }
+                .no-print { display: none !important; }
+            }
+            .btn-print { background: #0B132B; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 8px; cursor: pointer; display: block; margin: 0 auto 30px auto; text-align: center; font-weight: bold; }
         </style></head>
         <body>
+            <button class="no-print btn-print" onclick="window.print()">🖨️ Download as PDF / Print Invoice</button>
             <div class="invoice-box">
                 <div class="header">
                     <div class="header-left" style="display:flex; flex-direction:column; align-items:flex-start;">
@@ -296,8 +303,16 @@ window.printInvoice = function(id) {
                         <p><strong>Date:</strong> ${o.date ? new Date(o.date).toLocaleDateString('en-GB') : ''}</p>
                     </div>
                 </div>
-                <div><strong style="color:#0B132B; font-size:18px;">Bill To:</strong><br>
-                    ${escapeHtml(o.customer || 'Customer')}<br>${escapeHtml(o.address || '')}<br>${escapeHtml(o.city || '')}<br>${escapeHtml(o.phone || '')}
+                <div style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+                    <div>
+                        <strong style="color:#0B132B; font-size:18px;">Bill To:</strong><br>
+                        ${escapeHtml(o.customer || 'Customer')}<br>${escapeHtml(o.address || '')}<br>${escapeHtml(o.city || '')}<br>${escapeHtml(o.phone || '')}
+                    </div>
+                    <div style="text-align:right;">
+                        <strong style="color:#0B132B; font-size:18px;">Payment Info:</strong><br>
+                        ${o.paymentMethod === 'cod' ? 'Cash on Delivery' : o.paymentMethod === 'jazzcash' ? 'JazzCash' : o.paymentMethod === 'easypaisa' ? 'EasyPaisa' : o.paymentMethod === 'card' ? 'Credit/Debit Card' : (o.paymentMethod || 'Unknown')}<br>
+                        ${o.paymentDetails ? 'A/C: ' + escapeHtml(o.paymentDetails) : ''}
+                    </div>
                 </div>
                 <table><thead><tr><th>Item</th><th>Price</th><th>Qty</th><th style="text-align:right;">Total</th></tr></thead><tbody>${itemsHtml}</tbody></table>
                 <table class="totals-table">
