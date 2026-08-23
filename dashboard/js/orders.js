@@ -285,10 +285,28 @@ window.printInvoice = function(id) {
                 .no-print { display: none !important; }
             }
             .btn-print { background: #0B132B; color: white; border: none; padding: 12px 24px; font-size: 16px; border-radius: 8px; cursor: pointer; display: block; margin: 0 auto 30px auto; text-align: center; font-weight: bold; }
-        </style></head>
+        </style>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script>
+            function downloadPDF() {
+                const element = document.getElementById('invoiceContent');
+                const opt = {
+                    margin:       0.5,
+                    filename:     'Invoice_${o.id}.pdf',
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2 },
+                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
+                html2pdf().set(opt).from(element).save();
+            }
+        </script>
+        </head>
         <body>
-            <button class="no-print btn-print" onclick="window.print()">🖨️ Download as PDF / Print Invoice</button>
-            <div class="invoice-box">
+            <div class="no-print" style="text-align:center; margin-bottom: 30px; display: flex; justify-content: center; gap: 15px;">
+                <button class="btn-print" onclick="downloadPDF()" style="margin:0; background: #007bff;">⬇️ Download PDF Direct</button>
+                <button class="btn-print" onclick="window.print()" style="margin:0; background: #28a745;">🖨️ Print to Printer</button>
+            </div>
+            <div class="invoice-box" id="invoiceContent">
                 <div class="header">
                     <div class="header-left" style="display:flex; flex-direction:column; align-items:flex-start;">
                         <img src="https://studypack-taleemihub.vercel.app/assets/images/studypack_logo.png" style="height:60px; margin-bottom:10px;" alt="Study Pack Logo">
@@ -323,7 +341,6 @@ window.printInvoice = function(id) {
                 </table>
                 <div class="footer">Thank you for your business!<br>support@taleemihub.com</div>
             </div>
-            <script>window.onload = function(){ window.print(); }<\/script>
         </body></html>
     `);
     printWin.document.close();
