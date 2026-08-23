@@ -32,9 +32,10 @@ window.renderReports = function() {
             orderCost += cost * qty;
 
             if (pid) {
-                qtyById[pid] = qtyById[pid] || { title: item.title || pid, qty: 0, revenue: 0 };
+                qtyById[pid] = qtyById[pid] || { title: item.title || pid, qty: 0, revenue: 0, cost: 0 };
                 qtyById[pid].qty += qty;
                 qtyById[pid].revenue += Number(item.price || 0) * qty;
+                qtyById[pid].cost += cost * qty;
             }
         });
         // Profit is revenue minus cost, tax, and shipping (assuming shipping is a pass-through cost)
@@ -52,12 +53,13 @@ window.renderReports = function() {
     const tbody = document.getElementById('bestSellersBody');
     if (tbody) {
         tbody.innerHTML = best.length === 0
-            ? `<tr><td colspan="3"><div class="empty-state"><i data-lucide="bar-chart-3"></i><p>No sales data yet</p></div></td></tr>`
+            ? `<tr><td colspan="4"><div class="empty-state"><i data-lucide="bar-chart-3"></i><p>No sales data yet</p></div></td></tr>`
             : best.map(b => `
                 <tr>
                     <td style="font-weight:600;">${escapeHtml(b.title)}</td>
                     <td>${b.qty}</td>
                     <td style="font-weight:700;">${money(b.revenue)}</td>
+                    <td style="font-weight:700; color:var(--success);">${money(b.revenue - b.cost)}</td>
                 </tr>`).join('');
         lucide.createIcons();
     }

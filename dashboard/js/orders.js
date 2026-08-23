@@ -284,10 +284,9 @@ window.printInvoice = function(id) {
             <div class="invoice-box">
                 <div class="header">
                     <div class="header-left" style="display:flex; align-items:center;">
-                        <img src="https://studypack-taleemihub.vercel.app/assets/images/logo.png" style="height:60px; margin-right:15px;" alt="Logo">
+                        <img src="https://studypack-taleemihub.vercel.app/studypack%20logo.png" style="height:80px; margin-right:15px;" alt="Study Pack Logo">
                         <div>
-                            <h2>Study Pack</h2>
-                            <p style="margin:5px 0; color:#777;">Taleemihub.com</p>
+                            <p style="margin:0; color:#777; font-size:14px;">Taleemihub.com</p>
                         </div>
                     </div>
                     <div style="text-align:right;">
@@ -317,9 +316,13 @@ window.printInvoice = function(id) {
 window.exportOrdersCSV = function() {
     const orders = window.AppData.orders || [];
     if (orders.length === 0) return showToast('No orders to export', 'error');
-    let csv = 'Order ID,Date,Customer,Phone,Status,Total\n';
+    let csv = 'Order ID,Date,Customer,Phone,Status,Subtotal,Tax,Shipping,Total\n';
     orders.forEach(o => {
-        csv += `${o.id},${o.date ? new Date(o.date).toLocaleDateString() : ''},"${(o.customer || '').replace(/"/g, '""')}","${o.phone || ''}",${o.status},${o.total}\n`;
+        const tax = Number(o.taxAmount) || 0;
+        const ship = Number(o.shipping) || 0;
+        const total = Number(o.total) || 0;
+        const subtotal = total - tax - ship;
+        csv += `${o.id},${o.date ? new Date(o.date).toLocaleDateString() : ''},"${(o.customer || '').replace(/"/g, '""')}","${o.phone || ''}",${o.status},${subtotal},${tax},${ship},${total}\n`;
     });
     downloadCSV(csv, `Orders_Export_${new Date().toISOString().split('T')[0]}.csv`);
 };
