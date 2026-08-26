@@ -427,7 +427,7 @@ async function placeOrder(e){
     document.getElementById('orderIdDisplay').textContent = 'Order #' + orderId;
     
     // Generate WhatsApp confirmation link
-    const waPhone = '923000000000'; // Admin WhatsApp Helpline
+    const waPhone = '923331310234'; // Admin WhatsApp Helpline
     const itemsList = cart.map(c => `• ${c.qty}x ${c.title} (Rs ${c.price})`).join('\n');
     const waMessage = `*Assalam-o-Alaikum Study Pack!*\nMaine website par naya order place kiya hai:\n\n📦 *Order ID:* #${orderId}\n👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n📍 *City:* ${city}\n🏠 *Address:* ${address}\n\n📚 *Ordered Books:*\n${itemsList}\n\n💰 *Subtotal (Books):* Rs ${sub.toLocaleString()}\n🚚 *Delivery Charges:* Weight ke mutabiq\n\nBaraye meharbani actual parcel weight aur final bill confirm kar dein.`;
     

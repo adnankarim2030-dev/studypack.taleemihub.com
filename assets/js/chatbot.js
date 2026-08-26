@@ -345,7 +345,7 @@
         addBotMessage(`
           <strong>💬 Live WhatsApp Helpline:</strong><br>
           Aap direct hamare WhatsApp support par rabta kar ke bhi order place ya confirm kar sakte hain:<br><br>
-          <a href="https://wa.me/923000000000?text=Assalam-o-Alaikum%20StudyPack%20I%20need%20help" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#fff; padding:8px 14px; border-radius:20px; font-weight:700; text-decoration:none; font-size:12.5px;">
+          <a href="https://wa.me/923331310234?text=Assalam-o-Alaikum%20StudyPack%20I%20need%20help" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#fff; padding:8px 14px; border-radius:20px; font-weight:700; text-decoration:none; font-size:12.5px;">
             📱 Chat on WhatsApp
           </a>
         `);
