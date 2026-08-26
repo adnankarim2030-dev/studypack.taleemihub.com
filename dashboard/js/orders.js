@@ -1,4 +1,110 @@
 
+const WC_DASHBOARD_CONFIG = {
+    storeUrl: 'https://api.studypack.taleemihub.com',
+    consumerKey: 'ck_9d3ebbf59738bb9cb7a3021067c90893476d32d7',
+    consumerSecret: 'cs_75d5b1183e7985468ab5e374fc9be4ed0a5e2b3f'
+};
+
+window.fetchWooCommerceOrders = async function(showFeedback = true) {
+    try {
+        if (showFeedback && typeof showToast === 'function') showToast("WooCommerce se orders sync ho rahe hain...");
+        const authHeader = 'Basic ' + btoa(WC_DASHBOARD_CONFIG.consumerKey + ':' + WC_DASHBOARD_CONFIG.consumerSecret);
+        
+        const res = await fetch(`${WC_DASHBOARD_CONFIG.storeUrl}/wp-json/wc/v3/orders?per_page=50`, {
+            headers: {
+                'Authorization': authHeader
+            }
+        });
+        
+        if (!res.ok) {
+            console.warn("WC orders fetch failed:", res.status);
+            return;
+        }
+        
+        const wcOrders = await res.json();
+        const formattedWcOrders = wcOrders.map(o => {
+            const billing = o.billing || {};
+            const shipping = o.shipping || {};
+            const cust_name = `${billing.first_name || ''} ${billing.last_name || ''}`.trim() || 'Customer';
+            const phone = billing.phone || shipping.phone || 'N/A';
+            const email = billing.email || 'customer@taleemihub.com';
+            const address = billing.address_1 || shipping.address_1 || 'Karachi';
+            const city = billing.city || 'Karachi';
+            const province = billing.state || 'Sindh';
+            
+            const items = (o.line_items || []).map(line => ({
+                id: String(line.product_id || ''),
+                title: line.name || 'Product',
+                price: Number(line.price || 0),
+                qty: Number(line.quantity || 1),
+                total: Number(line.total || 0)
+            }));
+            
+            const total = Number(o.total || 0);
+            const shippingAmt = Number(o.shipping_total || 0);
+            
+            let status = (o.status || 'Pending').toLowerCase();
+            if (status === 'on-hold' || status === 'pending') status = 'Pending';
+            else if (status === 'processing') status = 'Processing';
+            else if (status === 'completed') status = 'Completed';
+            else if (status === 'cancelled') status = 'Cancelled';
+            else status = status.charAt(0).toUpperCase() + status.slice(1);
+            
+            return {
+                id: String(o.id),
+                customer: cust_name,
+                phone: phone,
+                email: email,
+                address: address,
+                city: city,
+                province: province,
+                items: items,
+                subtotal: total - shippingAmt,
+                shipping: shippingAmt,
+                shippingNote: shippingAmt > 0 ? `Rs ${shippingAmt}` : 'Weight ke mutabiq',
+                codFee: 0,
+                total: total,
+                status: status,
+                date: new Date(o.date_created).getTime() || Date.now(),
+                paymentMethod: o.payment_method || 'cod',
+                source: 'woocommerce'
+            };
+        });
+        
+        // Merge with existing AppData.orders, deduplicating by ID
+        const existing = window.AppData.orders || [];
+        const map = new Map();
+        
+        // Add WooCommerce orders
+        formattedWcOrders.forEach(o => map.set(String(o.id), o));
+        // Add Firestore orders (override if exists)
+        existing.forEach(o => map.set(String(o.id), o));
+        
+        const merged = Array.from(map.values());
+        merged.sort((a,b) => (b.date || 0) - (a.date || 0));
+        
+        window.AppData.orders = merged;
+        window.AppData.loaded.orders = true;
+        
+        if (typeof renderOrders === 'function') renderOrders();
+        if (typeof renderDashboardView === 'function') renderDashboardView();
+        if (typeof renderCustomers === 'function') renderCustomers();
+        
+        if (showFeedback && typeof showToast === 'function') showToast(`✅ ${formattedWcOrders.length} WooCommerce orders synced!`);
+        
+    } catch(err) {
+        console.warn("Could not fetch WooCommerce orders:", err);
+    }
+};
+
+// Auto fetch when script loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(() => {
+        window.fetchWooCommerceOrders(false);
+    }, 1200);
+});
+
+
 window.recalcAdminOrderFinancials = function(manualCod=false) {
     if (!window.editingOrderState) return;
     let subtotal = 0;
