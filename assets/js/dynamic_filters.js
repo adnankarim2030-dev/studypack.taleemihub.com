@@ -1,9 +1,9 @@
 // ============================================================
-// STUDY PACK DYNAMIC FILTERS & CATALOG ENGINE (STABLE & FAST)
+// STUDY PACK PREMIUM DYNAMIC FILTERS & PRODUCT CARDS
 // ============================================================
 
 window.currentPage = 1;
-window.ITEMS_PER_PAGE = 12;
+window.ITEMS_PER_PAGE = 9;
 window.currentBooks = [];
 
 function getCatalogData(type) {
@@ -80,21 +80,21 @@ function inferBookProperties(book) {
 
 function inferStationeryProperties(item) {
     const title = (item.title || '').toLowerCase();
-    let type = 'Writing & School Supplies';
+    let type = 'Writing';
     if (title.includes('pen') || title.includes('pencil') || title.includes('marker') || title.includes('highlighter')) type = 'Writing';
     else if (title.includes('notebook') || title.includes('paper') || title.includes('register') || title.includes('diary')) type = 'Paper & Notebooks';
     else if (title.includes('color') || title.includes('paint') || title.includes('brush') || title.includes('art')) type = 'Art & Craft';
     else if (title.includes('file') || title.includes('folder') || title.includes('stapler') || title.includes('punch')) type = 'Office Supplies';
-    else if (title.includes('bag') || title.includes('pouch') || title.includes('geometry')) type = 'Bags & Geometry Sets';
+    else if (title.includes('bag') || title.includes('pouch') || title.includes('geometry')) type = 'Bags & Geometry';
     item.item_type = type;
 }
 
 function inferToysProperties(item) {
     const title = (item.title || '').toLowerCase();
-    let type = 'Toys & Learning Games';
-    if (title.includes('car') || title.includes('vehicle') || title.includes('rc') || title.includes('track')) type = 'Vehicles & Remote Cars';
+    let type = 'Vehicles & RC Toys';
+    if (title.includes('car') || title.includes('vehicle') || title.includes('rc') || title.includes('track')) type = 'Vehicles & RC Toys';
     else if (title.includes('doll') || title.includes('figure') || title.includes('barbie')) type = 'Dolls & Figures';
-    else if (title.includes('board') || title.includes('puzzle') || title.includes('game') || title.includes('educational')) type = 'Educational & Puzzles';
+    else if (title.includes('board') || title.includes('puzzle') || title.includes('game') || title.includes('educational')) type = 'Educational & Games';
     else if (title.includes('outdoor') || title.includes('ride') || title.includes('sports') || title.includes('ball')) type = 'Outdoor & Sports';
     else if (title.includes('gift') || title.includes('hamper')) type = 'Gifts & Sets';
     item.item_type = type;
@@ -110,38 +110,39 @@ function extractUniqueOptions(products, prop) {
 
 function renderFilterGroup(title, options, inputClass) {
     if (!options || options.length === 0) return '';
-    let html = `<div class="accordion-item active" style="margin-bottom:12px;">
-        <div class="acc-head" style="font-weight:700; color:#0B132B; padding:8px 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
-            ${title} 
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-        </div>
-        <div class="acc-body" style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">`;
+    let html = `<div class="accordion-item active">
+        <div class="acc-head">${title} <span class="acc-badge">0</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg></div>
+        <div class="acc-body">`;
     options.forEach(opt => {
-        html += `<label class="glass-check" style="display:flex; align-items:center; gap:8px; font-size:13px; color:#334155; cursor:pointer;">
-            <input type="checkbox" class="${inputClass}" value="${opt}" style="cursor:pointer;">
-            <span>${opt}</span>
-        </label>`;
+        html += `<label class="glass-check"><input type="checkbox" class="${inputClass}" value="${opt}"> <span class="chk-box"></span> ${opt}</label>`;
     });
     html += `</div></div>`;
     return html;
 }
 
 function getPriceRangeHtml() {
-    return `<div style="background:#fff; padding:14px; border-radius:10px; margin-bottom:14px; border:1px solid #E2E8F0;">
-        <div style="font-weight:700; font-size:13.5px; color:#0B132B; margin-bottom:8px;">Max Price</div>
-        <input type="range" id="priceRange" min="100" max="10000" step="100" value="10000" style="width:100%; cursor:pointer;">
-        <div style="display:flex; justify-content:space-between; font-size:11.5px; color:#64748B; margin-top:4px;">
-            <span>Rs 100</span><span id="priceVal" style="font-weight:700; color:#1565C0;">Rs 10,000</span>
+    return `<div style="background: #fff; padding: 16px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+        <h4 style="margin: 0 0 12px 0; font-size: 16px; font-weight: 700; color: var(--navy);">Max Price</h4>
+        <input type="range" id="priceRange" min="100" max="10000" step="100" value="10000" style="width: 100%;">
+        <div style="display:flex; justify-content:space-between; font-size: 12px; color: #475569; margin-top:8px;">
+            <span>Rs 100</span><span id="priceVal">Rs 10,000</span>
         </div>
     </div>`;
 }
 
 function getAvailabilityHtml() {
-    return `<div style="background:#fff; padding:12px 14px; border-radius:10px; margin-bottom:14px; border:1px solid #E2E8F0;">
-        <label class="glass-check" style="display:flex; align-items:center; gap:8px; margin:0; font-size:13px; font-weight:600; color:#0B132B; cursor:pointer;">
-            <input type="checkbox" id="inStockOnly" style="cursor:pointer;"> In Stock Only
-        </label>
+    return `<div style="background: #fff; padding: 16px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05);">
+        <label class="glass-check" style="margin:0;"><input type="checkbox" id="inStockOnly"> <span class="chk-box"></span> In Stock Only</label>
     </div>`;
+}
+
+function setupAccordions() {
+    const accHeads = document.querySelectorAll(".acc-head");
+    accHeads.forEach(head => {
+        head.onclick = function() {
+            this.parentElement.classList.toggle("active");
+        };
+    });
 }
 
 function injectSidebarHTML(html) {
@@ -149,29 +150,35 @@ function injectSidebarHTML(html) {
     if (!sidebar) return;
     
     const header = `
-        <div class="fc-head" style="padding:16px 16px 8px 16px; display:flex; justify-content:space-between; align-items:center;">
-          <h4 style="margin:0; font-size:18px; font-weight:800; color:#0B132B;">Filters</h4>
-          <button class="icon-btn" id="closeFilterMobile" style="display:none; background:none; border:none; cursor:pointer;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+        <div class="fc-head" style="padding: 24px 24px 10px 24px;">
+          <h4 style="margin: 0; font-size: 22px; font-weight: 700; color: var(--navy);">Filters</h4>
+          <button class="icon-btn" id="closeFilterMobile" style="display: none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
         </div>
-        <div style="padding:0 16px 16px 16px;">
+        <div style="padding: 0 24px;">
     `;
     const footer = `
-          <button id="clearFilters" style="width:100%; margin-top:10px; background:#EEF2F6; color:#1E293B; border:none; border-radius:8px; padding:9px; font-weight:700; font-size:12.5px; cursor:pointer;">Clear All Filters</button>
+          <button id="clearFilters" style="width: 100%; margin-bottom: 24px; background: #f1f5f9; color: #475569; border: none; border-radius: 8px; padding: 10px; font-weight: 600; cursor: pointer; transition: 0.3s;">Clear All Filters</button>
         </div>
     `;
     
     sidebar.innerHTML = header + html + footer;
+    setupAccordions();
     
-    // Accordion toggle
-    sidebar.querySelectorAll(".acc-head").forEach(head => {
-        head.addEventListener("click", function() {
-            this.parentElement.classList.toggle("active");
-        });
-    });
-
-    // Checkboxes change
+    // Checkboxes change & badges
     sidebar.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', () => { if (typeof window.applyFilters === 'function') window.applyFilters(); });
+        cb.addEventListener('change', () => {
+            const parentAcc = cb.closest('.accordion-item');
+            if (parentAcc) {
+                const badge = parentAcc.querySelector('.acc-badge');
+                if (badge) {
+                    const checked = parentAcc.querySelectorAll('input:checked').length;
+                    badge.textContent = checked;
+                    if (checked > 0) badge.classList.add('show');
+                    else badge.classList.remove('show');
+                }
+            }
+            if (typeof window.applyFilters === 'function') window.applyFilters();
+        });
     });
     
     // Price range
@@ -189,6 +196,7 @@ function injectSidebarHTML(html) {
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
             sidebar.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            sidebar.querySelectorAll('.acc-badge').forEach(b => { b.textContent = '0'; b.classList.remove('show'); });
             if (priceRange) {
                 priceRange.value = 10000;
                 if (priceVal) priceVal.innerText = 'Rs 10,000';
@@ -221,44 +229,58 @@ window.renderProducts = function(list) {
 
     grid.innerHTML = pageItems.map(b => {
         const id = b.id || '';
-        const title = b.title || b.name || 'Study Pack Item';
+        const title = b.title || b.name || '';
         const author = b.author || b.brand || b.publisher || 'Study Pack';
         const price = Number(b.price || 0);
-        const img = b.img || 'assets/images/logo.png';
-        const cls = b.cls || 'All Grades';
+        const img = b.img || '';
+        const cls = b.cls || 'Misc';
         const subj = b.subj || 'General';
         const pub = b.pub || '';
         const rating = b.rating || 5;
         const rv = b.rv || 0;
         const stock = b.stock !== false;
         const oldPrice = b.old || '';
+        const tag = b.tag || '';
+
+        let badgeHtml = '';
+        if (tag === 'best') badgeHtml += '<span class="pill best">Bestseller</span>';
+        if (tag === 'new') badgeHtml += '<span class="pill new">New</span>';
+        if (oldPrice) badgeHtml += '<span class="pill off">-'+Math.round(100-(price/oldPrice*100))+'%</span>';
 
         const moneyStr = typeof window.money === 'function' ? window.money(price) : 'PKR ' + price.toLocaleString();
         const oldStr = oldPrice ? (typeof window.money === 'function' ? window.money(oldPrice) : 'PKR ' + Number(oldPrice).toLocaleString()) : '';
         const starsStr = typeof window.starString === 'function' ? window.starString(rating) : '★★★★★';
 
         return `
-        <div class="p-card" data-id="${id}" style="background:#fff; border-radius:12px; border:1px solid #E2E8F0; padding:12px; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
-          <div class="p-cover-wrap" style="height:180px; display:flex; align-items:center; justify-content:center; background:#F8FAFC; border-radius:8px; margin-bottom:10px; overflow:hidden;">
-            <img src="${img}" alt="${escapeHtml(title)}" onerror="this.src='assets/images/logo.png'" style="max-height:100%; max-width:100%; object-fit:contain;">
+<div class="p-card" style="min-width:0; overflow:hidden;" data-id="${id}">
+      <div class="p-cover-wrap">
+        <div class="p-cover" style="background:${img ? '#fff' : (b.grad || 'var(--grey)')}; padding: ${img ? '0' : '10px'}">
+          <div class="badges-row">
+            ${badgeHtml}
           </div>
-          <div style="flex:1; display:flex; flex-direction:column;">
-            <div style="font-size:11px; font-weight:700; color:#1565C0; text-transform:uppercase; margin-bottom:3px;">${cls} • ${subj}</div>
-            <div style="font-size:13.5px; font-weight:700; color:#0F172A; line-height:1.3; margin-bottom:4px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;" title="${escapeHtml(title)}">${escapeHtml(title)}</div>
-            <div style="font-size:11.5px; color:#64748B; margin-bottom:8px;">${pub ? escapeHtml(pub) : escapeHtml(author)}</div>
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; margin-bottom:10px;">
-              <div>
-                <span style="font-size:15px; font-weight:800; color:#0F172A;">${moneyStr}</span>
-                ${oldStr ? `<span style="font-size:11px; color:#94A3B8; text-decoration:line-through; margin-left:4px;">${oldStr}</span>` : ''}
-              </div>
-              <span style="font-size:11px; font-weight:700; color:#10B981;">In Stock</span>
-            </div>
-            <div style="display:flex; gap:6px;">
-              <button onclick="addToCart('${id}')" style="flex:1; padding:8px; background:#0F172A; color:#fff; border:none; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">Add to Cart</button>
-              <button onclick="addToCart('${id}'); openCart();" style="flex:1; padding:8px; background:#1565C0; color:#fff; border:none; border-radius:6px; font-weight:700; font-size:12px; cursor:pointer;">Buy Now</button>
-            </div>
+          <div class="quick-actions">
+            <button class="qa-btn" title="Wishlist" onclick="showToast('Added to wishlist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+            <button class="qa-btn" title="Quick View" onclick="openQuickView('${id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+            <button class="qa-btn" title="Compare" onclick="showToast('Added to compare')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v18M16 3v18M3 8h5M16 8h5M3 16h5M16 16h5"/></svg></button>
           </div>
-        </div>`;
+          ${img ? `<img src="${img}" alt="${escapeHtml(title)}" onerror="this.style.display='none'" style="width:100%; height:100%; object-fit:contain; border-radius:inherit; mix-blend-mode:multiply;">` : `<div class="p-title" style="text-align:center;">${escapeHtml(title)}</div>`}
+        </div>
+      </div>
+      <div class="p-meta" style="min-width:0;"><span>${cls}</span><span>${subj}</span></div>
+      <div class="p-name">${escapeHtml(title)}</div>
+      <div class="p-author">by ${escapeHtml(author)} ${pub ? '• ' + escapeHtml(pub) : ''}</div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:4px;">
+        <div class="p-rating" style="margin-bottom:0;"><span class="stars">${starsStr}</span><span class="rv">(${rv})</span></div>
+        <div class="p-stock" style="margin-bottom:0;"><span class="d" style="background:${stock ? '#2e7d32' : '#c62828'}"></span>${stock ? 'In Stock' : 'Out of Stock'}</div>
+      </div>
+      <div class="p-price-row">
+        <div class="p-price"><span class="now">${moneyStr}</span>${oldStr ? '<span class="old">' + oldStr + '</span>' : ''}</div>
+      </div>
+      <div class="p-actions" style="display:flex; flex-direction:column; gap:8px;">
+        <button class="btn-cart" onclick="addToCart('${id}')" style="width:100%; justify-content:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
+        <button class="btn-buy" onclick="addToCart('${id}'); openCart();" style="width:100%; justify-content:center;">Buy Now</button>
+      </div>
+    </div>`;
     }).join('');
 
     renderPagination(list.length);
@@ -270,17 +292,17 @@ function renderPagination(total) {
     if (!el) return;
     
     const currentPage = window.currentPage || 1;
-    let html = `<button class="nav-arrow" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''} style="padding:6px 12px; border-radius:6px; border:1px solid #CBD5E1; cursor:pointer;">&lt;</button>`;
+    let html = `<button class="nav-arrow" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>`;
     
     for(let i = 1; i <= pages; i++){
         if(i === 1 || i === pages || (i >= currentPage - 1 && i <= currentPage + 1)){
-            html += `<button class="pg-num ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})" style="padding:6px 12px; margin:0 3px; border-radius:6px; border:1px solid #CBD5E1; font-weight:700; ${i === currentPage ? 'background:#1565C0; color:#fff;' : 'background:#fff;'} cursor:pointer;">${i}</button>`;
+            html += `<button class="pg-num ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
         } else if(i === currentPage - 2 || i === currentPage + 2){
-            html += `<span class="dots" style="margin:0 4px;">...</span>`;
+            html += `<span class="dots">...</span>`;
         }
     }
     
-    html += `<button class="nav-arrow" onclick="goPage(${currentPage + 1})" ${currentPage === pages ? 'disabled' : ''} style="padding:6px 12px; border-radius:6px; border:1px solid #CBD5E1; cursor:pointer;">&gt;</button>`;
+    html += `<button class="nav-arrow" onclick="goPage(${currentPage + 1})" ${currentPage === pages ? 'disabled' : ''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>`;
     el.innerHTML = html;
 }
 
