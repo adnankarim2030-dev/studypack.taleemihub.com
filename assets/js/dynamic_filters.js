@@ -26,13 +26,22 @@ function inferBookProperties(book) {
     
     // Infer Publisher
     let pub = 'Other';
-    if (title.includes('eri ') || cls.includes('eri ')) pub = 'ERI Publishers';
-    else if (title.includes('afaq') || cls.includes('afaq')) pub = 'AFAQ Publishers';
-    else if (title.includes('paramount') || cls.includes('paramount')) pub = 'Paramount';
-    else if (title.includes('cambridge') || cls.includes('cambridge')) pub = 'Cambridge University Press';
-    else if (title.includes('oxford') || cls.includes('oxford')) pub = 'Oxford Books';
-    else if (title.includes('spectrum') || cls.includes('spectrum')) pub = 'Spectrum Books';
-    else if (book.pub) pub = book.pub;
+    const rawPub = (book.pub || '').toLowerCase();
+    if (rawPub.includes('oxford') || rawPub.includes('oup') || title.includes('oxford') || cls.includes('oxford')) {
+        pub = 'Oxford Books';
+    } else if (title.includes('eri ') || cls.includes('eri ') || rawPub.includes('eri')) {
+        pub = 'ERI Publishers';
+    } else if (title.includes('afaq') || cls.includes('afaq') || rawPub.includes('afaq')) {
+        pub = 'AFAQ Publishers';
+    } else if (title.includes('paramount') || cls.includes('paramount') || rawPub.includes('paramount')) {
+        pub = 'Paramount';
+    } else if (title.includes('cambridge') || cls.includes('cambridge') || rawPub.includes('cambridge')) {
+        pub = 'Cambridge University Press';
+    } else if (title.includes('spectrum') || cls.includes('spectrum') || rawPub.includes('spectrum')) {
+        pub = 'Spectrum Books';
+    } else if (book.pub) {
+        pub = book.pub;
+    }
     book.pub = pub;
     
     // Infer Language

@@ -9,8 +9,8 @@ const SCRAPED_BOOKS = [
         "subject": "Biology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -23,8 +23,8 @@ const SCRAPED_BOOKS = [
         "subject": "Biology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -37,8 +37,8 @@ const SCRAPED_BOOKS = [
         "subject": "Biology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -51,8 +51,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -65,8 +65,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -79,8 +79,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -93,8 +93,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -107,8 +107,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -121,8 +121,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -135,8 +135,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -149,8 +149,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -163,8 +163,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -177,8 +177,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -191,8 +191,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -205,8 +205,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -219,8 +219,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -233,8 +233,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -247,8 +247,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -261,8 +261,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -275,8 +275,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -289,8 +289,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -303,8 +303,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -317,8 +317,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -331,8 +331,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -345,8 +345,8 @@ const SCRAPED_BOOKS = [
         "subject": "Science",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -359,8 +359,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -373,8 +373,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -387,8 +387,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -401,8 +401,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -415,8 +415,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -429,8 +429,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -443,8 +443,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -457,8 +457,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -471,8 +471,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -485,8 +485,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -499,8 +499,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -513,8 +513,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -527,8 +527,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -541,8 +541,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -555,8 +555,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -569,8 +569,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -583,8 +583,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -597,8 +597,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -611,8 +611,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -625,8 +625,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -639,8 +639,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -653,8 +653,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -667,8 +667,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -681,8 +681,8 @@ const SCRAPED_BOOKS = [
         "subject": "Mathematics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -695,8 +695,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -709,8 +709,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -723,8 +723,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -737,8 +737,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -751,8 +751,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -765,8 +765,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -779,8 +779,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -793,8 +793,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -807,8 +807,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -821,8 +821,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -835,8 +835,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -849,8 +849,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -863,8 +863,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -877,8 +877,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -891,8 +891,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -905,8 +905,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -919,8 +919,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -933,8 +933,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -947,8 +947,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -961,8 +961,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -975,8 +975,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -989,8 +989,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1003,8 +1003,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1017,8 +1017,8 @@ const SCRAPED_BOOKS = [
         "subject": "English",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1031,8 +1031,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1045,8 +1045,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1059,8 +1059,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1073,8 +1073,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1087,8 +1087,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1101,8 +1101,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1115,8 +1115,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1129,8 +1129,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1143,8 +1143,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1157,8 +1157,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1171,8 +1171,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1185,8 +1185,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1199,8 +1199,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1213,8 +1213,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1227,8 +1227,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1241,8 +1241,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1255,8 +1255,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1269,8 +1269,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1283,8 +1283,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1297,8 +1297,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1311,8 +1311,8 @@ const SCRAPED_BOOKS = [
         "subject": "Chemistry",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1325,8 +1325,8 @@ const SCRAPED_BOOKS = [
         "subject": "Chemistry",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1339,8 +1339,8 @@ const SCRAPED_BOOKS = [
         "subject": "Physics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1353,8 +1353,8 @@ const SCRAPED_BOOKS = [
         "subject": "Physics",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1367,8 +1367,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1381,8 +1381,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1395,8 +1395,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1409,8 +1409,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1423,8 +1423,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1437,8 +1437,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1451,8 +1451,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1465,8 +1465,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1479,8 +1479,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1493,8 +1493,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1507,8 +1507,8 @@ const SCRAPED_BOOKS = [
         "subject": "Sindhi",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1521,8 +1521,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1535,8 +1535,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1549,8 +1549,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1563,8 +1563,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1577,8 +1577,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1591,8 +1591,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1605,8 +1605,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1619,8 +1619,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1633,8 +1633,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1647,8 +1647,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1661,8 +1661,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1675,8 +1675,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1689,8 +1689,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1703,8 +1703,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1717,8 +1717,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1731,8 +1731,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1745,8 +1745,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1759,8 +1759,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1773,8 +1773,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1787,8 +1787,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1801,8 +1801,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1815,8 +1815,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1829,8 +1829,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1843,8 +1843,8 @@ const SCRAPED_BOOKS = [
         "subject": "Urdu",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1857,8 +1857,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1871,8 +1871,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1885,8 +1885,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1899,8 +1899,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1913,8 +1913,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1927,8 +1927,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1941,8 +1941,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1955,8 +1955,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1969,8 +1969,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1983,8 +1983,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -1997,8 +1997,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2011,8 +2011,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2025,8 +2025,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2039,8 +2039,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2053,8 +2053,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2067,8 +2067,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2081,8 +2081,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2095,8 +2095,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2109,8 +2109,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2123,8 +2123,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2137,8 +2137,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2151,8 +2151,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2165,8 +2165,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2179,8 +2179,8 @@ const SCRAPED_BOOKS = [
         "subject": "Computer Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2193,8 +2193,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2207,8 +2207,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2221,8 +2221,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2235,8 +2235,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2249,8 +2249,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2263,8 +2263,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2277,8 +2277,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2291,8 +2291,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2305,8 +2305,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2319,8 +2319,8 @@ const SCRAPED_BOOKS = [
         "subject": "Art",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2333,8 +2333,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2347,8 +2347,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2361,8 +2361,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2375,8 +2375,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2389,8 +2389,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2403,8 +2403,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2417,8 +2417,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2431,8 +2431,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2445,8 +2445,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2459,8 +2459,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2473,8 +2473,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2487,8 +2487,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2501,8 +2501,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2515,8 +2515,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2529,8 +2529,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2543,8 +2543,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2557,8 +2557,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2571,8 +2571,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2585,8 +2585,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2599,8 +2599,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2613,8 +2613,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2627,8 +2627,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2641,8 +2641,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2655,8 +2655,8 @@ const SCRAPED_BOOKS = [
         "subject": "Islamic Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2669,8 +2669,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2683,8 +2683,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2697,8 +2697,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2711,8 +2711,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2725,8 +2725,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2739,8 +2739,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2753,8 +2753,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2767,8 +2767,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2781,8 +2781,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2795,8 +2795,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2809,8 +2809,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2823,8 +2823,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2837,8 +2837,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2851,8 +2851,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2865,8 +2865,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2879,8 +2879,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2893,8 +2893,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2907,8 +2907,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2921,8 +2921,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2935,8 +2935,8 @@ const SCRAPED_BOOKS = [
         "subject": "General Knowledge",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2949,8 +2949,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2963,8 +2963,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2977,8 +2977,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -2991,8 +2991,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3005,8 +3005,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3019,8 +3019,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3033,8 +3033,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3047,8 +3047,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3061,8 +3061,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3075,8 +3075,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3089,8 +3089,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3103,8 +3103,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3117,8 +3117,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3131,8 +3131,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3145,8 +3145,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3159,8 +3159,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3173,8 +3173,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3187,8 +3187,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3201,8 +3201,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3215,8 +3215,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3229,8 +3229,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3243,8 +3243,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3257,8 +3257,8 @@ const SCRAPED_BOOKS = [
         "subject": "History & Pakistan Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3271,8 +3271,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3285,8 +3285,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3299,8 +3299,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3313,8 +3313,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3327,8 +3327,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3341,8 +3341,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3355,8 +3355,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3369,8 +3369,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3383,8 +3383,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3397,8 +3397,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3411,8 +3411,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3425,8 +3425,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3439,8 +3439,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3453,8 +3453,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3467,8 +3467,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3481,8 +3481,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3495,8 +3495,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3509,8 +3509,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3523,8 +3523,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3537,8 +3537,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3551,8 +3551,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3565,8 +3565,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3579,8 +3579,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3593,8 +3593,8 @@ const SCRAPED_BOOKS = [
         "subject": "Social Studies / Sociology",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3607,8 +3607,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3621,8 +3621,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3635,8 +3635,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3649,8 +3649,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3663,8 +3663,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3677,8 +3677,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3691,8 +3691,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3705,8 +3705,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3719,8 +3719,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3733,8 +3733,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3747,8 +3747,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3761,8 +3761,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3775,8 +3775,8 @@ const SCRAPED_BOOKS = [
         "subject": "Geography",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3789,8 +3789,8 @@ const SCRAPED_BOOKS = [
         "subject": "Atlases",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3803,8 +3803,8 @@ const SCRAPED_BOOKS = [
         "subject": "Atlases",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3817,8 +3817,8 @@ const SCRAPED_BOOKS = [
         "subject": "Atlases",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3831,8 +3831,8 @@ const SCRAPED_BOOKS = [
         "subject": "Environmental Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3845,8 +3845,8 @@ const SCRAPED_BOOKS = [
         "subject": "Environmental Studies",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3859,8 +3859,8 @@ const SCRAPED_BOOKS = [
         "subject": "Economics & Commerce",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3873,8 +3873,8 @@ const SCRAPED_BOOKS = [
         "subject": "Economics & Commerce",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3887,8 +3887,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3901,8 +3901,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3915,8 +3915,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3929,8 +3929,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3943,8 +3943,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3957,8 +3957,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3971,8 +3971,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3985,8 +3985,8 @@ const SCRAPED_BOOKS = [
         "subject": "Cambridge Lower Secondary",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -3999,8 +3999,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4013,8 +4013,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4027,8 +4027,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4041,8 +4041,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4055,8 +4055,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4069,8 +4069,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4083,8 +4083,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4097,8 +4097,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4111,8 +4111,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4125,8 +4125,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4139,8 +4139,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4153,8 +4153,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4167,8 +4167,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4181,8 +4181,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4195,8 +4195,8 @@ const SCRAPED_BOOKS = [
         "subject": "Extended Training Course",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4209,8 +4209,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4223,8 +4223,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4237,8 +4237,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4251,8 +4251,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4265,8 +4265,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4279,8 +4279,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4293,8 +4293,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4307,8 +4307,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4321,8 +4321,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4335,8 +4335,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4349,8 +4349,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4363,8 +4363,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4377,8 +4377,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4391,8 +4391,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4405,8 +4405,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4419,8 +4419,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4433,8 +4433,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4447,8 +4447,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4461,8 +4461,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4475,8 +4475,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4489,8 +4489,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4503,8 +4503,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4517,8 +4517,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4531,8 +4531,8 @@ const SCRAPED_BOOKS = [
         "subject": "OxfordAQA Textbooks",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4545,8 +4545,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 1 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4559,8 +4559,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 1 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4573,8 +4573,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 1 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4587,8 +4587,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 1 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4601,8 +4601,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 2 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4615,8 +4615,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 2 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4629,8 +4629,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 2 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4643,8 +4643,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 3 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4657,8 +4657,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 3 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4671,8 +4671,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 3 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4685,8 +4685,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 4 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4699,8 +4699,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 4 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4713,8 +4713,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 4 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4727,8 +4727,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 4 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4741,8 +4741,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4755,8 +4755,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4769,8 +4769,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4783,8 +4783,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4797,8 +4797,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4811,8 +4811,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Countdown 5 (3rd Edition) Blended Edition",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4825,8 +4825,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 1 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4839,8 +4839,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 1 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4853,8 +4853,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 1 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4867,8 +4867,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 1 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4881,8 +4881,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 1 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4895,8 +4895,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 3 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4909,8 +4909,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 2 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4923,8 +4923,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 2 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4937,8 +4937,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 2 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4951,8 +4951,8 @@ const SCRAPED_BOOKS = [
         "subject": "think! New Syllabus Mathematics 4 (8th edition)",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4965,8 +4965,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer A",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4979,8 +4979,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer A",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -4993,8 +4993,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer A",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5007,8 +5007,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer B",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5021,8 +5021,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer B",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5035,8 +5035,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer B",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5049,8 +5049,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer B",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5063,8 +5063,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Primer B",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5077,8 +5077,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 1",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5091,8 +5091,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 1",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5105,8 +5105,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 1",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5119,8 +5119,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5133,8 +5133,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5147,8 +5147,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5161,8 +5161,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 3",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5175,8 +5175,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 3",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5189,8 +5189,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 3",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5203,8 +5203,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 4",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5217,8 +5217,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 5",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5231,8 +5231,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 5",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5245,8 +5245,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 6",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5259,8 +5259,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 6",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5273,8 +5273,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 7",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5287,8 +5287,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 7",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5301,8 +5301,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 8",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5315,8 +5315,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 8",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5329,8 +5329,8 @@ const SCRAPED_BOOKS = [
         "subject": "New Broadway Book 8",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5343,8 +5343,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Pre-Nursery",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5357,8 +5357,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Pre-Nursery",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5371,8 +5371,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Nursery",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5385,8 +5385,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Nursery",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5399,8 +5399,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Nursery",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5413,8 +5413,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder for Grade 1",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5427,8 +5427,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Kindergarten",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5441,8 +5441,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Kindergarten",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5455,8 +5455,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder Kindergarten",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5469,8 +5469,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder for Grade 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5483,8 +5483,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder for Grade 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -5497,8 +5497,8 @@ const SCRAPED_BOOKS = [
         "subject": "Handwriting Skills Builder for Grade 2",
         "category": "School Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.8
     },
     {
@@ -6915,8 +6915,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6929,8 +6929,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6943,8 +6943,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6957,8 +6957,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6971,8 +6971,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6985,8 +6985,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -6999,8 +6999,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7013,8 +7013,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7027,8 +7027,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7041,8 +7041,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7055,8 +7055,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7069,8 +7069,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7083,8 +7083,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7097,8 +7097,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7111,8 +7111,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7125,8 +7125,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7139,8 +7139,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7153,8 +7153,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7167,8 +7167,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7181,8 +7181,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7195,8 +7195,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7209,8 +7209,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7223,8 +7223,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7237,8 +7237,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7251,8 +7251,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7265,8 +7265,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7279,8 +7279,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7293,8 +7293,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7307,8 +7307,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7321,8 +7321,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7335,8 +7335,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7349,8 +7349,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Readers",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7363,8 +7363,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7377,8 +7377,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7391,8 +7391,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7405,8 +7405,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7419,8 +7419,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7433,8 +7433,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7447,8 +7447,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7461,8 +7461,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7475,8 +7475,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7489,8 +7489,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7503,8 +7503,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7517,8 +7517,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7531,8 +7531,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7545,8 +7545,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Drama",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7559,8 +7559,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7573,8 +7573,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7587,8 +7587,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7601,8 +7601,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7615,8 +7615,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7629,8 +7629,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7643,8 +7643,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7657,8 +7657,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7671,8 +7671,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7685,8 +7685,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7699,8 +7699,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7713,8 +7713,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7727,8 +7727,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7741,8 +7741,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Picture Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7755,8 +7755,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7769,8 +7769,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7783,8 +7783,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7797,8 +7797,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7811,8 +7811,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7825,8 +7825,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7839,8 +7839,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7853,8 +7853,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7867,8 +7867,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7881,8 +7881,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7895,8 +7895,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7909,8 +7909,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7923,8 +7923,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7937,8 +7937,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7951,8 +7951,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7965,8 +7965,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7979,8 +7979,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -7993,8 +7993,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8007,8 +8007,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - E-Books",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8021,8 +8021,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8035,8 +8035,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Poetry",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8049,8 +8049,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8063,8 +8063,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8077,8 +8077,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8091,8 +8091,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8105,8 +8105,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8119,8 +8119,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8133,8 +8133,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8147,8 +8147,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8161,8 +8161,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8175,8 +8175,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8189,8 +8189,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Non-Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8203,8 +8203,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Library Packs",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8217,8 +8217,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Library Packs",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8231,8 +8231,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Library Packs",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8245,8 +8245,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Library Packs",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8259,8 +8259,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8273,8 +8273,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8287,8 +8287,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8301,8 +8301,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8315,8 +8315,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8329,8 +8329,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8343,8 +8343,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8357,8 +8357,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8371,8 +8371,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8385,8 +8385,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8399,8 +8399,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8413,8 +8413,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8427,8 +8427,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8441,8 +8441,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8455,8 +8455,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8469,8 +8469,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8483,8 +8483,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8497,8 +8497,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8511,8 +8511,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8525,8 +8525,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8539,8 +8539,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Urdu Readers and Fiction",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8553,8 +8553,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - New Oxford Progressive English Readers Level 2: The Talking Tree and Other Stories",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8567,8 +8567,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - New Oxford Progressive English Readers Level 2: The Prince and the Pauper",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8581,8 +8581,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Azeem Pakistani: Dr Akhtar Hameed Khan",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8595,8 +8595,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Oxford Urdu Silsila Level 3 Supplementary Reader: Hara Bandar",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8609,8 +8609,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Stories from the Quran New Edition",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8623,8 +8623,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Stories from the Quran New Edition",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
@@ -8637,8 +8637,8 @@ const SCRAPED_BOOKS = [
         "subject": "Children's Books - Stories from the Quran New Edition",
         "category": "Children's Books",
         "type": "Book",
-        "cls": "Oxford University Press",
-        "pub": "Oxford University Press",
+        "cls": "Oxford Books",
+        "pub": "Oxford Books",
         "rating": 4.9
     },
     {
