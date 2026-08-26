@@ -425,6 +425,16 @@ async function placeOrder(e){
     await db.collection('orders').doc(orderId).set(orderData);
 
     document.getElementById('orderIdDisplay').textContent = 'Order #' + orderId;
+    
+    // Generate WhatsApp confirmation link
+    const waPhone = '923000000000'; // Admin WhatsApp Helpline
+    const itemsList = cart.map(c => `• ${c.qty}x ${c.title} (Rs ${c.price})`).join('\n');
+    const waMessage = `*Assalam-o-Alaikum Study Pack!*\nMaine website par naya order place kiya hai:\n\n📦 *Order ID:* #${orderId}\n👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n📍 *City:* ${city}\n🏠 *Address:* ${address}\n\n📚 *Ordered Books:*\n${itemsList}\n\n💰 *Subtotal (Books):* Rs ${sub.toLocaleString()}\n🚚 *Delivery Charges:* Weight ke mutabiq\n\nBaraye meharbani actual parcel weight aur final bill confirm kar dein.`;
+    
+    const waLink = `https://wa.me/${waPhone}?text=${encodeURIComponent(waMessage)}`;
+    const waBtn = document.getElementById('whatsappConfirmBtn');
+    if (waBtn) waBtn.href = waLink;
+
     document.getElementById('successOverlay').classList.add('show');
     cart = [];
     saveCart();

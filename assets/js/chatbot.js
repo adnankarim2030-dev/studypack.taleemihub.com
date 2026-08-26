@@ -26,9 +26,7 @@
       <div class="sp-chat-window" id="spChatWindow">
         <div class="sp-chat-header">
           <div class="sp-chat-header-info">
-            <div class="sp-chat-avatar" id="spChatAvatar">
-              <svg viewBox="0 0 24 24"><path d="M12 2a8 8 0 0 0-8 8c0 2.5 1.1 4.7 3 6.2V20a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3.8c1.9-1.5 3-3.7 3-6.2a8 8 0 0 0-8-8z"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/><path d="M10 14h4"/></svg>
-            </div>
+            <img src="assets/images/studypack_logo.png" class="sp-chat-avatar-logo" alt="Study Pack Logo" onerror="this.src='assets/images/logo.png'">
             <div class="sp-chat-title">
               <h4 id="spChatHeaderTitle">Study Pack Assistant</h4>
               <span id="spChatStatus">Online • Ready to help</span>

@@ -1,82 +1,81 @@
 /* ========================================================
-   STUDY PACK AI SMART CHATBOT WIDGET
+   STUDY PACK AI CHATBOT - COMPACT & MOBILE-FRIENDLY CSS
    ======================================================== */
 
 .sp-chat-widget {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 20px;
+  right: 20px;
   z-index: 99999;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Floating Trigger Button */
+/* Compact Floating Trigger Button */
 .sp-chat-trigger {
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: linear-gradient(135deg, #1565C0, #0B132B);
   color: #ffffff;
   border: none;
-  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.35), 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 18px rgba(21, 101, 192, 0.35);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   outline: none;
 }
 
 .sp-chat-trigger:hover {
-  transform: scale(1.08) translateY(-2px);
-  box-shadow: 0 12px 30px rgba(21, 101, 192, 0.45);
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 10px 24px rgba(21, 101, 192, 0.45);
 }
 
 .sp-chat-trigger svg {
-  width: 28px;
-  height: 28px;
-  transition: transform 0.3s ease;
+  width: 24px;
+  height: 24px;
 }
 
 .sp-chat-badge {
   position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 14px;
-  height: 14px;
+  top: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
   background: #10B981;
-  border: 2.5px solid #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 50%;
   animation: spPulse 2s infinite;
 }
 
 @keyframes spPulse {
   0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
   100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
-/* Chat Popup Window */
+/* Compact & Device Friendly Popup Window */
 .sp-chat-window {
   position: absolute;
-  bottom: 72px;
+  bottom: 64px;
   right: 0;
-  width: 360px;
-  height: 520px;
-  max-width: calc(100vw - 32px);
-  max-height: calc(100vh - 100px);
+  width: 330px;
+  height: 470px;
+  max-width: calc(100vw - 28px);
+  max-height: calc(100vh - 90px);
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16), 0 4px 10px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   opacity: 0;
-  transform: scale(0.9) translateY(20px);
+  transform: scale(0.92) translateY(14px);
   pointer-events: none;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: bottom right;
 }
 
@@ -86,75 +85,64 @@
   pointer-events: auto;
 }
 
-/* Header */
+/* Header with Logo */
 .sp-chat-header {
   background: linear-gradient(135deg, #0B132B, #1565C0);
   color: #ffffff;
-  padding: 16px 18px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 .sp-chat-header-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.sp-chat-avatar {
-  width: 38px;
-  height: 38px;
-  background: rgba(255, 255, 255, 0.15);
+.sp-chat-avatar-logo {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(4px);
-}
-
-.sp-chat-avatar svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 2;
+  padding: 3px;
+  object-fit: contain;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
 }
 
 .sp-chat-title h4 {
   margin: 0;
-  font-size: 15px;
+  font-size: 13.5px;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
 }
 
 .sp-chat-title span {
-  font-size: 11.5px;
+  font-size: 10.5px;
   color: #A5D6A7;
   display: flex;
   align-items: center;
   gap: 4px;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .sp-chat-title span::before {
   content: '';
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   background: #10B981;
   border-radius: 50%;
   display: inline-block;
 }
 
 .sp-chat-close-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border: none;
   color: #ffffff;
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -167,29 +155,29 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Chat Body / Messages Area */
+/* Messages Area */
 .sp-chat-body {
   flex: 1;
-  padding: 16px;
+  padding: 12px 14px;
   overflow-y: auto;
   background: #F8FAFC;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   scroll-behavior: smooth;
 }
 
 .sp-msg {
   display: flex;
   flex-direction: column;
-  max-width: 84%;
-  font-size: 13.5px;
-  line-height: 1.45;
-  animation: spFadeUp 0.3s ease-out;
+  max-width: 86%;
+  font-size: 12.5px;
+  line-height: 1.4;
+  animation: spFadeUp 0.25s ease-out;
 }
 
 @keyframes spFadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -202,29 +190,29 @@
 }
 
 .sp-bubble {
-  padding: 10px 14px;
-  border-radius: 14px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   word-break: break-word;
 }
 
 .sp-msg.bot .sp-bubble {
   background: #ffffff;
   color: #1E293B;
-  border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .sp-msg.user .sp-bubble {
   background: linear-gradient(135deg, #1565C0, #1E88E5);
   color: #ffffff;
-  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 2px;
 }
 
 .sp-msg-time {
-  font-size: 10px;
+  font-size: 9.5px;
   color: #94A3B8;
-  margin-top: 4px;
+  margin-top: 3px;
   align-self: flex-start;
 }
 
@@ -232,24 +220,24 @@
   align-self: flex-end;
 }
 
-/* Interactive Product Cards inside Chat */
+/* Product Cards in Chat */
 .sp-chat-product-card {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #ffffff;
-  padding: 8px 10px;
-  border-radius: 10px;
-  margin-top: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  margin-top: 6px;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
 .sp-chat-product-card img {
-  width: 44px;
-  height: 44px;
+  width: 36px;
+  height: 36px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 4px;
   background: #F1F5F9;
   padding: 2px;
 }
@@ -260,7 +248,7 @@
 }
 
 .sp-chat-product-card .title {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: #0F172A;
   white-space: nowrap;
@@ -269,20 +257,19 @@
 }
 
 .sp-chat-product-card .price {
-  font-size: 11.5px;
+  font-size: 10.5px;
   font-weight: 600;
   color: #1565C0;
-  margin-top: 2px;
 }
 
 .sp-chat-product-card .btn-add {
-  padding: 4px 10px;
-  font-size: 11px;
+  padding: 4px 8px;
+  font-size: 10.5px;
   font-weight: 700;
   background: #1565C0;
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background 0.2s;
 }
@@ -291,21 +278,21 @@
   background: #0D47A1;
 }
 
-/* Quick Action Chips */
+/* Chips */
 .sp-chat-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
+  gap: 5px;
+  margin-top: 4px;
 }
 
 .sp-chip {
-  padding: 6px 12px;
+  padding: 5px 10px;
   background: #EEF2F6;
   border: 1px solid #CBD5E1;
   color: #1E293B;
-  border-radius: 16px;
-  font-size: 11.5px;
+  border-radius: 14px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -318,53 +305,24 @@
   border-color: #1565C0;
 }
 
-/* Typing Indicator */
-.sp-typing-indicator {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  background: #ffffff;
-  border-radius: 12px;
-  width: fit-content;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-
-.sp-typing-dot {
-  width: 6px;
-  height: 6px;
-  background: #94A3B8;
-  border-radius: 50%;
-  animation: spTyping 1.4s infinite ease-in-out both;
-}
-
-.sp-typing-dot:nth-child(1) { animation-delay: -0.32s; }
-.sp-typing-dot:nth-child(2) { animation-delay: -0.16s; }
-
-@keyframes spTyping {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1); }
-}
-
 /* Footer / Input Bar */
 .sp-chat-footer {
-  padding: 12px 14px;
+  padding: 10px 12px;
   background: #ffffff;
   border-top: 1px solid #E2E8F0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .sp-chat-input {
   flex: 1;
-  padding: 10px 14px;
-  border-radius: 24px;
+  padding: 8px 12px;
+  border-radius: 20px;
   border: 1px solid #CBD5E1;
-  font-size: 13px;
+  font-size: 12px;
   outline: none;
   background: #F8FAFC;
-  transition: border-color 0.2s ease;
 }
 
 .sp-chat-input:focus {
@@ -373,8 +331,8 @@
 }
 
 .sp-chat-send-btn {
-  width: 38px;
-  height: 38px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: #1565C0;
   color: #ffffff;
@@ -383,19 +341,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.sp-chat-send-btn:hover {
-  background: #0D47A1;
-  transform: scale(1.05);
 }
 
 .sp-chat-send-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2;
-  margin-left: 2px;
+  width: 15px;
+  height: 15px;
+}
+
+/* Mobile Friendly overrides */
+@media (max-width: 480px) {
+  .sp-chat-widget {
+    bottom: 15px;
+    right: 15px;
+  }
+  .sp-chat-window {
+    width: calc(100vw - 30px);
+    height: 440px;
+    bottom: 60px;
+    right: 0;
+  }
 }
