@@ -3,7 +3,7 @@
    ============================================================ */
 
 const WC_CONFIG = {
-    storeUrl: 'https://api.studypack.taleemihub.com',
+    storeUrl: 'https://studypack.taleemihub.com',
     consumerKey: 'ck_9d3ebbf59738bb9cb7a3021067c90893476d32d7',
     consumerSecret: 'cs_75d5b1183e7985468ab5e374fc9be4ed0a5e2b3f'
 };

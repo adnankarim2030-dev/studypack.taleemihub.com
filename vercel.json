@@ -1,3 +1,29 @@
 {
-  "name": "studypack-taleemihub"
+  "name": "studypack-taleemihub",
+  "rewrites": [
+    {
+      "source": "/wp-admin",
+      "destination": "http://8.29.154.51/wp-admin/"
+    },
+    {
+      "source": "/wp-admin/:match*",
+      "destination": "http://8.29.154.51/wp-admin/:match*"
+    },
+    {
+      "source": "/wp-login.php",
+      "destination": "http://8.29.154.51/wp-login.php"
+    },
+    {
+      "source": "/wp-json/:match*",
+      "destination": "http://8.29.154.51/wp-json/:match*"
+    },
+    {
+      "source": "/wp-content/:match*",
+      "destination": "http://8.29.154.51/wp-content/:match*"
+    },
+    {
+      "source": "/wp-includes/:match*",
+      "destination": "http://8.29.154.51/wp-includes/:match*"
+    }
+  ]
 }
