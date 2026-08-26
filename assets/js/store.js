@@ -1,3 +1,21 @@
+
+// Preloader Immediate Dismissal
+function dismissPreloader() {
+    const pl = document.getElementById('preloader');
+    if (pl) {
+        pl.classList.add('hide');
+        pl.style.opacity = '0';
+        pl.style.visibility = 'hidden';
+        pl.style.pointerEvents = 'none';
+        setTimeout(() => { if (pl) pl.style.display = 'none'; }, 400);
+    }
+}
+document.addEventListener('DOMContentLoaded', dismissPreloader);
+window.addEventListener('load', dismissPreloader);
+setTimeout(dismissPreloader, 100);
+setTimeout(dismissPreloader, 500);
+setTimeout(dismissPreloader, 1200);
+
 /* ========================================================
    STUDY PACK CENTRAL STORE & CART ENGINE (GLOBAL & PERSISTENT)
    ======================================================== */
