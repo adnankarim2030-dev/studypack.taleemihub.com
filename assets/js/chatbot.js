@@ -1,5 +1,6 @@
 /* ========================================================
    STUDY PACK SMART AI + LIVE AGENT HYBRID CHATBOT
+   Natural Conversational AI Engine (Roman Urdu & English)
    ======================================================== */
 
 (function() {
@@ -46,17 +47,18 @@
         <div class="sp-chat-body" id="spChatBody">
           <div class="sp-msg bot">
             <div class="sp-bubble">
-              Assalam-o-Alaikum! 👋 Main Study Pack ka Virtual Assistant hoon. Aap books search kar sakte hain ya direct <strong>Human Agent</strong> se baat kar sakte hain!
+              Assalam-o-Alaikum! 👋 Welcome to <strong>Study Pack</strong>.<br>
+              Main aapka virtual book consultant hoon. Main aapko school syllabus, Oxford/Paramount/Spectrum books talaash karne aur order place karne mein mukammal madad kar sakta hoon!
             </div>
             <span class="sp-msg-time">Just now</span>
           </div>
 
           <div class="sp-chat-chips" id="spChatChips">
-            <button class="sp-chip" onclick="handleChipClick('Connect with Agent')">👤 Talk to Live Agent</button>
             <button class="sp-chip" onclick="handleChipClick('Oxford Countdown')">📚 Oxford Books</button>
-            <button class="sp-chip" onclick="handleChipClick('Delivery Charges')">🚚 Delivery &amp; COD Rates</button>
-            <button class="sp-chip" onclick="handleChipClick('Science Books')">🔬 Science &amp; Maths</button>
-            <button class="sp-chip" onclick="handleChipClick('WhatsApp Support')">💬 WhatsApp Helpline</button>
+            <button class="sp-chip" onclick="handleChipClick('Order kaise karein?')">🛒 Order kaise karein?</button>
+            <button class="sp-chip" onclick="handleChipClick('Delivery Charges & COD')">🚚 Delivery &amp; COD Rates</button>
+            <button class="sp-chip" onclick="handleChipClick('Class 5 Course')">🎒 School Syllabi</button>
+            <button class="sp-chip" onclick="handleChipClick('Connect with Agent')">👤 Talk to Live Agent</button>
           </div>
         </div>
 
@@ -129,8 +131,8 @@
   function startLiveAgentFlow() {
     if (!customerInfo.name || !customerInfo.phone) {
       addBotMessage(`
-        <strong>👤 Live Agent Support:</strong><br>
-        Real Support Agent se baat karne ke liye baraye meharbani apna Naam aur Phone Number enter karein:<br><br>
+        <strong>👤 Live Agent Desk:</strong><br>
+        Hum aapko real support agent se connect kar rahe hain. Baraye meharbani apna Naam aur Phone Number likhein:<br><br>
         <div style="display:flex; flex-direction:column; gap:6px; margin-top:6px;">
           <input type="text" id="spCustNameInput" placeholder="Aapka Naam" style="padding:6px 10px; border-radius:6px; border:1px solid #CBD5E1; font-size:12px;" value="${escapeHtml(customerInfo.name || '')}">
           <input type="tel" id="spCustPhoneInput" placeholder="Phone # (e.g. 03XX-XXXXXXX)" style="padding:6px 10px; border-radius:6px; border:1px solid #CBD5E1; font-size:12px;" value="${escapeHtml(customerInfo.phone || '')}">
@@ -173,10 +175,9 @@
 
     addBotMessage(`
       ✅ <strong>Connected with Support Desk!</strong><br>
-      Aapka session create ho gaya hai. Hamara agent jald hi aapke message ka live reply dega. Aap apna sawal yahan type kar sakte hain.
+      Aapka session create ho gaya hai. Hamara agent jald hi aapke message ka live reply dega.
     `);
 
-    // Register / Update Firestore chat session
     if (typeof firebase !== 'undefined' && firebase.firestore) {
       const db = firebase.firestore();
       try {
@@ -190,7 +191,6 @@
           lastMessage: 'Customer connected to live agent'
         }, { merge: true });
 
-        // Listen for agent replies
         if (unsubscribeLiveMessages) unsubscribeLiveMessages();
         unsubscribeLiveMessages = db.collection('live_chats').doc(currentChatSessionId)
           .collection('messages').orderBy('timestamp', 'asc')
@@ -219,7 +219,7 @@
     document.getElementById('spChatStatus').textContent = 'Online • Ready to help';
     document.getElementById('spSwitchModeBtn').textContent = '👤 Agent';
     if (unsubscribeLiveMessages) unsubscribeLiveMessages();
-    addBotMessage("Switched back to <strong>AI Virtual Assistant</strong> mode. Main aapki kya madad kar sakta hoon?");
+    addBotMessage("Switched back to <strong>AI Virtual Assistant</strong> mode. Ji batayein, main aapki kya madad kar sakta hoon?");
   }
 
   async function sendLiveMessage(text) {
@@ -282,51 +282,103 @@
     if (el) el.remove();
   }
 
+  // ========================================================
+  // NATURAL CONVERSATIONAL AI ENGINE
+  // ========================================================
   function processUserQuery(query) {
     showTypingIndicator();
+    
+    // Simulate realistic human reading & typing delay
+    const delay = Math.min(800, Math.max(350, query.length * 20));
+
     setTimeout(() => {
       removeTypingIndicator();
       const q = query.toLowerCase().trim();
 
-      if (q.includes('agent') || q.includes('human') || q.includes('adnan') || q.includes('talk to') || q.includes('insan') || q.includes('real chat')) {
-        startLiveAgentFlow();
-        return;
-      }
-
-      if (q.includes('delivery') || q.includes('shipping') || q.includes('charges') || q.includes('wazan') || q.includes('weight') || q.includes('cod')) {
+      // 1. Greetings & Pleasantries
+      if (q.match(/^(salam|assalam|aoa|hi|hello|hey|kia hal|kese ho|kaise ho|good morning|good evening)/i)) {
         addBotMessage(`
-          <strong>🚚 Delivery &amp; Payment Info:</strong><br>
-          • <strong>Delivery Charges:</strong> Kitabon ke actual parcel weight (wazan) ke mutabiq courier rate par calculate hotay hain.<br>
-          • <strong>COD Charges:</strong> Cash on Delivery par 4% courier transfer fee lagti hai.<br>
-          • <strong>Live Agent:</strong> Kisi khas order ke delivery charges maloom karne ke liye <strong>👤 Talk to Live Agent</strong> par click karein.
+          Walaikum Assalam! 😊 Umeed hai aap khairiyat se honge.<br>
+          Aapko aaj kis school, class ya subject ki kitabein ya stationery chahiye? Aap book ka naam likhein, main foran nikaal kar deta hoon!
         `);
         return;
       }
 
-      if (q.includes('whatsapp') || q.includes('contact') || q.includes('helpline') || q.includes('phone')) {
+      // 2. Appreciation & Thanks
+      if (q.match(/^(shukriya|thanks|thank you|jazakallah|meharbani|bohat shukriya|nice|great|good)/i)) {
         addBotMessage(`
-          <strong>💬 Live WhatsApp Support:</strong><br>
-          <a href="https://wa.me/923000000000" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#fff; padding:8px 14px; border-radius:20px; font-weight:700; text-decoration:none; font-size:12.5px;">
+          Aapka bohat shukriya! ❤️ Study Pack par khidmat karna hamara farz hai. Agar mazeed koi bhi kitab chahiye ho to bila-jhijhak batayein!
+        `);
+        return;
+      }
+
+      // 3. Human Agent switch request
+      if (q.includes('agent') || q.includes('human') || q.includes('adnan') || q.includes('talk to') || q.includes('insan') || q.includes('real chat') || q.includes('representative')) {
+        startLiveAgentFlow();
+        return;
+      }
+
+      // 4. How to Order / Buying steps
+      if (q.includes('order kaise') || q.includes('kaise khareed') || q.includes('how to order') || q.includes('order process') || q.includes('buy kaise')) {
+        addBotMessage(`
+          <strong>🛒 Order Place Karne Ka Asaan Tareeqa:</strong><br><br>
+          1️⃣ Jo book ya item chahiye, us par <strong>"Add to Cart"</strong> dabayein.<br>
+          2️⃣ Upar Cart Drawer khol kar <strong>"Checkout"</strong> par click karein.<br>
+          3️⃣ Apna delivery address aur phone number enter kar ke <strong>"Place Order"</strong> kar dein.<br><br>
+          📦 <em>Aapka order receive hotay hi hum parcel ka actual weight check kar ke final delivery charges WhatsApp par confirm kar denge!</em>
+        `);
+        return;
+      }
+
+      // 5. Delivery Charges & COD Fees
+      if (q.includes('delivery') || q.includes('shipping') || q.includes('charges') || q.includes('wazan') || q.includes('weight') || q.includes('cod') || q.includes('kitne din') || q.includes('kab milega')) {
+        addBotMessage(`
+          <strong>🚚 Delivery &amp; Payment Details:</strong><br><br>
+          • <strong>Courier Charges:</strong> Kitabon ke actual parcel weight (wazan) ke mutabiq courier company ke standard rate par lagte hain.<br>
+          • <strong>COD Fee:</strong> Cash on Delivery par 4% courier collection fee final bill mein add hoti hai.<br>
+          • <strong>Delivery Time:</strong> Karachi mein 1-2 din, aur baqi tamam cities mein 2-4 working days mein deliver ho jata hai.<br><br>
+          👉 Kisi specific order ke charges confirm karne ke liye aap <strong>👤 Talk to Live Agent</strong> bhi kar sakte hain.
+        `);
+        return;
+      }
+
+      // 6. WhatsApp & Contact Helpline
+      if (q.includes('whatsapp') || q.includes('contact') || q.includes('helpline') || q.includes('phone') || q.includes('number') || q.includes('rabta') || q.includes('call')) {
+        addBotMessage(`
+          <strong>💬 Live WhatsApp Helpline:</strong><br>
+          Aap direct hamare WhatsApp support par rabta kar ke bhi order place ya confirm kar sakte hain:<br><br>
+          <a href="https://wa.me/923000000000?text=Assalam-o-Alaikum%20StudyPack%20I%20need%20help" target="_blank" style="display:inline-flex; align-items:center; gap:6px; background:#25D366; color:#fff; padding:8px 14px; border-radius:20px; font-weight:700; text-decoration:none; font-size:12.5px;">
             📱 Chat on WhatsApp
           </a>
         `);
         return;
       }
 
+      // 7. School Courses & Syllabi
+      if (q.includes('school') || q.includes('syllabus') || q.includes('course') || q.includes('educators') || q.includes('beaconhouse') || q.includes('city school') || q.includes('fps') || q.includes('karachi public')) {
+        addBotMessage(`
+          <strong>🎒 School Course Packs &amp; Syllabi:</strong><br>
+          Hamare paas tamam top schools (The Educators, Beaconhouse, City School, Foundation Public, Habib Girls, Head Start, AMI waghaira) ke official course packs dastiyab hain.<br><br>
+          👉 <a href="courses.html" style="color:#1565C0; font-weight:700;">Tamam School Course Packs Dekhein</a>
+        `);
+        return;
+      }
+
+      // 8. Search Catalog for Books, Toys, Stationery
       const catalog = typeof BOOKS !== 'undefined' ? BOOKS : (typeof SCRAPED_BOOKS !== 'undefined' ? SCRAPED_BOOKS : []);
-      const ignoreWords = ['ki', 'ka', 'ke', 'ko', 'mai', 'in', 'of', 'for', 'book', 'books', 'the', 'a', 'an', 'kitab', 'kitabein', 'chahiye', 'hai'];
+      const ignoreWords = ['ki', 'ka', 'ke', 'ko', 'mai', 'in', 'of', 'for', 'book', 'books', 'the', 'a', 'an', 'kitab', 'kitabein', 'chahiye', 'hai', 'kahan', 'batao', 'dikhayein', 'dikhao', 'mujhe', 'karo'];
       const keywords = q.split(' ').filter(w => w.length > 1 && !ignoreWords.includes(w));
       
       let matched = [];
       if (keywords.length > 0) {
         matched = catalog.filter(b => {
-          const str = `${b.title || ''} ${b.author || ''} ${b.pub || ''} ${b.cls || ''} ${b.subj || ''}`.toLowerCase();
+          const str = `${b.title || ''} ${b.author || ''} ${b.pub || ''} ${b.cls || ''} ${b.subj || ''} ${b.category || ''}`.toLowerCase();
           return keywords.some(k => str.includes(k));
         });
       }
 
       if (matched.length > 0) {
-        let cardsHtml = `Maine aapke liye <strong>${matched.length}</strong> items talaash kiye hain:<br>`;
+        let cardsHtml = `Maine aapke liye <strong>${matched.length}</strong> items talaash kiye hain. Aap yahan se direct Cart mein add kar sakte hain:<br>`;
         matched.slice(0, 3).forEach(b => {
           const priceStr = typeof money === 'function' ? money(b.price) : 'Rs ' + b.price;
           const img = b.img || 'assets/images/logo.png';
@@ -341,16 +393,23 @@
             </div>
           `;
         });
-        cardsHtml += `<div style="margin-top:8px;"><button onclick="startLiveAgentFlow()" class="sp-chip" style="background:#1565C0; color:#fff; border:none;">👤 Talk to Live Agent for details</button></div>`;
+
+        if (matched.length > 3) {
+          cardsHtml += `<div style="margin-top:8px; display:flex; justify-content:space-between; align-items:center;"><a href="books.html?q=${encodeURIComponent(keywords.join(' '))}" style="font-size:12px; color:#1565C0; font-weight:700;">🔍 Aur ${matched.length - 3} results dekhein</a> <button onclick="startLiveAgentFlow()" class="sp-chip" style="background:#1565C0; color:#fff; border:none; padding:4px 8px; font-size:11px;">👤 Live Agent</button></div>`;
+        }
+
         addBotMessage(cardsHtml);
       } else {
+        // Natural Conversational Fallback
         addBotMessage(`
-          Aapki talash ke mutabiq direct result nahi mila. Aap hamare <strong>Live Agent</strong> se baat kar sakte hain ya catalog search kar sakte hain:<br><br>
-          <button onclick="startLiveAgentFlow()" class="sp-chip" style="background:#1565C0; color:#fff; border:none; margin-bottom:6px;">👤 Connect with Live Agent</button><br>
-          <a href="books.html?q=${encodeURIComponent(query)}" style="color:#1565C0; font-weight:700; font-size:12.5px;">🔍 Search in Books Catalog</a>
+          Main aapki baat samajh raha hoon, lekin exact matching product nikaalne ke liye thoda mazeed batayein (jaise class, subject ya publisher ka naam):<br><br>
+          • Maslan: <em>"Oxford Countdown Class 5"</em> ya <em>"Grade 8 Science"</em><br><br>
+          Ya aap hamare <strong>Live Agent</strong> se direct baat kar sakte hain:<br>
+          <button onclick="startLiveAgentFlow()" class="sp-chip" style="background:#1565C0; color:#fff; border:none; margin-top:6px;">👤 Connect with Live Agent</button>
         `);
       }
-    }, 400);
+
+    }, delay);
   }
 
   function escapeHtml(str) {
