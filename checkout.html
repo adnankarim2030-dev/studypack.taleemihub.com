@@ -320,10 +320,9 @@ function renderCheckoutSummary(){
   `).join('');
 
   const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
-  const ship = sub>0 ? (sub>2000?0:150) : 0;
   document.getElementById('coSub').textContent = money(sub);
-  document.getElementById('coShip').textContent = ship===0 ? 'Free' : money(ship);
-  document.getElementById('coTotal').textContent = money(sub+ship);
+  document.getElementById('coShip').textContent = 'As per Weight / Distance';
+  document.getElementById('coTotal').textContent = money(sub) + ' (+ Delivery)';
 }
 
 /* Payment method selection */

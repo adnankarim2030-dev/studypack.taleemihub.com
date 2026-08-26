@@ -56,11 +56,10 @@ function renderCart(){
     `).join('');
   }
   const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
-  const ship = sub>0 ? (sub>2000?0:150) : 0;
   const elSub = document.getElementById('sumSub'), elShip = document.getElementById('sumShip'), elTotal = document.getElementById('sumTotal');
   if(elSub) elSub.textContent = money(sub);
-  if(elShip) elShip.textContent = ship===0 ? 'Free' : money(ship);
-  if(elTotal) elTotal.textContent = money(sub+ship);
+  if(elShip) elShip.textContent = sub===0 ? 'PKR 0' : 'As per Weight / Distance';
+  if(elTotal) elTotal.textContent = sub===0 ? 'PKR 0' : money(sub) + ' (+ Delivery)';
 }
 
 function openCart(){ document.getElementById('cartDrawer').classList.add('show'); document.getElementById('cartOverlay').classList.add('show'); }

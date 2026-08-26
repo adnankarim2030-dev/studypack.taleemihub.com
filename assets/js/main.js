@@ -1,3 +1,13 @@
+
+function filterOutDummyProducts(list) {
+    return (list || []).filter(b => {
+        if (!b || !b.title) return false;
+        const t = String(b.title).toLowerCase();
+        if (t.includes('gatsby') || t.includes('dummy') || t.includes('test product')) return false;
+        if (Number(b.price) <= 50 && !t.includes('notebook') && !t.includes('eraser')) return false;
+        return true;
+    });
+}
 /* ============ FIREBASE INTEGRATION ============ */
 let BOOKS = typeof SCRAPED_BOOKS !== 'undefined' ? [...SCRAPED_BOOKS] : [];
 if (typeof SCRAPED_TOYS !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_TOYS];
@@ -25,7 +35,7 @@ try {
     const db = firebase.firestore();
 
     db.collection('products').onSnapshot(snapshot => {
-        BOOKS = snapshot.docs.map(doc => doc.data());
+        BOOKS = filterOutDummyProducts(snapshot.docs.map(doc => doc.data()));
         TOYS = BOOKS.filter(b => {
             const cat = String(b.category || b.cats || '').toLowerCase();
             const typ = String(b.type || '').toLowerCase();
@@ -53,7 +63,7 @@ try {
         NOVELS = BOOKS.filter(b => String(b.category||b.cats||'').toLowerCase().includes('novel') || String(b.type||'').toLowerCase().includes('novel'));
         
         if (typeof SCRAPED_BOOKS !== 'undefined') {
-            BOOKS = [...BOOKS, ...SCRAPED_BOOKS];
+            BOOKS = filterOutDummyProducts([...BOOKS, ...SCRAPED_BOOKS]);
         }
         if (typeof SCRAPED_TOYS !== 'undefined') {
             BOOKS = [...BOOKS, ...SCRAPED_TOYS];
