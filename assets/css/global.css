@@ -46,7 +46,7 @@ input{font-family:inherit;}
 }
 
 /* ============ PRELOADER ============ */
-#preloader{position:fixed; inset:0; background:var(--navy); z-index:9999; display:flex; align-items:center; justify-content:center; transition:opacity .4s ease, visibility .4s ease; animation: autoHidePreloader 0.3s ease 0.8s forwards;}
+#preloader{display:none !important; visibility:hidden !important; opacity:0 !important; pointer-events:none !important; position:fixed; inset:0; background:var(--navy); z-index:9999; display:flex; align-items:center; justify-content:center; transition:opacity .4s ease, visibility .4s ease; animation: autoHidePreloader 0.3s ease 0.8s forwards;}
 #preloader.hide{opacity:0 !important; visibility:hidden !important; pointer-events:none !important; display:none !important;}
 @keyframes autoHidePreloader {
   to { opacity: 0; visibility: hidden; pointer-events: none; display: none; }
