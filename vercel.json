@@ -2,6 +2,10 @@
   "name": "studypack-taleemihub",
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/books.html"
+    },
+    {
       "source": "/wp-admin",
       "destination": "http://8.29.154.51/wp-admin/"
     },
