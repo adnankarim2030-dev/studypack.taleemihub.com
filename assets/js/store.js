@@ -1,179 +1,275 @@
-/* ============ HELPERS ============ */
-function money(n){ return 'PKR ' + n.toLocaleString(); }
-function starString(r){ const full = Math.round(r); return '★'.repeat(full) + '☆'.repeat(5-full); }
+/* ========================================================
+   STUDY PACK CENTRAL STORE & CART ENGINE (GLOBAL & PERSISTENT)
+   ======================================================== */
 
-/* ============ CART (persisted via localStorage, shared across pages) ============ */
-let cart = [];
-try{ cart = JSON.parse(localStorage.getItem('edubooks_cart') || '[]'); }catch(e){ cart = []; }
+// Global Helpers
+window.money = function(n) {
+    const num = Number(n) || 0;
+    return 'PKR ' + num.toLocaleString();
+};
 
-function saveCart(){ try{ localStorage.setItem('edubooks_cart', JSON.stringify(cart)); }catch(e){} }
+window.starString = function(r) {
+    const full = Math.round(Number(r) || 5);
+    return '★'.repeat(Math.max(0, Math.min(5, full))) + '☆'.repeat(Math.max(0, 5 - full));
+};
 
-function addToCart(id){
-  const item = cart.find(c=>String(c.id)===String(id));
-  if(item){ item.qty++; } else { const b = findItem(id); if(!b) return; cart.push({...b, qty:1}); }
-  saveCart(); renderCart(); showToast('Added to cart');
-  const btn = document.getElementById('cartBtn');
-  if(btn) btn.animate([{transform:'scale(1)'},{transform:'scale(1.2)'},{transform:'scale(1)'}], {duration:350});
+// Global Cart State
+window.cart = [];
+try {
+    window.cart = JSON.parse(localStorage.getItem('edubooks_cart') || '[]');
+} catch(e) {
+    window.cart = [];
 }
-function changeQty(id, delta){
-  const item = cart.find(c=>String(c.id)===String(id));
-  if(!item) return;
-  item.qty += delta;
-  if(item.qty<=0){ cart = cart.filter(c=>String(c.id)!==String(id)); }
-  saveCart(); renderCart();
-}
-function removeItem(id){ cart = cart.filter(c=>String(c.id)!==String(id)); saveCart(); renderCart(); }
 
-function renderCart(){
-  const wrap = document.getElementById('cartItems');
-  const empty = document.getElementById('cartEmpty');
-  if(!wrap) return;
-  const count = cart.reduce((s,c)=>s+c.qty,0);
-  const countEl = document.getElementById('cartCount');
-  if(countEl) countEl.textContent = count;
+window.saveCart = function() {
+    try {
+        localStorage.setItem('edubooks_cart', JSON.stringify(window.cart));
+    } catch(e) {}
+};
 
-  if(cart.length===0){
-    wrap.innerHTML = '';
-    if(empty){ wrap.appendChild(empty); empty.style.display='block'; }
-  } else {
-    wrap.innerHTML = cart.map(c=>`
-      <div class="cart-item">
-        <div class="ci-cover" style="background:${c.img ? `url('${c.img}') center/cover no-repeat` : c.grad}"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-        <div class="ci-info">
-          <div class="n">${c.title}</div>
-          <div class="m">${c.cls} · ${c.subj}</div>
-          <div class="ci-qty">
-            <button onclick="changeQty('${c.id}',-1)">–</button>
-            <span>${c.qty}</span>
-            <button onclick="changeQty('${c.id}',1)">+</button>
+// Global Robust findItem function
+window.findItem = function(id) {
+    const sId = String(id);
+    
+    // Check in BOOKS
+    if (typeof BOOKS !== 'undefined' && Array.isArray(BOOKS)) {
+        const found = BOOKS.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    // Check in SCRAPED_BOOKS
+    if (typeof SCRAPED_BOOKS !== 'undefined' && Array.isArray(SCRAPED_BOOKS)) {
+        const found = SCRAPED_BOOKS.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    // Check in TOYS
+    if (typeof TOYS !== 'undefined' && Array.isArray(TOYS)) {
+        const found = TOYS.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    if (typeof SCRAPED_TOYS !== 'undefined' && Array.isArray(SCRAPED_TOYS)) {
+        const found = SCRAPED_TOYS.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    // Check in STATIONERY
+    if (typeof STATIONERY !== 'undefined' && Array.isArray(STATIONERY)) {
+        const found = STATIONERY.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    if (typeof SCRAPED_STATIONERY !== 'undefined' && Array.isArray(SCRAPED_STATIONERY)) {
+        const found = SCRAPED_STATIONERY.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    // Check in SCRAPED_AFAQ
+    if (typeof SCRAPED_AFAQ !== 'undefined' && Array.isArray(SCRAPED_AFAQ)) {
+        const found = SCRAPED_AFAQ.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    // Check in window.currentBooks
+    if (typeof window.currentBooks !== 'undefined' && Array.isArray(window.currentBooks)) {
+        const found = window.currentBooks.find(x => String(x.id) === sId);
+        if (found) return found;
+    }
+    return null;
+};
+
+// Global addToCart
+window.addToCart = function(id) {
+    const sId = String(id);
+    const item = window.cart.find(c => String(c.id) === sId);
+    
+    if (item) {
+        item.qty = (Number(item.qty) || 1) + 1;
+    } else {
+        const b = window.findItem(sId);
+        if (!b) {
+            console.warn("Product not found in catalog for id:", sId);
+            return;
+        }
+        window.cart.push({
+            id: String(b.id),
+            title: b.title || b.name || 'Study Pack Item',
+            price: Number(b.price || 0),
+            img: b.img || 'assets/images/logo.png',
+            cls: b.cls || 'General',
+            subj: b.subj || 'General',
+            pub: b.pub || '',
+            qty: 1
+        });
+    }
+    
+    window.saveCart();
+    window.renderCart();
+    window.showToast('Cart mein shamil ho gaya! 🛒');
+    
+    const btn = document.getElementById('cartBtn');
+    if (btn && btn.animate) {
+        btn.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}], {duration:350});
+    }
+};
+
+window.changeQty = function(id, delta) {
+    const sId = String(id);
+    const item = window.cart.find(c => String(c.id) === sId);
+    if (!item) return;
+    
+    item.qty = (Number(item.qty) || 1) + delta;
+    if (item.qty <= 0) {
+        window.cart = window.cart.filter(c => String(c.id) !== sId);
+    }
+    window.saveCart();
+    window.renderCart();
+};
+
+window.removeItem = function(id) {
+    const sId = String(id);
+    window.cart = window.cart.filter(c => String(c.id) !== sId);
+    window.saveCart();
+    window.renderCart();
+    window.showToast('Item cart se hata diya gaya');
+};
+
+window.renderCart = function() {
+    const wrap = document.getElementById('cartItems');
+    const empty = document.getElementById('cartEmpty');
+    const count = window.cart.reduce((s, c) => s + (Number(c.qty) || 1), 0);
+    
+    // Update badge count
+    document.querySelectorAll('#cartCount, .cart-count-badge').forEach(el => {
+        el.textContent = count;
+    });
+
+    if (!wrap) return;
+
+    if (window.cart.length === 0) {
+        wrap.innerHTML = `<div style="text-align:center; padding:40px 20px; color:#64748B;">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" style="margin-bottom:12px; opacity:0.6;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+            <div style="font-size:15px; font-weight:700; color:#0F172A; margin-bottom:4px;">Aapka Cart Khali Hai</div>
+            <div style="font-size:12.5px;">Kitabein talaash karein aur Add to Cart karein.</div>
+        </div>`;
+    } else {
+        wrap.innerHTML = window.cart.map(c => `
+          <div class="cart-item" style="display:flex; gap:10px; padding:12px 0; border-bottom:1px solid #F1F5F9; align-items:center;">
+            <img src="${c.img || 'assets/images/logo.png'}" alt="${c.title}" style="width:48px; height:48px; object-fit:contain; border-radius:6px; background:#F8FAFC; padding:2px; border:1px solid #E2E8F0;" onerror="this.src='assets/images/logo.png'">
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:13px; font-weight:700; color:#0F172A; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${c.title}</div>
+              <div style="font-size:11.5px; color:#64748B;">${c.cls} • ${c.subj}</div>
+              <div style="display:flex; align-items:center; gap:8px; margin-top:6px;">
+                <button onclick="window.changeQty('${c.id}', -1)" style="width:24px; height:24px; border-radius:4px; border:1px solid #CBD5E1; background:#fff; cursor:pointer; font-weight:700;">-</button>
+                <span style="font-size:12px; font-weight:700; min-width:14px; text-align:center;">${c.qty}</span>
+                <button onclick="window.changeQty('${c.id}', 1)" style="width:24px; height:24px; border-radius:4px; border:1px solid #CBD5E1; background:#fff; cursor:pointer; font-weight:700;">+</button>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:13px; font-weight:800; color:#0F172A;">${window.money(c.price * c.qty)}</div>
+              <button onclick="window.removeItem('${c.id}')" style="background:none; border:none; color:#EF4444; font-size:11px; font-weight:600; cursor:pointer; margin-top:4px;">Remove</button>
+            </div>
+          </div>
+        `).join('');
+    }
+
+    const sub = window.cart.reduce((s, c) => s + (Number(c.price) || 0) * (Number(c.qty) || 1), 0);
+    
+    const elSub = document.getElementById('sumSub');
+    const elShip = document.getElementById('sumShip');
+    const elTotal = document.getElementById('sumTotal');
+
+    if (elSub) elSub.textContent = window.money(sub);
+    if (elShip) elShip.textContent = sub === 0 ? 'PKR 0' : 'As per Weight / Distance';
+    if (elTotal) elTotal.textContent = sub === 0 ? 'PKR 0' : window.money(sub) + ' (+ Delivery)';
+};
+
+window.openCart = function() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer) drawer.classList.add('show');
+    if (overlay) overlay.classList.add('show');
+    window.renderCart();
+};
+
+window.closeCartFn = function() {
+    const drawer = document.getElementById('cartDrawer');
+    const overlay = document.getElementById('cartOverlay');
+    if (drawer) drawer.classList.remove('show');
+    if (overlay) overlay.classList.remove('show');
+};
+
+// Global Toast
+let __toastTimer;
+window.showToast = function(msg) {
+    let t = document.getElementById('toast');
+    if (!t) {
+        t = document.createElement('div');
+        t.id = 'toast';
+        t.className = 'toast';
+        t.innerHTML = '<span id="toastMsg"></span>';
+        document.body.appendChild(t);
+    }
+    const msgEl = document.getElementById('toastMsg') || t;
+    msgEl.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(__toastTimer);
+    __toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+};
+
+// Global Quick View
+window.openQuickView = function(id) {
+    const b = window.findItem(id);
+    if (!b) return;
+    
+    let modal = document.getElementById('qvModal');
+    let overlay = document.getElementById('qvOverlay');
+    
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'qvOverlay';
+        overlay.className = 'modal-overlay';
+        overlay.innerHTML = '<div class="qv-modal" id="qvModal"></div>';
+        document.body.appendChild(overlay);
+        modal = document.getElementById('qvModal');
+        overlay.addEventListener('click', (e) => { if(e.target === overlay) window.closeQV(); });
+    }
+    
+    const priceStr = window.money(b.price);
+    const oldStr = b.old ? window.money(b.old) : '';
+    
+    modal.innerHTML = `
+      <button class="modal-close" onclick="window.closeQV()" style="position:absolute; top:14px; right:14px; background:#fff; border:1px solid #CBD5E1; border-radius:50%; width:32px; height:32px; cursor:pointer; display:flex; align-items:center; justify-content:center;">&times;</button>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; padding:10px;">
+        <div style="flex:1; min-width:200px; display:flex; align-items:center; justify-content:center; background:#F8FAFC; border-radius:12px; padding:20px;">
+          <img src="${b.img || 'assets/images/logo.png'}" alt="${b.title}" style="max-height:220px; max-width:100%; object-fit:contain;" onerror="this.src='assets/images/logo.png'">
+        </div>
+        <div style="flex:1.4; min-width:240px; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <span style="font-size:11px; font-weight:700; color:#1565C0; text-transform:uppercase;">${b.cls} • ${b.subj}</span>
+            <h3 style="font-size:18px; font-weight:800; color:#0F172A; margin:6px 0 4px 0;">${b.title}</h3>
+            <div style="font-size:12.5px; color:#64748B; margin-bottom:12px;">by ${b.author || 'Study Pack'} • ${b.pub || ''}</div>
+            <div style="font-size:20px; font-weight:800; color:#0F172A; margin-bottom:16px;">${priceStr} ${oldStr ? `<span style="font-size:13px; color:#94A3B8; text-decoration:line-through;">${oldStr}</span>` : ''}</div>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button onclick="window.addToCart('${b.id}'); window.closeQV();" style="flex:1; padding:12px; background:#0F172A; color:#fff; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Add to Cart</button>
+            <button onclick="window.addToCart('${b.id}'); window.closeQV(); window.openCart();" style="flex:1; padding:12px; background:#1565C0; color:#fff; border:none; border-radius:8px; font-weight:700; cursor:pointer;">Buy Now</button>
           </div>
         </div>
-        <div class="ci-price">
-          <span class="p">${money(c.price*c.qty)}</span>
-          <button onclick="removeItem('${c.id}')">Remove</button>
-        </div>
-      </div>
-    `).join('');
-  }
-  const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
-  const elSub = document.getElementById('sumSub'), elShip = document.getElementById('sumShip'), elTotal = document.getElementById('sumTotal');
-  if(elSub) elSub.textContent = money(sub);
-  if(elShip) elShip.textContent = sub===0 ? 'PKR 0' : 'As per Weight / Distance';
-  if(elTotal) elTotal.textContent = sub===0 ? 'PKR 0' : money(sub) + ' (+ Delivery)';
-}
-
-function openCart(){ document.getElementById('cartDrawer').classList.add('show'); document.getElementById('cartOverlay').classList.add('show'); }
-function closeCartFn(){ document.getElementById('cartDrawer').classList.remove('show'); document.getElementById('cartOverlay').classList.remove('show'); }
-
-/* ============ QUICK VIEW ============ */
-function openQuickView(id){
-  const b = findItem(id);
-  if(!b) return;
-  const modal = document.getElementById('qvModal');
-  modal.innerHTML = `
-    <button class="modal-close" onclick="closeQV()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <div class="qv-visual"><div class="qv-book" style="background:${b.img ? `url('${b.img}') center/cover no-repeat` : b.grad}">${b.img ? '' : `<div class="t">${b.title}</div>`}</div></div>
-    <div class="qv-info">
-      <span class="p-meta"><span>${b.cls}</span> <span>${b.subj}</span></span>
-      <h3>${b.title}</h3>
-      <div class="p-author">by ${b.author} · Published by ${b.pub}</div>
-      <div class="p-rating"><span class="stars">${starString(b.rating)}</span><span class="rv">${b.rating} (${b.rv} reviews)</span></div>
-      <div class="qv-detail-list">
-        <div>ISBN <b>978-969-${b.id}23-01-${b.id}</b></div>
-        <div>Edition <b>2026, Revised</b></div>
-        <div>Format <b>${b.fmt || 'Print'}</b></div>
-        <div>Pages <b>${b.pages || (180+b.id*8)}</b></div>
-      </div>
-      <div class="p-price-row"><div class="p-price"><span class="now">${money(b.price)}</span>${b.old?'<span class="old">'+money(b.old)+'</span>':''}</div></div>
-      <div class="p-actions">
-        <button class="btn-cart" onclick="addToCart('${b.id}'); closeQV();"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Add to Cart</button>
-        <button class="btn-buy" onclick="addToCart('${b.id}'); closeQV(); openCart();">Buy Now</button>
-      </div>
-    </div>
-  `;
-  document.getElementById('qvOverlay').classList.add('show');
-}
-function closeQV(){ document.getElementById('qvOverlay').classList.remove('show'); }
-
-/* ============ TOAST ============ */
-let toastTimer;
-function showToast(msg){
-  const t = document.getElementById('toast');
-  if(!t) return;
-  document.getElementById('toastMsg').textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
-}
-
-/* ============ INIT SHARED UI ============ */
-document.addEventListener('DOMContentLoaded', function(){
-  renderCart();
-
-  const cartBtn = document.getElementById('cartBtn');
-  const closeCart = document.getElementById('closeCart');
-  const cartOverlay = document.getElementById('cartOverlay');
-  if(cartBtn) cartBtn.addEventListener('click', openCart);
-  if(closeCart) closeCart.addEventListener('click', closeCartFn);
-  if(cartOverlay) cartOverlay.addEventListener('click', closeCartFn);
-
-  const qvOverlay = document.getElementById('qvOverlay');
-  if(qvOverlay) qvOverlay.addEventListener('click', e=>{ if(e.target.id==='qvOverlay') closeQV(); });
-
-  const burgerBtn = document.getElementById('burgerBtn');
-  if(burgerBtn){
-    burgerBtn.addEventListener('click', function(){
-      const links = document.querySelector('.nav-links');
-      if(links.style.display==='flex'){ links.style.display=''; }
-      else { links.style.cssText='display:flex; position:absolute; top:74px; left:16px; right:16px; flex-direction:column; background:#fff; border-radius:16px; padding:14px; box-shadow:var(--shadow-lg);'; }
-    });
-  }
-
-  window.addEventListener('scroll', function(){
-    const nav = document.getElementById('siteNav');
-    if(nav) nav.classList.toggle('scrolled', window.scrollY>30);
-  });
-
-  const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-  }, {threshold:.12});
-  revealEls.forEach(el=>io.observe(el));
-
-  const pl = document.getElementById('preloader');
-  if(pl) {
-    // Hide as soon as DOM is ready, with a tiny delay for smoothness
-    setTimeout(()=>pl.classList.add('hide'), 50);
-  }
-  window.addEventListener('load', ()=>{
-    if(pl) pl.classList.add('hide');
-  });
-});
-window.init3DCarousel = function(dataArray) {
-  const scene = document.querySelector('.scene-3d');
-  if(!scene) return;
-  
-  let items = [...dataArray].sort(()=>0.5-Math.random()).slice(0, 5);
-  let spinnerHTML = '<div class="carousel-3d-spinner" id="carouselSpinner">';
-  const angle = 360 / items.length;
-  const radius = 170;
-  
-  items.forEach((item, i) => {
-    let linkUrl = item.id ? `product.html?id=${item.id}` : (item.title.toLowerCase().includes('toy') ? 'toys.html' : 'stationery.html');
-    spinnerHTML += `
-      <div class="carousel-item-3d" style="transform: rotateY(${i * angle}deg) translateZ(${radius}px); cursor: pointer;" onclick="window.location.href='${linkUrl}'">
-        <div class="p-cover" style="background:${item.grad || 'var(--navy)'}">${item.img ? `<img src="${item.img}">` : item.title}</div>
-        <h4>${item.title}</h4>
       </div>
     `;
-  });
-  spinnerHTML += '</div>';
-  scene.innerHTML = spinnerHTML;
-  
-  let currAngle = 0;
-  const spinner = document.getElementById('carouselSpinner');
-  setInterval(() => {
-    currAngle -= angle;
-    spinner.style.transform = `rotateY(${currAngle}deg)`;
-  }, 2500);
-}
+    
+    overlay.classList.add('show');
+};
+
+window.closeQV = function() {
+    const overlay = document.getElementById('qvOverlay');
+    if (overlay) overlay.classList.remove('show');
+};
+
+// Initialize listeners on DOM Ready
+document.addEventListener('DOMContentLoaded', () => {
+    window.renderCart();
+    
+    const cartBtn = document.getElementById('cartBtn');
+    const closeCart = document.getElementById('closeCart');
+    const cartOverlay = document.getElementById('cartOverlay');
+    
+    if (cartBtn) cartBtn.addEventListener('click', window.openCart);
+    if (closeCart) closeCart.addEventListener('click', window.closeCartFn);
+    if (cartOverlay) cartOverlay.addEventListener('click', window.closeCartFn);
+});
