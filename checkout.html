@@ -181,9 +181,13 @@
           <input type="text" placeholder="Coupon code">
           <button type="button" onclick="showToast('Coupon applied!')">Apply</button>
         </div>
-        <div class="sum-row"><span>Subtotal</span><span id="coSub">Rs 0</span></div>
-        <div class="sum-row"><span>Delivery</span><span id="coShip">Rs 0</span></div>
-        <div class="sum-row total"><span>Total</span><span id="coTotal">Rs 0</span></div>
+        <div class="sum-row"><span>Subtotal (Books)</span><span id="coSub">Rs 0</span></div>
+        <div class="sum-row"><span>Delivery Charges</span><span id="coShip" style="color:var(--blue); font-weight:600;">Weight ke mutabiq</span></div>
+        <div class="sum-row" id="coCodRow" style="display:flex;"><span>COD Handling Fee (4%)</span><span id="coCodFee" style="color:var(--muted); font-size:0.9em;">Invoice par add hogi</span></div>
+        <div class="sum-row total"><span>Estimated Total</span><span id="coTotal">Rs 0</span></div>
+        <div style="margin-top:12px; padding:12px; border-radius:10px; background:rgba(21,101,192,0.06); border:1px dashed var(--blue); font-size:12.5px; line-height:1.5; color:#1e293b;">
+          <strong>📦 Delivery &amp; COD Notice:</strong> Books ka actual weight pack karne ke baad confirm hota hai. Exact courier charges aur 4% COD fee final bill mein add kar ke WhatsApp par confirm kiye jayenge.
+        </div>
         <button type="submit" form="checkoutForm" class="btn-checkout" id="placeOrderBtn">Place Order</button>
         <div class="hero-badges" style="margin-top:18px; justify-content:center;">
           <div class="mini-badge" style="color:var(--muted);"><span class="ic" style="background:rgba(21,101,192,.08);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" width="15" height="15"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6z"/></svg></span> Secure &amp; Encrypted</div>
@@ -368,8 +372,8 @@ async function placeOrder(e){
     }
 
     const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
-    const shipping = sub>0 ? (sub>2000?0:150) : 0;
-    const total = sub + shipping;
+    const shipping = 0; // Calculated manually after weight check
+    const total = sub;
 
     const orderId = 'EB-' + Math.floor(100000 + Math.random()*899999);
 
@@ -394,8 +398,10 @@ async function placeOrder(e){
       paymentDetails: paymentDetails,
       items: orderItems,
       subtotal: sub,
-      shipping: shipping,
-      total: total,
+      shipping: 0,
+      shippingNote: 'Weight ke mutabiq',
+      codFee: 0,
+      total: sub,
       status: 'Pending',
       date: Date.now(),
       source: 'website'
@@ -513,6 +519,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-<script src="assets/js/search_data.js"></script>\n<script src="assets/js/search_logic.js"></script>\n</body>
+\n<script src="assets/js/search_logic.js"></script>\n</body>
 
 </html>

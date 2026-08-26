@@ -1,3 +1,32 @@
+
+window.recalcAdminOrderFinancials = function(manualCod=false) {
+    if (!window.editingOrderState) return;
+    let subtotal = 0;
+    (window.editingOrderState.items || []).forEach(item => {
+        subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1);
+    });
+    
+    const shipping = Number(document.getElementById('editOrderShipping')?.value) || 0;
+    const applyCod = document.getElementById('editOrderApplyCod')?.checked;
+    let codFee = Number(document.getElementById('editOrderCodFee')?.value) || 0;
+    
+    if (!manualCod && applyCod) {
+        // Auto calculate 4% on (Subtotal + Shipping) or Subtotal
+        codFee = Math.round((subtotal + shipping) * 0.04);
+        const codInput = document.getElementById('editOrderCodFee');
+        if (codInput) codInput.value = codFee;
+    } else if (!applyCod) {
+        codFee = 0;
+        const codInput = document.getElementById('editOrderCodFee');
+        if (codInput) codInput.value = 0;
+    }
+    
+    const taxAmount = Number(document.getElementById('editOrderTaxAmount')?.value) || 0;
+    const total = subtotal + shipping + codFee + taxAmount;
+    
+    const calcTotalEl = document.getElementById('editCalculatedTotal');
+    if (calcTotalEl) calcTotalEl.textContent = 'Rs ' + total.toLocaleString();
+};
 /* ============================================================
    Orders module — list/search/filter, status update, view/edit
    modal, print invoice, pagination.
@@ -111,8 +140,20 @@ window.viewOrder = function(id) {
 
     document.getElementById('modalSubtotal').textContent = money(subtotal);
     const shipping = Number(o.shipping) || 0;
+    const codFee = Number(o.codFee) || 0;
     const taxAmount = Number(o.taxAmount) || 0;
-    document.getElementById('modalShipping').textContent = money(shipping);
+    document.getElementById('modalShipping').textContent = shipping > 0 ? money(shipping) : (o.shippingNote || 'Weight ke mutabiq');
+    
+    const codDiv = document.getElementById('modalCodFeeDiv');
+    if (codDiv) {
+        const isCod = !o.paymentMethod || o.paymentMethod.toLowerCase() === 'cod';
+        if (isCod || codFee > 0) {
+            codDiv.style.display = 'block';
+            document.getElementById('modalCodFee').textContent = codFee > 0 ? money(codFee) : '4% (To be added)';
+        } else {
+            codDiv.style.display = 'none';
+        }
+    }
     
     if (taxAmount > 0) {
         document.getElementById('modalTaxDiv').style.display = 'block';
@@ -167,9 +208,15 @@ window.toggleOrderEdit = function() {
         document.getElementById('editOrderCustAddress').value = o.address || '';
         
         document.getElementById('editOrderShipping').value = Number(o.shipping) || 0;
+        const isCod = !o.paymentMethod || o.paymentMethod.toLowerCase() === 'cod';
+        if (document.getElementById('editOrderApplyCod')) {
+            document.getElementById('editOrderApplyCod').checked = isCod;
+        }
+        document.getElementById('editOrderCodFee').value = Number(o.codFee) || 0;
         document.getElementById('editOrderTaxNote').value = o.taxNote || '';
         document.getElementById('editOrderTaxAmount').value = Number(o.taxAmount) || 0;
         document.getElementById('editOrderSpecialNote').value = o.specialNote || '';
+        recalcAdminOrderFinancials();
         
         renderEditableItems();
     } else {
@@ -226,19 +273,23 @@ window.saveOrderEdits = async function() {
     const address = document.getElementById('editOrderCustAddress').value;
 
     const shipping = Number(document.getElementById('editOrderShipping').value) || 0;
+    const codFee = Number(document.getElementById('editOrderCodFee').value) || 0;
     const taxNote = document.getElementById('editOrderTaxNote').value.trim();
     const taxAmount = Number(document.getElementById('editOrderTaxAmount').value) || 0;
     const specialNote = document.getElementById('editOrderSpecialNote').value.trim();
 
     let subtotal = 0;
     window.editingOrderState.items.forEach(item => { subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1); });
-    const total = subtotal + shipping + taxAmount;
+    const total = subtotal + shipping + codFee + taxAmount;
 
     try {
         await db.collection('orders').doc(id).update({
             customer: name, phone: phone, address: address,
             items: window.editingOrderState.items, 
-            shipping: shipping, taxNote: taxNote, taxAmount: taxAmount,
+            shipping: shipping,
+            codFee: codFee,
+            shippingNote: shipping > 0 ? `Rs ${shipping}` : 'Weight ke mutabiq',
+            taxNote: taxNote, taxAmount: taxAmount,
             specialNote: specialNote,
             total: total
         });
@@ -349,10 +400,11 @@ window.printInvoice = function(id) {
                 </div>
                 <table><thead><tr><th>Item</th><th>Price</th><th>Qty</th><th style="text-align:right;">Total</th></tr></thead><tbody>${itemsHtml}</tbody></table>
                 <table class="totals-table">
-                    <tr><td>Subtotal:</td><td style="text-align:right;">Rs. ${(o.total || 0) - (Number(o.shipping) || 0) - (Number(o.taxAmount) || 0)}</td></tr>
+                    <tr><td>Subtotal (Books):</td><td style="text-align:right;">Rs. ${(o.items || []).reduce((s,i)=>(Number(i.price)||0)*(Number(i.qty)||1) + s, 0)}</td></tr>
+                    <tr><td>Delivery Charges:</td><td style="text-align:right;">Rs. ${o.shipping || 0}</td></tr>
+                    ${(Number(o.codFee) || 0) > 0 ? `<tr><td>COD Courier Fee (4%):</td><td style="text-align:right;">Rs. ${o.codFee}</td></tr>` : ''}
                     ${(Number(o.taxAmount) || 0) > 0 ? `<tr><td>Tax (${escapeHtml(o.taxNote || '')}):</td><td style="text-align:right;">Rs. ${o.taxAmount}</td></tr>` : ''}
-                    <tr><td>Shipping:</td><td style="text-align:right;">Rs. ${o.shipping || 0}</td></tr>
-                    <tr><td class="grand-total">Total:</td><td class="grand-total" style="text-align:right;">Rs. ${o.total}</td></tr>
+                    <tr><td class="grand-total">Total Payable:</td><td class="grand-total" style="text-align:right;">Rs. ${o.total}</td></tr>
                 </table>
                 <div class="footer">Thank you for your business!<br>info@taleemihub.com</div>
             </div>

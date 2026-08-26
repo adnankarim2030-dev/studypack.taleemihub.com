@@ -426,18 +426,27 @@
       <!-- Financials display -->
       <div id="modalFinancialsDisplay" style="margin-top:1rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
         <div id="modalSpecialNoteDiv" style="display:none; color: var(--primary); font-style: italic; margin-bottom: 0.5rem;">Note: <span id="modalSpecialNote"></span></div>
-        <div>Subtotal: <span id="modalSubtotal"></span></div>
-        <div>Shipping: <span id="modalShipping"></span></div>
+        <div>Subtotal (Books): <span id="modalSubtotal" style="font-weight:600;"></span></div>
+        <div>Delivery Charges: <span id="modalShipping" style="font-weight:600;"></span></div>
+        <div id="modalCodFeeDiv">COD Handling Fee (4%): <span id="modalCodFee" style="font-weight:600;"></span></div>
         <div id="modalTaxDiv" style="display:none;">Tax (<span id="modalTaxNote"></span>): <span id="modalTaxAmount"></span></div>
-        <div style="font-weight:800; font-size:1.1rem;">Total: <span id="modalTotal"></span></div>
+        <div style="font-weight:800; font-size:1.2rem; color:var(--primary); margin-top:4px;">Grand Total: <span id="modalTotal"></span></div>
       </div>
       
       <!-- Financials edit -->
       <div id="modalFinancialsEdit" style="display:none; flex-direction:column; align-items:flex-end; gap:0.6rem; margin-top:1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Shipping</label><input type="number" id="editOrderShipping" style="width:150px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:150px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Tax Amount</label><input type="number" id="editOrderTaxAmount" style="width:150px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:100px; text-align:right;">Special Note</label><input type="text" id="editOrderSpecialNote" placeholder="Invoice Note..." style="width:150px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right; font-weight:600;">Delivery Charges (Rs)</label><input type="number" id="editOrderShipping" style="width:150px;" oninput="recalcAdminOrderFinancials()"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <label style="width:150px; text-align:right; font-weight:600;">Apply 4% COD Fee</label>
+          <div style="width:150px; display:flex; align-items:center; gap:8px;">
+            <input type="checkbox" id="editOrderApplyCod" checked onchange="recalcAdminOrderFinancials()" style="width:20px; height:20px;">
+            <input type="number" id="editOrderCodFee" style="width:120px;" oninput="recalcAdminOrderFinancials(true)">
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:150px;"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Tax Amount (Rs)</label><input type="number" id="editOrderTaxAmount" style="width:150px;" oninput="recalcAdminOrderFinancials(true)"></div>
+        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Special / Weight Note</label><input type="text" id="editOrderSpecialNote" placeholder="e.g. Weight 2.5kg" style="width:150px;"></div>
+        <div style="font-weight:800; font-size:1.1rem; color:var(--primary); margin-top:6px;">Calculated Total: <span id="editCalculatedTotal">Rs 0</span></div>
       </div>
     </div>
     <div class="modal-foot">

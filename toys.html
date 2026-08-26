@@ -76,42 +76,285 @@
   </div>
 </header>
 <!-- ================= PAGE HERO ================= -->
+
+<style>
+.fullwidth-hero {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.fw-banner-carousel {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+@media(max-width: 768px) {
+  .fw-banner-carousel { height: 500px; }
+}
+.fw-slide {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: flex;
+  align-items: center;
+}
+.fw-slide.active { opacity: 1; z-index: 2; }
+.fw-container {
+  width: 100%; max-width: 1200px; margin: 0 auto;
+  padding: 0 20px; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap;
+}
+.fw-text {
+  flex: 1; min-width: 300px; color: #fff; z-index: 2;
+  transform: translateY(20px); transition: transform 1s ease 0.3s, opacity 1s ease 0.3s; opacity: 0;
+}
+.fw-slide.active .fw-text { transform: translateY(0); opacity: 1; }
+.fw-image-wrap {
+  flex: 1; min-width: 300px; display: flex; justify-content: flex-end; align-items: center;
+  z-index: 2; transform: translateX(20px); transition: transform 1s ease 0.3s, opacity 1s ease 0.3s; opacity: 0;
+}
+.fw-slide.active .fw-image-wrap { transform: translateX(0); opacity: 1; }
+@media(max-width: 768px) {
+  .fw-image-wrap { justify-content: center; margin-top: 20px; }
+  .fw-text { text-align: center; }
+}
+
+.fw-img {
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: contain;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-radius: 12px;
+  background: #fff;
+  padding: 10px;
+  transform: rotate(5deg);
+  transition: transform 0.5s;
+}
+.fw-img:hover { transform: scale(1.05) rotate(0deg); }
+
+.fw-title { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+.fw-sub { font-size: 18px; line-height: 1.5; margin-bottom: 24px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+@media(max-width:768px){ .fw-title {font-size: 32px;} .fw-sub {font-size: 15px;} }
+
+.fw-badge { display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+.fw-btn { display: inline-block; padding: 12px 28px; background: #fff; color: #111; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
+.fw-btn:hover { background: #f8b400; color: #fff; }
+
+/* Gradients */
+.grad-1 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
+.grad-2 { background: linear-gradient(135deg, #065f46, #10b981); }
+.grad-3 { background: linear-gradient(135deg, #701a75, #d946ef); }
+.grad-4 { background: linear-gradient(135deg, #991b1b, #f43f5e); }
+.grad-5 { background: linear-gradient(135deg, #b45309, #f59e0b); }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const carousels = document.querySelectorAll('.fw-banner-carousel');
+  carousels.forEach(carousel => {
+    const slides = carousel.querySelectorAll('.fw-slide');
+    if(slides.length === 0) return;
+    let cur = 0;
+    slides[cur].classList.add('active');
+    setInterval(() => {
+      slides[cur].classList.remove('active');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('active');
+    }, 4500);
+  });
+});
+</script>
+
+    
+<style>
+/* React/Tailwind Banner Replica */
+.rw-banner {
+  width: 100%;
+  background: linear-gradient(to right, #2563eb, #4338ca); /* from-blue-600 to-indigo-700 */
+  color: white;
+  padding: 4rem 1.5rem; /* py-16 px-6 */
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+}
+.rw-container {
+  max-width: 56rem; /* max-w-4xl */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rw-title {
+  font-size: 2.25rem; /* text-4xl */
+  line-height: 2.5rem;
+  font-weight: 800; /* font-extrabold */
+  letter-spacing: -0.025em; /* tracking-tight */
+  margin-bottom: 1rem; /* mb-4 */
+  animation: slideUp 0.5s ease-out 0.2s both;
+}
+@media (min-width: 768px) {
+  .rw-title {
+    font-size: 3rem; /* md:text-5xl */
+    line-height: 1;
+  }
+}
+.rw-subtitle {
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  color: #e0e7ff; /* text-blue-100 */
+  margin-bottom: 2rem; /* mb-8 */
+  max-width: 42rem; /* max-w-2xl */
+  animation: slideUp 0.5s ease-out 0.4s both;
+}
+@media (min-width: 768px) {
+  .rw-subtitle {
+    font-size: 1.25rem; /* md:text-xl */
+    line-height: 1.75rem;
+  }
+}
+.rw-button {
+  background-color: white;
+  color: #2563eb; /* text-blue-600 */
+  font-weight: 600; /* font-semibold */
+  padding: 0.75rem 2rem; /* py-3 px-8 */
+  border-radius: 9999px; /* rounded-full */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  animation: popIn 0.3s ease-out 0.6s both;
+}
+.rw-button:hover {
+  background-color: #eff6ff; /* hover:bg-blue-50 */
+  transform: scale(1.05); /* whileHover */
+}
+.rw-button:active {
+  transform: scale(0.95); /* whileTap */
+}
+
+.rw-product-image {
+  max-width: 200px;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.5s ease-out 0.5s both;
+  background: white;
+  padding: 8px;
+}
+
+/* Animations matching framer-motion */
+@keyframes slideDownIn {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.rw-banner {
+  animation: slideDownIn 0.6s ease-out both;
+}
+
+/* CAROUSEL WRAPPER */
+.rw-slider {
+  position: relative;
+  width: 100%;
+}
+.rw-slide {
+  display: none;
+}
+.rw-slide.active {
+  display: block;
+}
+
+/* Dynamic Gradients for different slides */
+.bg-grad-1 { background: linear-gradient(to right, #2563eb, #4338ca); }
+.bg-grad-2 { background: linear-gradient(to right, #059669, #047857); }
+.bg-grad-3 { background: linear-gradient(to right, #db2777, #be185d); }
+.bg-grad-4 { background: linear-gradient(to right, #d97706, #b45309); }
+.bg-grad-5 { background: linear-gradient(to right, #7c3aed, #6d28d9); }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const sliders = document.querySelectorAll('.rw-slider');
+  sliders.forEach(slider => {
+    const slides = slider.querySelectorAll('.rw-slide');
+    if(slides.length === 0) return;
+    let cur = 0;
+    slides[cur].classList.add('active');
+    setInterval(() => {
+      slides[cur].classList.remove('active');
+      cur = (cur + 1) % slides.length;
+      
+      // Re-trigger animations by cloning and replacing
+      const newSlide = slides[cur].cloneNode(true);
+      newSlide.classList.add('active');
+      slider.replaceChild(newSlide, slides[cur]);
+      slides[cur] = newSlide;
+      
+    }, 5000);
+  });
+});
+</script>
+
+    
+
+
 <section class="page-hero">
   <div class="container hero-grid">
     <div>
-      <div class="breadcrumb reveal"><a href="index.html">Home</a><span class="sep">/</span><span class="cur">Toys &amp; Gifts</span></div>
-      <h1 class="reveal">Toys &amp; Gifts at <span class="grad">Karachi Wholesale Prices</span></h1>
-      <p class="lead reveal">Sourced from Karachi's biggest toy wholesale hubs like Bolton Market — kids toys, dolls, board games and gift hampers, priced just 20% above wholesale rate.</p>
-      <div class="page-hero-stats reveal"><div class="st"><b>18</b><span>Items Shown</span></div><div class="st"><b>150+</b><span>Cities Delivered</span></div><div class="st"><b>4.7★</b><span>Avg. Rating</span></div></div>
+      
+        <div class="breadcrumb reveal"><a href="index.html">Home</a><span class="sep">/</span><span class="cur">Toys</span></div>
+        <h1 class="reveal">Toys &amp; Gifts at <span class="grad">Karachi Wholesale Prices</span></h1>
+        <p class="lead reveal">Sourced from Karachi's biggest toy wholesale hubs like Bolton Market — kids toys, dolls, board games and gift hampers, priced just 20% above wholesale rate.</p>
+        <div class="page-hero-stats reveal"><div class="st"><b id="heroToyCount">18</b><span>Items Shown</span></div></div>
+        
     </div>
     <div class="hero-scene reveal">
+      
       <div class="book-carousel">
         <div class="carousel-container">
           <div class="book-item item-1">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageAug1_2026_05_26_18AM.png?v=1785587399" alt="Scrabble"></div>
-            <div class="title">SCRABBLE CROSSWORD BOARD GAME</div>
+            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageAug1_2026_05_26_18AM.png?v=1785587399" alt="Board Game"></div>
+            <div class="title">Scrabble Crossword</div>
           </div>
           <div class="book-item item-2">
             <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_11_56_42PM.png?v=1785396923" alt="Pokemon"></div>
-            <div class="title">POKÉMON MULTICOLOR FOIL CARDS</div>
+            <div class="title">Pokémon Foil Cards</div>
           </div>
           <div class="book-item item-3">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_06_31_00AM.png?v=1785332222" alt="Magnetic Tiles"></div>
-            <div class="title">SPACE STATION MAGNETIC TILES</div>
+            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_06_31_00AM.png?v=1785332222" alt="Space Station"></div>
+            <div class="title">Magnetic Tiles</div>
           </div>
           <div class="book-item item-4">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_06_07_04AM.png?v=1785330622" alt="Shape Puzzle"></div>
-            <div class="title">GEOMETRIC SHAPE PUZZLE TOY</div>
+            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/Doctor_Set.png?v=1761677318" alt="Doctor Set"></div>
+            <div class="title">Children Smart Set</div>
           </div>
           <div class="book-item item-5">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_03_27_26AM.png?v=1785321605" alt="Monopoly"></div>
-            <div class="title">MONOPOLY BOARD GAME</div>
+            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0872/8143/4908/files/ChatGPTImageJul29_2026_10_47_58PM.png?v=1785391050" alt="Playing Cards"></div>
+            <div class="title">Premium Playing Cards</div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
+    
+    
+    
 
 <!-- ================= SHOP ================= -->
 <section class="section grey">
@@ -281,5 +524,5 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 </script>
-<script src="assets/js/search_data.js"></script>\n<script src="assets/js/search_logic.js"></script>\n</body>
+\n<script src="assets/js/search_logic.js"></script>\n</body>
 </html>
