@@ -1,4 +1,19 @@
 
+// Guarantee Scroll Reveal Elements are Always Visible
+function initReveal() {
+    document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('in');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.visibility = 'visible';
+    });
+}
+document.addEventListener('DOMContentLoaded', initReveal);
+window.addEventListener('load', initReveal);
+setTimeout(initReveal, 100);
+setTimeout(initReveal, 500);
+
+
 // Preloader Immediate Dismissal
 function dismissPreloader() {
     const pl = document.getElementById('preloader');
