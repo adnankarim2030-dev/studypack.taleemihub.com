@@ -9,9 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-function initDynamicFilters() { console.log('initDynamicFilters called');
-    const page = window.location.pathname.split('/').pop() || 'index.html';
-    if (page.includes('books')) {
+function initDynamicFilters() {
+    console.log('initDynamicFilters called');
+    const path = window.location.pathname.toLowerCase();
+    const page = path.split('/').pop() || 'index.html';
+    
+    if (page === '' || page === 'index.html' || page.includes('books')) {
         generateBooksFilters();
     } else if (page.includes('stationery')) {
         generateStationeryFilters();

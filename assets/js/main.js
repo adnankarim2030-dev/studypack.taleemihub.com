@@ -1,4 +1,20 @@
 
+/* ============ FIREBASE & STORE INTEGRATION ============ */
+let BASE_SCRAPED_BOOKS = typeof SCRAPED_BOOKS !== 'undefined' ? [...SCRAPED_BOOKS] : [];
+let BOOKS = [...BASE_SCRAPED_BOOKS];
+
+if (typeof SCRAPED_TOYS !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_TOYS];
+if (typeof SCRAPED_STATIONERY !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_STATIONERY];
+if (typeof SCRAPED_COURSES !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_COURSES];
+if (typeof SCRAPED_AFAQ !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_AFAQ];
+
+let TOYS = typeof SCRAPED_TOYS !== 'undefined' ? [...SCRAPED_TOYS] : [];
+let STATIONERY = typeof SCRAPED_STATIONERY !== 'undefined' ? [...SCRAPED_STATIONERY] : [];
+let EBOOKS = [];
+let COUPONS = [];
+let CATEGORIES = [];
+let BRANDS = [];
+
 function filterOutDummyProducts(list) {
     return (list || []).filter(b => {
         if (!b || !b.title) return false;
@@ -8,6 +24,39 @@ function filterOutDummyProducts(list) {
         return true;
     });
 }
+
+try {
+    const firebaseConfig = {
+        apiKey: "AIzaSyD3cl7bxjuLoILxck4di-w6fLw4aRXHb9M",
+        authDomain: "study-pack-store.firebaseapp.com",
+        projectId: "study-pack-store",
+        storageBucket: "study-pack-store.firebasestorage.app",
+        messagingSenderId: "346606609514",
+        appId: "1:346606609514:web:31ca9e21967e6b1d4f5613"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    db.collection('products').onSnapshot(snapshot => {
+        const firestoreProds = filterOutDummyProducts(snapshot.docs.map(doc => doc.data()));
+        
+        // Merge Firestore products with scraped products
+        const map = new Map();
+        BASE_SCRAPED_BOOKS.forEach(b => map.set(String(b.id), b));
+        firestoreProds.forEach(b => map.set(String(b.id), b));
+        
+        BOOKS = Array.from(map.values());
+        
+        window.dispatchEvent(new Event('firebaseProductsLoaded'));
+        if (typeof initDynamicFilters === 'function') initDynamicFilters();
+        if (typeof applyFilters === 'function') applyFilters();
+    });
+} catch(e) {
+    console.warn("Firebase init:", e);
+}
+
+// Clean duplicate search scripts
+
 /* ============ FIREBASE INTEGRATION ============ */
 let BOOKS = typeof SCRAPED_BOOKS !== 'undefined' ? [...SCRAPED_BOOKS] : [];
 if (typeof SCRAPED_TOYS !== 'undefined') BOOKS = [...BOOKS, ...SCRAPED_TOYS];
