@@ -319,3 +319,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 12000);
 });
 
+
+
+// ============================================================
+// LIVE WOOCOMMERCE PRODUCT SYNC (Books, Toys, Stationery)
+// ============================================================
+const WC_LIVE_CONFIG = {
+    storeUrl: 'https://api.studypack.taleemihub.com',
+    consumerKey: 'ck_9d3ebbf59738bb9cb7a3021067c90893476d32d7',
+    consumerSecret: 'cs_75d5b1183e7985468ab5e374fc9be4ed0a5e2b3f'
+};
+
+async function syncLiveWooCommerceProducts() {
+    try {
+        const authHeader = 'Basic ' + btoa(WC_LIVE_CONFIG.consumerKey + ':' + WC_LIVE_CONFIG.consumerSecret);
+        const res = await fetch(`${WC_LIVE_CONFIG.storeUrl}/wp-json/wc/v3/products?per_page=50&status=publish`, {
+            headers: { 'Authorization': authHeader }
+        });
+        if (!res.ok) return;
+        const wcProducts = await res.json();
+        
+        const mapped = wcProducts.map(p => {
+            const cats = (p.categories || []).map(c => c.name).join(' ');
+            const img = p.images && p.images.length > 0 ? p.images[0].src : 'assets/images/logo.png';
+            
+            // Extract publisher / class / subject from categories or name
+            let pub = 'Oxford Books';
+            if (cats.toLowerCase().includes('paramount')) pub = 'Paramount';
+            else if (cats.toLowerCase().includes('spectrum')) pub = 'Spectrum';
+            else if (cats.toLowerCase().includes('afaq')) pub = 'AFAQ';
+            else if (cats.toLowerCase().includes('sindh')) pub = 'Sindh Text Book';
+            else if (cats.toLowerCase().includes('oxford') || cats.toLowerCase().includes('oup')) pub = 'Oxford Books';
+
+            let category = 'book';
+            if (cats.toLowerCase().includes('toy') || p.name.toLowerCase().includes('toy')) category = 'toys';
+            else if (cats.toLowerCase().includes('stationery') || p.name.toLowerCase().includes('stationery') || p.name.toLowerCase().includes('pencil') || p.name.toLowerCase().includes('eraser')) category = 'stationery';
+
+            return {
+                id: String(p.id),
+                title: p.name,
+                price: Number(p.price || p.regular_price || 0),
+                mrp: Number(p.regular_price || p.price || 0),
+                img: img,
+                pub: pub,
+                cls: 'General',
+                subj: 'General',
+                category: category,
+                stock: p.stock_status === 'instock' ? 100 : 0,
+                source: 'woocommerce'
+            };
+        });
+
+        if (mapped.length > 0) {
+            // Merge into BOOKS, TOYS, STATIONERY
+            const existingMap = new Map();
+            mapped.forEach(item => existingMap.set(item.id, item));
+            BOOKS.forEach(item => { if (!existingMap.has(item.id)) existingMap.set(item.id, item); });
+            
+            BOOKS = Array.from(existingMap.values());
+            
+            // Re-render UI if on books, toys, or stationery page
+            if (typeof renderBooksGrid === 'function') renderBooksGrid();
+            if (typeof renderToysGrid === 'function') renderToysGrid();
+            if (typeof renderStationeryGrid === 'function') renderStationeryGrid();
+            if (typeof applyDynamicFilters === 'function') applyDynamicFilters();
+        }
+    } catch (err) {
+        console.warn('WooCommerce products sync skipped:', err);
+    }
+}
+
+// Auto-sync products in background
+if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(syncLiveWooCommerceProducts, 800);
+    });
+}
