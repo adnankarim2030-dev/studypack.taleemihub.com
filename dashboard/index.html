@@ -53,6 +53,7 @@
       <a href="#" class="nav-item" data-view="products"><i data-lucide="book-open"></i> Products</a>
       <a href="#" class="nav-item" data-view="orders"><i data-lucide="shopping-cart"></i> Orders</a>
       <a href="#" class="nav-item" data-view="customers"><i data-lucide="users"></i> Customers</a>
+      <a href="#" class="nav-item" data-view="livechat"><i data-lucide="message-square"></i> Live Support <span class="badge-count" id="unreadChatsCount" style="display:none; background:#EF4444; color:#fff; font-size:10px; padding:2px 6px; border-radius:10px; margin-left:auto;">0</span></a>
       <a href="#" class="nav-item" data-view="inventory"><i data-lucide="package"></i> Inventory</a>
       <a href="#" class="nav-item" data-view="coupons"><i data-lucide="ticket-percent"></i> Coupons</a>
       <a href="#" class="nav-item" data-view="categories"><i data-lucide="tags"></i> Categories</a>
@@ -343,6 +344,58 @@
         </div>
       </section>
 
+    
+      <!-- ================= LIVE CHAT / AGENT SUPPORT ================= -->
+      <section id="livechat" class="view-section">
+        <div class="section-head">
+          <div><h1>Live Customer Support</h1><p>Real-time customer chats, agent assignment aur live replies.</p></div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 340px 1fr; gap: 1.5rem; height: calc(100vh - 220px); min-height: 550px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden;">
+          
+          <!-- LEFT: Conversations list -->
+          <div style="border-right: 1px solid var(--border-color); display: flex; flex-direction: column; height: 100%;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--border-color); font-weight: 700; font-size: 0.95rem; color: var(--text-main); display:flex; justify-content:space-between; align-items:center;">
+              <span>Active Customer Chats</span>
+              <button class="btn btn-outline" style="padding:4px 8px; font-size:11px;" onclick="window.initLiveChatDashboard()"><i data-lucide="refresh-cw"></i></button>
+            </div>
+            <div id="chatConversationsList" style="flex: 1; overflow-y: auto;">
+              <div class="empty-state" style="padding:2rem;"><p>Chats load ho rahi hain...</p></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Conversation detail & reply -->
+          <div style="display: flex; flex-direction: column; height: 100%;">
+            <div id="chatActiveHeader" style="padding: 1rem 1.25rem; border-bottom: 1px solid var(--border-color); background: var(--bg-card);">
+              <div style="color: var(--text-muted); font-size: 0.9rem;">Left list se koi bhi customer chat select karein</div>
+            </div>
+
+            <div id="chatActiveMessages" style="flex: 1; padding: 1.25rem; overflow-y: auto; background: var(--bg-body); display: flex; flex-direction: column;">
+              <div style="text-align: center; color: var(--text-muted); margin-top: 3rem; font-size: 0.9rem;">
+                <i data-lucide="messages-square" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 0.5rem;"></i>
+                <p>Chat select karne par messages yahan live show honge.</p>
+              </div>
+            </div>
+
+            <!-- Quick canned responses & Input Area -->
+            <div id="chatInputArea" style="display: none; flex-direction: column; border-top: 1px solid var(--border-color); background: var(--bg-card);">
+              <div style="padding: 6px 12px; display: flex; gap: 6px; overflow-x: auto; background: rgba(0,0,0,0.02); border-bottom: 1px solid var(--border-color);">
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 11px; white-space: nowrap;" onclick="sendQuickCanned('Assalam-o-Alaikum, Study Pack Support se main aapki kya madad kar sakta hoon?')">👋 Salam</button>
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 11px; white-space: nowrap;" onclick="sendQuickCanned('Aapka order receive ho chuka hai, books pack hone ke baad final bill WhatsApp kar diya jayega.')">📦 Order Update</button>
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 11px; white-space: nowrap;" onclick="sendQuickCanned('Delivery charges kitabon ke wazan ke mutabiq courier rate par lagte hain.')">🚚 Delivery Info</button>
+                <button class="btn btn-outline" style="padding: 2px 8px; font-size: 11px; white-space: nowrap;" onclick="sendQuickCanned('Aap apna mukammal pata aur phone number share kar dein taake order confirm karein.')">📍 Address Request</button>
+              </div>
+              <form onsubmit="sendAgentReply(event)" style="padding: 0.75rem 1rem; display: flex; gap: 0.5rem;">
+                <input type="text" id="adminChatInput" placeholder="Customer ko reply likhein (Enter dabayein)..." style="flex: 1; padding: 0.6rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main); font-size: 0.9rem;" autocomplete="off">
+                <button type="submit" class="btn btn-primary" style="padding: 0.6rem 1.25rem;"><i data-lucide="send"></i> Send</button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
     </main>
   </div>
 </div>
@@ -560,6 +613,7 @@
 <script src="js/firebase-init.js"></script>
 <script src="js/auth.js"></script>
 <script src="js/data.js"></script>
+<script src="js/livechat.js"></script>
 <script src="js/app.js"></script>
 <script src="js/dashboard-view.js"></script>
 <script src="js/products.js"></script>
