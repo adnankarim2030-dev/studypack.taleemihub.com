@@ -2,11 +2,8 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('firebaseProductsLoaded', initDynamicFilters);
-    
-    // In case products are already loaded before this script runs
-    if ((typeof BOOKS !== 'undefined' && BOOKS.length > 0) || (typeof STATIONERY !== 'undefined' && STATIONERY.length > 0) || (typeof TOYS !== 'undefined' && TOYS.length > 0)) {
-        initDynamicFilters();
-    }
+    initDynamicFilters();
+    setTimeout(initDynamicFilters, 300);
 });
 
 function initDynamicFilters() {
@@ -346,8 +343,7 @@ function generateBooksFilters() {
         
         if (cat.includes('toy') || cls.includes('toy') || cat.includes('gift')) return false;
         if (cat.includes('stationery') || cls.includes('stationery')) return false;
-        
-        return b.category === 'School Books' || b.type === 'Book' || cat.includes('book') || cls.includes('book') || cls.includes('class') || cls.includes('grade') || (!b.category && !b.type);
+        return true;
     });
     actualBooks.forEach(inferBookProperties);
     
