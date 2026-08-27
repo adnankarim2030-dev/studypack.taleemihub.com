@@ -8,9 +8,26 @@ window.currentBooks = [];
 
 function getCatalogData(type) {
     if (type === 'books') {
-        if (typeof BOOKS !== 'undefined' && BOOKS.length > 0) return BOOKS;
-        if (typeof SCRAPED_BOOKS !== 'undefined' && SCRAPED_BOOKS.length > 0) return SCRAPED_BOOKS;
-        return [];
+        let items = [];
+        if (typeof BOOKS !== 'undefined' && BOOKS.length > 0) items = items.concat(BOOKS);
+        else if (typeof SCRAPED_BOOKS !== 'undefined' && SCRAPED_BOOKS.length > 0) items = items.concat(SCRAPED_BOOKS);
+        
+        // Merge all 2,196 School Course Packs from 36 Schools
+        if (typeof SCRAPED_COURSES !== 'undefined' && Array.isArray(SCRAPED_COURSES)) {
+            const courseItems = SCRAPED_COURSES.map(c => ({
+                id: c.id || ('course_' + Math.random().toString(36).substr(2, 9)),
+                title: c.title,
+                price: Number(c.price) || 0,
+                img: c.img || 'assets/images/studypack_logo.png',
+                category: 'School Courses',
+                school: c.school || 'School Syllabus',
+                cls: c.cls || c.grade || 'General',
+                pub: c.school ? (c.school + ' Course') : 'School Syllabus',
+                inStock: true
+            }));
+            items = items.concat(courseItems);
+        }
+        return items;
     } else if (type === 'stationery') {
         if (typeof STATIONERY !== 'undefined' && STATIONERY.length > 0) return STATIONERY;
         if (typeof SCRAPED_STATIONERY !== 'undefined' && SCRAPED_STATIONERY.length > 0) return SCRAPED_STATIONERY;
@@ -354,13 +371,17 @@ function generateBooksFilters() {
     
     const basePubs = extractUniqueOptions(actualBooks, 'pub');
     const requestedPubs = ['AFAQ Publishers', 'Cambridge University Press', 'ERI Publishers', 'Oxford Books', 'Paramount', 'Spectrum Books', 'Sindh Text Book'];
-    const pubs = Array.from(new Set([...basePubs, ...requestedPubs])).sort();
+    const pubs = Array.from(new Set([...basePubs, ...requestedPubs])).filter(p => !p.includes('Course') && !p.includes('School')).sort();
     
+    const schools = extractUniqueOptions(actualBooks, 'school').filter(s => s && s !== 'School Syllabus').sort();
     const genres = extractUniqueOptions(actualBooks, 'genre');
     const langs = extractUniqueOptions(actualBooks, 'language');
     const ages = extractUniqueOptions(actualBooks, 'age_group');
     
     let html = '';
+    if (schools.length > 0) {
+        html += renderFilterGroup('School Syllabi / Courses', schools, 'dyn-school');
+    }
     html += renderFilterGroup('Publisher', pubs, 'dyn-pub');
     html += renderFilterGroup('Subject / Genre', genres, 'dyn-genre');
     html += renderFilterGroup('Language', langs, 'dyn-lang');
@@ -371,6 +392,7 @@ function generateBooksFilters() {
     injectSidebarHTML(html);
     
     window.applyFilters = function() {
+        const checkedSchools = Array.from(document.querySelectorAll('.dyn-school:checked')).map(cb => cb.value);
         const checkedPubs = Array.from(document.querySelectorAll('.dyn-pub:checked')).map(cb => cb.value);
         const checkedGenres = Array.from(document.querySelectorAll('.dyn-genre:checked')).map(cb => cb.value);
         const checkedLangs = Array.from(document.querySelectorAll('.dyn-lang:checked')).map(cb => cb.value);
@@ -385,6 +407,7 @@ function generateBooksFilters() {
         const query = (urlParams.get('q') || '').toLowerCase().trim();
         
         const filtered = actualBooks.filter(b => {
+            if (checkedSchools.length > 0 && !checkedSchools.includes(b.school)) return false;
             if (checkedPubs.length > 0 && !checkedPubs.includes(b.pub)) return false;
             if (checkedGenres.length > 0 && !checkedGenres.includes(b.genre)) return false;
             if (checkedLangs.length > 0 && !checkedLangs.includes(b.language)) return false;
@@ -393,7 +416,7 @@ function generateBooksFilters() {
             if (inStockOnly && b.stock === false) return false;
             
             if (query) {
-                const searchStr = `${b.title||''} ${b.cls||''} ${b.pub||''} ${b.genre||''} ${b.author||''} ${b.subj||''}`.toLowerCase();
+                const searchStr = `${b.title||''} ${b.cls||''} ${b.pub||''} ${b.school||''} ${b.genre||''} ${b.author||''} ${b.subj||''}`.toLowerCase();
                 if (!searchStr.includes(query)) return false;
             }
             return true;
