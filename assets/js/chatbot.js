@@ -302,7 +302,159 @@
   // ========================================================
   // NATURAL CONVERSATIONAL AI ENGINE
   // ========================================================
-  function processUserQuery(query) {
+  
+  // ========================================================
+  // REAL-TIME ORDER TRACKING & DASHBOARD CONFIRMATION
+  // ========================================================
+  async function trackCustomerOrder(rawQuery) {
+    const qLower = (rawQuery || "").toLowerCase().trim();
+    
+    // Extract Order ID (e.g. SP-982341, SP982341, #SP-982341, or 5-7 digit number)
+    const match = rawQuery.match(/SP[-\s]?\d{4,8}/i) || rawQuery.match(/#?SP-[A-Za-z0-9]+/i) || rawQuery.match(/\b\d{5,7}\b/);
+    
+    const isOrderKeyword = qLower.includes('track') || qLower.includes('mera order') || qLower.includes('order status') || qLower.includes('order kahan') || qLower.includes('order check') || qLower.includes('order no');
+
+    if (!match && isOrderKeyword) {
+      showTypingIndicator();
+      setTimeout(() => {
+        removeTypingIndicator();
+        addBotMessage(`
+          <strong>📦 Study Pack Live Order Tracking:</strong><br><br>
+          Ji bilkul! Baraye meharbani apna <strong>Order Number (e.g. SP-123456)</strong> ya wo Mobile Number yahan likhein jis se order place kiya tha.<br><br>
+          Main foran Agent Dashboard se confirm kar ke aapke parcel ka real-time status batata hoon! 😊
+        `);
+      }, 350);
+      return true;
+    }
+
+    if (!match) return false;
+
+    showTypingIndicator();
+
+    let searchId = match[0].toUpperCase().replace(/\s+/g, '');
+    if (!searchId.startsWith('SP-') && !searchId.startsWith('#SP-') && /^\d+$/.test(searchId)) {
+      searchId = 'SP-' + searchId;
+    }
+    const cleanId = searchId.replace('#', '');
+
+    try {
+      let orderData = null;
+
+      // 1. Check Firebase Firestore
+      if (typeof firebase !== 'undefined' && firebase.firestore) {
+        const db = firebase.firestore();
+        try {
+          const docRef = await db.collection('orders').doc(cleanId).get();
+          if (docRef.exists) {
+            orderData = docRef.data();
+            orderData.id = cleanId;
+          }
+        } catch (e) {
+          console.warn("Direct doc lookup error:", e);
+        }
+
+        // Query by orderId or phone if not found
+        if (!orderData) {
+          try {
+            const snap = await db.collection('orders').where('orderId', '==', cleanId).limit(1).get();
+            if (!snap.empty) {
+              orderData = snap.docs[0].data();
+              orderData.id = snap.docs[0].id;
+            }
+          } catch(e) {}
+        }
+      }
+
+      // 2. Check LocalStorage fallback
+      if (!orderData) {
+        try {
+          const localOrders = JSON.parse(localStorage.getItem('wc_orders') || localStorage.getItem('sp_orders') || '[]');
+          orderData = localOrders.find(o => (o.id || o.orderId || '').toUpperCase().includes(cleanId));
+        } catch(e) {}
+      }
+
+      removeTypingIndicator();
+
+      if (orderData) {
+        const custName = orderData.customerName || orderData.name || (orderData.billing ? orderData.billing.first_name + ' ' + (orderData.billing.last_name||'') : 'Valued Customer');
+        const rawStatus = (orderData.status || 'Processing').toLowerCase();
+        let statusBadge = '🟡 Order Processing';
+        let statusMsg = 'Aapka order warehouse mein pack aur verify ho raha hai.';
+
+        if (rawStatus.includes('ship') || rawStatus.includes('dispatch') || rawStatus.includes('courier')) {
+          statusBadge = '🚚 On the Way (Shipped)';
+          statusMsg = 'Aapka order courier rider ke hawale kar diya gaya hai aur delivery ke liye nikal chuka hai!';
+        } else if (rawStatus.includes('deliver') || rawStatus.includes('complete')) {
+          statusBadge = '✅ Successfully Delivered';
+          statusMsg = 'Aapka order kamiyabi ke sath deliver ho chuka hai.';
+        } else if (rawStatus.includes('cancel')) {
+          statusBadge = '❌ Order Cancelled';
+          statusMsg = 'Yeh order cancel ho chuka hai.';
+        }
+
+        const total = orderData.total || orderData.totalAmount || (orderData.grandTotal ? orderData.grandTotal : '0');
+        const city = orderData.city || (orderData.shipping ? orderData.shipping.city : (orderData.billing ? orderData.billing.city : 'Karachi'));
+        
+        let itemsList = '';
+        if (Array.isArray(orderData.items) && orderData.items.length > 0) {
+          itemsList = orderData.items.map(i => `• ${escapeHtml(i.name || i.title || 'Book')} (x${i.quantity || i.qty || 1})`).slice(0, 4).join('<br>');
+        } else {
+          itemsList = 'Prescribed Syllabus Books / Stationery Set';
+        }
+
+        addBotMessage(`
+          <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:12px; padding:14px; box-shadow:0 4px 12px rgba(0,0,0,0.06); margin-top:4px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:10px;">
+              <strong style="color:#0f172a; font-size:14px;">📦 Order #${escapeHtml(cleanId)}</strong>
+              <span style="background:#eff6ff; color:#1d4ed8; padding:3px 10px; border-radius:99px; font-size:11.5px; font-weight:700; border:1px solid #bfdbfe;">${statusBadge}</span>
+            </div>
+            
+            <div style="font-size:13px; color:#334155; line-height:1.6; margin-bottom:10px;">
+              👤 <strong>Customer:</strong> ${escapeHtml(custName)}<br>
+              💰 <strong>Total Amount:</strong> PKR ${escapeHtml(total)} (Cash on Delivery)<br>
+              📍 <strong>Delivery City:</strong> ${escapeHtml(city)}<br>
+              📚 <strong>Order Items:</strong><br>
+              <div style="padding-left:6px; color:#475569; font-size:12px; margin-top:2px;">${itemsList}</div>
+            </div>
+
+            <div style="padding:10px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; font-size:12.5px; color:#166534; line-height:1.5;">
+              ✅ <strong>Order Received &amp; Confirmed!</strong><br>
+              ${statusMsg}<br>
+              ⏱️ <strong>Delivery Timeline:</strong> Aapka parcel <strong>24 se 48 hours</strong> (Karachi) / <strong>2 se 4 working days</strong> (All Pakistan) mein deliver kar diya jayega.
+            </div>
+
+            <div style="margin-top:10px; text-align:center;">
+              <a href="https://wa.me/923331310234?text=Salam%20Study%20Pack,%20Order%20Inquiry%20${cleanId}" target="_blank" style="display:inline-block; background:#25d366; color:#ffffff; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700; text-decoration:none;">
+                💬 WhatsApp Support: 0333-1310234
+              </a>
+            </div>
+          </div>
+        `);
+      } else {
+        addBotMessage(`
+          <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:12px; font-size:13px; color:#92400e; margin-top:4px;">
+            🔍 <strong>Order #${escapeHtml(cleanId)}</strong> record mein nahi mila.<br><br>
+            Baraye meharbani apna Order Number dobara check karein, ya hamari WhatsApp Helpline par apna Naam aur Phone number bhej dein, hamare representative foran confirm kar denge:
+            <div style="margin-top:8px;">
+              <a href="https://wa.me/923331310234?text=Order%20Check%20${cleanId}" target="_blank" style="background:#25d366; color:#fff; padding:5px 12px; border-radius:15px; font-size:12px; font-weight:700; text-decoration:none; display:inline-block;">
+                💬 WhatsApp Support (0333-1310234)
+              </a>
+            </div>
+          </div>
+        `);
+      }
+    } catch(err) {
+      console.error("Order track error:", err);
+      removeTypingIndicator();
+      addBotMessage("Order lookup karte waqt error aaya. Baraye meharbani WhatsApp <strong>0333-1310234</strong> par apna order number bhej kar status maloom karein.");
+    }
+    return true;
+  }
+
+  async function processUserQuery(query) {
+    const isOrderQuery = await trackCustomerOrder(query);
+    if (isOrderQuery) return;
+
     showTypingIndicator();
     
     // Simulate realistic human reading & typing delay
