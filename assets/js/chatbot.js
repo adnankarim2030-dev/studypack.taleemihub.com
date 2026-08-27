@@ -32,12 +32,15 @@
               <span id="spChatStatus">Online • Ready to help</span>
             </div>
           </div>
-          <div style="display:flex; align-items:center; gap:6px;">
+          <div class="sp-header-controls">
             <button id="spSwitchModeBtn" title="Switch between AI and Human Agent" style="background:rgba(255,255,255,0.15); border:none; color:#fff; font-size:11px; font-weight:700; padding:4px 8px; border-radius:12px; cursor:pointer;">
               👤 Agent
             </button>
-            <button class="sp-chat-close-btn" id="spChatClose" title="Close Chat">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <button class="sp-ctrl-btn" id="spExpandToggle" title="Expand to Center / Minimize">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+            <button class="sp-ctrl-btn" id="spChatClose" title="Close Chat">
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
           </div>
         </div>
@@ -79,6 +82,7 @@
     const trigger = document.getElementById('spChatTrigger');
     const windowEl = document.getElementById('spChatWindow');
     const closeBtn = document.getElementById('spChatClose');
+    const expandBtn = document.getElementById('spExpandToggle');
     const form = document.getElementById('spChatForm');
     const input = document.getElementById('spChatInput');
     const modeBtn = document.getElementById('spSwitchModeBtn');
@@ -90,8 +94,15 @@
       }
     });
 
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        windowEl.classList.toggle('sp-centered');
+      });
+    }
+
     closeBtn.addEventListener('click', () => {
       windowEl.classList.remove('open');
+      windowEl.classList.remove('sp-centered');
     });
 
     modeBtn.addEventListener('click', () => {
@@ -107,6 +118,11 @@
       const query = input.value.trim();
       if (!query) return;
       
+      // Auto expand to center for comfortable reading & product browsing
+      if (window.innerWidth > 640) {
+        windowEl.classList.add('sp-centered');
+      }
+
       input.value = '';
       if (isLiveAgentMode) {
         sendLiveMessage(query);
@@ -117,6 +133,9 @@
     });
 
     window.handleChipClick = function(text) {
+      if (window.innerWidth > 640) {
+        windowEl.classList.add('sp-centered');
+      }
       if (text === 'Connect with Agent' || text === 'Talk to Live Agent') {
         startLiveAgentFlow();
       } else {
