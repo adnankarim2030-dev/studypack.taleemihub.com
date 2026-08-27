@@ -476,12 +476,12 @@ async function placeOrder(e){
     }
 
     if(!name || !phone || !email || !address || !city || !province){
-      showToast('Please fill all required fields');
+      showToast('Baraye meharbani tamam required fields fill karein');
       return false;
     }
 
     const sub = cart.reduce((s,c)=>s+c.price*c.qty,0);
-    const shipping = 0; // Calculated manually after weight check
+    const shipping = 0;
     const total = sub;
 
     const orderId = 'EB-' + Math.floor(100000 + Math.random()*899999);
@@ -516,26 +516,29 @@ async function placeOrder(e){
       source: 'website'
     };
 
-    // Sync to WooCommerce REST API (WordPress Backend)
+    // 1. Sync to WooCommerce REST API
     try {
       if (typeof window.syncOrderToWooCommerce === 'function') {
-        const wcOrder = await window.syncOrderToWooCommerce(orderData);
-        if (wcOrder && wcOrder.id) {
-          orderData.wcOrderId = wcOrder.id;
-        }
+        window.syncOrderToWooCommerce(orderData).catch(err => console.warn('WC sync:', err));
       }
     } catch(wcErr) {
       console.warn('WooCommerce sync warning:', wcErr);
     }
 
-    // Write the order to Firestore so it shows up in the admin dashboard.
-    // doc(orderId) keeps the human-readable order number as the document ID.
-    await db.collection('orders').doc(orderId).set(orderData);
+    // 2. Direct Instant Email Notification to taleemihub2020@gmail.com
+    fetch('https://api.studypack.taleemihub.com/wp-json/studypack/v1/order-notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(orderData)
+    }).catch(e => console.warn('Email notify fetch error:', e));
+
+    // 3. Write to Firestore Database for Live Admin Dashboard
+    db.collection('orders').doc(orderId).set(orderData);
 
     document.getElementById('orderIdDisplay').textContent = 'Order #' + orderId;
     
-    // Generate WhatsApp confirmation link
-    const waPhone = '923331310234'; // Admin WhatsApp Helpline
+    // 4. Generate WhatsApp confirmation link
+    const waPhone = '923331310234';
     const itemsList = cart.map(c => `• ${c.qty}x ${c.title} (Rs ${c.price})`).join('\n');
     const waMessage = `*Assalam-o-Alaikum Study Pack!*\nMaine website par naya order place kiya hai:\n\n📦 *Order ID:* #${orderId}\n👤 *Name:* ${name}\n📱 *Phone:* ${phone}\n📍 *City:* ${city}\n🏠 *Address:* ${address}\n\n📚 *Ordered Books:*\n${itemsList}\n\n💰 *Subtotal (Books):* Rs ${sub.toLocaleString()}\n🚚 *Delivery Charges:* Weight ke mutabiq\n\nBaraye meharbani actual parcel weight aur final bill confirm kar dein.`;
     
