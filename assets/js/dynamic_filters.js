@@ -231,10 +231,10 @@ window.renderProducts = function(list) {
     const pageItems = list.slice(start, start + window.ITEMS_PER_PAGE);
     
     const resultCount = document.getElementById('resultCount');
-    if (resultCount) resultCount.textContent = list.length;
+    // resultCount removed
     
     const heroCount = document.getElementById('heroBookCount');
-    if (heroCount) heroCount.textContent = list.length;
+    // heroCount removed
 
     if (list.length === 0) {
         grid.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 40px; color: #64748B;">

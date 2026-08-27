@@ -189,283 +189,22 @@
     </div>
   </div>
 </header>
-<!-- ================= PAGE HERO ================= -->
-
-<style>
-.fullwidth-hero {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-.fw-banner-carousel {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  overflow: hidden;
-}
-@media(max-width: 768px) {
-  .fw-banner-carousel { height: 500px; }
-}
-.fw-slide {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease;
-  display: flex;
-  align-items: center;
-}
-.fw-slide.active { opacity: 1; z-index: 2; }
-.fw-container {
-  width: 100%; max-width: 1200px; margin: 0 auto;
-  padding: 0 20px; display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap;
-}
-.fw-text {
-  flex: 1; min-width: 300px; color: #fff; z-index: 2;
-  transform: translateY(20px); transition: transform 1s ease 0.3s, opacity 1s ease 0.3s; opacity: 0;
-}
-.fw-slide.active .fw-text { transform: translateY(0); opacity: 1; }
-.fw-image-wrap {
-  flex: 1; min-width: 300px; display: flex; justify-content: flex-end; align-items: center;
-  z-index: 2; transform: translateX(20px); transition: transform 1s ease 0.3s, opacity 1s ease 0.3s; opacity: 0;
-}
-.fw-slide.active .fw-image-wrap { transform: translateX(0); opacity: 1; }
-@media(max-width: 768px) {
-  .fw-image-wrap { justify-content: center; margin-top: 20px; }
-  .fw-text { text-align: center; }
-}
-
-.fw-img {
-  max-width: 250px;
-  max-height: 250px;
-  object-fit: contain;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  border-radius: 12px;
-  background: #fff;
-  padding: 10px;
-  transform: rotate(5deg);
-  transition: transform 0.5s;
-}
-.fw-img:hover { transform: scale(1.05) rotate(0deg); }
-
-.fw-title { font-size: 48px; font-weight: 800; line-height: 1.1; margin-bottom: 16px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
-.fw-sub { font-size: 18px; line-height: 1.5; margin-bottom: 24px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
-@media(max-width:768px){ .fw-title {font-size: 32px;} .fw-sub {font-size: 15px;} }
-
-.fw-badge { display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border-radius: 20px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-.fw-btn { display: inline-block; padding: 12px 28px; background: #fff; color: #111; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; transition: 0.3s; box-shadow: 0 4px 14px rgba(0,0,0,0.2); }
-.fw-btn:hover { background: #f8b400; color: #fff; }
-
-/* Gradients */
-.grad-1 { background: linear-gradient(135deg, #1e3a8a, #3b82f6); }
-.grad-2 { background: linear-gradient(135deg, #065f46, #10b981); }
-.grad-3 { background: linear-gradient(135deg, #701a75, #d946ef); }
-.grad-4 { background: linear-gradient(135deg, #991b1b, #f43f5e); }
-.grad-5 { background: linear-gradient(135deg, #b45309, #f59e0b); }
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const carousels = document.querySelectorAll('.fw-banner-carousel');
-  carousels.forEach(carousel => {
-    const slides = carousel.querySelectorAll('.fw-slide');
-    if(slides.length === 0) return;
-    let cur = 0;
-    slides[cur].classList.add('active');
-    setInterval(() => {
-      slides[cur].classList.remove('active');
-      cur = (cur + 1) % slides.length;
-      slides[cur].classList.add('active');
-    }, 4500);
-  });
-});
-</script>
-
-    
-<style>
-/* React/Tailwind Banner Replica */
-.rw-banner {
-  width: 100%;
-  background: linear-gradient(to right, #2563eb, #4338ca); /* from-blue-600 to-indigo-700 */
-  color: white;
-  padding: 4rem 1.5rem; /* py-16 px-6 */
-  text-align: center;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-  position: relative;
-  overflow: hidden;
-  margin-top: 0;
-}
-.rw-container {
-  max-width: 56rem; /* max-w-4xl */
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.rw-title {
-  font-size: 2.25rem; /* text-4xl */
-  line-height: 2.5rem;
-  font-weight: 800; /* font-extrabold */
-  letter-spacing: -0.025em; /* tracking-tight */
-  margin-bottom: 1rem; /* mb-4 */
-  animation: slideUp 0.5s ease-out 0.2s both;
-}
-@media (min-width: 768px) {
-  .rw-title {
-    font-size: 3rem; /* md:text-5xl */
-    line-height: 1;
-  }
-}
-.rw-subtitle {
-  font-size: 1.125rem; /* text-lg */
-  line-height: 1.75rem;
-  color: #e0e7ff; /* text-blue-100 */
-  margin-bottom: 2rem; /* mb-8 */
-  max-width: 42rem; /* max-w-2xl */
-  animation: slideUp 0.5s ease-out 0.4s both;
-}
-@media (min-width: 768px) {
-  .rw-subtitle {
-    font-size: 1.25rem; /* md:text-xl */
-    line-height: 1.75rem;
-  }
-}
-.rw-button {
-  background-color: white;
-  color: #2563eb; /* text-blue-600 */
-  font-weight: 600; /* font-semibold */
-  padding: 0.75rem 2rem; /* py-3 px-8 */
-  border-radius: 9999px; /* rounded-full */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-  transition: all 0.3s ease;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  animation: popIn 0.3s ease-out 0.6s both;
-}
-.rw-button:hover {
-  background-color: #eff6ff; /* hover:bg-blue-50 */
-  transform: scale(1.05); /* whileHover */
-}
-.rw-button:active {
-  transform: scale(0.95); /* whileTap */
-}
-
-.rw-product-image {
-  max-width: 200px;
-  max-height: 200px;
-  object-fit: contain;
-  margin-bottom: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  animation: slideUp 0.5s ease-out 0.5s both;
-  background: white;
-  padding: 8px;
-}
-
-/* Animations matching framer-motion */
-@keyframes slideDownIn {
-  from { opacity: 0; transform: translateY(-50px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.rw-banner {
-  animation: slideDownIn 0.6s ease-out both;
-}
-
-/* CAROUSEL WRAPPER */
-.rw-slider {
-  position: relative;
-  width: 100%;
-}
-.rw-slide {
-  display: none;
-}
-.rw-slide.active {
-  display: block;
-}
-
-/* Dynamic Gradients for different slides */
-.bg-grad-1 { background: linear-gradient(to right, #2563eb, #4338ca); }
-.bg-grad-2 { background: linear-gradient(to right, #059669, #047857); }
-.bg-grad-3 { background: linear-gradient(to right, #db2777, #be185d); }
-.bg-grad-4 { background: linear-gradient(to right, #d97706, #b45309); }
-.bg-grad-5 { background: linear-gradient(to right, #7c3aed, #6d28d9); }
-</style>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const sliders = document.querySelectorAll('.rw-slider');
-  sliders.forEach(slider => {
-    const slides = slider.querySelectorAll('.rw-slide');
-    if(slides.length === 0) return;
-    let cur = 0;
-    slides[cur].classList.add('active');
-    setInterval(() => {
-      slides[cur].classList.remove('active');
-      cur = (cur + 1) % slides.length;
-      
-      // Re-trigger animations by cloning and replacing
-      const newSlide = slides[cur].cloneNode(true);
-      newSlide.classList.add('active');
-      slider.replaceChild(newSlide, slides[cur]);
-      slides[cur] = newSlide;
-      
-    }, 5000);
-  });
-});
-</script>
-
-    
 
 
-<section class="page-hero">
-  <div class="container hero-grid">
-    <div>
-      
-        <div class="breadcrumb reveal"><a href="index.html">Home</a><span class="sep">/</span><span class="cur">Stationery</span></div>
-        <h1 class="reveal">School &amp; Office <span class="grad">Stationery, Karachi Wholesale Prices</span></h1>
-        <p class="lead reveal">Sourced straight from Karachi's biggest stationery wholesale markets — pens, pencils, notebooks, art supplies and office essentials, priced just 20% above wholesale rate.</p>
-        <div class="page-hero-stats reveal"><div class="st"><b id="heroStatCount">18</b><span>Items Shown</span></div></div>
-        
-    </div>
-    <div class="hero-scene reveal">
-      
-      <div class="book-carousel">
-        <div class="carousel-container">
-          <div class="book-item item-1">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0253/7911/0974/products/Sakura-Koi-Coloring-Brush-Pen-Marker-Set.webp?v=1683632698" alt="Brush Pen"></div>
-            <div class="title">Sakura Koi Brush Pen</div>
-          </div>
-          <div class="book-item item-2">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0253/7911/0974/files/Gemini_Generated_Image_8zc4ur8zc4ur8zc4.png?v=1784972879" alt="Photo Paper"></div>
-            <div class="title">Glossy Photo Paper</div>
-          </div>
-          <div class="book-item item-3">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0253/7911/0974/files/Gemini_Generated_Image_ayewhwayewhwayew.png?v=1785160909" alt="Notice Board"></div>
-            <div class="title">Notice Board Cloth</div>
-          </div>
-          <div class="book-item item-4">
-            <div class="img-wrap"><img src="https://cdn.shopify.com/s/files/1/0253/7911/0974/files/Gemini_Generated_Image_orclgrorclgrorcl.png?v=1784973489" alt="Lamination"></div>
-            <div class="title">Lamination Sheet</div>
-          </div>
-          <div class="book-item item-5">
-            <div class="img-wrap"><img src="https://studypack.taleemihub.com/assets/images/logo.png" alt="Geometry"></div>
-            <div class="title">Geometry Kit</div>
-          </div>
-        </div>
       </div>
 
     </div>
   </div>
 </section>
+<!-- ================= BRAND SPONSOR BANNER 1 (SUB-HERO) ================= -->
+<div class="container" style="margin: 24px auto 16px auto; text-align: center;">
+  <div style="background: #ffffff; padding: 6px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: inline-block; max-width: 100%;">
+    <a href="https://taleemihub.com/karachi/" target="_blank" rel="noopener" style="display: block; overflow: hidden; border-radius: 8px;">
+      <img src="assets/images/banners/youngs_black_pepper.jpg" alt="Young's Chicken Spread Black Pepper - TaleemiHub Partner" style="width: 100%; max-width: 970px; height: auto; display: block; margin: 0 auto;">
+    </a>
+  </div>
+</div>
+
     
     
     
@@ -474,14 +213,22 @@ document.addEventListener("DOMContentLoaded", function() {
 <section class="section grey">
   <div class="container">
     <button class="mobile-filter-btn reveal" id="mobileFilterBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Filters</button>
-    <div class="shop-layout">
+    <!-- ================= BRAND SPONSOR BANNER 2 (MIDDLE) ================= -->
+<div class="container" style="margin: 32px auto; text-align: center;">
+  <div style="background: #ffffff; padding: 6px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e2e8f0; display: inline-block; max-width: 100%;">
+    <a href="https://taleemihub.com/karachi/" target="_blank" rel="noopener" style="display: block; overflow: hidden; border-radius: 8px;">
+      <img src="assets/images/banners/shangrila_foods.jpg" alt="Shangrila Foods - TaleemiHub Partner" style="width: 100%; max-width: 970px; height: auto; display: block; margin: 0 auto;">
+    </a>
+  </div>
+</div>
+<div class="shop-layout">
       <aside class="filter-card reveal" id="filterCard">
         <!-- Dynamic filters will be injected here by dynamic_filters.js?v=10 -->
       </aside>
 
       <div>
         <div class="shop-toolbar reveal">
-          <span class="results-count"><b id="resultCount">18</b> items found</span>
+          
           <select class="sort-select" id="sortSelect">
             <option value="pop">Sort: Popularity</option>
             <option value="low">Price: Low to High</option>
@@ -496,45 +243,8 @@ document.addEventListener("DOMContentLoaded", function() {
   </div>
 </section>
 <!-- ================= NEWSLETTER ================= -->
-<section class="section">
-  <div class="container">
-    <div class="newsletter reveal">
-      <h3>Get Notified on New Arrivals &amp; Flash Sales</h3>
-      <p>One email a week. Grade-wise deals, no spam.</p>
-      <form class="nl-form" onsubmit="event.preventDefault(); showToast('Subscribed! Check your inbox.');">
-        <input type="email" placeholder="you@email.com" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-  </div>
-</section>
 
-<!-- ================= FOOTER ================= -->
-<footer id="footer">
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-about">
-        <a href="index.html" class="logo">
-          <img src="assets/images/logo.png" alt="Study Pack Logo" style="height: 38px; width: auto; object-fit: contain;">
-          <span>Study Pack</span>
-        </a>
-        <p>Pakistan's premium online bookstore for school, college and university students — genuine books, fast delivery.</p>
-        <div class="soc-row">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg></a>
-        </div>
-      </div>
-      <div><h5>Shop</h5><ul><li><a href="courses.html">Courses</a></li><li><a href="books.html">School Books</a></li><li><a href="books.html">College Books</a></li><li><a href="books.html">University Books</a></li><li></li><li><a href="stationery.html">Stationery</a></li><li><a href="toys.html">Toys &amp; Gifts</a></li></ul></div>
-      <div><h5>Categories</h5><ul><li><a href="books.html">Cambridge</a></li><li><a href="books.html">Matric / FSC</a></li><li><a href="books.html">O &amp; A Level</a></li><li><a href="books.html">Competitive Exams</a></li><li><a href="books.html">Islamic Studies</a></li></ul></div>
-      <div><h5>Support</h5><ul><li><a href="contact.html">Contact Us</a></li><li><a href="contact.html#faq">FAQs</a></li><li><a href="contact.html">Shipping Policy</a></li><li><a href="contact.html">Return Policy</a></li><li><a href="contact.html">Track Order</a></li></ul></div>
-      <div><h5>Company</h5><ul><li><a href="why.html">About Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li><li><a href="why.html#team">Careers</a></li></ul></div>
-    </div>
-    <div class="foot-bottom">
-      <span>© 2026 Study Pack Store. All rights reserved.</span>
-      <div class="pay-icons"><span>Visa</span><span>JazzCash</span><span>EasyPaisa</span><span>COD</span><span>PayPal</span></div>
-    </div>
-  </div>
+
 </footer>
 <!-- ================= CART DRAWER ================= -->
 <div class="cart-overlay" id="cartOverlay"></div>
