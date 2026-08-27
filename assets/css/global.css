@@ -1155,11 +1155,27 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
 .accordion-item.active .acc-arrow { transform: rotate(180deg); color: var(--blue); }
 
 .acc-body {
-  padding: 0 16px; max-height: 0; opacity: 0; visibility: hidden;
+  padding: 0 16px; max-height: 0; opacity: 0; visibility: hidden; overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .accordion-item.active .acc-body {
-  padding: 0 16px 16px 16px; max-height: 500px; opacity: 1; visibility: visible;
+  padding: 0 16px 16px 16px;
+  max-height: 360px;
+  opacity: 1;
+  visibility: visible;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #93c5fd #f8fafc;
+}
+.accordion-item.active .acc-body::-webkit-scrollbar {
+  width: 5px;
+}
+.accordion-item.active .acc-body::-webkit-scrollbar-thumb {
+  background: #93c5fd;
+  border-radius: 4px;
+}
+.accordion-item.active .acc-body::-webkit-scrollbar-track {
+  background: #f8fafc;
 }
 
 /* Glass Checkboxes */
@@ -1201,21 +1217,23 @@ footer{background:var(--blue); color:#e2e8f0; padding-top:80px;}
 
 .ai-search-dropdown {
   position: absolute;
-  top: 100%; left: -1px; right: -1px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(25, 118, 210, 0.4);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  min-width: 360px;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.22) !important;
   opacity: 0; visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  max-height: 450px; overflow-y: auto;
+  transform: translateY(-8px);
+  transition: all 0.25s ease;
+  z-index: 999999 !important;
+  max-height: 480px;
+  overflow-y: auto;
 }
 .ai-search-dropdown.show {
-  opacity: 1; visibility: visible; transform: translateY(0);
+  opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important;
 }
 
 .search-result-item {
