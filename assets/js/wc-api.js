@@ -3,13 +3,14 @@
    ============================================================ */
 
 const WC_CONFIG = {
-    storeUrl: 'https://studypack.taleemihub.com',
+    storeUrl: 'https://api.studypack.taleemihub.com',
     consumerKey: 'ck_9d3ebbf59738bb9cb7a3021067c90893476d32d7',
     consumerSecret: 'cs_75d5b1183e7985468ab5e374fc9be4ed0a5e2b3f'
 };
 
 /**
  * Syncs an order placed on the frontend directly into WordPress WooCommerce backend
+ * and triggers instant email notification to taleemihub2020@gmail.com
  * @param {Object} orderData 
  * @returns {Promise<Object>} Created WooCommerce Order Object
  */
@@ -22,7 +23,7 @@ window.syncOrderToWooCommerce = async function(orderData) {
         const firstName = nameParts[0] || 'Customer';
         const lastName = nameParts.slice(1).join(' ') || '';
 
-        // Format line items
+        // Format line items with fallback product reference
         const lineItems = (orderData.items || []).map(item => {
             const itemObj = {
                 name: item.title || item.name || 'Product',
@@ -31,9 +32,8 @@ window.syncOrderToWooCommerce = async function(orderData) {
             };
             if (item.wcId || item.productId || item.wc_id) {
                 itemObj.product_id = Number(item.wcId || item.productId || item.wc_id);
-            }
-            if (item.sku) {
-                itemObj.sku = String(item.sku);
+            } else {
+                itemObj.product_id = 22074; // Fallback to live general product reference
             }
             return itemObj;
         });
@@ -42,7 +42,7 @@ window.syncOrderToWooCommerce = async function(orderData) {
             payment_method: (orderData.paymentMethod || 'cod').toLowerCase(),
             payment_method_title: orderData.paymentMethodTitle || 'Cash on Delivery',
             set_paid: false,
-            status: 'pending',
+            status: 'processing',
             billing: {
                 first_name: firstName,
                 last_name: lastName,
@@ -50,7 +50,7 @@ window.syncOrderToWooCommerce = async function(orderData) {
                 city: orderData.city || 'Karachi',
                 state: orderData.province || 'Sindh',
                 country: 'PK',
-                email: orderData.email || 'customer@taleemihub.com',
+                email: orderData.email || 'taleemihub2020@gmail.com',
                 phone: orderData.phone || ''
             },
             shipping: {
@@ -62,9 +62,17 @@ window.syncOrderToWooCommerce = async function(orderData) {
                 country: 'PK'
             },
             line_items: lineItems,
-            customer_note: `Weight note: ${orderData.shippingNote || 'Weight ke mutabiq'}. Order source: StudyPack New Frontend`
+            customer_note: `Weight note: ${orderData.shippingNote || 'Weight ke mutabiq'}. Order source: StudyPack Web`
         };
 
+        // 1. Send Order Notification to dedicated StudyPack Notifier Endpoint
+        fetch(`${WC_CONFIG.storeUrl}/wp-json/studypack/v1/order-notify`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(orderData)
+        }).catch(e => console.warn('Email notify fetch error:', e));
+
+        // 2. Create Order in WooCommerce REST API
         const res = await fetch(`${WC_CONFIG.storeUrl}/wp-json/wc/v3/orders`, {
             method: 'POST',
             headers: {
