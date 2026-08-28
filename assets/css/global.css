@@ -1961,3 +1961,85 @@ header.nav {
   .book-item.item-4 { transform: rotateY(216deg) translateZ(100px) !important; }
   .book-item.item-5 { transform: rotateY(288deg) translateZ(100px) !important; }
 }
+
+
+/* ========================================================
+   NAVBAR SPACING & CART BADGE OVERFLOW FIX
+   ======================================================== */
+header.nav .navbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  background: var(--blue) !important;
+  border-radius: 100px !important;
+  padding: 6px 22px 6px 14px !important;
+  overflow: visible !important;
+}
+
+.nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  flex-shrink: 1 !important;
+}
+
+.nav-links a {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #e2e8f0 !important;
+  padding: 6px 9px !important;
+  border-radius: 100px !important;
+  white-space: nowrap !important;
+  transition: all .25s ease !important;
+}
+
+.nav-search-bar {
+  max-width: 230px !important;
+  margin: 0 8px !important;
+  padding: 5px 10px !important;
+}
+
+.nav-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+  padding-right: 4px !important;
+  margin-left: 6px !important;
+}
+
+.icon-btn {
+  position: relative !important;
+  width: 38px !important;
+  height: 38px !important;
+  flex-shrink: 0 !important;
+}
+
+.badge-count {
+  position: absolute !important;
+  top: -2px !important;
+  right: -2px !important;
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 0 0 2px rgba(15, 23, 42, 1) !important;
+  z-index: 5 !important;
+}
+
+@media (max-width: 1200px) {
+  .nav-links a {
+    font-size: 12px !important;
+    padding: 5px 7px !important;
+  }
+  .nav-search-bar {
+    max-width: 180px !important;
+  }
+}
