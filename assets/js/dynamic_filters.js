@@ -1,3 +1,40 @@
+
+// ============================================================
+// DYNAMIC GLOBAL PRICE RULES & OVERRIDES HELPER
+// ============================================================
+window.getAdjustedPrice = function(item) {
+    let price = Number(item.price) || 0;
+    if (item.id) {
+        const courseOverrides = JSON.parse(localStorage.getItem('sp_course_overrides') || '{}');
+        if (courseOverrides[item.id] && courseOverrides[item.id].price) {
+            return Number(courseOverrides[item.id].price);
+        }
+    }
+
+    const rules = JSON.parse(localStorage.getItem('sp_global_price_rules') || '[]');
+    if (rules.length > 0) {
+        for (const r of rules) {
+            let applies = false;
+            const t = (item.title || '').toLowerCase();
+            if (r.scope === 'all') applies = true;
+            else if (r.scope === 'oxford' && t.includes('oxford')) applies = true;
+            else if (r.scope === 'paramount' && t.includes('paramount')) applies = true;
+            else if (r.scope === 'afaq' && (t.includes('afaq') || item.publisher === 'AFAQ')) applies = true;
+            else if (r.scope === 'courses' && (item.school || item.category === 'School Courses')) applies = true;
+            else if (r.scope === 'stationery' && (item.type === 'stationery' || item.category === 'Stationery')) applies = true;
+            else if (r.scope === 'toys' && (item.type === 'toy' || item.category === 'Toys & Gifts')) applies = true;
+
+            if (applies) {
+                const multiplier = r.action === 'inc' ? (1 + r.percent / 100) : (1 - r.percent / 100);
+                price = Math.round(price * multiplier);
+                if (r.round) price = Math.round(price / 10) * 10;
+                break;
+            }
+        }
+    }
+    return price;
+};
+
 // ============================================================
 // STUDY PACK PREMIUM DYNAMIC FILTERS & PRODUCT CARDS
 // ============================================================

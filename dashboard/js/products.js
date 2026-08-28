@@ -1,3 +1,16 @@
+
+function getAllCombinedProducts() {
+    let list = window.AppData.products || [];
+    if (list.length === 0) {
+        if (typeof SCRAPED_BOOKS !== 'undefined') list = list.concat(SCRAPED_BOOKS);
+        if (typeof SCRAPED_COURSES !== 'undefined') list = list.concat(SCRAPED_COURSES.map(x => ({ ...x, category: 'School Courses' })));
+        if (typeof SCRAPED_STATIONERY !== 'undefined') list = list.concat(SCRAPED_STATIONERY.map(x => ({ ...x, category: 'Stationery' })));
+        if (typeof SCRAPED_TOYS !== 'undefined') list = list.concat(SCRAPED_TOYS.map(x => ({ ...x, category: 'Toys & Gifts' })));
+        if (typeof SCRAPED_AFAQ !== 'undefined') list = list.concat(SCRAPED_AFAQ.map(x => ({ ...x, category: 'Academic Books' })));
+    }
+    return list;
+}
+
 /* ============================================================
    Products module — list/search/filter, CRUD, image upload (ImgBB),
    margin calculator, pagination.
@@ -34,7 +47,7 @@ window.renderProducts = function() {
 
     populateCategoryFilters();
 
-    let products = window.AppData.products || [];
+    let products = getAllCombinedProducts();
     const search = (document.getElementById('prodSearch')?.value || '').toLowerCase();
     const cat = document.getElementById('filterCategory')?.value;
     const cls = document.getElementById('filterClass')?.value;

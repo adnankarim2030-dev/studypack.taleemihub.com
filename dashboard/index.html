@@ -51,6 +51,8 @@
     <nav class="sidebar-menu">
       <a href="#" class="nav-item active" data-view="dashboard"><i data-lucide="layout-dashboard"></i> Dashboard</a>
       <a href="#" class="nav-item" data-view="products"><i data-lucide="book-open"></i> Products</a>
+      <a href="#" class="nav-item" data-view="courses"><i data-lucide="graduation-cap"></i> School Syllabi / Courses</a>
+      <a href="#" class="nav-item" data-view="priceAdjuster"><i data-lucide="percent"></i> Bulk Price Adjuster</a>
       <a href="#" class="nav-item" data-view="orders"><i data-lucide="shopping-cart"></i> Orders</a>
       <a href="#" class="nav-item" data-view="customers"><i data-lucide="users"></i> Customers</a>
       <a href="#" class="nav-item" data-view="livechat"><i data-lucide="message-square"></i> Live Support <span class="badge-count" id="unreadChatsCount" style="display:none; background:#EF4444; color:#fff; font-size:10px; padding:2px 6px; border-radius:10px; margin-left:auto;">0</span></a>
@@ -168,6 +170,147 @@
           <div class="pagination" id="productsPagination"></div>
         </div>
       </section>
+
+      <!-- ================= SCHOOL COURSES & SYLLABI ================= -->
+      <section id="courses" class="view-section">
+        <div class="section-head">
+          <div>
+            <h1>School Syllabi &amp; Course Packs</h1>
+            <p>All 36 school syllabi sets, classes, and real-time pricing.</p>
+          </div>
+          <div class="section-head-actions">
+            <button class="btn btn-outline" onclick="openCourseBulkPriceModal()"><i data-lucide="trending-up"></i> Bulk School Price Adjuster</button>
+            <button class="btn btn-primary" onclick="openAddCourseModal()"><i data-lucide="plus"></i> Add Course Pack</button>
+          </div>
+        </div>
+
+        <!-- School Selector Filter Pills -->
+        <div style="margin-bottom:1.5rem; overflow-x:auto; white-space:nowrap; padding-bottom:6px;" id="schoolFilterPills"></div>
+
+        <div class="filters-toolbar">
+          <input type="text" id="courseSearch" placeholder="Search course, school, class (e.g. Beaconhouse Class 4)..." style="flex:2;">
+          <div style="display:flex; align-items:center; gap:8px; font-weight:700; color:var(--text-main); margin-left:auto;">
+            <span id="totalCoursesCount">0 Course Sets</span>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Course Set Title</th>
+                <th>School System</th>
+                <th>Class / Grade</th>
+                <th>Price (PKR)</th>
+                <th>Stock Status</th>
+                <th style="text-align:right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="coursesTbody"></tbody>
+          </table>
+          <div class="pagination" id="coursesPagination"></div>
+        </div>
+      </section>
+
+      <!-- ================= BULK PRICE ADJUSTER ================= -->
+      <section id="priceAdjuster" class="view-section">
+        <div class="section-head">
+          <div>
+            <h1>Bulk Price &amp; Markup Manager</h1>
+            <p>Entire catalog ya specific categories ki prices percentage se increase/decrease karein.</p>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap:24px; margin-bottom:28px; align-items:start;">
+          
+          <!-- Adjustment Controls Card -->
+          <div style="background:var(--bg-card); border-radius:16px; padding:24px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
+            <h3 style="font-size:16px; font-weight:800; color:var(--text-main); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+              <i data-lucide="sliders" style="width:20px; color:var(--primary);"></i> Price Markup Settings
+            </h3>
+            
+            <form onsubmit="applyGlobalPriceRule(event)">
+              <div class="form-group">
+                <label>Select Target Catalog Scope *</label>
+                <select id="priceScopeSelect" required>
+                  <option value="all">🌐 Entire Website Catalog (6,000+ Items)</option>
+                  <option value="oxford">📘 Oxford University Press Books</option>
+                  <option value="paramount">📙 Paramount Books</option>
+                  <option value="afaq">📗 AFAQ Publications</option>
+                  <option value="courses">🎒 School Syllabi / Course Sets</option>
+                  <option value="stationery">✏️ Stationery Items</option>
+                  <option value="toys">🧸 Toys &amp; Games</option>
+                </select>
+              </div>
+
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div class="form-group">
+                  <label>Action</label>
+                  <select id="priceActionSelect">
+                    <option value="inc">📈 Increase Price (+%)</option>
+                    <option value="dec">📉 Decrease Price (-%)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Percentage (%) *</label>
+                  <input type="number" id="pricePercentInput" min="1" max="100" placeholder="e.g. 10" value="10" required>
+                </div>
+              </div>
+
+              <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top:8px;">
+                <input type="checkbox" id="priceRoundCheck" checked style="width:18px; height:18px; accent-color:var(--primary);">
+                <label for="priceRoundCheck" style="margin:0; font-size:13px; font-weight:600; cursor:pointer;">Round to nearest 10 (e.g. 453 -> 450, 458 -> 460)</label>
+              </div>
+
+              <div style="margin-top:20px; display:flex; gap:12px;">
+                <button type="submit" class="btn btn-primary" style="flex:1;"><i data-lucide="check-circle"></i> Apply &amp; Sync to Website</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Active Rules Card -->
+          <div style="background:var(--bg-card); border-radius:16px; padding:24px; border:1px solid var(--border-color); box-shadow:var(--shadow-sm);">
+            <h3 style="font-size:16px; font-weight:800; color:var(--text-main); margin-bottom:16px; display:flex; align-items:center; gap:8px;">
+              <i data-lucide="layers" style="width:20px; color:var(--primary);"></i> Active Markup Rules
+            </h3>
+            
+            <table style="width:100%;">
+              <thead>
+                <tr>
+                  <th>Scope</th>
+                  <th>Markup</th>
+                  <th>Rounding</th>
+                  <th>Applied On</th>
+                  <th style="text-align:right;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="activePriceRulesTbody"></tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Live Impact Preview Table -->
+        <div class="table-container">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding:1.25rem 1.5rem; border-bottom:1px solid var(--border-color);">
+            <span style="font-weight:800; font-size:15px; color:var(--text-main);">Live Price Impact Preview</span>
+            <span class="badge badge-info" id="previewItemCount">0 Products Impacted</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Sample Product Title</th>
+                <th>Original Price</th>
+                <th>New Adjusted Price</th>
+                <th>Net Difference</th>
+              </tr>
+            </thead>
+            <tbody id="pricePreviewTbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+
 
       <!-- ================= ORDERS ================= -->
       <section id="orders" class="view-section">
@@ -602,6 +745,103 @@
 </div>
 
 <!-- ================= TOAST ================= -->
+
+<!-- ================= COURSE PACK MODAL ================= -->
+<div class="modal-overlay" id="courseModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="courseModalTitle">Add School Course Pack</h3>
+      <button class="modal-close" onclick="closeCourseModal()"><i data-lucide="x"></i></button>
+    </div>
+    <form id="courseForm" onsubmit="saveCourseForm(event)">
+      <div class="modal-body">
+        <input type="hidden" id="courseDocId">
+        <div class="form-group">
+          <label>Course Title *</label>
+          <input type="text" id="courseTitle" placeholder="e.g. Beaconhouse Class 4 Complete Course Set" required>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>School Name *</label>
+            <input type="text" id="courseSchool" placeholder="e.g. Beaconhouse School" required>
+          </div>
+          <div class="form-group">
+            <label>Class / Grade *</label>
+            <input type="text" id="courseClass" placeholder="e.g. Class 4" required>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>Price (PKR) *</label>
+            <input type="number" id="coursePrice" placeholder="e.g. 5450" required>
+          </div>
+          <div class="form-group">
+            <label>Stock Status</label>
+            <select id="courseStock">
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" onclick="closeCourseModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save Course Pack</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= COURSE BULK PRICE MODAL ================= -->
+<div class="modal-overlay" id="courseBulkPriceModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>School Courses Bulk Price Adjuster</h3>
+      <button class="modal-close" onclick="closeCourseBulkPriceModal()"><i data-lucide="x"></i></button>
+    </div>
+    <form onsubmit="applyCourseBulkPrice(event)">
+      <div class="modal-body">
+        <p class="perm-banner"><i data-lucide="info"></i> Kisi specific school ya tamam school courses ki prices ko ek sath percent se increase ya decrease karein.</p>
+        <div class="form-group">
+          <label>Select Target School</label>
+          <select id="bulkSchoolSelect">
+            <option value="">All 36 Schools</option>
+            <option value="Beaconhouse School">Beaconhouse School</option>
+            <option value="The City School">The City School</option>
+            <option value="The Educators">The Educators</option>
+            <option value="Foundation Public School">Foundation Public School</option>
+            <option value="Habib Girls School">Habib Girls School</option>
+            <option value="Mama Parsi School">Mama Parsi School</option>
+            <option value="Aga Khan School">Aga Khan School</option>
+            <option value="Karachi Public School">Karachi Public School</option>
+            <option value="Dawood Public School">Dawood Public School</option>
+            <option value="BVS Parsi High School">BVS Parsi High School</option>
+            <option value="Happy Home School (Matric)">Happy Home School (Matric)</option>
+            <option value="Happy Home School (O Level)">Happy Home School (O Level)</option>
+          </select>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>Action</label>
+            <select id="bulkCourseAction">
+              <option value="inc">📈 Increase (+%)</option>
+              <option value="dec">📉 Decrease (-%)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Percentage (%) *</label>
+            <input type="number" id="bulkCoursePercent" value="10" min="1" max="100" required>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" onclick="closeCourseBulkPriceModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Apply Price Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Saved</span></div>
 
 <!-- ================= SCRIPTS ================= -->
@@ -616,6 +856,15 @@
 <script src="js/data.js"></script>
 <script src="js/livechat.js"></script>
 <script src="js/app.js"></script>
+
+<script src="../assets/js/scraped-books.js"></script>
+<script src="../assets/js/scraped-courses.js"></script>
+<script src="../assets/js/scraped-stationery.js"></script>
+<script src="../assets/js/scraped-toys.js"></script>
+<script src="../assets/js/scraped-afaq.js"></script>
+<script src="js/courses.js"></script>
+<script src="js/price_adjuster.js"></script>
+
 <script src="js/dashboard-view.js"></script>
 <script src="js/products.js"></script>
 <script src="js/orders.js"></script>

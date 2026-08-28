@@ -48,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (viewId === 'dashboard' && window.renderDashboard) window.renderDashboard();
             if (viewId === 'products' && window.renderProducts) window.renderProducts();
+            if (viewId === 'courses' && window.renderCourses) window.renderCourses();
+            if (viewId === 'priceAdjuster' && window.renderPriceAdjuster) window.renderPriceAdjuster();
+            if (viewId === 'livechat' && window.initLiveChatDashboard) window.initLiveChatDashboard();
             if (viewId === 'orders' && window.renderOrders) window.renderOrders();
             if (viewId === 'customers' && window.renderCustomers) window.renderCustomers();
             if (viewId === 'inventory' && window.renderInventory) window.renderInventory();
