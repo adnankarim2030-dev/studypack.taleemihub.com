@@ -396,28 +396,366 @@
 </div>
 
 
-<!-- ================= UPSELL MODAL ================= -->
+<!-- ================= UPSELL 3D CAROUSEL MODAL ================= -->
 <div class="modal-overlay" id="upsellOverlay">
-  <div class="qv-modal" style="display:flex; flex-direction:column; align-items:center; text-align:center; padding: clamp(20px, 5vw, 40px); background: linear-gradient(135deg, #fcecd7, #dbeafe);">
-    <button class="modal-close" onclick="document.getElementById('upsellOverlay').classList.remove('show')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
-    <h2 style="font-size: clamp(24px, 6vw, 32px); color: var(--navy); margin-bottom: 10px;">Before You Go!</h2>
-    <p style="color: var(--muted); font-size: 16px; margin-bottom: 30px; max-width: 400px;">Get more items to complete your Study Pack! Grab some cool toys and stationery.</p>
+  <div class="upsell-modal-box">
+    <button class="modal-close" onclick="closeUpsellModal()" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
     
-    <div class="scene-3d" style="margin: 0 auto; margin-bottom: 40px; width: 100%; max-width: 300px; height: clamp(200px, 60vw, 300px); display: flex; align-items: center; justify-content: center; perspective: 1200px;">
-      <!-- JS will inject carousel here -->
+    <div class="upsell-header">
+      <span class="upsell-badge">✨ Exclusive Add-ons</span>
+      <h2>Before You Checkout!</h2>
+      <p>Complete your Study Pack with top-rated Stationery &amp; Fun Educational Toys.</p>
+      
+      <!-- Category Filter Tabs -->
+      <div class="upsell-tabs">
+        <button class="upsell-tab active" onclick="switchUpsellCategory('all', this)">🌟 All Featured</button>
+        <button class="upsell-tab" onclick="switchUpsellCategory('toys', this)">🧸 Toys &amp; Games</button>
+        <button class="upsell-tab" onclick="switchUpsellCategory('stationery', this)">✏️ Stationery</button>
+      </div>
     </div>
     
-    <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; width: 100%;">
-      <a href="toys.html" class="btn-primary" style="background:var(--grad-brand); color:#fff; padding: 12px 24px; text-decoration:none;">Shop Toys</a>
-      <a href="stationery.html" class="btn-primary" style="background:var(--navy); color:#fff; padding: 12px 24px; text-decoration:none;">Shop Stationery</a>
+    <!-- 3D Carousel Stage -->
+    <div class="upsell-carousel-container" id="upsellCarouselStage">
+      <button class="carousel-nav-btn prev" onclick="moveUpsellSlide(-1)" aria-label="Previous">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+
+      <div class="upsell-carousel-track" id="upsellTrack">
+        <!-- 3D Cards will be dynamically injected here -->
+      </div>
+
+      <button class="carousel-nav-btn next" onclick="moveUpsellSlide(1)" aria-label="Next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- Carousel Dots -->
+    <div class="upsell-dots" id="upsellDots"></div>
+    
+    <!-- Footer Quick Actions -->
+    <div class="upsell-footer-actions">
+      <a href="toys.html" target="_blank" class="upsell-cat-btn toys">
+        <span>🧸 Explore All Toys (90+)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="stationery.html" target="_blank" class="upsell-cat-btn stat">
+        <span>✏️ Explore All Stationery (250+)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button class="upsell-continue-btn" onclick="closeUpsellModal()">
+        Continue to Checkout →
+      </button>
     </div>
   </div>
 </div>
 
+<style>
+/* ================= UPSELL 3D CAROUSEL STYLES ================= */
+#upsellOverlay.modal-overlay {
+  z-index: 1000002 !important;
+}
+.upsell-modal-box {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 95%;
+  max-width: 680px;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 32px 28px 24px;
+  box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(15, 23, 42, 0.05);
+  position: relative;
+  text-align: center;
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes modalPopIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.upsell-header .upsell-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(255, 111, 0, 0.12), rgba(245, 158, 11, 0.15));
+  color: #c94e00;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+.upsell-header h2 {
+  font-size: clamp(22px, 4vw, 28px);
+  font-weight: 800;
+  color: #0F172A;
+  margin-bottom: 6px;
+}
+.upsell-header p {
+  color: #64748B;
+  font-size: 13.5px;
+  margin-bottom: 16px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.upsell-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.upsell-tab {
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.upsell-tab.active, .upsell-tab:hover {
+  background: #0F172A;
+  color: #ffffff;
+  border-color: #0F172A;
+}
+
+/* 3D Carousel Stage */
+.upsell-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  margin: 10px 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  overflow: hidden;
+}
+.upsell-carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+.upsell-card-3d {
+  position: absolute;
+  width: 210px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+  padding: 14px;
+  text-align: center;
+  transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.upsell-card-3d.active {
+  transform: translate3d(0, 0, 80px) scale(1.05);
+  z-index: 5;
+  opacity: 1;
+  border-color: #1565C0;
+  box-shadow: 0 20px 40px rgba(21, 101, 192, 0.22);
+}
+.upsell-card-3d.prev-card {
+  transform: translate3d(-170px, 0, -50px) rotateY(22deg) scale(0.85);
+  z-index: 3;
+  opacity: 0.75;
+}
+.upsell-card-3d.next-card {
+  transform: translate3d(170px, 0, -50px) rotateY(-22deg) scale(0.85);
+  z-index: 3;
+  opacity: 0.75;
+}
+.upsell-card-3d.hidden-card {
+  transform: translate3d(0, 0, -150px) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.upsell-card-img {
+  width: 100%;
+  height: 110px;
+  object-fit: contain;
+  background: #F8FAFC;
+  border-radius: 10px;
+  padding: 6px;
+  margin-bottom: 8px;
+}
+.upsell-card-cat {
+  font-size: 10px;
+  font-weight: 800;
+  color: #1565C0;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+.upsell-card-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #0F172A;
+  line-height: 1.25;
+  height: 32px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-bottom: 6px;
+}
+.upsell-card-price {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #c94e00;
+  margin-bottom: 8px;
+}
+.upsell-add-btn {
+  background: linear-gradient(135deg, #1565C0, #0B132B);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s ease, background 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.upsell-add-btn:hover {
+  transform: scale(1.03);
+}
+.upsell-add-btn.added {
+  background: #10B981 !important;
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0F172A;
+  border: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+}
+.carousel-nav-btn:hover {
+  background: #0F172A;
+  color: #ffffff;
+  border-color: #0F172A;
+}
+.carousel-nav-btn.prev { left: 8px; }
+.carousel-nav-btn.next { right: 8px; }
+.carousel-nav-btn svg { width: 18px; height: 18px; }
+
+.upsell-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+.upsell-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #CBD5E1;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.upsell-dot.active {
+  width: 22px;
+  border-radius: 6px;
+  background: #1565C0;
+}
+
+.upsell-footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.upsell-cat-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+.upsell-cat-btn.toys {
+  background: linear-gradient(135deg, #FF6F00, #E65100);
+  color: #ffffff;
+}
+.upsell-cat-btn.stat {
+  background: #0F172A;
+  color: #ffffff;
+}
+.upsell-cat-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.upsell-cat-btn svg {
+  width: 14px;
+  height: 14px;
+}
+.upsell-continue-btn {
+  background: transparent;
+  border: 1.5px solid #CBD5E1;
+  color: #475569;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.upsell-continue-btn:hover {
+  border-color: #0F172A;
+  color: #0F172A;
+}
+
+@media (max-width: 600px) {
+  .upsell-modal-box { padding: 24px 16px 20px; }
+  .upsell-carousel-container { height: 260px; }
+  .upsell-card-3d { width: 175px; padding: 10px; }
+  .upsell-card-3d.prev-card { transform: translate3d(-120px, 0, -40px) rotateY(20deg) scale(0.82); }
+  .upsell-card-3d.next-card { transform: translate3d(120px, 0, -40px) rotateY(-20deg) scale(0.82); }
+  .upsell-footer-actions { flex-direction: column; width: 100%; }
+  .upsell-cat-btn, .upsell-continue-btn { width: 100%; justify-content: center; }
+}
+</style>
+
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg">Added to cart</span></div>
+<script src="assets/js/scraped-toys.js"></script>
+<script src="assets/js/scraped-stationery.js"></script>
 <script src="assets/js/wc-api.js"></script>
 <script src="assets/js/main.js?v=10"></script>
-<script src="assets/js/store.js??v=4"></script>
+<script src="assets/js/store.js?v=25"></script>
 
 <script>
 /* ============ CHECKOUT.HTML — order summary, payment selection, place order ============ */
@@ -582,27 +920,199 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 <script>
-  function setupUpsellCarousel() {
-    let extraItems = [];
-    if (typeof TOYS !== 'undefined') extraItems = extraItems.concat(TOYS);
-    if (typeof STATIONERY !== 'undefined') extraItems = extraItems.concat(STATIONERY);
-    
-    if (extraItems.length > 0 && typeof init3DCarousel === 'function') {
-      init3DCarousel(extraItems);
+/* ================= 3D UPSELL CAROUSEL LOGIC ================= */
+let currentUpsellIndex = 0;
+let upsellItems = [];
+let upsellTimer = null;
+window.__allUpsells = [];
+
+function initUpsellData() {
+  const toys = (typeof SCRAPED_TOYS !== 'undefined') ? SCRAPED_TOYS : [];
+  const stats = (typeof SCRAPED_STATIONERY !== 'undefined') ? SCRAPED_STATIONERY : [];
+  
+  // Pick curated popular items with valid images
+  const featuredToys = toys.filter(t => t.img).slice(0, 10).map(t => ({ ...t, catType: 'toys', badge: '🧸 Toy' }));
+  const featuredStats = stats.filter(s => s.img).slice(0, 10).map(s => ({ ...s, catType: 'stationery', badge: '✏️ Stationery' }));
+  
+  window.__allUpsells = [];
+  const maxLen = Math.max(featuredToys.length, featuredStats.length);
+  for (let i = 0; i < maxLen; i++) {
+    if (featuredToys[i]) window.__allUpsells.push(featuredToys[i]);
+    if (featuredStats[i]) window.__allUpsells.push(featuredStats[i]);
+  }
+  
+  upsellItems = window.__allUpsells;
+  renderUpsellCards();
+  startUpsellAutoplay();
+}
+
+function switchUpsellCategory(cat, btn) {
+  document.querySelectorAll('.upsell-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  
+  if (cat === 'all') {
+    upsellItems = window.__allUpsells;
+  } else {
+    upsellItems = window.__allUpsells.filter(x => x.catType === cat);
+  }
+  currentUpsellIndex = 0;
+  renderUpsellCards();
+}
+
+function escapeUpsellHtml(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function renderUpsellCards() {
+  const track = document.getElementById('upsellTrack');
+  const dots = document.getElementById('upsellDots');
+  if (!track) return;
+  
+  if (!upsellItems || upsellItems.length === 0) {
+    track.innerHTML = '<p style="color:#64748B;">No add-on items available.</p>';
+    return;
+  }
+  
+  track.innerHTML = upsellItems.map((item, idx) => {
+    const priceFormatted = (typeof window.money === 'function') ? window.money(item.price) : 'PKR ' + Number(item.price).toLocaleString();
+    return `
+      <div class="upsell-card-3d hidden-card" id="upsellCard_${idx}" onclick="handleCardClick(${idx})">
+        <span class="upsell-card-cat">${item.badge || 'Add-on'}</span>
+        <img class="upsell-card-img" src="${item.img || 'assets/images/logo.png'}" alt="${escapeUpsellHtml(item.title)}" onerror="this.src='assets/images/logo.png'">
+        <div class="upsell-card-title" title="${escapeUpsellHtml(item.title)}">${escapeUpsellHtml(item.title)}</div>
+        <div class="upsell-card-price">${priceFormatted}</div>
+        <button class="upsell-add-btn" id="upsellBtn_${idx}" onclick="event.stopPropagation(); addUpsellToCart('${item.id}', ${idx})">
+          <span>⚡ Add to Order</span>
+        </button>
+      </div>
+    `;
+  }).join('');
+  
+  if (dots) {
+    dots.innerHTML = upsellItems.map((_, idx) => `
+      <div class="upsell-dot ${idx === currentUpsellIndex ? 'active' : ''}" onclick="goToUpsellSlide(${idx})"></div>
+    `).join('');
+  }
+  
+  update3DCardPositions();
+}
+
+function update3DCardPositions() {
+  const total = upsellItems.length;
+  if (total === 0) return;
+  
+  const prevIdx = (currentUpsellIndex - 1 + total) % total;
+  const nextIdx = (currentUpsellIndex + 1) % total;
+  
+  upsellItems.forEach((_, idx) => {
+    const el = document.getElementById(`upsellCard_${idx}`);
+    if (!el) return;
+    el.className = 'upsell-card-3d hidden-card';
+    if (idx === currentUpsellIndex) {
+      el.className = 'upsell-card-3d active';
+    } else if (idx === prevIdx) {
+      el.className = 'upsell-card-3d prev-card';
+    } else if (idx === nextIdx) {
+      el.className = 'upsell-card-3d next-card';
     }
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(() => {
-      const upsell = document.getElementById('upsellOverlay');
-      if(upsell) upsell.classList.add('show');
-    }, 1000);
   });
+  
+  const dots = document.querySelectorAll('.upsell-dot');
+  dots.forEach((d, idx) => {
+    d.classList.toggle('active', idx === currentUpsellIndex);
+  });
+}
 
-  window.addEventListener('firebaseProductsLoaded', setupUpsellCarousel);
-  if ((typeof TOYS !== 'undefined' && TOYS.length > 0) || (typeof STATIONERY !== 'undefined' && STATIONERY.length > 0)) {
-    setupUpsellCarousel();
+function moveUpsellSlide(dir) {
+  const total = upsellItems.length;
+  if (total <= 1) return;
+  currentUpsellIndex = (currentUpsellIndex + dir + total) % total;
+  update3DCardPositions();
+}
+
+function goToUpsellSlide(idx) {
+  currentUpsellIndex = idx;
+  update3DCardPositions();
+}
+
+function handleCardClick(idx) {
+  if (idx !== currentUpsellIndex) {
+    currentUpsellIndex = idx;
+    update3DCardPositions();
   }
+}
+
+function addUpsellToCart(id, idx) {
+  const item = upsellItems.find(x => String(x.id) === String(id));
+  if (!item) return;
+  
+  if (typeof window.addToCart === 'function') {
+    window.addToCart(item.id);
+  } else {
+    const existing = (window.cart || []).find(c => String(c.id) === String(item.id));
+    if (existing) {
+      existing.qty = (Number(existing.qty) || 1) + 1;
+    } else {
+      (window.cart = window.cart || []).push({
+        id: item.id,
+        title: item.title,
+        price: item.price,
+        img: item.img,
+        qty: 1
+      });
+    }
+    if (typeof window.saveCart === 'function') window.saveCart();
+    if (typeof window.renderCart === 'function') window.renderCart();
+  }
+  
+  if (typeof renderCheckoutSummary === 'function') renderCheckoutSummary();
+  
+  const btn = document.getElementById(`upsellBtn_${idx}`);
+  if (btn) {
+    btn.classList.add('added');
+    btn.innerHTML = '<span>✅ Added to Order!</span>';
+    setTimeout(() => {
+      btn.classList.remove('added');
+      btn.innerHTML = '<span>⚡ Add Again</span>';
+    }, 2200);
+  }
+  
+  if (typeof showToast === 'function') {
+    showToast(`✅ "${item.title.slice(0, 25)}..." added to your order!`);
+  }
+}
+
+function closeUpsellModal() {
+  const upsell = document.getElementById('upsellOverlay');
+  if (upsell) upsell.classList.remove('show');
+  if (upsellTimer) clearInterval(upsellTimer);
+}
+
+function startUpsellAutoplay() {
+  if (upsellTimer) clearInterval(upsellTimer);
+  upsellTimer = setInterval(() => {
+    moveUpsellSlide(1);
+  }, 4000);
+  
+  const container = document.getElementById('upsellCarouselStage');
+  if (container) {
+    container.addEventListener('mouseenter', () => clearInterval(upsellTimer));
+    container.addEventListener('mouseleave', () => startUpsellAutoplay());
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initUpsellData();
+  
+  // Show modal automatically after 1 second if cart has items
+  setTimeout(() => {
+    const upsell = document.getElementById('upsellOverlay');
+    if (upsell && (window.cart && window.cart.length > 0)) {
+      upsell.classList.add('show');
+    }
+  }, 1000);
+});
 </script>
 
 <!-- Mobile Nav JS -->
@@ -629,14 +1139,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     topBurger.addEventListener("click", function(e) {
-      createRipple(e, topBurger);
+      if(typeof createRipple === 'function') createRipple(e, topBurger);
       if(menuOpen) closeMenu();
       else openMenu();
     });
 
     if(glassCloseBtn) {
       glassCloseBtn.addEventListener("click", function(e) {
-        createRipple(e, glassCloseBtn);
+        if(typeof createRipple === 'function') createRipple(e, glassCloseBtn);
         closeMenu();
       });
     }
@@ -645,33 +1155,14 @@ document.addEventListener("DOMContentLoaded", function() {
   const gmLinks = document.querySelectorAll(".gm-link");
   gmLinks.forEach(link => {
     link.addEventListener("click", function(e) {
-      createRipple(e, link);
+      if(typeof createRipple === 'function') createRipple(e, link);
     });
   });
-
-  function createRipple(event, element) {
-    const circle = document.createElement("span");
-    const diameter = Math.max(element.clientWidth, element.clientHeight);
-    const radius = diameter / 2;
-    circle.style.width = circle.style.height = `${diameter}px`;
-    
-    const rect = element.getBoundingClientRect();
-    const x = event.clientX - rect.left - radius;
-    const y = event.clientY - rect.top - radius;
-    
-    circle.style.left = `${x}px`;
-    circle.style.top = `${y}px`;
-    circle.classList.add("ripple");
-    
-    const existing = element.querySelector(".ripple");
-    if(existing) existing.remove();
-    
-    element.appendChild(circle);
-  }
 });
 </script>
-\n<script src="assets/js/search_logic.js"></script>\n  <script src="assets/js/chatbot.js" defer></script>
+
+  <script src="assets/js/search_logic.js"></script>
+  <script src="assets/js/chatbot.js" defer></script>
   <script src="assets/js/whatsapp.js" defer></script>
 </body>
-
 </html>
