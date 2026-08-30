@@ -2,5 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /dashboard/
 Disallow: /wp-admin/
+Disallow: /checkout.html
 
 Sitemap: https://studypack.taleemihub.com/sitemap.xml
+

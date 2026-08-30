@@ -595,60 +595,138 @@
   </div>
 </div>
 
-<!-- ================= ORDER MODAL ================= -->
+<!-- ================= COMPLETE ORDER MODAL ================= -->
 <div class="modal-overlay" id="orderModal">
   <div class="modal-box wide">
     <div class="modal-head">
       <h3>Order <span id="modalOrderId"></span></h3>
       <div style="display:flex; align-items:center; gap:0.6rem;">
-        <button class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="toggleOrderEdit()"><i data-lucide="edit-2"></i> Edit</button>
+        <button class="btn btn-outline" style="padding:0.4rem 0.8rem; font-size:0.8rem;" onclick="toggleOrderEdit()"><i data-lucide="edit-2"></i> Edit Details</button>
         <button class="modal-close" onclick="closeOrderModal()"><i data-lucide="x"></i></button>
       </div>
     </div>
     <div class="modal-body">
-      <p class="text-muted" id="modalOrderDate" style="margin-bottom:1rem;"></p>
-
-      <div id="modalCustomerInfo"></div>
-      <div id="modalCustomerEdit" style="display:none; flex-direction:column; gap:0.75rem; margin-bottom:1rem;">
-        <div class="form-group"><label>Name</label><input type="text" id="editOrderCustName"></div>
-        <div class="form-group"><label>Phone</label><input type="text" id="editOrderCustPhone"></div>
-        <div class="form-group"><label>Address</label><input type="text" id="editOrderCustAddress"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:8px;">
+        <p class="text-muted" id="modalOrderDate" style="margin:0;"></p>
+        <div id="modalOrderStatusBadge"></div>
       </div>
 
+      <!-- Customer Details Display Grid -->
+      <div id="modalCustomerInfo" style="background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem; margin-bottom:1rem;"></div>
+
+      <!-- Customer Details Edit Mode -->
+      <div id="modalCustomerEdit" style="display:none; flex-direction:column; gap:0.75rem; margin-bottom:1rem; background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem;">
+        <h4 style="font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-main);">Customer Information</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group"><label>Customer Name *</label><input type="text" id="editOrderCustName"></div>
+          <div class="form-group"><label>Phone Number *</label><input type="text" id="editOrderCustPhone"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group"><label>Email Address</label><input type="email" id="editOrderCustEmail"></div>
+          <div class="form-group"><label>City</label><input type="text" id="editOrderCustCity"></div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group"><label>Province</label><input type="text" id="editOrderCustProvince"></div>
+          <div class="form-group"><label>Payment Method</label>
+            <select id="editOrderPayMethod">
+              <option value="cod">Cash on Delivery (COD)</option>
+              <option value="jazzcash">JazzCash</option>
+              <option value="easypaisa">EasyPaisa</option>
+              <option value="card">Credit / Debit Card</option>
+              <option value="bank">Direct Bank Transfer</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label>Payment Account / Transaction No.</label><input type="text" id="editOrderPayDetails" placeholder="Wallet or Card/Ref details"></div>
+        <div class="form-group"><label>Delivery Address *</label><input type="text" id="editOrderCustAddress"></div>
+        <div class="form-group"><label>Order Notes / Customer Instructions</label><textarea id="editOrderNotes" rows="2" style="padding:0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-surface); color:var(--text-main); font-family:inherit;"></textarea></div>
+      </div>
+
+      <!-- Items Table -->
       <table style="margin-top:1rem;">
-        <thead><tr><th>Item</th><th>Price</th><th>Qty</th><th style="text-align:right;">Total</th></tr></thead>
+        <thead><tr><th>Item Details</th><th>Sale Price</th><th>Qty</th><th style="text-align:right;">Line Total</th></tr></thead>
         <tbody id="modalOrderItems"></tbody>
       </table>
 
       <!-- Financials display -->
-      <div id="modalFinancialsDisplay" style="margin-top:1rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
-        <div id="modalSpecialNoteDiv" style="display:none; color: var(--primary); font-style: italic; margin-bottom: 0.5rem;">Note: <span id="modalSpecialNote"></span></div>
-        <div>Subtotal (Books): <span id="modalSubtotal" style="font-weight:600;"></span></div>
-        <div>Delivery Charges: <span id="modalShipping" style="font-weight:600;"></span></div>
-        <div id="modalCodFeeDiv">COD Handling Fee (4%): <span id="modalCodFee" style="font-weight:600;"></span></div>
+      <div id="modalFinancialsDisplay" style="margin-top:1.25rem; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem; background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem;">
+        <div id="modalSpecialNoteDiv" style="display:none; color: var(--primary); font-style: italic; margin-bottom: 0.5rem; align-self:flex-start;">Note: <span id="modalSpecialNote"></span></div>
+        <div>Gross Sale (Items): <span id="modalSubtotal" style="font-weight:600;"></span></div>
+        <div id="modalPurchaseCostDiv" style="color:var(--text-secondary);">Wholesale / Purchase Cost: <span id="modalPurchaseCost" style="font-weight:600;"></span></div>
+        <div>Delivery (Charged to Customer): <span id="modalShipping" style="font-weight:600;"></span></div>
+        <div id="modalCourierExpenseDiv" style="color:var(--text-secondary);">Actual Courier Expense: <span id="modalCourierExpense" style="font-weight:600;"></span></div>
+        <div id="modalDiscountDiv" style="color:var(--danger); display:none;">Discount: <span id="modalDiscount" style="font-weight:600;"></span></div>
+        <div id="modalCodFeeDiv">COD Handling Fee: <span id="modalCodFee" style="font-weight:600;"></span></div>
+        <div id="modalTransferChargesDiv" style="color:var(--text-secondary); display:none;">Gateway / Transfer Fee: <span id="modalTransferCharges" style="font-weight:600;"></span></div>
         <div id="modalTaxDiv" style="display:none;">Tax (<span id="modalTaxNote"></span>): <span id="modalTaxAmount"></span></div>
-        <div style="font-weight:800; font-size:1.2rem; color:var(--primary); margin-top:4px;">Grand Total: <span id="modalTotal"></span></div>
+        <div style="font-weight:800; font-size:1.2rem; color:var(--primary); margin-top:4px; border-top:1px solid var(--border-color); padding-top:4px; width:100%; text-align:right;">Grand Total Payable: <span id="modalTotal"></span></div>
+        <div id="modalOrderNetProfitDiv" style="margin-top:4px; padding:6px 12px; border-radius:8px; font-weight:800; font-size:1rem; display:flex; gap:8px; align-items:center;">
+          <span>Net Profit:</span> <span id="modalOrderNetProfit"></span>
+        </div>
       </div>
       
       <!-- Financials edit -->
-      <div id="modalFinancialsEdit" style="display:none; flex-direction:column; align-items:flex-end; gap:0.6rem; margin-top:1rem;">
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right; font-weight:600;">Delivery Charges (Rs)</label><input type="number" id="editOrderShipping" style="width:150px;" oninput="recalcAdminOrderFinancials()"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;">
-          <label style="width:150px; text-align:right; font-weight:600;">Apply 4% COD Fee</label>
-          <div style="width:150px; display:flex; align-items:center; gap:8px;">
-            <input type="checkbox" id="editOrderApplyCod" checked onchange="recalcAdminOrderFinancials()" style="width:20px; height:20px;">
-            <input type="number" id="editOrderCodFee" style="width:120px;" oninput="recalcAdminOrderFinancials(true)">
+      <div id="modalFinancialsEdit" style="display:none; flex-direction:column; gap:0.75rem; margin-top:1.25rem; background:var(--bg-main); border:1px solid var(--border-color); border-radius:12px; padding:1.25rem;">
+        <h4 style="font-size:14px; font-weight:700; margin-bottom:6px; color:var(--text-main);">Order Financials &amp; Cost Editor</h4>
+        
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label>Delivery Charged to Customer (PKR)</label>
+            <input type="number" id="editOrderShipping" oninput="recalcAdminOrderFinancials()">
+          </div>
+          <div class="form-group">
+            <label>Actual Courier Cost Paid (PKR)</label>
+            <input type="number" id="editOrderCourierCost" placeholder="e.g. 180" oninput="recalcAdminOrderFinancials()">
           </div>
         </div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST" style="width:150px;"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Tax Amount (Rs)</label><input type="number" id="editOrderTaxAmount" style="width:150px;" oninput="recalcAdminOrderFinancials(true)"></div>
-        <div style="display:flex; align-items:center; gap:0.5rem;"><label style="width:150px; text-align:right;">Special / Weight Note</label><input type="text" id="editOrderSpecialNote" placeholder="e.g. Weight 2.5kg" style="width:150px;"></div>
-        <div style="font-weight:800; font-size:1.1rem; color:var(--primary); margin-top:6px;">Calculated Total: <span id="editCalculatedTotal">Rs 0</span></div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label>Wholesale Purchase Cost (PKR)</label>
+            <input type="number" id="editOrderPurchaseCost" placeholder="Cost of all books" oninput="recalcAdminOrderFinancials()">
+          </div>
+          <div class="form-group">
+            <label>Discount Given (PKR)</label>
+            <input type="number" id="editOrderDiscount" placeholder="0" oninput="recalcAdminOrderFinancials()">
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label>Gateway / Transfer Fee (PKR)</label>
+            <input type="number" id="editOrderTransferCharges" placeholder="e.g. JazzCash fee" oninput="recalcAdminOrderFinancials()">
+          </div>
+          <div class="form-group">
+            <label>COD Fee (PKR)</label>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <input type="checkbox" id="editOrderApplyCod" checked onchange="recalcAdminOrderFinancials()" style="width:20px; height:20px;">
+              <input type="number" id="editOrderCodFee" oninput="recalcAdminOrderFinancials(true)" style="flex:1;">
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="form-group"><label>Tax Note</label><input type="text" id="editOrderTaxNote" placeholder="e.g. GST"></div>
+          <div class="form-group"><label>Tax Amount (PKR)</label><input type="number" id="editOrderTaxAmount" oninput="recalcAdminOrderFinancials(true)"></div>
+        </div>
+
+        <div class="form-group"><label>Special / Weight Note</label><input type="text" id="editOrderSpecialNote" placeholder="e.g. Weight 2.5kg, packed in bubble"></div>
+
+        <div style="background:var(--bg-surface); padding:12px; border-radius:8px; border:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+          <div>
+            <div style="font-size:0.85rem; color:var(--text-secondary);">Estimated Order Net Profit:</div>
+            <div id="editCalculatedProfit" style="font-weight:900; font-size:1.15rem; color:#10b981;">Rs 0 (0%)</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:0.85rem; color:var(--text-secondary);">Calculated Total Payable:</div>
+            <div id="editCalculatedTotal" style="font-weight:800; font-size:1.15rem; color:var(--primary);">Rs 0</div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-outline" onclick="printInvoice(document.getElementById('modalOrderId').textContent.replace('#',''))"><i data-lucide="printer"></i> Print Invoice</button>
-      <button class="btn btn-primary" id="saveOrderEditsBtn" style="display:none;" onclick="saveOrderEdits()">Save Changes</button>
+      <button class="btn btn-primary" id="saveOrderEditsBtn" style="display:none;" onclick="saveOrderEdits()"><i data-lucide="check"></i> Save Order Changes</button>
     </div>
   </div>
 </div>

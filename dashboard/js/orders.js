@@ -108,16 +108,39 @@ document.addEventListener('DOMContentLoaded', function() {
 window.recalcAdminOrderFinancials = function(manualCod=false) {
     if (!window.editingOrderState) return;
     let subtotal = 0;
+    let autoPurchaseCost = 0;
+    const products = window.AppData.products || [];
+    const prodMap = new Map();
+    products.forEach(p => { if (p.id) prodMap.set(String(p.id), p); });
+
     (window.editingOrderState.items || []).forEach(item => {
-        subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1);
+        const pId = typeof item.id === 'object' ? item.id.id : item.id;
+        const price = Number(item.price) || 0;
+        const qty = Number(item.qty) || 1;
+        subtotal += price * qty;
+
+        const prod = prodMap.get(String(pId));
+        const itemCost = Number(item.purchase_price || (prod ? prod.purchase_price : 0)) || Math.round(price * 0.75);
+        autoPurchaseCost += itemCost * qty;
     });
     
     const shipping = Number(document.getElementById('editOrderShipping')?.value) || 0;
+    const courierCost = Number(document.getElementById('editOrderCourierCost')?.value) || 0;
+    
+    const purchaseCostInput = document.getElementById('editOrderPurchaseCost');
+    let purchaseCost = Number(purchaseCostInput?.value);
+    if (isNaN(purchaseCost) || purchaseCost === 0) {
+        purchaseCost = autoPurchaseCost;
+        if (purchaseCostInput && !purchaseCostInput.value) purchaseCostInput.value = autoPurchaseCost;
+    }
+
+    const discount = Number(document.getElementById('editOrderDiscount')?.value) || 0;
+    const transferCharges = Number(document.getElementById('editOrderTransferCharges')?.value) || 0;
+
     const applyCod = document.getElementById('editOrderApplyCod')?.checked;
     let codFee = Number(document.getElementById('editOrderCodFee')?.value) || 0;
     
     if (!manualCod && applyCod) {
-        // Auto calculate 4% on (Subtotal + Shipping) or Subtotal
         codFee = Math.round((subtotal + shipping) * 0.04);
         const codInput = document.getElementById('editOrderCodFee');
         if (codInput) codInput.value = codFee;
@@ -128,11 +151,22 @@ window.recalcAdminOrderFinancials = function(manualCod=false) {
     }
     
     const taxAmount = Number(document.getElementById('editOrderTaxAmount')?.value) || 0;
-    const total = subtotal + shipping + codFee + taxAmount;
+    const total = subtotal + shipping + codFee + taxAmount - discount;
     
+    // Net Profit = (Revenue from customer) - (Wholesale Cost + Courier Cost + Discount + Gateway Fee)
+    const netProfit = (subtotal + shipping + codFee) - (purchaseCost + courierCost + discount + transferCharges);
+    const marginPercent = subtotal > 0 ? ((netProfit / subtotal) * 100).toFixed(1) : 0;
+
     const calcTotalEl = document.getElementById('editCalculatedTotal');
     if (calcTotalEl) calcTotalEl.textContent = 'Rs ' + total.toLocaleString();
+
+    const calcProfitEl = document.getElementById('editCalculatedProfit');
+    if (calcProfitEl) {
+        calcProfitEl.textContent = `${netProfit >= 0 ? 'Rs ' + netProfit.toLocaleString() : '-Rs ' + Math.abs(netProfit).toLocaleString()} (${marginPercent}%)`;
+        calcProfitEl.style.color = netProfit >= 0 ? '#10b981' : '#ef4444';
+    }
 };
+
 /* ============================================================
    Orders module — list/search/filter, status update, view/edit
    modal, print invoice, pagination.
@@ -154,7 +188,9 @@ window.renderOrders = function() {
         filtered = filtered.filter(o =>
             (o.id && String(o.id).toLowerCase().includes(search)) ||
             (o.customer && o.customer.toLowerCase().includes(search)) ||
-            (o.phone && o.phone.toLowerCase().includes(search))
+            (o.phone && o.phone.toLowerCase().includes(search)) ||
+            (o.city && o.city.toLowerCase().includes(search)) ||
+            (o.email && o.email.toLowerCase().includes(search))
         );
     }
     if (filterStatus) filtered = filtered.filter(o => o.status === filterStatus);
@@ -171,19 +207,22 @@ window.renderOrders = function() {
             return `
             <tr>
                 <td><div style="font-weight:700;" class="mono">#${escapeHtml(o.id)}</div><div class="text-muted" style="font-size:0.75rem;">${dateStr}</div></td>
-                <td><div style="font-weight:600;">${escapeHtml(o.customer || 'Unknown')}</div><div class="text-muted" style="font-size:0.75rem;">${escapeHtml(o.phone || '')}</div></td>
-                <td>${(o.items || []).length} items</td>
-                <td style="font-weight:700;">${money(o.total)}</td>
                 <td>
-                    <select onchange="updateOrderStatus('${o.id}', this.value)" style="padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-main); color:var(--text-main); font-size:0.85rem;">
-                        <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>Pending</option>
-                        <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>Processing</option>
-                        <option value="Completed" ${o.status === 'Completed' ? 'selected' : ''}>Completed</option>
-                        <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                    <div style="font-weight:600;">${escapeHtml(o.customer || 'Unknown')}</div>
+                    <div class="text-muted" style="font-size:0.75rem;">${escapeHtml(o.phone || '')} · ${escapeHtml(o.city || 'Karachi')}</div>
+                </td>
+                <td>${(o.items || []).length} items</td>
+                <td style="font-weight:700; color:var(--primary);">${money(o.total)}</td>
+                <td>
+                    <select onchange="updateOrderStatus('${o.id}', this.value)" style="padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-main); color:var(--text-main); font-size:0.85rem; font-weight:600;">
+                        <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>⏳ Pending</option>
+                        <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>🔄 Processing</option>
+                        <option value="Completed" ${o.status === 'Completed' ? 'selected' : ''}>✅ Completed</option>
+                        <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>❌ Cancelled</option>
                     </select>
                 </td>
                 <td style="text-align:right;">
-                    <button class="icon-btn-sm" onclick="viewOrder('${o.id}')" title="View"><i data-lucide="eye"></i></button>
+                    <button class="icon-btn-sm" onclick="viewOrder('${o.id}')" title="View / Edit Complete Order"><i data-lucide="eye"></i></button>
                     <button class="icon-btn-sm" onclick="printInvoice('${o.id}')" title="Print Invoice"><i data-lucide="printer"></i></button>
                 </td>
             </tr>`;
@@ -200,7 +239,11 @@ document.getElementById('orderStatusFilter')?.addEventListener('change', () => {
 window.updateOrderStatus = async function(id, newStatus) {
     try {
         await db.collection('orders').doc(id).update({ status: newStatus });
+        const o = window.AppData.orders.find(x => String(x.id) === String(id));
+        if (o) o.status = newStatus;
         showToast('Order status updated to ' + newStatus);
+        if (typeof renderDashboardView === 'function') renderDashboardView();
+        if (typeof renderReports === 'function') renderReports();
     } catch (e) {
         showToast('Error updating order: ' + e.message, 'error');
     }
@@ -213,12 +256,61 @@ window.viewOrder = function(id) {
     document.getElementById('modalOrderId').textContent = `#${o.id}`;
     document.getElementById('modalOrderDate').textContent = o.date ? new Date(o.date).toLocaleString('en-GB') : 'N/A';
 
+    const statusColors = {
+        'Pending': 'background:rgba(245,158,11,0.15); color:#f59e0b;',
+        'Processing': 'background:rgba(59,130,246,0.15); color:#3b82f6;',
+        'Completed': 'background:rgba(16,185,129,0.15); color:#10b981;',
+        'Cancelled': 'background:rgba(239,68,68,0.15); color:#ef4444;'
+    };
+    const badgeStyle = statusColors[o.status] || 'background:rgba(100,116,139,0.15); color:#64748b;';
+    const statusBadgeEl = document.getElementById('modalOrderStatusBadge');
+    if (statusBadgeEl) {
+        statusBadgeEl.innerHTML = `<span style="padding:4px 12px; border-radius:20px; font-weight:700; font-size:12px; ${badgeStyle}">${escapeHtml(o.status || 'Pending')}</span>`;
+    }
+
+    const cleanPhone = (o.phone || '').replace(/[^0-9]/g, '');
+    const waLink = cleanPhone ? `https://wa.me/${cleanPhone.startsWith('0') ? '92' + cleanPhone.slice(1) : cleanPhone}` : null;
+
+    const payMethodTitle = (o.paymentMethod || 'cod').toLowerCase() === 'cod' ? '💵 Cash on Delivery (COD)' :
+                           (o.paymentMethod || '').toLowerCase() === 'jazzcash' ? '📱 JazzCash' :
+                           (o.paymentMethod || '').toLowerCase() === 'easypaisa' ? '📱 EasyPaisa' :
+                           (o.paymentMethod || '').toLowerCase() === 'card' ? '💳 Credit/Debit Card' :
+                           (o.paymentMethod || 'Other');
+
     document.getElementById('modalCustomerInfo').innerHTML = `
-        <p><strong>Name:</strong> ${escapeHtml(o.customer || 'N/A')}</p>
-        <p><strong>Email:</strong> ${escapeHtml(o.email || 'N/A')}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(o.phone || 'N/A')}</p>
-        <p><strong>Address:</strong> ${escapeHtml(o.address || 'N/A')}, ${escapeHtml(o.city || '')}</p>
-        ${o.notes ? `<p><strong>Notes:</strong> ${escapeHtml(o.notes)}</p>` : ''}
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; font-size:0.9rem;">
+            <div>
+                <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; font-weight:700;">Customer Name</span>
+                <div style="font-weight:700; color:var(--text-main); font-size:1rem; margin-top:2px;">${escapeHtml(o.customer || 'Customer')}</div>
+            </div>
+            <div>
+                <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; font-weight:700;">Phone Number</span>
+                <div style="font-weight:600; color:var(--text-main); margin-top:2px; display:flex; align-items:center; gap:6px;">
+                    <span>${escapeHtml(o.phone || 'N/A')}</span>
+                    ${waLink ? `<a href="${waLink}" target="_blank" style="color:#25D366; text-decoration:none; display:inline-flex; align-items:center;" title="Chat on WhatsApp"><i data-lucide="message-circle" style="width:16px;height:16px;"></i></a>` : ''}
+                </div>
+            </div>
+            <div>
+                <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; font-weight:700;">Email Address</span>
+                <div style="font-weight:500; color:var(--text-main); margin-top:2px;">${escapeHtml(o.email || 'N/A')}</div>
+            </div>
+            <div>
+                <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; font-weight:700;">Payment Method</span>
+                <div style="font-weight:600; color:var(--primary); margin-top:2px;">${payMethodTitle}</div>
+                ${o.paymentDetails ? `<div style="font-size:0.8rem; color:var(--text-secondary); margin-top:2px;">A/C: ${escapeHtml(o.paymentDetails)}</div>` : ''}
+            </div>
+            <div style="grid-column: 1 / -1;">
+                <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; font-weight:700;">Delivery Address &amp; Destination</span>
+                <div style="font-weight:600; color:var(--text-main); margin-top:2px;">
+                    ${escapeHtml(o.address || 'N/A')}, ${escapeHtml(o.city || 'Karachi')}${o.province ? ', ' + escapeHtml(o.province) : ''}
+                </div>
+            </div>
+            ${o.notes ? `
+            <div style="grid-column: 1 / -1; background:rgba(251,191,36,0.1); border:1px dashed #f59e0b; padding:8px 12px; border-radius:8px;">
+                <span style="color:#b45309; font-size:0.75rem; text-transform:uppercase; font-weight:800;">Order Notes / Customer Instructions:</span>
+                <div style="font-size:0.85rem; color:var(--text-main); margin-top:2px;">${escapeHtml(o.notes)}</div>
+            </div>` : ''}
+        </div>
     `;
     document.getElementById('modalCustomerInfo').style.display = 'block';
     document.getElementById('modalCustomerEdit').style.display = 'none';
@@ -226,30 +318,65 @@ window.viewOrder = function(id) {
 
     const itemsList = document.getElementById('modalOrderItems');
     let subtotal = 0;
+    let autoPurchaseCost = 0;
+    const products = window.AppData.products || [];
+    const prodMap = new Map();
+    products.forEach(p => { if (p.id) prodMap.set(String(p.id), p); });
+
     if (o.items && o.items.length > 0) {
         itemsList.innerHTML = o.items.map(item => {
             const pId = typeof item.id === 'object' ? item.id.id : item.id;
             const price = Number(item.price || 0);
             const qty = Number(item.qty || 1);
             subtotal += price * qty;
+
+            const prod = prodMap.get(String(pId));
+            const itemCost = Number(item.purchase_price || (prod ? prod.purchase_price : 0)) || Math.round(price * 0.75);
+            autoPurchaseCost += itemCost * qty;
+
             return `
             <tr>
-                <td><div style="font-weight:500;">${escapeHtml(item.title || 'Product')}</div><div class="text-muted mono" style="font-size:0.75rem;">SKU: ${escapeHtml(pId || '')}</div></td>
+                <td>
+                    <div style="font-weight:600; color:var(--text-main);">${escapeHtml(item.title || 'Product')}</div>
+                    <div class="text-muted mono" style="font-size:0.75rem;">SKU: ${escapeHtml(pId || '')}</div>
+                </td>
                 <td>${money(price)}</td>
-                <td>x${qty}</td>
-                <td style="text-align:right;">${money(price * qty)}</td>
+                <td style="font-weight:600;">x${qty}</td>
+                <td style="text-align:right; font-weight:700;">${money(price * qty)}</td>
             </tr>`;
         }).join('');
     } else {
         itemsList.innerHTML = `<tr><td colspan="4" style="text-align:center;">No items</td></tr>`;
     }
 
-    document.getElementById('modalSubtotal').textContent = money(subtotal);
     const shipping = Number(o.shipping) || 0;
+    const courierCost = Number(o.courierCost) || 0;
+    const purchaseCost = Number(o.purchaseCost) || autoPurchaseCost;
+    const discount = Number(o.discount) || 0;
+    const transferCharges = Number(o.transferCharges) || 0;
     const codFee = Number(o.codFee) || 0;
     const taxAmount = Number(o.taxAmount) || 0;
+    const grandTotal = Number(o.total || (subtotal + shipping + codFee + taxAmount - discount));
+
+    // Calculate Net Profit
+    const netProfit = (subtotal + shipping + codFee) - (purchaseCost + courierCost + discount + transferCharges);
+    const profitMargin = subtotal > 0 ? ((netProfit / subtotal) * 100).toFixed(1) : 0;
+
+    document.getElementById('modalSubtotal').textContent = money(subtotal);
+    document.getElementById('modalPurchaseCost').textContent = money(purchaseCost);
     document.getElementById('modalShipping').textContent = shipping > 0 ? money(shipping) : (o.shippingNote || 'Weight ke mutabiq');
-    
+    document.getElementById('modalCourierExpense').textContent = courierCost > 0 ? money(courierCost) : 'Rs 0 (Not recorded)';
+
+    const discDiv = document.getElementById('modalDiscountDiv');
+    if (discDiv) {
+        if (discount > 0) {
+            discDiv.style.display = 'block';
+            document.getElementById('modalDiscount').textContent = '- ' + money(discount);
+        } else {
+            discDiv.style.display = 'none';
+        }
+    }
+
     const codDiv = document.getElementById('modalCodFeeDiv');
     if (codDiv) {
         const isCod = !o.paymentMethod || o.paymentMethod.toLowerCase() === 'cod';
@@ -258,6 +385,16 @@ window.viewOrder = function(id) {
             document.getElementById('modalCodFee').textContent = codFee > 0 ? money(codFee) : '4% (To be added)';
         } else {
             codDiv.style.display = 'none';
+        }
+    }
+
+    const transferDiv = document.getElementById('modalTransferChargesDiv');
+    if (transferDiv) {
+        if (transferCharges > 0) {
+            transferDiv.style.display = 'block';
+            document.getElementById('modalTransferCharges').textContent = money(transferCharges);
+        } else {
+            transferDiv.style.display = 'none';
         }
     }
     
@@ -276,8 +413,21 @@ window.viewOrder = function(id) {
         document.getElementById('modalSpecialNoteDiv').style.display = 'none';
     }
     
-    document.getElementById('modalTotal').textContent = money(o.total || (subtotal + shipping + taxAmount));
+    document.getElementById('modalTotal').textContent = money(grandTotal);
     
+    const netProfitEl = document.getElementById('modalOrderNetProfit');
+    const netProfitDiv = document.getElementById('modalOrderNetProfitDiv');
+    if (netProfitEl && netProfitDiv) {
+        netProfitEl.textContent = `${netProfit >= 0 ? '+' : ''}${money(netProfit)} (${profitMargin}% margin)`;
+        if (netProfit >= 0) {
+            netProfitDiv.style.background = 'rgba(16,185,129,0.12)';
+            netProfitDiv.style.color = '#10b981';
+        } else {
+            netProfitDiv.style.background = 'rgba(239,68,68,0.12)';
+            netProfitDiv.style.color = '#ef4444';
+        }
+    }
+
     document.getElementById('modalFinancialsDisplay').style.display = 'flex';
     document.getElementById('modalFinancialsEdit').style.display = 'none';
 
@@ -311,9 +461,20 @@ window.toggleOrderEdit = function() {
 
         document.getElementById('editOrderCustName').value = o.customer || '';
         document.getElementById('editOrderCustPhone').value = o.phone || '';
+        document.getElementById('editOrderCustEmail').value = o.email || '';
+        document.getElementById('editOrderCustCity').value = o.city || 'Karachi';
+        document.getElementById('editOrderCustProvince').value = o.province || 'Sindh';
+        document.getElementById('editOrderPayMethod').value = (o.paymentMethod || 'cod').toLowerCase();
+        document.getElementById('editOrderPayDetails').value = o.paymentDetails || '';
         document.getElementById('editOrderCustAddress').value = o.address || '';
+        document.getElementById('editOrderNotes').value = o.notes || '';
         
         document.getElementById('editOrderShipping').value = Number(o.shipping) || 0;
+        document.getElementById('editOrderCourierCost').value = Number(o.courierCost) || 0;
+        document.getElementById('editOrderPurchaseCost').value = Number(o.purchaseCost) || '';
+        document.getElementById('editOrderDiscount').value = Number(o.discount) || 0;
+        document.getElementById('editOrderTransferCharges').value = Number(o.transferCharges) || 0;
+
         const isCod = !o.paymentMethod || o.paymentMethod.toLowerCase() === 'cod';
         if (document.getElementById('editOrderApplyCod')) {
             document.getElementById('editOrderApplyCod').checked = isCod;
@@ -322,8 +483,8 @@ window.toggleOrderEdit = function() {
         document.getElementById('editOrderTaxNote').value = o.taxNote || '';
         document.getElementById('editOrderTaxAmount').value = Number(o.taxAmount) || 0;
         document.getElementById('editOrderSpecialNote').value = o.specialNote || '';
-        recalcAdminOrderFinancials();
         
+        recalcAdminOrderFinancials();
         renderEditableItems();
     } else {
         info.style.display = 'block';
@@ -348,8 +509,8 @@ window.renderEditableItems = function() {
                 <input type="text" style="width:100%; padding:0.4rem; font-size:0.85rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${escapeHtml(item.title || '')}" onchange="window.editingOrderState.items[${index}].title = this.value">
                 <input type="text" style="width:100%; padding:0.4rem; font-size:0.75rem; margin-top:0.4rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${escapeHtml(pId || '')}" placeholder="SKU" onchange="window.editingOrderState.items[${index}].id = this.value">
             </td>
-            <td><input type="number" style="width:80px; padding:0.4rem; font-size:0.85rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${item.price || 0}" onchange="window.editingOrderState.items[${index}].price = Number(this.value); renderEditableItems()"></td>
-            <td><input type="number" style="width:60px; padding:0.4rem; font-size:0.85rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${item.qty || 1}" onchange="window.editingOrderState.items[${index}].qty = Number(this.value); renderEditableItems()"></td>
+            <td><input type="number" style="width:80px; padding:0.4rem; font-size:0.85rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${item.price || 0}" onchange="window.editingOrderState.items[${index}].price = Number(this.value); recalcAdminOrderFinancials(); renderEditableItems()"></td>
+            <td><input type="number" style="width:60px; padding:0.4rem; font-size:0.85rem; background:var(--bg-main); color:var(--text-main); border:1px solid var(--border-color); border-radius:6px;" value="${item.qty || 1}" onchange="window.editingOrderState.items[${index}].qty = Number(this.value); recalcAdminOrderFinancials(); renderEditableItems()"></td>
             <td style="text-align:right;">
                 ${money((item.price || 0) * (item.qty || 1))}
                 <button type="button" onclick="removeOrderItem(${index})" style="background:none; border:none; color:var(--danger); cursor:pointer; margin-left:0.5rem;"><i data-lucide="trash-2" style="width:14px;height:14px;"></i></button>
@@ -374,11 +535,21 @@ window.removeOrderItem = function(index) {
 
 window.saveOrderEdits = async function() {
     const id = document.getElementById('modalOrderId').textContent.replace('#', '');
-    const name = document.getElementById('editOrderCustName').value;
-    const phone = document.getElementById('editOrderCustPhone').value;
-    const address = document.getElementById('editOrderCustAddress').value;
+    const name = document.getElementById('editOrderCustName').value.trim();
+    const phone = document.getElementById('editOrderCustPhone').value.trim();
+    const email = document.getElementById('editOrderCustEmail').value.trim();
+    const city = document.getElementById('editOrderCustCity').value.trim();
+    const province = document.getElementById('editOrderCustProvince').value.trim();
+    const payMethod = document.getElementById('editOrderPayMethod').value;
+    const payDetails = document.getElementById('editOrderPayDetails').value.trim();
+    const address = document.getElementById('editOrderCustAddress').value.trim();
+    const notes = document.getElementById('editOrderNotes').value.trim();
 
     const shipping = Number(document.getElementById('editOrderShipping').value) || 0;
+    const courierCost = Number(document.getElementById('editOrderCourierCost').value) || 0;
+    const purchaseCost = Number(document.getElementById('editOrderPurchaseCost').value) || 0;
+    const discount = Number(document.getElementById('editOrderDiscount').value) || 0;
+    const transferCharges = Number(document.getElementById('editOrderTransferCharges').value) || 0;
     const codFee = Number(document.getElementById('editOrderCodFee').value) || 0;
     const taxNote = document.getElementById('editOrderTaxNote').value.trim();
     const taxAmount = Number(document.getElementById('editOrderTaxAmount').value) || 0;
@@ -386,36 +557,52 @@ window.saveOrderEdits = async function() {
 
     let subtotal = 0;
     window.editingOrderState.items.forEach(item => { subtotal += (Number(item.price) || 0) * (Number(item.qty) || 1); });
-    const total = subtotal + shipping + codFee + taxAmount;
+    const total = subtotal + shipping + codFee + taxAmount - discount;
+
+    const updatedData = {
+        customer: name,
+        phone: phone,
+        email: email,
+        city: city,
+        province: province,
+        paymentMethod: payMethod,
+        paymentDetails: payDetails,
+        address: address,
+        notes: notes,
+        items: window.editingOrderState.items, 
+        subtotal: subtotal,
+        shipping: shipping,
+        courierCost: courierCost,
+        purchaseCost: purchaseCost,
+        discount: discount,
+        transferCharges: transferCharges,
+        codFee: codFee,
+        shippingNote: shipping > 0 ? `Rs ${shipping}` : 'Weight ke mutabiq',
+        taxNote: taxNote,
+        taxAmount: taxAmount,
+        specialNote: specialNote,
+        total: total
+    };
 
     try {
-        await db.collection('orders').doc(id).update({
-            customer: name, phone: phone, address: address,
-            items: window.editingOrderState.items, 
-            shipping: shipping,
-            codFee: codFee,
-            shippingNote: shipping > 0 ? `Rs ${shipping}` : 'Weight ke mutabiq',
-            taxNote: taxNote, taxAmount: taxAmount,
-            specialNote: specialNote,
-            total: total
-        });
-        showToast('Order updated');
+        await db.collection('orders').doc(id).update(updatedData);
+        showToast('✅ Order & Financials updated successfully!');
         
-        // update local state so UI updates immediately
+        // update local state
         const o = window.AppData.orders.find(x => String(x.id) === String(id));
         if (o) {
-            o.customer = name; o.phone = phone; o.address = address;
-            o.items = window.editingOrderState.items;
-            o.shipping = shipping; o.taxNote = taxNote; o.taxAmount = taxAmount;
-            o.specialNote = specialNote;
-            o.total = total;
+            Object.assign(o, updatedData);
         }
         
         toggleOrderEdit();
+        if (typeof renderOrders === 'function') renderOrders();
+        if (typeof renderReports === 'function') renderReports();
+        if (typeof renderDashboardView === 'function') renderDashboardView();
     } catch (e) {
         showToast('Error saving edits: ' + e.message, 'error');
     }
 };
+
 
 window.printInvoice = function(id) {
     const o = window.AppData.orders.find(x => String(x.id) === String(id));

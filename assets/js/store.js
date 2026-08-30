@@ -138,6 +138,11 @@ window.addToCart = function(id) {
     if (btn && btn.animate) {
         btn.animate([{transform:'scale(1)'},{transform:'scale(1.25)'},{transform:'scale(1)'}], {duration:350});
     }
+
+    // Auto-open Right Cart Drawer for immediate feedback on Desktop & Mobile
+    if (typeof window.openCart === 'function') {
+        window.openCart();
+    }
 };
 
 window.changeQty = function(id, delta) {
