@@ -221,6 +221,7 @@ window.openCart = function() {
     const overlay = document.getElementById('cartOverlay');
     if (drawer) drawer.classList.add('show');
     if (overlay) overlay.classList.add('show');
+    document.body.classList.add('cart-open');
     window.renderCart();
 };
 
@@ -229,6 +230,7 @@ window.closeCartFn = function() {
     const overlay = document.getElementById('cartOverlay');
     if (drawer) drawer.classList.remove('show');
     if (overlay) overlay.classList.remove('show');
+    document.body.classList.remove('cart-open');
 };
 
 // Global Toast
@@ -306,8 +308,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartBtn = document.getElementById('cartBtn');
     const closeCart = document.getElementById('closeCart');
     const cartOverlay = document.getElementById('cartOverlay');
+    const drawer = document.getElementById('cartDrawer');
     
     if (cartBtn) cartBtn.addEventListener('click', window.openCart);
     if (closeCart) closeCart.addEventListener('click', window.closeCartFn);
     if (cartOverlay) cartOverlay.addEventListener('click', window.closeCartFn);
+
+    // Sync body.cart-open if class .show is added or removed dynamically
+    if (drawer) {
+        const observer = new MutationObserver(() => {
+            if (drawer.classList.contains('show')) {
+                document.body.classList.add('cart-open');
+            } else {
+                document.body.classList.remove('cart-open');
+            }
+        });
+        observer.observe(drawer, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            window.closeCartFn();
+            if (typeof window.closeQV === 'function') window.closeQV();
+        }
+    });
 });
