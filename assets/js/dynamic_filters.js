@@ -667,8 +667,22 @@ function generateBooksFilters() {
             }
             return true;
         });
+
+        // Deduplicate identical books in general catalog view so customers do not see duplicate entries
+        let displayList = filtered;
+        if (checkedSchools.length === 0 && checkedClasses.length === 0) {
+            const seenTitles = new Set();
+            displayList = [];
+            for (const b of filtered) {
+                const normTitle = (b.title || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                if (!seenTitles.has(normTitle)) {
+                    seenTitles.add(normTitle);
+                    displayList.push(b);
+                }
+            }
+        }
         
-        processAndSort(filtered);
+        processAndSort(displayList);
     };
     
     window.applyFilters();
