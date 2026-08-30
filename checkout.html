@@ -309,9 +309,12 @@
         </div>
         <div class="sum-row"><span>Subtotal (Books)</span><span id="coSub">Rs 0</span></div>
         <div class="sum-row"><span>Delivery Charges</span><span id="coShip" style="color:var(--blue); font-weight:600;">Weight ke mutabiq</span></div>
-        <div class="sum-row" id="coCodRow" style="display:flex;"><span>COD Handling Fee (4%)</span><span id="coCodFee" style="color:var(--muted); font-size:0.9em;">Invoice par add hogi</span></div>
+        <div class="sum-row" id="coFeeRow" style="display:flex;">
+          <span id="coFeeLabel">COD Handling Fee (4%)</span>
+          <span id="coFeeValue" style="color:var(--muted); font-size:0.9em;">Invoice par add hogi</span>
+        </div>
         <div class="sum-row total"><span>Estimated Total</span><span id="coTotal">Rs 0</span></div>
-        <div style="margin-top:12px; padding:12px; border-radius:10px; background:rgba(21,101,192,0.06); border:1px dashed var(--blue); font-size:12.5px; line-height:1.5; color:#1e293b;">
+        <div id="coNoticeBox" style="margin-top:12px; padding:12px; border-radius:10px; background:rgba(21,101,192,0.06); border:1px dashed var(--blue); font-size:12.5px; line-height:1.5; color:#1e293b;">
           <strong>📦 Delivery &amp; COD Notice:</strong> Books ka actual weight pack karne ke baad confirm hota hai. Exact courier charges aur 4% COD fee final bill mein add kar ke WhatsApp par confirm kiye jayenge.
         </div>
         <button type="submit" form="checkoutForm" class="btn-checkout" id="placeOrderBtn">Place Order</button>
@@ -797,6 +800,52 @@ document.querySelectorAll('.pay-opt').forEach(opt=>{
     const val = this.dataset.val;
     document.getElementById('cardFields').style.display = val === 'card' ? 'grid' : 'none';
     document.getElementById('walletFields').style.display = (val === 'jazzcash' || val === 'easypaisa') ? 'grid' : 'none';
+
+    const feeLabel = document.getElementById('coFeeLabel');
+    const feeValue = document.getElementById('coFeeValue');
+    const noticeBox = document.getElementById('coNoticeBox');
+
+    if(val === 'cod'){
+      if(feeLabel) feeLabel.textContent = 'COD Handling Fee (4%)';
+      if(feeValue){
+        feeValue.textContent = 'Invoice par add hogi';
+        feeValue.style.color = 'var(--muted)';
+        feeValue.style.fontWeight = 'normal';
+      }
+      if(noticeBox){
+        noticeBox.innerHTML = '<strong>📦 Delivery &amp; COD Notice:</strong> Books ka actual weight pack karne ke baad confirm hota hai. Exact courier charges aur 4% COD fee final bill mein add kar ke WhatsApp par confirm kiye jayenge.';
+      }
+    } else if(val === 'card'){
+      if(feeLabel) feeLabel.textContent = 'Card Payment Fee';
+      if(feeValue){
+        feeValue.textContent = '0% (Free / No Fee)';
+        feeValue.style.color = '#10B981';
+        feeValue.style.fontWeight = '700';
+      }
+      if(noticeBox){
+        noticeBox.innerHTML = '<strong>💳 Card Payment:</strong> Credit / Debit Card payment par 0% handling fee hai (Free). Books ka actual weight pack hone ke baad courier charges WhatsApp par confirm kiye jayenge.';
+      }
+    } else if(val === 'jazzcash'){
+      if(feeLabel) feeLabel.textContent = 'JazzCash Processing Fee';
+      if(feeValue){
+        feeValue.textContent = '0% (Free)';
+        feeValue.style.color = '#10B981';
+        feeValue.style.fontWeight = '700';
+      }
+      if(noticeBox){
+        noticeBox.innerHTML = '<strong>📱 JazzCash Wallet:</strong> JazzCash payment par koi COD fee nahi (0% Fee). Weight ke mutabiq courier charges WhatsApp par confirm kiye jayenge.';
+      }
+    } else if(val === 'easypaisa'){
+      if(feeLabel) feeLabel.textContent = 'EasyPaisa Processing Fee';
+      if(feeValue){
+        feeValue.textContent = '0% (Free)';
+        feeValue.style.color = '#10B981';
+        feeValue.style.fontWeight = '700';
+      }
+      if(noticeBox){
+        noticeBox.innerHTML = '<strong>📱 EasyPaisa Wallet:</strong> EasyPaisa payment par koi COD fee nahi (0% Fee). Weight ke mutabiq courier charges WhatsApp par confirm kiye jayenge.';
+      }
+    }
   });
 });
 
