@@ -28,9 +28,12 @@ window.fetchWooCommerceOrders = async function(showFeedback = true) {
             const cust_name = `${billing.first_name || ''} ${billing.last_name || ''}`.trim() || 'Customer';
             const phone = billing.phone || shipping.phone || 'N/A';
             const email = billing.email || 'customer@taleemihub.com';
-            const address = billing.address_1 || shipping.address_1 || 'Karachi';
-            const city = billing.city || 'Karachi';
-            const province = billing.state || 'Sindh';
+            const address = [billing.address_1 || shipping.address_1, billing.address_2 || shipping.address_2].filter(Boolean).join(', ') || 'Karachi';
+            const city = billing.city || shipping.city || 'Karachi';
+            const province = billing.state || shipping.state || 'Sindh';
+            const notes = o.customer_note || '';
+            const paymentDetails = (o.meta_data || []).find(m => m.key === '_payment_account_number' || m.key === 'payment_account' || m.key === '_transaction_id' || m.key === 'account_number')?.value || '';
+            const payMethod = o.payment_method_title || o.payment_method || 'cod';
             
             const items = (o.line_items || []).map(line => ({
                 id: String(line.product_id || ''),
@@ -58,6 +61,8 @@ window.fetchWooCommerceOrders = async function(showFeedback = true) {
                 address: address,
                 city: city,
                 province: province,
+                notes: notes,
+                paymentDetails: paymentDetails,
                 items: items,
                 subtotal: total - shippingAmt,
                 shipping: shippingAmt,
@@ -66,7 +71,7 @@ window.fetchWooCommerceOrders = async function(showFeedback = true) {
                 total: total,
                 status: status,
                 date: new Date(o.date_created).getTime() || Date.now(),
-                paymentMethod: o.payment_method || 'cod',
+                paymentMethod: payMethod,
                 source: 'woocommerce'
             };
         });
@@ -77,8 +82,15 @@ window.fetchWooCommerceOrders = async function(showFeedback = true) {
         
         // Add WooCommerce orders
         formattedWcOrders.forEach(o => map.set(String(o.id), o));
-        // Add Firestore orders (override if exists)
-        existing.forEach(o => map.set(String(o.id), o));
+        // Add Firestore orders (merge so edited data or new firestore orders take precedence)
+        existing.forEach(o => {
+            const wc = map.get(String(o.id));
+            if (wc) {
+                map.set(String(o.id), { ...wc, ...o });
+            } else {
+                map.set(String(o.id), o);
+            }
+        });
         
         const merged = Array.from(map.values());
         merged.sort((a,b) => (b.date || 0) - (a.date || 0));
@@ -190,6 +202,7 @@ window.renderOrders = function() {
             (o.customer && o.customer.toLowerCase().includes(search)) ||
             (o.phone && o.phone.toLowerCase().includes(search)) ||
             (o.city && o.city.toLowerCase().includes(search)) ||
+            (o.address && o.address.toLowerCase().includes(search)) ||
             (o.email && o.email.toLowerCase().includes(search))
         );
     }
@@ -204,15 +217,73 @@ window.renderOrders = function() {
     } else {
         tbody.innerHTML = pageItems.map(o => {
             const dateStr = o.date ? new Date(o.date).toLocaleDateString('en-GB') : 'N/A';
+            const timeStr = o.date ? new Date(o.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '';
+            
+            const cleanPhone = (o.phone || '').replace(/[^0-9]/g, '');
+            const waLink = cleanPhone ? `https://wa.me/${cleanPhone.startsWith('0') ? '92' + cleanPhone.slice(1) : cleanPhone}` : null;
+
+            const pMethod = (o.paymentMethod || 'cod').toLowerCase();
+            const payBadge = pMethod.includes('jazzcash') ? '📱 JazzCash' :
+                             pMethod.includes('easypaisa') ? '📱 EasyPaisa' :
+                             pMethod.includes('card') ? '💳 Card' : '💵 Cash on Delivery';
+
+            const itemsCount = (o.items || []).reduce((sum, item) => sum + (Number(item.qty) || 1), 0);
+            const itemsSnippet = (o.items || []).map(i => `${escapeHtml(i.title || 'Item')} (x${i.qty || 1})`).slice(0, 2).join(', ') + ((o.items || []).length > 2 ? ` +${(o.items || []).length - 2} more` : '');
+
             return `
-            <tr>
-                <td><div style="font-weight:700;" class="mono">#${escapeHtml(o.id)}</div><div class="text-muted" style="font-size:0.75rem;">${dateStr}</div></td>
+            <tr style="vertical-align:top;">
                 <td>
-                    <div style="font-weight:600;">${escapeHtml(o.customer || 'Unknown')}</div>
-                    <div class="text-muted" style="font-size:0.75rem;">${escapeHtml(o.phone || '')} · ${escapeHtml(o.city || 'Karachi')}</div>
+                    <div style="font-weight:800; font-size:0.95rem; color:var(--text-main);" class="mono">#${escapeHtml(o.id)}</div>
+                    <div class="text-muted" style="font-size:0.75rem; margin-top:2px;">${dateStr} <span style="opacity:0.7;">${timeStr}</span></div>
+                    <div style="margin-top:6px;">
+                        <span style="font-size:0.7rem; font-weight:700; padding:2px 6px; border-radius:6px; background:rgba(99,102,241,0.15); color:#818cf8;">
+                            ${o.source === 'woocommerce' ? '🛒 WooCommerce' : '🌐 Web Store'}
+                        </span>
+                    </div>
                 </td>
-                <td>${(o.items || []).length} items</td>
-                <td style="font-weight:700; color:var(--primary);">${money(o.total)}</td>
+                <td>
+                    <!-- Full Customer Details -->
+                    <div style="font-weight:700; font-size:1rem; color:var(--text-main); display:flex; align-items:center; gap:8px;">
+                        <span>${escapeHtml(o.customer || 'Unknown Customer')}</span>
+                    </div>
+                    
+                    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:4px; font-size:0.85rem;">
+                        <span style="font-weight:600; color:var(--text-main); display:inline-flex; align-items:center; gap:4px;">
+                            <i data-lucide="phone" style="width:13px; height:13px; color:var(--primary);"></i> ${escapeHtml(o.phone || 'N/A')}
+                        </span>
+                        ${waLink ? `
+                        <a href="${waLink}" target="_blank" style="color:#25D366; background:rgba(37,211,102,0.12); padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;" title="Open WhatsApp Chat">
+                            <i data-lucide="message-circle" style="width:12px; height:12px;"></i> WhatsApp
+                        </a>` : ''}
+                    </div>
+
+                    ${o.email && o.email !== 'N/A' ? `
+                    <div style="font-size:0.8rem; color:var(--text-secondary); margin-top:3px; display:flex; align-items:center; gap:4px;">
+                        <i data-lucide="mail" style="width:12px; height:12px; opacity:0.7;"></i>
+                        <a href="mailto:${escapeHtml(o.email)}" style="color:var(--text-secondary); text-decoration:none;">${escapeHtml(o.email)}</a>
+                    </div>` : ''}
+
+                    <div style="font-size:0.82rem; color:var(--text-main); margin-top:5px; line-height:1.35; background:rgba(255,255,255,0.03); padding:4px 8px; border-radius:6px; border-left:2px solid var(--primary);">
+                        <i data-lucide="map-pin" style="width:12px; height:12px; color:var(--primary); display:inline; margin-right:2px;"></i>
+                        <b>${escapeHtml(o.city || 'Karachi')}:</b> ${escapeHtml(o.address || 'Address not provided')}${o.province ? ', ' + escapeHtml(o.province) : ''}
+                    </div>
+
+                    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin-top:6px;">
+                        <span style="font-size:0.72rem; font-weight:700; padding:2px 6px; border-radius:4px; background:rgba(59,130,246,0.12); color:#3b82f6;">
+                            ${payBadge}
+                        </span>
+                        ${o.paymentDetails ? `<span style="font-size:0.72rem; padding:2px 6px; border-radius:4px; background:rgba(139,92,246,0.12); color:#8b5cf6;">A/C: ${escapeHtml(o.paymentDetails)}</span>` : ''}
+                        ${o.notes ? `<span style="font-size:0.72rem; padding:2px 6px; border-radius:4px; background:rgba(245,158,11,0.15); color:#f59e0b; max-width:240px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="Notes: ${escapeHtml(o.notes)}">📝 ${escapeHtml(o.notes)}</span>` : ''}
+                    </div>
+                </td>
+                <td>
+                    <div style="font-weight:700; color:var(--text-main);">${itemsCount} items</div>
+                    <div class="text-muted" style="font-size:0.75rem; margin-top:3px; max-width:180px; line-height:1.3;">${itemsSnippet || 'Products'}</div>
+                </td>
+                <td>
+                    <div style="font-weight:800; font-size:1.05rem; color:var(--primary);">${money(o.total)}</div>
+                    ${o.shipping > 0 ? `<div class="text-muted" style="font-size:0.72rem; margin-top:2px;">Incl. ${money(o.shipping)} del.</div>` : ''}
+                </td>
                 <td>
                     <select onchange="updateOrderStatus('${o.id}', this.value)" style="padding:0.4rem 0.6rem; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-main); color:var(--text-main); font-size:0.85rem; font-weight:600;">
                         <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>⏳ Pending</option>
@@ -221,9 +292,10 @@ window.renderOrders = function() {
                         <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>❌ Cancelled</option>
                     </select>
                 </td>
-                <td style="text-align:right;">
-                    <button class="icon-btn-sm" onclick="viewOrder('${o.id}')" title="View / Edit Complete Order"><i data-lucide="eye"></i></button>
+                <td style="text-align:right; white-space:nowrap;">
+                    <button class="icon-btn-sm" onclick="viewOrder('${o.id}')" title="View &amp; Edit Complete Order"><i data-lucide="eye"></i></button>
                     <button class="icon-btn-sm" onclick="printInvoice('${o.id}')" title="Print Invoice"><i data-lucide="printer"></i></button>
+                    ${waLink ? `<a href="${waLink}" target="_blank" class="icon-btn-sm" style="display:inline-flex; align-items:center; justify-content:center; text-decoration:none; color:#25D366;" title="WhatsApp Customer"><i data-lucide="message-circle"></i></a>` : ''}
                 </td>
             </tr>`;
         }).join('');
