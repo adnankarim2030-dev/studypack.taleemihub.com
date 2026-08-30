@@ -418,7 +418,7 @@
     
     <!-- 3D Carousel Stage -->
     <div class="upsell-carousel-container" id="upsellCarouselStage">
-      <button class="carousel-nav-btn prev" onclick="moveUpsellSlide(-1)" aria-label="Previous">
+      <button class="carousel-nav-btn prev" onclick="moveUpsellSlide(-1, true)" aria-label="Previous">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
 
@@ -426,7 +426,7 @@
         <!-- 3D Cards will be dynamically injected here -->
       </div>
 
-      <button class="carousel-nav-btn next" onclick="moveUpsellSlide(1)" aria-label="Next">
+      <button class="carousel-nav-btn next" onclick="moveUpsellSlide(1, true)" aria-label="Next">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
@@ -1024,22 +1024,27 @@ function update3DCardPositions() {
   });
 }
 
-function moveUpsellSlide(dir) {
+function moveUpsellSlide(dir, manual = false) {
   const total = upsellItems.length;
   if (total <= 1) return;
   currentUpsellIndex = (currentUpsellIndex + dir + total) % total;
   update3DCardPositions();
+  if (manual) {
+    resetUpsellAutoplayTimer();
+  }
 }
 
 function goToUpsellSlide(idx) {
   currentUpsellIndex = idx;
   update3DCardPositions();
+  resetUpsellAutoplayTimer();
 }
 
 function handleCardClick(idx) {
   if (idx !== currentUpsellIndex) {
     currentUpsellIndex = idx;
     update3DCardPositions();
+    resetUpsellAutoplayTimer();
   }
 }
 
@@ -1081,25 +1086,33 @@ function addUpsellToCart(id, idx) {
   if (typeof showToast === 'function') {
     showToast(`✅ "${item.title.slice(0, 25)}..." added to your order!`);
   }
+  resetUpsellAutoplayTimer();
 }
 
 function closeUpsellModal() {
   const upsell = document.getElementById('upsellOverlay');
   if (upsell) upsell.classList.remove('show');
+  if (upsellTimer) {
+    clearInterval(upsellTimer);
+    upsellTimer = null;
+  }
+}
+
+function resetUpsellAutoplayTimer() {
   if (upsellTimer) clearInterval(upsellTimer);
+  upsellTimer = setInterval(() => {
+    moveUpsellSlide(1);
+  }, 2200);
 }
 
 function startUpsellAutoplay() {
   if (upsellTimer) clearInterval(upsellTimer);
   upsellTimer = setInterval(() => {
-    moveUpsellSlide(1);
-  }, 4000);
-  
-  const container = document.getElementById('upsellCarouselStage');
-  if (container) {
-    container.addEventListener('mouseenter', () => clearInterval(upsellTimer));
-    container.addEventListener('mouseleave', () => startUpsellAutoplay());
-  }
+    const overlay = document.getElementById('upsellOverlay');
+    if (overlay && overlay.classList.contains('show')) {
+      moveUpsellSlide(1);
+    }
+  }, 2200);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1110,6 +1123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const upsell = document.getElementById('upsellOverlay');
     if (upsell && (window.cart && window.cart.length > 0)) {
       upsell.classList.add('show');
+      startUpsellAutoplay();
     }
   }, 1000);
 });
