@@ -6,6 +6,14 @@
       "destination": "/books.html"
     },
     {
+      "source": "/dashboard",
+      "destination": "/dashboard/index.html"
+    },
+    {
+      "source": "/dashboard/",
+      "destination": "/dashboard/index.html"
+    },
+    {
       "source": "/wp-admin",
       "destination": "http://8.29.154.51/wp-admin/"
     },
