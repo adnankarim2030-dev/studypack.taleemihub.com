@@ -51,17 +51,21 @@ function getCatalogData(type) {
         
         // Merge all 2,196 School Course Packs from 36 Schools
         if (typeof SCRAPED_COURSES !== 'undefined' && Array.isArray(SCRAPED_COURSES)) {
-            const courseItems = SCRAPED_COURSES.map(c => ({
-                id: c.id || ('course_' + Math.random().toString(36).substr(2, 9)),
-                title: c.title,
-                price: Number(c.price) || 0,
-                img: c.img || 'assets/images/studypack_logo.png',
-                category: 'School Courses',
-                school: c.school || 'School Syllabus',
-                cls: c.cls || c.grade || 'General',
-                pub: c.school ? (c.school + ' Course') : 'School Syllabus',
-                inStock: true
-            }));
+            const courseItems = SCRAPED_COURSES.map(c => {
+                const rawClass = c.class_name || (Array.isArray(c.cls) ? c.cls[0] : c.cls) || 'General';
+                return {
+                    id: c.id || ('course_' + Math.random().toString(36).substr(2, 9)),
+                    title: c.title,
+                    price: Number(c.price) || 0,
+                    img: c.img || 'assets/images/studypack_logo.png',
+                    category: 'School Courses',
+                    school: c.school || 'School Syllabus',
+                    class_name: rawClass,
+                    cls: rawClass,
+                    pub: c.school ? (c.school + ' Course') : 'School Syllabus',
+                    inStock: true
+                };
+            });
             items = items.concat(courseItems);
         }
         return items;
@@ -77,6 +81,169 @@ function getCatalogData(type) {
         return [];
     }
     return [];
+}
+
+const GRADE_NATURAL_ORDER = {
+    'pre-nursery': 1, 'playgroup': 2, 'nursery': 3, 'kg': 4, 'class kg': 5, 'kindergarten': 6,
+    'class 1': 10, 'grade 1': 10, 'class 2': 20, 'grade 2': 20, 'class 3': 30, 'grade 3': 30,
+    'class 4': 40, 'grade 4': 40, 'class 5': 50, 'grade 5': 50, 'class 6': 60, 'grade 6': 60,
+    'class 7': 70, 'grade 7': 70, 'class 8': 80, 'grade 8': 80, 'class 9': 90, 'grade 9': 90,
+    'class 10': 100, 'grade 10': 100, 'matric': 105, 'class 11': 110, 'grade 11': 110,
+    'class 12': 120, 'grade 12': 120, 'o-level': 130, 'a-level': 140, 'general': 200
+};
+
+function sortClassesNaturally(arr) {
+    return arr.sort((a, b) => {
+        const keyA = (a || '').toLowerCase().trim();
+        const keyB = (b || '').toLowerCase().trim();
+        const valA = GRADE_NATURAL_ORDER[keyA] !== undefined ? GRADE_NATURAL_ORDER[keyA] : (parseInt(keyA.replace(/\D/g, '')) || 99);
+        const valB = GRADE_NATURAL_ORDER[keyB] !== undefined ? GRADE_NATURAL_ORDER[keyB] : (parseInt(keyB.replace(/\D/g, '')) || 99);
+        return valA - valB;
+    });
+}
+
+function renderSchoolCoursesFilterGroup(schools, booksList) {
+    if (!schools || schools.length === 0) return '';
+    
+    // Build map of school -> unique classes
+    const schoolClassMap = {};
+    booksList.forEach(b => {
+        if (b.school && b.school !== 'School Syllabus') {
+            const clsName = b.class_name || (Array.isArray(b.cls) ? b.cls[0] : b.cls) || 'General';
+            schoolClassMap[b.school] = schoolClassMap[b.school] || new Set();
+            schoolClassMap[b.school].add(clsName);
+        }
+    });
+
+    let html = `<div class="accordion-item active">
+        <div class="acc-head">
+          <span>School Syllabi / Courses</span> 
+          <span class="acc-badge" id="schoolFilterBadge">0</span> 
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="acc-arrow"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+        <div class="acc-body" style="max-height: 420px; overflow-y: auto; padding-right: 4px;">`;
+
+    schools.forEach(school => {
+        const rawClasses = Array.from(schoolClassMap[school] || []);
+        const classes = sortClassesNaturally(rawClasses);
+        const safeId = 'sch_' + school.replace(/[^a-zA-Z0-9]/g, '_');
+
+        html += `
+        <div class="school-filter-block" style="border-bottom: 1px solid #F1F5F9; padding: 6px 0;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">
+            <label class="glass-check" style="margin:0; flex:1; cursor:pointer;">
+              <input type="checkbox" class="dyn-school" value="${escapeHtml(school)}" data-target="${safeId}" onchange="handleSchoolCheckboxToggle(this, '${safeId}')"> 
+              <span class="chk-box"></span> 
+              <span style="font-weight:600; color:#1E293B; font-size:13px;">${escapeHtml(school)}</span>
+            </label>
+            ${classes.length > 0 ? `
+              <button type="button" class="btn-toggle-classes" onclick="toggleSchoolClassesDrawer('${safeId}', this)" title="Toggle Classes" style="background:#F8FAFC; border:1px solid #CBD5E1; padding:2px 8px; border-radius:12px; cursor:pointer; font-size:11px; color:#475569; font-weight:700; display:flex; align-items:center; gap:3px; transition:0.2s;">
+                <span>${classes.length} classes</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="chevron-icon" style="width:12px; height:12px; transition:transform 0.2s;"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+            ` : ''}
+          </div>
+
+          ${classes.length > 0 ? `
+            <div class="school-classes-drawer" id="${safeId}" style="display:none; margin-top:8px; padding:10px 12px; background:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px;">
+              <div style="font-size:10.5px; font-weight:800; color:#64748B; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.4px;">Select Class / Grade:</div>
+              <div style="display:flex; flex-wrap:wrap; gap:5px;">
+                ${classes.map(cls => `
+                  <label class="class-chip-wrap" style="cursor:pointer; margin:0;">
+                    <input type="checkbox" class="dyn-school-class" data-school="${escapeHtml(school)}" value="${escapeHtml(cls)}" style="display:none;" onchange="handleClassChipChange(this)">
+                    <span class="class-chip" style="display:inline-block; font-size:11px; font-weight:700; padding:4px 9px; border-radius:6px; background:#ffffff; border:1.5px solid #CBD5E1; color:#334155; transition:all 0.15s ease;">
+                      ${escapeHtml(cls)}
+                    </span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
+        </div>`;
+    });
+
+    html += `</div></div>`;
+    return html;
+}
+
+window.handleSchoolCheckboxToggle = function(input, drawerId) {
+    const drawer = document.getElementById(drawerId);
+    if (drawer) {
+        if (input.checked) {
+            drawer.style.display = 'block';
+            const btn = input.closest('.school-filter-block').querySelector('.chevron-icon');
+            if (btn) btn.style.transform = 'rotate(180deg)';
+        } else {
+            // If school is unchecked, uncheck its classes
+            drawer.querySelectorAll('.dyn-school-class').forEach(cb => {
+                cb.checked = false;
+                const span = cb.parentElement.querySelector('.class-chip');
+                if (span) {
+                    span.style.background = '#ffffff';
+                    span.style.color = '#334155';
+                    span.style.borderColor = '#CBD5E1';
+                    span.style.boxShadow = 'none';
+                }
+            });
+            drawer.style.display = 'none';
+            const btn = input.closest('.school-filter-block').querySelector('.chevron-icon');
+            if (btn) btn.style.transform = 'rotate(0deg)';
+        }
+    }
+    updateSchoolFilterBadge();
+    if (typeof window.applyFilters === 'function') window.applyFilters();
+};
+
+window.toggleSchoolClassesDrawer = function(drawerId, btn) {
+    const drawer = document.getElementById(drawerId);
+    if (!drawer) return;
+    const isHidden = (drawer.style.display === 'none' || !drawer.style.display);
+    drawer.style.display = isHidden ? 'block' : 'none';
+    const chevron = btn.querySelector('.chevron-icon');
+    if (chevron) {
+        chevron.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+};
+
+window.handleClassChipChange = function(input) {
+    const span = input.parentElement.querySelector('.class-chip');
+    const school = input.getAttribute('data-school');
+    
+    // Auto-check parent school checkbox if a class is selected
+    if (input.checked && school) {
+        const schoolCb = document.querySelector(`.dyn-school[value="${CSS.escape(school)}"]`);
+        if (schoolCb && !schoolCb.checked) {
+            schoolCb.checked = true;
+        }
+    }
+
+    if (span) {
+        if (input.checked) {
+            span.style.background = '#1565C0';
+            span.style.color = '#ffffff';
+            span.style.borderColor = '#1565C0';
+            span.style.boxShadow = '0 2px 6px rgba(21,101,192,0.25)';
+        } else {
+            span.style.background = '#ffffff';
+            span.style.color = '#334155';
+            span.style.borderColor = '#CBD5E1';
+            span.style.boxShadow = 'none';
+        }
+    }
+    updateSchoolFilterBadge();
+    if (typeof window.applyFilters === 'function') window.applyFilters();
+};
+
+function updateSchoolFilterBadge() {
+    const checkedSchools = document.querySelectorAll('.dyn-school:checked').length;
+    const checkedClasses = document.querySelectorAll('.dyn-school-class:checked').length;
+    const badge = document.getElementById('schoolFilterBadge');
+    if (badge) {
+        const total = checkedClasses > 0 ? `${checkedSchools} (${checkedClasses} classes)` : checkedSchools;
+        badge.textContent = total;
+        if (checkedSchools > 0 || checkedClasses > 0) badge.classList.add('show');
+        else badge.classList.remove('show');
+    }
 }
 
 function inferBookProperties(book) {
@@ -417,12 +584,12 @@ function generateBooksFilters() {
     
     let html = '';
     if (schools.length > 0) {
-        html += renderFilterGroup('School Syllabi / Courses', schools, 'dyn-school');
+        html += renderSchoolCoursesFilterGroup(schools, actualBooks);
     }
     html += renderFilterGroup('Publisher', pubs, 'dyn-pub');
     html += renderFilterGroup('Subject / Genre', genres, 'dyn-genre');
     html += renderFilterGroup('Language', langs, 'dyn-lang');
-    html += renderFilterGroup('Class / Age Group', ages, 'dyn-age');
+    html += renderFilterGroup('General Class / Age Group', ages, 'dyn-age');
     html += getPriceRangeHtml();
     html += getAvailabilityHtml();
     
@@ -430,6 +597,10 @@ function generateBooksFilters() {
     
     window.applyFilters = function() {
         const checkedSchools = Array.from(document.querySelectorAll('.dyn-school:checked')).map(cb => cb.value);
+        const checkedClasses = Array.from(document.querySelectorAll('.dyn-school-class:checked')).map(cb => ({
+            school: cb.getAttribute('data-school'),
+            cls: cb.value
+        }));
         const checkedPubs = Array.from(document.querySelectorAll('.dyn-pub:checked')).map(cb => cb.value);
         const checkedGenres = Array.from(document.querySelectorAll('.dyn-genre:checked')).map(cb => cb.value);
         const checkedLangs = Array.from(document.querySelectorAll('.dyn-lang:checked')).map(cb => cb.value);
@@ -444,7 +615,45 @@ function generateBooksFilters() {
         const query = (urlParams.get('q') || '').toLowerCase().trim();
         
         const filtered = actualBooks.filter(b => {
-            if (checkedSchools.length > 0 && !checkedSchools.includes(b.school)) return false;
+            // School & Class filtering
+            if (checkedSchools.length > 0) {
+                if (!checkedSchools.includes(b.school)) return false;
+                
+                // If specific classes for this school are selected, filter strictly
+                const schoolSpecificClasses = checkedClasses.filter(c => c.school === b.school).map(c => c.cls);
+                if (schoolSpecificClasses.length > 0) {
+                    const itemClass = (b.class_name || (Array.isArray(b.cls) ? b.cls[0] : b.cls) || '').toLowerCase().trim();
+                    const titleLower = (b.title || '').toLowerCase();
+                    
+                    const match = schoolSpecificClasses.some(chosen => {
+                        const target = chosen.toLowerCase().trim();
+                        if (itemClass === target) return true;
+                        
+                        // Word boundary matching in title (avoid 'class 1' matching 'class 11')
+                        const escaped = target.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+                        const regex = new RegExp('(?:^|\\s|[^a-zA-Z0-9])' + escaped + '(?:$|\\s|[^a-zA-Z0-9])', 'i');
+                        if (regex.test(titleLower)) {
+                            if (target === 'class 1' && (titleLower.includes('class 10') || titleLower.includes('class 11') || titleLower.includes('class 12'))) {
+                                return false;
+                            }
+                            return true;
+                        }
+                        return false;
+                    });
+                    
+                    if (!match) return false;
+                }
+            } else if (checkedClasses.length > 0) {
+                // If classes selected without school checkbox checked
+                const itemClass = (b.class_name || (Array.isArray(b.cls) ? b.cls[0] : b.cls) || '').toLowerCase().trim();
+                const titleLower = (b.title || '').toLowerCase();
+                const match = checkedClasses.some(c => {
+                    const target = c.cls.toLowerCase().trim();
+                    return itemClass === target || titleLower.includes(target);
+                });
+                if (!match) return false;
+            }
+
             if (checkedPubs.length > 0 && !checkedPubs.includes(b.pub)) return false;
             if (checkedGenres.length > 0 && !checkedGenres.includes(b.genre)) return false;
             if (checkedLangs.length > 0 && !checkedLangs.includes(b.language)) return false;
