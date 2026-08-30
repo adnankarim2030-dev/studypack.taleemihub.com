@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "Happy Home School O'Level": 'hhs.edu.pk',
             'Al Khalil Academy School': 'alkhalil.edu.pk',
             'Aster School': 'aster.edu.pk',
+            'The Educators': 'educators.edu.pk',
             'VLC - Humanities School': 'vlc.edu.pk'
         };
 
