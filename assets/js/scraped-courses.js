@@ -35138,7 +35138,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11439",
         "title": "Activity Pad (Tear off pad) - Playgroup",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Activity-pad-PG-c42da9e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35154,7 +35154,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11440",
         "title": "Meri Urdu Ki Notebook - Playgroup",
-        "price": 500,
+        "price": 320,
         "img": "https://cdn.fishry.com/product/meri-urdu-ki-note-book--playgrpup--c05cdd7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35170,7 +35170,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11441",
         "title": "Let's Explore the World Around Us - Level 1 (Edition 2023) Playgroup",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Explore-the-world-around-us-level-1-9af9093-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35186,7 +35186,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11442",
         "title": "Harf Kahani Ibtidai Tasverri Quaida - Playgroup (Edition 2023)",
-        "price": 500,
+        "price": 650,
         "img": "https://cdn.fishry.com/product/haraf-kahani-PG-72407fd-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35202,7 +35202,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11443",
         "title": "My Activity Book of Numbers and Shapes - Playgroup (New Publication-Edition 2023)",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/my-activity-book-of-number-ad-shapes-c1e3af4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35218,7 +35218,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11444",
         "title": "I Can Read Level 1 (Pack of 4) Playgroup",
-        "price": 500,
+        "price": 1450,
         "img": "https://cdn.fishry.com/product/English-Reader-Level-1-1501995-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Playgroup",
@@ -35234,7 +35234,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11445",
         "title": "My Activity Book of Letters and Sounds - Level 1 (New Publication - Edition 2023)",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/My-activity-book-of-letter-and-sound-level-1-f2e37c3-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -35250,7 +35250,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11446",
         "title": "Once Upon a Time",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/Screenshot-2026-05-19-102341-b2246a9-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -35266,7 +35266,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11447",
         "title": "EB-09B Narrow single lined half page interleaf exercise book (margined)",
-        "price": 500,
+        "price": 220,
         "img": "https://cdn.fishry.com/product/english-01789e0-my-bag-pack-23e41b4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35282,7 +35282,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11448",
         "title": "Hodder Cambridge Primary Math (Workbook A,B,C)",
-        "price": 500,
+        "price": 1180,
         "img": "https://cdn.fishry.com/product/Hodder-Cambridge-Primary-Maths-Activity-Book-Back--1--4dedf63-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35298,7 +35298,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11449",
         "title": "Pack of 3 English Readers Class Pre-Nursery (Sid Did It, Sip It Pat, Tip, Tip)",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Class-Pre-Nursery-Reader--Pack-of-3--08bc619-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Pre-Nursery",
@@ -35314,7 +35314,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11450",
         "title": "Cambridge Primary Mathematics (2nd Edition) Workbook Kindergarten",
-        "price": 500,
+        "price": 1180,
         "img": "https://cdn.fishry.com/product/Combridge-Primary-Mathematics-Grade-Kindergarten-Workbook--1--0771fe2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -35330,7 +35330,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11451",
         "title": "The Greatest Ideas in Conservation",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/The-Greatest-Ideas-in-Conservation-b825e15-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35346,7 +35346,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11452",
         "title": "English Workbook 2A - Foundations (Language Supplement)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/LANGUAGE-ESSENTIALS-FOUNDATIONS-FOR-CLASS-2-38d812e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35362,7 +35362,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11453",
         "title": "English Workbook 3A - Trails (Language Supplement)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/LANGUAGE-ESSENTIALS-TRAILS-FOR-CLASS-3-5997267-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35378,7 +35378,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11454",
         "title": "English Workbook 4A - Pathways (Language Supplement)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/LANGUAGE-ESSENTIALS-PATHWAYS-FOR-CLASS-4-6d2560f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35394,7 +35394,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11455",
         "title": "Islamiat Book 7",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/image--42--ea72568-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35410,7 +35410,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11456",
         "title": "Cambridge Primary Mathematics (2nd Edition) Workbook Grade 1",
-        "price": 500,
+        "price": 1180,
         "img": "https://cdn.fishry.com/product/Combridge-Primary-Mathematics-Grade-1-workbook-8fbea9d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -35426,7 +35426,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11457",
         "title": "Islamiat 5 (For Balochistan Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/QTB-Islamiyat-5-c25e5a4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35442,7 +35442,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11458",
         "title": "Urdu 1 (For Balochistan Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/QTB-urdu-1-e559e8b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35458,7 +35458,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11459",
         "title": "Islamiat 7 (For Balochistan Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/QTB-Islamiyat-7-b7510c0-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35474,7 +35474,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11460",
         "title": "Exploring Science 1 Workbook Class 6",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/EXPLORING-SCIENCE-WORKBOOK-1-000c761-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -35490,7 +35490,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11461",
         "title": "Islamiat 8 (For Balochistan Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/QTB-Islamiyat-8-b106f5e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35506,7 +35506,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11462",
         "title": "General Science Class 5 (NBF)",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/General-Science-5-e635d6a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -35522,7 +35522,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11463",
         "title": "Pashtoo 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Pashtoo-11-Photoroom-aba0c84-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -35538,7 +35538,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11464",
         "title": "Discover Geography Student Book 2",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Pearson-2--F--8b264fe-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35554,7 +35554,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11465",
         "title": "Discover Geography Student Book 3",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Pearson-3--F--164bdeb-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35570,7 +35570,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11466",
         "title": "Pashtoo 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Pashtoo-55-Photoroom-bfee81f-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -35586,7 +35586,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11467",
         "title": "Computer Science for Grade 7 (Latest edition) KPK",
-        "price": 500,
+        "price": 1050,
         "img": "https://cdn.fishry.com/product/Class-7CS-Photoroom-6bc8757-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -35602,7 +35602,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11468",
         "title": "Computer Science for Grade 8 (Latest edition) KPK",
-        "price": 500,
+        "price": 1050,
         "img": "https://cdn.fishry.com/product/computer-science-grade8-whitebg-383d1ca-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -35618,7 +35618,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11469",
         "title": "ORT Stage 1+ - Stories (Pack of 6)",
-        "price": 500,
+        "price": 1950,
         "img": "https://cdn.fishry.com/product/Hide-and-Seek-e3430fa-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35634,7 +35634,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11470",
         "title": "Urdu Ki Amli Kitab Term - I Class Nursery (Revised 2025)",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/Urdu-Amli-Nursery-cc3f0d0-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -35650,7 +35650,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11471",
         "title": "PYPbn-17 Ring Folder",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Note-Book-b548442-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35666,7 +35666,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11472",
         "title": "The Book Wanderers",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/The-Bookwanderers-fa91ce7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35682,7 +35682,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11473",
         "title": "New Oxford Social Studies for Pakistan Book 1",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Socail-Studies-class-1--F--563370e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35698,7 +35698,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11474",
         "title": "Alice in Wonderland",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/image--24--64dda85-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35714,7 +35714,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11475",
         "title": "The Golden Touch and Other Stories",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/The-Golden-Touch-and-Other-Stories-6fd3de9-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35730,7 +35730,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11476",
         "title": "The Lemonade War",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/The-Lemonade-War-a01f5e7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35746,7 +35746,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11477",
         "title": "MYP Physical and Earth Sciences: a Concept Based Approach",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/MYP-Physical-and-Earth-Sciences-a-Concept-Based-Approach7-51eaa70-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35762,7 +35762,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11478",
         "title": "The Westing Game",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/The-Westing-Game-e6a2ac2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35778,7 +35778,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11479",
         "title": "Skills for Success for MYP 4 & 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Personal-Project-29e7db9-my-bag-pack-68c5b76-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35794,7 +35794,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11480",
         "title": "Skills for success for MYP 3 & 4 by Laura England and Angela Stancar Johnson - ebook",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Skills-for-success-for-MYP-3---4-by-Laura-England-and-Angela-Stancar-Johnson---ebook-579a5cf-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35810,7 +35810,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11481",
         "title": "Urdu 1 (For Sindh Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu--2--ebfe3f3-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35826,7 +35826,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11482",
         "title": "Kinder Math Stars - Junior Infant Part 2 (Second Edition) Class Reception",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Kinder-Math-Star-Junior-Infant-Part-2-ebffd4b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35842,7 +35842,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11483",
         "title": "Kinder Math Stars - Introductory Level Class Nursery",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Kinder-Math-Stars-Introductory-Level-47f045f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -35858,7 +35858,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11484",
         "title": "Aaroo Amli Class KG",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/Samar-Urdu-Aaroo-Amli-062a9b4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -35874,7 +35874,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11485",
         "title": "Dhanak Neela 2 Year 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Neela-Book-2---Dhanak-Urdu-Silsila-2nd-Edition-9c10f57-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35890,7 +35890,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11486",
         "title": "Dhanak Laal 1 Year 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Laal-Book-2---Dhanak-Urdu-Silsila-2nd-Edition-e281098-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35906,7 +35906,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11487",
         "title": "Dhanak Peela 3 Year 3",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Peela-Book-2---Dhanak-Urdu-Silsila-2nd-Edition-9feb1b2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35922,7 +35922,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11488",
         "title": "French for MYP 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/MYP-French--1-3--77f95a8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35938,7 +35938,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11489",
         "title": "Dhanak Hara 4 Year 4",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Hara-Book-2---Dhanak-Urdu-Silsila-2nd-Edition--1--a9c2d90-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35954,7 +35954,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11490",
         "title": "French for MYP 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/MYP-French--1-3--fa84e4a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35970,7 +35970,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11491",
         "title": "Dhanak Narangi 5 Year 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Narangi-Book-5-Kifayat-Dhanak-Urdu-Silsila-4a6f212-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -35986,7 +35986,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11492",
         "title": "French for MYP 3-5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/MYP-French-8-and-9-398beba-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36002,7 +36002,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11493",
         "title": "History for the IB MYP 4 & 5 by Concept",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/1537768156119-product-9666ded-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36018,7 +36018,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11494",
         "title": "TN-07A (Orange)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/1524564549087-product.jpeg",
         "school": "The Educators",
         "class_name": "General",
@@ -36034,7 +36034,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11495",
         "title": "Early Learning Pre-K- I am a Leader Unit Class Pre Nursery",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Early-Learning-Pre-K--I-am-a-Leader-Unit-Class-Pre-Nursery-1dae456-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -36050,7 +36050,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11496",
         "title": "Early Learning Pre-K- Where we live and learn Unit Class Nursery",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Leader-in-Me-PRE-K-bbe98d5-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -36066,7 +36066,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11497",
         "title": "Lighstone Reading Treasury Level 1",
-        "price": 500,
+        "price": 680,
         "img": "https://cdn.fishry.com/product/level-1-ca2f875-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -36082,7 +36082,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11498",
         "title": "Lighstone Reading Treasury Level 2",
-        "price": 500,
+        "price": 680,
         "img": "https://cdn.fishry.com/product/Level-2-5318819-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -36098,7 +36098,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11499",
         "title": "Lighstone Reading Treasury Level 3",
-        "price": 500,
+        "price": 790,
         "img": "https://cdn.fishry.com/product/level-3-8a181e7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -36114,7 +36114,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11500",
         "title": "Discover the Leader In Me (KG)",
-        "price": 500,
+        "price": 950,
         "img": "https://cdn.fishry.com/product/Leader-in-Me-Class-Kinder-Garten-3b5187e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -36130,7 +36130,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11501",
         "title": "Oxford International Primary English 5 Book",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Eng-g5-fe11c90-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36146,7 +36146,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11502",
         "title": "Lead 7 Powered by the 7 Habits Class 8",
-        "price": 500,
+        "price": 950,
         "img": "https://cdn.fishry.com/product/Ucs-Lead-Class-8-a0a1370-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -36162,7 +36162,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11503",
         "title": "Discover the Leader in Me Class 6",
-        "price": 500,
+        "price": 950,
         "img": "https://cdn.fishry.com/product/Leader-in-Me-Class-6-388b133-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -36178,7 +36178,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11504",
         "title": "Lighstone Reading Treasury Level 4",
-        "price": 500,
+        "price": 790,
         "img": "https://cdn.fishry.com/product/level-4-4230d1d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -36194,7 +36194,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11505",
         "title": "Urdu 6 (For Balochistan Province)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/QTB-urdu-6-464da31-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36210,7 +36210,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11506",
         "title": "Lead 6 Powered by the 7 Habits Class 7",
-        "price": 500,
+        "price": 950,
         "img": "https://cdn.fishry.com/product/Ucs-Lead-Class-7-a61f7e4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -36226,7 +36226,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11507",
         "title": "Islamiat 6 (NBF)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/image--43--5f769bd-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36242,7 +36242,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11508",
         "title": "Pashtoo 6",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Pashtoo-66-Photoroom-7012f28-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -36258,7 +36258,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11509",
         "title": "Pashtoo 7",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Pashtoo-77-Photoroom-50327fd-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -36274,7 +36274,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11510",
         "title": "Pashtoo 8",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Pastoo-88-Photoroom-d39844c-my-bag-pack.png",
         "school": "The Educators",
         "class_name": "General",
@@ -36290,7 +36290,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11511",
         "title": "TEY Book Pack Class Pre-Nursery 25-26",
-        "price": 500,
+        "price": 3750,
         "img": "https://cdn.fishry.com/product/Book-Pack---1--2ab35d6-my-bag-pack-cb99f19-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Pre-Nursery",
@@ -36306,7 +36306,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11512",
         "title": "TE-03A NARROW 4 LINE HALF PAGE INTERLEAF",
-        "price": 500,
+        "price": 220,
         "img": "https://cdn.fishry.com/product/TE-EB-dc277a1-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36322,7 +36322,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11513",
         "title": "TE-19 PERFORATED PAD OF ART SHEETS - A4 SIZE",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/TE-EB-49dc83d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36338,7 +36338,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11514",
         "title": "TE-09A NARROW SINGLE LINE HALF PAGE INTERLEAF",
-        "price": 500,
+        "price": 220,
         "img": "https://cdn.fishry.com/product/TE-EB-5bacef0-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36354,7 +36354,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11515",
         "title": "Activity Pad - Tear off Pad - Nursery Revised (Edition 2023)",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/activity-pad-nursery-abd1352-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -36370,7 +36370,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11516",
         "title": "Kidlings Club - The World Around Us - Step 3 (Edition 2023) KG",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Kidlings-club-step-3-6db8b5f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -36386,7 +36386,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11517",
         "title": "Online with Computers - Digital Foundations Book - II Class 2",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/Computer-2-183769c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -36402,7 +36402,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11518",
         "title": "Online with Computers - Digital Foundations - I Class 1",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/computer-1-ea817a2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -36418,7 +36418,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11519",
         "title": "Social Studies Workbook Class 4",
-        "price": 500,
+        "price": 690,
         "img": "https://cdn.fishry.com/product/Sst-4-wb-c4851e4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -36434,7 +36434,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11520",
         "title": "Main or Meri Duniya (Stories) Class 6",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/Main-or-Meri-Duniya-class-6-486d13e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -36450,7 +36450,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11521",
         "title": "Social Studies Book Class 5",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Sst-5-f4ca297-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -36466,7 +36466,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11522",
         "title": "Online with Computers - Digital Foundations III 2nd Edition 2024",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/Computer-3-6c58794-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36482,7 +36482,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11523",
         "title": "Main or Meri Duniya (Stories) Class 8",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/Main-or-Meri-Duniya-class-8-ee95df4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -36498,7 +36498,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11524",
         "title": "Main or Meri Duniya (Stories) Class 7",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/Main-or-Meri-Duniya-class-7-326578a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -36514,7 +36514,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11525",
         "title": "Jolly Phonics Readers, Nonfiction, Level 2 (Pack of 6) Year 1",
-        "price": 500,
+        "price": 1950,
         "img": "https://cdn.fishry.com/product/Jolly-Phonics-E-Readers-Level-2-Nonfiction-a162146-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -36530,7 +36530,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11526",
         "title": "Shaping Mathematics Workbook 3B",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Shaping-Maths-3B-a3a5d6d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36546,7 +36546,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11527",
         "title": "Jolly Phonics Workbook 3 Class Nursery",
-        "price": 500,
+        "price": 880,
         "img": "https://cdn.fishry.com/product/JOLLY-PHONICS-WORKBOOK-3-617d032-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -36562,7 +36562,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11528",
         "title": "Jolly Phonics Workbook 7 Class KG",
-        "price": 500,
+        "price": 880,
         "img": "https://cdn.fishry.com/product/JOLLY-PHONICS-WORKBOOK-7-0a3837c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -36578,7 +36578,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11529",
         "title": "Jolly Phonics Readers, Nonfiction, Level 3 (Pack of 6) Year 2",
-        "price": 500,
+        "price": 1950,
         "img": "https://cdn.fishry.com/product/Jolly-Readers-Level-3-Nonfiction-a1e6db5-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -36594,7 +36594,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11530",
         "title": "Jolly Phonics Workbook 5 Class Reception",
-        "price": 500,
+        "price": 880,
         "img": "https://cdn.fishry.com/product/JOLLY-PHONICS-WORKBOOK-5-5be8f0d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36610,7 +36610,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11531",
         "title": "Shaping Mathematics Workbook 4B",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/Shaping-Maths-4B-d4c43ce-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36626,7 +36626,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11532",
         "title": "Cambridge Primary English Learner's Book 1",
-        "price": 500,
+        "price": 1450,
         "img": "https://cdn.fishry.com/product/Primary-English-book-1-1428d97-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36642,7 +36642,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11533",
         "title": "The Railway Children",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/image--45--c2764a8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36658,7 +36658,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11534",
         "title": "The Prince and the Pauper by Mark Twain (Level 2- OPR)",
-        "price": 500,
+        "price": 680,
         "img": "https://cdn.fishry.com/product/image--47--a0dc057-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -36674,7 +36674,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11535",
         "title": "Cambridge Lower Secondary English b John Reynold - 6",
-        "price": 500,
+        "price": 1250,
         "img": "https://cdn.fishry.com/product/image--52--e15c22b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36690,7 +36690,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11536",
         "title": "Robinson Crusoe",
-        "price": 500,
+        "price": 750,
         "img": "https://cdn.fishry.com/product/image--55--d3efe19-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36706,7 +36706,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11537",
         "title": "Cambridge Lower Secondary English b John Reynold - 7",
-        "price": 500,
+        "price": 1250,
         "img": "https://cdn.fishry.com/product/image--53--a3e7d1e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36722,7 +36722,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11538",
         "title": "The Merchant of Venice and other stories from Shakespeare by William Shakespeare (Level 3 -OPR)",
-        "price": 500,
+        "price": 790,
         "img": "https://cdn.fishry.com/product/image--48--97642bc-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -36738,7 +36738,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11539",
         "title": "My Revision Notes: AQA A-Level Computer Science",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/My-Revision-Notes-AQA-A-Level-Computer-Science-32b6b79-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36754,7 +36754,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11540",
         "title": "Combo Pack 5 Class Nursery",
-        "price": 500,
+        "price": 4850,
         "img": "https://cdn.fishry.com/product/combo-5-4d78e67-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -36770,7 +36770,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11541",
         "title": "Combo Pack 4 Class Pre-Nursery",
-        "price": 500,
+        "price": 3950,
         "img": "https://cdn.fishry.com/product/Combo-Pack-4-56a82a9-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Pre-Nursery",
@@ -36786,7 +36786,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11542",
         "title": "Combo Pack 5 Class KG",
-        "price": 500,
+        "price": 4850,
         "img": "https://cdn.fishry.com/product/combo-5-8a89c84-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -36802,7 +36802,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11543",
         "title": "Combo Pack 5 Class 2",
-        "price": 500,
+        "price": 4850,
         "img": "https://cdn.fishry.com/product/CLASS-2-BSS--3--ca9d995-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -36818,7 +36818,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11544",
         "title": "Combo Pack 5 Class 1",
-        "price": 500,
+        "price": 4850,
         "img": "https://cdn.fishry.com/product/combo-5-e09ea84-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -36834,7 +36834,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11545",
         "title": "Combo Pack 4 Class 3",
-        "price": 500,
+        "price": 3950,
         "img": "https://cdn.fishry.com/product/combo-4-0646144-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -36850,7 +36850,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11546",
         "title": "Combo Pack 3 Class 8",
-        "price": 500,
+        "price": 3250,
         "img": "https://cdn.fishry.com/product/CLASS-8-BSS--2--b6c3740-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -36866,7 +36866,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11547",
         "title": "Combo Pack 4 Class 4",
-        "price": 500,
+        "price": 3950,
         "img": "https://cdn.fishry.com/product/combo-4-8d3fe37-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -36882,7 +36882,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11548",
         "title": "Combo Pack 3 Class 6",
-        "price": 500,
+        "price": 3250,
         "img": "https://cdn.fishry.com/product/Combo-3-7315cf1-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -36898,7 +36898,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11549",
         "title": "Combo Pack 4 Class 5",
-        "price": 500,
+        "price": 3950,
         "img": "https://cdn.fishry.com/product/combo-4--4--ce18f44-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -36914,7 +36914,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11550",
         "title": "Combo Pack 3 Class 7",
-        "price": 500,
+        "price": 3250,
         "img": "https://cdn.fishry.com/product/Combo-3-8bbb543-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -36930,7 +36930,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11551",
         "title": "SMIGGLE HIGHLIGHTER SCENTED MIX TITLES 4PC PACK",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Smiggle--59--19b6288-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36946,7 +36946,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11552",
         "title": "BEMBEL SCHOOL BAG 14'' KIDS BAG",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/BEMBEL-SCHOOL-BAG-14---Batman-bd4eb7e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36962,7 +36962,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11553",
         "title": "PIANO WHITE BOARD MARKER BLACK 90",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/149979-3866ea6-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36978,7 +36978,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11554",
         "title": "Deli School Scissor Round Tip E6021 1PC",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Round-Tip-Scissor-6436e00-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -36994,7 +36994,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11555",
         "title": "SUPER CAR GEOMETRY WITH STATIONERY ASSORTED COLOR",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Geometry--45--bc48a31-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37010,7 +37010,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11556",
         "title": "Sketch Book IMP Spiral A4 40P",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/WhatsApp-Image-2025-08-07-at-4-46-35-PM-c9ddabe-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37026,7 +37026,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11557",
         "title": "Kidco Poster Color 30ml Assorted 12PC P",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Untitled-design--27--8e9fffc-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37042,7 +37042,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11558",
         "title": "GLUE GUN MINI 1PC",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/148372-a336a77-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37058,7 +37058,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11559",
         "title": "BLU TUMBLER 40OZ",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/5-ed0d7d5-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37074,7 +37074,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11560",
         "title": "Lip Stick Aloe Vera",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Lipstick-609f75f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37090,7 +37090,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11561",
         "title": "Biscuit Digest: Issue 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Biscuit-Digest---issue-II-fd12c62-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37106,7 +37106,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11562",
         "title": "WHITE ENVELOPE A4 SIZE (Pack of 5)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/150401-1c905ec-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37122,7 +37122,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11563",
         "title": "CHART PAPER SKIN 1PC",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/147651-16352c0-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37138,7 +37138,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11564",
         "title": "Let's Explore the World Around Us - Activity Book Level 2 (Edition 2023)",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/let-s-explore-the-world-around-us-level-to-activity-9ccf0fb-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37154,7 +37154,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11565",
         "title": "Urdu Ki Amli Kitab - Nursery (Edition 2023)",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/urdu-ki-amli-nursery-6aaab05-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37170,7 +37170,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11566",
         "title": "My Activity Book of Numbers and Shapes - Nursery (Edition 2023)",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/My-activity-book-of-number-and-shapes--nursery-81ca13b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37186,7 +37186,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11567",
         "title": "My Activity Book of Letters and Sounds - Level 2 (Edition 2023) Nursery",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/my-book-of-letter-and-sounds-level-2-9894acc-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37202,7 +37202,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11568",
         "title": "Let's Explore the World Around Us - Textbook - Level 2 (Edition 2023) Nursery",
-        "price": 500,
+        "price": 820,
         "img": "https://cdn.fishry.com/product/let-s-explore-the-world-arround-us-level-2-text-4c61d4f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37218,7 +37218,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11569",
         "title": "Harf Kahani Ibtidai Tasverri Quaida - Nursery (Edition 2023)",
-        "price": 500,
+        "price": 650,
         "img": "https://cdn.fishry.com/product/haraf-kahani-nursery-75c5030-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37234,7 +37234,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11570",
         "title": "My Book of Numbers and Shapes - Nursery (Edition 2023)",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/My-Book-of-Numbers-and-shape-c3dc72a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37250,7 +37250,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11571",
         "title": "I Can Read Level 2 (Pack of 4) Nursery",
-        "price": 500,
+        "price": 1450,
         "img": "https://cdn.fishry.com/product/English-Reader-Level-2-6c213e6-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37266,7 +37266,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11572",
         "title": "My Book of Letters and Sounds - Level 2 (New Publication - Edition 2023) Nursery",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/my-activity-book-of-letter-and-sounds-level-2-dce6f8a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Nursery",
@@ -37282,7 +37282,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11573",
         "title": "TE Series Discover Maths - KG (Edition 2023)",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/discover-match-kg-6cd861e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37298,7 +37298,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11574",
         "title": "Bi Fakhta aur Miyan Kawa Class KG",
-        "price": 500,
+        "price": 740,
         "img": "https://cdn.fishry.com/product/Bee-Fakhta-or-kawwa-Title-c1e4ef7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37314,7 +37314,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11575",
         "title": "Sarah Ka Bagh Class KG",
-        "price": 500,
+        "price": 740,
         "img": "https://cdn.fishry.com/product/Sara-ka-bagh-Title-5d90123-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37330,7 +37330,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11576",
         "title": "Ibtidai Urdu - KG (Edition 2023)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Ibtadiya-urdu-17a6920-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37346,7 +37346,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11577",
         "title": "I Can Read Level 3 (Pack of 4) KG",
-        "price": 500,
+        "price": 1450,
         "img": "https://cdn.fishry.com/product/English-Reader-Level-3-cf740d8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37362,7 +37362,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11578",
         "title": "Introductory English Text & Activity Book (Edition 2023) KG",
-        "price": 500,
+        "price": 780,
         "img": "https://cdn.fishry.com/product/introdction-english-text-and-activity-kg-b2bac5c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -37378,7 +37378,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11579",
         "title": "TE - Seeking Knowledge - I (SRM) (Edition 2026) Class 1",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Seeking-Knowledge-1-b3d1532-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37394,7 +37394,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11580",
         "title": "The Educators Waqfiyat Aama Amli Kitab Class 1 (Edition 2023)",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Amli-Kitab-1-0dc30dd-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37410,7 +37410,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11581",
         "title": "The Educators Waqfiyat Aama Class 1 (Edition 2023)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Darsi-Kitab-1-2d49e00-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37426,7 +37426,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11582",
         "title": "Math Path 1 Class 1",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/math-path-1-9a34899-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37442,7 +37442,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11583",
         "title": "Urdu Khushkhati Class 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu-Khuskhati-1-fb755d2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37458,7 +37458,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11584",
         "title": "Ek tha Podna Ek thi Podni Class 1",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Ek-tha-podna-Title-7d90e7d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37474,7 +37474,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11585",
         "title": "Qissa Ek Darakht Ka Class 1",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Qissa-ik-Drakht-ka-Title-3fa614f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37490,7 +37490,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11586",
         "title": "Uraan Urdu Class 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/uraan-1-3930b66-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -37506,7 +37506,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11587",
         "title": "TE English Handwriting Book (Optional) I",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/English-Handwriting-class-1-book-1-8b9f34e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37522,7 +37522,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11588",
         "title": "TE The Language Expedition (Work Book) I",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/TLE-WORKBOOK-1-97740f6-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37538,7 +37538,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11589",
         "title": "TE - Seeking Knowledge - II (SRM) (Edition 2026) Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Seeking-Knowledge-2-8e51f90-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37554,7 +37554,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11590",
         "title": "The Educators Waqfiyat Aama Amli Kitab Class 2 (Edition 2023)",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Amli-Kitab-2-9755c60-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37570,7 +37570,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11591",
         "title": "The Educators Waqfiyat Aama Class 2 (Edition 2023)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Darsi-Kitab-2-e70cf77-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37586,7 +37586,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11592",
         "title": "Math Path 2 Class 2",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/math-path-2-276ed2b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37602,7 +37602,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11593",
         "title": "Urdu Khushkhati Class 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu-Khuskhati-2-bcd3942-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37618,7 +37618,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11594",
         "title": "Main Na Maanu Haar Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Mein-na-manoo-haar-Title-94ed140-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37634,7 +37634,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11595",
         "title": "Sarah Ka Naya Shoq Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Sara-ka-naya-shoq-abcc9ed-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37650,7 +37650,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11596",
         "title": "Uraan Urdu Class 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Uraan-2-4ff1e7d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37666,7 +37666,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11597",
         "title": "TE English Handwriting Book (Optional) II Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/english-handwriting-book-2-dfe967b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37682,7 +37682,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11598",
         "title": "TE The Language Expedition (Work Book) II Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-WORKBOOK-2-a9cbc02-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -37698,7 +37698,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11599",
         "title": "TE - Seeking Knowledge - III (SRM)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Seeking-Knowledge-3-c144d89-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37714,7 +37714,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11600",
         "title": "The Educators Waqfiyat Aama Amli Kitab Class 3 (Edition 2023)",
-        "price": 500,
+        "price": 620,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Amli-Kitab-3-7fa7047-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37730,7 +37730,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11601",
         "title": "The Educators Waqfiyat Aama Class 3 (Edition 2023)",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Waqfiat-e-Aama-Darsi-Kitab-3-1ff63ea-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37746,7 +37746,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11602",
         "title": "Math Path 3 Class 3",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/Math-path-3-a8b9b32-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37762,7 +37762,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11603",
         "title": "Urdu Khushkhati Class 3",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu-Khuskhati-3-576aa94-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37778,7 +37778,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11604",
         "title": "Samar Qawaid-o-Insha Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Summer-3-9ae185a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37794,7 +37794,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11605",
         "title": "Choohay ki Dulhaniya Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Chuha-ki-dulhaniya-9c01687-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37810,7 +37810,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11606",
         "title": "Garam Zamani Sard Zamani Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Gram-zmani-sard-zmani-Title-3ac3f3b-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37826,7 +37826,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11607",
         "title": "Uraan Urdu Class 3",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Uraan-3-dfb2b25-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -37842,7 +37842,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11608",
         "title": "Online with Computers - Digital Foundations IV 2nd Edition 2024 Class 4",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/Computer-4-2c8a185-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37858,7 +37858,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11609",
         "title": "Social Studies Book - IV (SRM) Class 4",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Social-Studies-4-Educators-c8bf016-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37874,7 +37874,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11610",
         "title": "Masharat Aloom Amli Class 4",
-        "price": 500,
+        "price": 690,
         "img": "https://cdn.fishry.com/product/Muashrati-Aloom-4--Amli--Title-df7dfab-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37890,7 +37890,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11611",
         "title": "Masharat Aloom Darsi Class 4",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Muashrati-Aloom--Darsi--4-cd7f35e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37906,7 +37906,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11612",
         "title": "TE - Science Practice Book - 4",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Science-Practice-Book-4-b193569-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -37922,7 +37922,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11613",
         "title": "TE Miracles of Science - 4 Class 4",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Mircales-of-science-4-62d43bd-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37938,7 +37938,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11614",
         "title": "Math Path 4 Class 4",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/math-path-4-76e506f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37954,7 +37954,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11615",
         "title": "Urdu Khushkhati Class 4",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu-Khuskhati-4-0698f51-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37970,7 +37970,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11616",
         "title": "Samar Qawaid-o-Insha Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/-------------------6662c09-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -37986,7 +37986,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11617",
         "title": "Teesri Ka Chand Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Teesri-ka-chand-06d331c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38002,7 +38002,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11618",
         "title": "Masharat Aloom WorkBook Class 5",
-        "price": 500,
+        "price": 690,
         "img": "https://cdn.fishry.com/product/Muashrati-Aloom-5--Amli--Title-7dfee43-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38018,7 +38018,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11619",
         "title": "Masharat Aloom TextBook Class 5",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Muashrati-Aloom-5--Darsi--Title-8541963-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38034,7 +38034,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11620",
         "title": "Online with Computers - Digital Foundations V 2nd Edition 2024 Class 5",
-        "price": 500,
+        "price": 890,
         "img": "https://cdn.fishry.com/product/Computer-5-5575d5c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38050,7 +38050,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11621",
         "title": "Social Studies Book - V (SRM) Class 5",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Social-Studies-5-Educators-a9db8dd-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38066,7 +38066,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11622",
         "title": "TE - Science Practice Book - 5 Class 5",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Science-Practice-Book-5-483f091-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38082,7 +38082,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11623",
         "title": "TE Miracles of Science - 5 Class 5",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Miricale-of-science-5-835808e-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38098,7 +38098,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11624",
         "title": "Math Path 5 Class 5",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/Math-path-5-d3031df-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38114,7 +38114,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11625",
         "title": "Urdu Khushkhati Class 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Urdu-Khuskhati-5-5061eda-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38130,7 +38130,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11626",
         "title": "Samar Qawaid-o-Insha Class 5",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Summer-5-613f93c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38146,7 +38146,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11627",
         "title": "Bulhan Class 5",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Bulhan-Title-16208f8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38162,7 +38162,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11628",
         "title": "TE New World of Computer - 6 (2nd Edition 2024) Class 6",
-        "price": 500,
+        "price": 1050,
         "img": "https://cdn.fishry.com/product/computer-6-01f1e49-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38178,7 +38178,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11629",
         "title": "TE World Geography - 6 (Edition 2024) Class 6",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/world-geo-6-723e9f7-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38194,7 +38194,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11630",
         "title": "TE World History - 6 (Edition 2024) Class 6",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/World-History-6-e5fca35-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38210,7 +38210,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11631",
         "title": "TE Science Practice Book - 6 Class 6",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Science-practice-book-class-6-182f8b8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38226,7 +38226,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11632",
         "title": "TE Miracles of Science - 6 (SNC Based 2023) (First Edition) Class 6",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Mircales-of-science-6-43a8ed8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38242,7 +38242,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11633",
         "title": "Math Path 6 Class 6",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/Math-path-6-32560d8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38258,7 +38258,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11634",
         "title": "Samar Qawaid-o-Insha Class 6",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Summer-6-80340a9-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38274,7 +38274,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11635",
         "title": "Silsila-e-Urdu 6 Class 6",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Silsala-Urdu-6-6be01f1-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38290,7 +38290,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11636",
         "title": "TE - The Language Expedition 2025 - VI Class 6",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-6-d208478-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 6",
@@ -38306,7 +38306,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11637",
         "title": "TE New World of Computer - 7 (2nd Edition 2024) Class 7",
-        "price": 500,
+        "price": 1050,
         "img": "https://cdn.fishry.com/product/computer-7-e0eef75-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38322,7 +38322,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11638",
         "title": "TE World Geography - 7 (Edition 2024) Class 7",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/World-geo-7-e480252-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38338,7 +38338,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11639",
         "title": "TE World History - 7 (Edition 2024) Class 7",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/World-History-7-07a670d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38354,7 +38354,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11640",
         "title": "TE Science Practice Book - 7 Class 7",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Science-Practice-Book-7-1114b0d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38370,7 +38370,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11641",
         "title": "TE Miracles of Science - 7 (SNC Based 2023) (First Edition) Class 7",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/miracale-of-science-7-0f1e170-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38386,7 +38386,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11642",
         "title": "Math Path 7 Class 7",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/Math-path-7-c4e3ddc-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38402,7 +38402,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11643",
         "title": "Silsila-e-Urdu 7 Class 7",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Silsala-Urdu-7-c38370c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38418,7 +38418,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11644",
         "title": "TE - The Language Expedition 2025 - VII Class 7",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-7-cf7df86-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 7",
@@ -38434,7 +38434,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11645",
         "title": "TE New World of Computer - 8 (2nd Edition 2024) Class 8",
-        "price": 500,
+        "price": 1050,
         "img": "https://cdn.fishry.com/product/Computer-8-daa212d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38450,7 +38450,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11646",
         "title": "TE World Geography - 8 (Edition 2024) Class 8",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/world-geo-8-6da9f55-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38466,7 +38466,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11647",
         "title": "TE World History - 8 (Edition 2024) Class 8",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/TE-World-History---8--Edition-2024--e180962-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38482,7 +38482,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11648",
         "title": "TE Science Practice Book - 8 Class 8",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/Science-Practice-Book-8-c6866d9-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38498,7 +38498,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11649",
         "title": "TE Miracles of Science - 8 (SNC Based 2023) (First Edition) Class 8",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/TE-Miracles-of-Science---8--SNC-Based-2023---First-Edition--08d0736-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38514,7 +38514,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11650",
         "title": "Math Path 8 Class 8",
-        "price": 500,
+        "price": 1120,
         "img": "https://cdn.fishry.com/product/Math-path-8-282d431-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38530,7 +38530,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11651",
         "title": "Silsila-e-Urdu 8 Class 8",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Silsala-Urdu-8-b2b8140-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38546,7 +38546,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11652",
         "title": "TE - The Language Expedition 2025 - VIII Class 8",
-        "price": 500,
+        "price": 1150,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-8-47dc873-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 8",
@@ -38562,7 +38562,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11653",
         "title": "TE The Language Expedition Class I",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-1-14aeeee-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -38578,7 +38578,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11654",
         "title": "TE The Language Expedition II Class 2",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-2-62b8fcf-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -38594,7 +38594,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11655",
         "title": "TE - English Practice Book 3",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/English-Practice-book-Class-3-18dfea1-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -38610,7 +38610,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11656",
         "title": "TE English Handwriting Book (Optional) III Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/English-handwriting-book-3-f417aa4-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -38626,7 +38626,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11657",
         "title": "TE The Language Expedition (Work Book) III Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-WORKBOOK-3-414df37-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -38642,7 +38642,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11658",
         "title": "TE The Language Expedition - III Class 3",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-3-429cbba-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -38658,7 +38658,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11659",
         "title": "Social Studies Book Class 4",
-        "price": 500,
+        "price": 980,
         "img": "https://cdn.fishry.com/product/Sst-4-e6f228d-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38674,7 +38674,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11660",
         "title": "Kohsar Ki Sair Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/Kohsar-ki-sare-Title-f04471a-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38690,7 +38690,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11661",
         "title": "Uraan Urdu Class 4",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Uraan-4-e8ea592-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38706,7 +38706,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11662",
         "title": "TE - English Practice Book 4",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/English-Practice-book-Class-4--1--fa7de85-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -38722,7 +38722,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11663",
         "title": "Social Studies Workbook Class 5",
-        "price": 500,
+        "price": 690,
         "img": "https://cdn.fishry.com/product/Sst-5-wb-5bbf1ee-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38738,7 +38738,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11664",
         "title": "Uraan Urdu Class 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/uraan-5-2f783a2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38754,7 +38754,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11665",
         "title": "TE - English Practice Book 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/English-Practice-book-Class-5-7fdee87-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "General",
@@ -38770,7 +38770,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11666",
         "title": "TE The Language Expedition (Work Book) V Class 5",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-WORKBOOK-5--1--f85f300-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38786,7 +38786,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11667",
         "title": "TE English Handwriting Book (Optional) IV Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TE-English-Practice-Book---4--1--f43ec15-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38802,7 +38802,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11668",
         "title": "TE The Language Expedition (Work Book) IV Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-WORKBOOK-4-1c9e7e8-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38818,7 +38818,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11669",
         "title": "TE The Language Expedition IV Class 4",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-4-5130859-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38834,7 +38834,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11670",
         "title": "TE The Language Expedition V Class 5",
-        "price": 500,
+        "price": 920,
         "img": "https://cdn.fishry.com/product/TLE-BOOK-5-b191a7f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
@@ -38850,7 +38850,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11671",
         "title": "Bridge Express - KG",
-        "price": 500,
+        "price": 740,
         "img": "https://cdn.fishry.com/product/Bridge-Express--Kg--fed6659-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class KG",
@@ -38866,7 +38866,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11672",
         "title": "Karwaan - E - Urdu Class 1",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Karwan-e-Urdu-cc6ce70-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 1",
@@ -38882,7 +38882,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11673",
         "title": "Karwaan - E - Urdu Class 2",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Karwan-e-Urdu-2-7b8228f-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 2",
@@ -38898,7 +38898,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11674",
         "title": "Karwaan - E - Urdu Class 3",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Karwan-e-urdu-3-5dc0386-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 3",
@@ -38914,7 +38914,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11675",
         "title": "Karwaan - E - Urdu Class 4",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Karwan-e-urdu-4-5ef85e2-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 4",
@@ -38930,7 +38930,7 @@ const SCRAPED_COURSES = [
     {
         "id": "SP_11676",
         "title": "Karwaan - E - Urdu Class 5",
-        "price": 500,
+        "price": 850,
         "img": "https://cdn.fishry.com/product/Karwan-e-urdu-5-7cce60c-my-bag-pack.jpg",
         "school": "The Educators",
         "class_name": "Class 5",
