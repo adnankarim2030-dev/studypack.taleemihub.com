@@ -2,7 +2,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_55008133",
         "title": "General Knoweldge 3 (English Medium)",
-        "price": 0.0,
+        "price": 520,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-3-EM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -17,7 +17,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_63645651",
         "title": "General Knoweldge 2 (English Medium)",
-        "price": 0.0,
+        "price": 480,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-2-EM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -32,7 +32,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_42903318",
         "title": "General Knoweldge 1 (English Medium)",
-        "price": 0.0,
+        "price": 450,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-1-EM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -47,7 +47,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_39458268",
         "title": "Social Studies 5 (English Medium)",
-        "price": 0.0,
+        "price": 620,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-Social-Studies-5-EM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -62,7 +62,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_54314248",
         "title": "Social Studies 4 (English Medium)",
-        "price": 0.0,
+        "price": 580,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-Social-Studies-4-EM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -77,7 +77,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_25884506",
         "title": "Maloomat e Aama : General Knowledge 1 (Urdu Medium)",
-        "price": 0.0,
+        "price": 420,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-1-UM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -92,7 +92,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_13272481",
         "title": "Maloomat e Aama : General Knowledge 2 (Urdu Medium)",
-        "price": 0.0,
+        "price": 450,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-2-UM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",
@@ -107,7 +107,7 @@ const SCRAPED_AFAQ = [
     {
         "id": "afaq_87131498",
         "title": "Maloomat e Aama : General Knowledge 3 (Urdu Medium)",
-        "price": 0.0,
+        "price": 480,
         "img": "https://afaq.edu.pk/wp-content/uploads/2022/08/Sun-Series-General-Knowledge-3-UM.webp",
         "pub": "AFAQ Publishers",
         "category": "Books",

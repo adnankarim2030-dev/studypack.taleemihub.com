@@ -4,6 +4,31 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    // Merge Dashboard Course Overrides & Newly Added Courses
+    try {
+        const localOverrides = JSON.parse(localStorage.getItem('sp_course_overrides') || '{}');
+        const newCourses = JSON.parse(localStorage.getItem('sp_new_courses') || '[]');
+        
+        if (newCourses && newCourses.length > 0) {
+            newCourses.forEach(nc => {
+                if (!SCRAPED_COURSES.some(c => c.id === nc.id)) {
+                    SCRAPED_COURSES.push(nc);
+                }
+            });
+        }
+
+        if (Object.keys(localOverrides).length > 0) {
+            SCRAPED_COURSES.forEach(c => {
+                const ov = localOverrides[c.id];
+                if (ov) {
+                    if (ov.price !== undefined) c.price = ov.price;
+                    if (ov.title !== undefined) c.title = ov.title;
+                    if (ov.disabled !== undefined) c.disabled = ov.disabled;
+                }
+            });
+        }
+    } catch(e) { console.warn('Could not load course overrides:', e); }
+
     const schoolGrid = document.getElementById("schoolGrid");
     const classSelectorWrapper = document.getElementById("classSelectorWrapper");
     const selectedSchoolNameEl = document.getElementById("selectedSchoolName");
