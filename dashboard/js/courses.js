@@ -310,3 +310,62 @@ window.applyCourseBulkPrice = function(e) {
     renderCoursesTable();
     showToast(`Prices updated for ${count} course packs (${actionType === 'inc' ? '+' : '-'}${percent}%)!`);
 };
+
+// ============================================================
+// ADD MORE INDIVIDUAL COURSE BOOKS HANDLERS
+// ============================================================
+
+window.openAddCourseBookModal = function() {
+    const modal = document.getElementById('courseBookModal');
+    if (!modal) return;
+    document.getElementById('courseBookForm')?.reset();
+    if (selectedSchoolFilter) {
+        const schInput = document.getElementById('bookSchoolInput');
+        if (schInput) schInput.value = selectedSchoolFilter;
+    }
+    modal.classList.add('show');
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+};
+
+window.closeCourseBookModal = function() {
+    const modal = document.getElementById('courseBookModal');
+    if (modal) modal.classList.remove('show');
+};
+
+window.saveCourseBookForm = function(e) {
+    e.preventDefault();
+    const school = document.getElementById('bookSchoolInput').value.trim();
+    const cls = document.getElementById('bookClassSelect').value.trim();
+    const rawTitles = document.getElementById('bookTitlesTextarea').value.trim();
+    const price = Number(document.getElementById('bookUnitPrice').value) || 0;
+    const inStock = document.getElementById('bookStockSelect').value === 'true';
+
+    if (!school || !rawTitles) {
+        showToast('Please fill all required fields', 'error');
+        return;
+    }
+
+    const lines = rawTitles.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    if (lines.length === 0) return;
+
+    const newCourses = JSON.parse(localStorage.getItem('sp_new_courses') || '[]');
+    
+    lines.forEach((lineTitle, idx) => {
+        const itemPrice = price;
+        const newId = 'cb_' + Date.now() + '_' + idx;
+        newCourses.unshift({
+            id: newId,
+            title: lineTitle,
+            school: school,
+            cls: cls,
+            price: itemPrice,
+            inStock: inStock,
+            type: 'course_book'
+        });
+    });
+
+    localStorage.setItem('sp_new_courses', JSON.stringify(newCourses));
+    showToast(`Successfully added ${lines.length} book(s) to ${school}!`);
+    closeCourseBookModal();
+    loadCoursesData();
+};

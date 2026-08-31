@@ -181,7 +181,8 @@
           </div>
           <div class="section-head-actions">
             <button class="btn btn-outline" onclick="openCourseBulkPriceModal()"><i data-lucide="trending-up"></i> Bulk School Price Adjuster</button>
-            <button class="btn btn-primary" onclick="openAddCourseModal()"><i data-lucide="plus"></i> Add Course Pack</button>
+            <button class="btn btn-primary" onclick="openAddCourseModal()"><i data-lucide="folder-plus"></i> Add Course Pack</button>
+            <button class="btn" style="background:#2563eb; color:#fff;" onclick="openAddCourseBookModal()"><i data-lucide="book-plus"></i> + Add More Course Books</button>
           </div>
         </div>
 
@@ -818,6 +819,95 @@
       <div class="modal-foot">
         <button type="button" class="btn btn-outline" onclick="closeAdminModal()">Cancel</button>
         <button type="submit" class="btn btn-primary">Save Admin</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- ================= ADD COURSE BOOK(S) MODAL ================= -->
+<div class="modal-overlay" id="courseBookModal">
+  <div class="modal-box" style="max-width:560px;">
+    <div class="modal-head">
+      <h3 id="courseBookModalTitle">Add Course Book(s) to Syllabus</h3>
+      <button class="modal-close" onclick="closeCourseBookModal()"><i data-lucide="x"></i></button>
+    </div>
+    <form id="courseBookForm" onsubmit="saveCourseBookForm(event)">
+      <div class="modal-body">
+        <p class="perm-banner"><i data-lucide="info"></i> Kisi bhi school aur class ke liye nayi book ya multiple books add karein. Yeh foran storefront aur search mein show hongi.</p>
+        
+        <div style="display:grid; grid-template-columns:1.2fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>School Name *</label>
+            <input type="text" id="bookSchoolInput" list="schoolDatalist" placeholder="Select or type School Name..." required>
+            <datalist id="schoolDatalist">
+              <option value="Beaconhouse School"></option>
+              <option value="The City School"></option>
+              <option value="The Educators"></option>
+              <option value="Foundation Public School"></option>
+              <option value="Habib Girls School"></option>
+              <option value="Mama Parsi School"></option>
+              <option value="Aga Khan School"></option>
+              <option value="Karachi Public School"></option>
+              <option value="Dawood Public School"></option>
+              <option value="BVS Parsi High School"></option>
+              <option value="AMI School"></option>
+              <option value="Happy Home School (Matric)"></option>
+              <option value="Happy Home School (O Level)"></option>
+              <option value="Head Start School"></option>
+              <option value="Delsol School"></option>
+              <option value="River Oaks"></option>
+              <option value="Alpha High School"></option>
+              <option value="Alpha Core School"></option>
+              <option value="Alpha Prime School"></option>
+              <option value="Alpha Girls School"></option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Class / Grade *</label>
+            <select id="bookClassSelect" required>
+              <option value="Playgroup">Playgroup</option>
+              <option value="Nursery">Nursery</option>
+              <option value="KG">KG / Prep</option>
+              <option value="Class 1">Class 1</option>
+              <option value="Class 2">Class 2</option>
+              <option value="Class 3">Class 3</option>
+              <option value="Class 4">Class 4</option>
+              <option value="Class 5">Class 5</option>
+              <option value="Class 6">Class 6</option>
+              <option value="Class 7">Class 7</option>
+              <option value="Class 8">Class 8</option>
+              <option value="Class 9">Class 9 (Matric)</option>
+              <option value="Class 10">Class 10 (Matric)</option>
+              <option value="O Level 1">O Level 1</option>
+              <option value="O Level 2">O Level 2</option>
+              <option value="A Level">A Level</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Book Title(s) * (Multiple books ke liye har line par ek book likhein)</label>
+          <textarea id="bookTitlesTextarea" rows="4" placeholder="e.g.&#10;Oxford Progressive English Book 4&#10;New Countdown Book 4&#10;Amazing Science Book 4" required></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+          <div class="form-group">
+            <label>Price Per Book (PKR) *</label>
+            <input type="number" id="bookUnitPrice" placeholder="e.g. 850" required>
+          </div>
+          <div class="form-group">
+            <label>Stock Status</label>
+            <select id="bookStockSelect">
+              <option value="true">In Stock</option>
+              <option value="false">Out of Stock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" onclick="closeCourseBookModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary"><i data-lucide="check"></i> Add Books to Syllabus</button>
       </div>
     </form>
   </div>
