@@ -142,63 +142,7 @@ try {
     }
 } catch(e){}
 
-/* ================= SOCIAL PROOF (RECENT SALES POPUP) ================= */
-document.addEventListener("DOMContentLoaded", () => {
-    const spNames = ["Ali", "Ayesha", "Bilal", "Fatima", "Hamza", "Zainab", "Usman", "Hafsa", "Ahmed", "Sara"];
-    const spCities = ["Karachi", "Lahore", "Islamabad", "Rawalpindi", "Multan", "Faisalabad", "Peshawar", "Quetta"];
-    
-    // Create the HTML structure
-    const spContainer = document.createElement("div");
-    spContainer.className = "social-proof-popup";
-    spContainer.innerHTML = `
-        <span class="sp-close">&times;</span>
-        <img src="" alt="Product" class="sp-img">
-        <div class="sp-content">
-            <div class="sp-name"><b>Someone</b> from <span>City</span> purchased</div>
-            <div class="sp-product">Product Name</div>
-            <div class="sp-time"><i class="fas fa-check-circle"></i> <span class="sp-time-text">2 minutes ago</span></div>
-        </div>
-    `;
-    document.body.appendChild(spContainer);
-    
-    const spClose = spContainer.querySelector(".sp-close");
-    let spInterval;
-    
-    spClose.addEventListener("click", () => {
-        spContainer.classList.remove("show");
-    });
-    
-    function showSocialProof() {
-        if (!BOOKS || BOOKS.length === 0) return;
-        
-        // Randomly select a book/product
-        const randomProduct = BOOKS[Math.floor(Math.random() * BOOKS.length)];
-        const randomName = spNames[Math.floor(Math.random() * spNames.length)];
-        const randomCity = spCities[Math.floor(Math.random() * spCities.length)];
-        const randomMinutes = Math.floor(Math.random() * 59) + 1; // 1 to 59 minutes
-        
-        // Update content
-        spContainer.querySelector(".sp-img").src = randomProduct.img || "assets/images/placeholder.png";
-        spContainer.querySelector(".sp-name b").textContent = randomName;
-        spContainer.querySelector(".sp-name span").textContent = randomCity;
-        spContainer.querySelector(".sp-product").textContent = randomProduct.title;
-        spContainer.querySelector(".sp-time-text").textContent = `${randomMinutes} minute${randomMinutes > 1 ? 's' : ''} ago`;
-        
-        // Show popup
-        spContainer.classList.add("show");
-        
-        // Hide after 5 seconds
-        setTimeout(() => {
-            spContainer.classList.remove("show");
-        }, 5000);
-    }
-    
-    // Initial delay of 5 seconds, then repeat every 20 seconds
-    setTimeout(() => {
-        showSocialProof();
-        spInterval = setInterval(showSocialProof, 20000);
-    }, 5000);
-});
+
 
 /* ================= CENTER BOTTOM PROMO BANNER ================= */
 document.addEventListener("DOMContentLoaded", () => {
